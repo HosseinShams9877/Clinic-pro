@@ -1,0 +1,71 @@
+/* =========================================================
+   themes.css — semantic (theme) layer
+   Raw palette values appear only in tokens.css; everything in
+   the UI consumes these semantic names. Phase 1 ships the light
+   theme only — the reference has no dark theme, and the vivid
+   skin variant was rejected (approved Q9).
+   ========================================================= */
+
+:root {
+  /* UA scrollbars, form controls and dialogs follow the scheme (audit
+     2026-11-10: the live dark probe reported colorScheme "normal" — i.e. no
+     declaration anywhere, so native chrome stayed light in dark mode).
+     Light is authored first: fa/light is the canonical theme (CLAUDE.md §2.5). */
+  color-scheme: light dark;
+  --bg: var(--c-bg);
+  --surface: var(--c-white);
+  --surface-alt: var(--c-primary-50);
+  --fg: var(--c-ink);
+  --fg-muted: var(--c-muted);
+  --fg-inverted: var(--c-white);
+  --border: var(--c-line);
+  --accent: var(--c-accent);
+  --accent-strong: var(--c-primary);
+  --accent-deep: var(--c-navy);
+  /* Accent-colored TEXT on light/tinted surfaces (audit 2026-11-10:
+     --c-accent itself is 2.58:1 on bg-accent/10 and 3.06:1 on white, so
+     accent-colored text needs a deeper value; the same name flips to the
+     bright accent in dark, where the bright value is the passing one). */
+  --accent-ink: var(--c-primary-600);
+  /* Primary-tinted chips/hovers. Flips in dark so the light tint does not
+     paint a white tile on a dark surface. */
+  --primary-50: var(--c-primary-50);
+  /* Two-ring focus indicator (audit 2026-11-10). The old single ring was
+     --c-accent (#1AA3A8), which never flips: it measured 2.87:1 on the page
+     background, 2.29:1 against the light accent band (#0B4F5C) and an exact
+     1:1 against the dark accent band (#1aa3a8) — the footer links, hero CTAs
+     and skip-link had an invisible focus ring in dark mode. Routing the ring
+     through --fg/--bg instead makes it self-flipping and always a 14.7:1
+     (light) / 15.4:1 (dark) pair against plain surfaces, and on the one
+     surface where the outline fails — the accent band, in both schemes — the
+     halo carries the indicator (8.6:1 light / 5.7:1 dark). No single colour
+     can do this: in dark mode the band (#1aa3a8) and the surfaces (#0b1c22)
+     are 15 luminance steps apart, so a 3:1 ring against one is ≤1.2:1 against
+     the other. */
+  --focus-ring: var(--fg);
+  --focus-halo: var(--bg);
+  --open: #17855c;
+  --closed: #c24a63;
+}
+
+/* Minimal dark scheme: the reference does not define one, so this is a
+   low-risk inversion of the same tokens for users who ask the OS for dark.
+   Identity (teal hue family) is preserved. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1c22;
+    --surface: #10262f;
+    --surface-alt: #12333d;
+    --fg: #e8f3f4;
+    --fg-muted: #9db8bf;
+    --fg-inverted: #0b1c22;
+    --border: #23414a;
+    --accent: #3bc0c5;
+    --accent-strong: #1aa3a8;
+    --accent-deep: #e8f3f4;
+    --accent-ink: #3bc0c5;
+    --primary-50: #12333d;
+    --open: #4cc38f;
+    --closed: #e08aa0;
+  }
+}

@@ -1,0 +1,11 @@
+/* =========================================================
+   utilities.css — hand-written utilities, only where Tailwind
+   cannot express the rule. Keep this file tiny.
+   ========================================================= */
+
+@layer utilities {
+  /* Surface text on the teal hero/CTA bands. */
+  .on-accent {
+    color: var(--fg-inverted);
+  }
+}

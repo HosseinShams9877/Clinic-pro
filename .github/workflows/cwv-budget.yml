@@ -1,0 +1,101 @@
+# cwv-budget.yml — CI enforcement of the Phase 2 item 11 performance budgets.
+#
+# Gates run on the production build served over local HTTP, exactly the way
+# they were run and recorded locally during Phase 2
+# (docs/reports/cwv-audit.log, docs/reports/a11y-scan-round2.log):
+#
+#   1. npm run build      — the mandated stack build must succeed
+#   2. npm run a11y:scan  — axe: zero serious/critical findings (the R-6 gate)
+#   3. npm run cwv        — ttfb/fcp/lcp/cls/inp within scripts/cwv-budget.mjs
+#
+# Both scanners are the repo's own zero-dependency CDP harnesses driven
+# against a headless Edge on 127.0.0.1:9334 — no Lighthouse package, no
+# chromium download step. The browser is Edge because that is what Phase 1/2
+# verified against; see scripts/cwv-audit.mjs for the measurement design
+# (warm-gated, cold reported; INP via dispatched input, see the note on the
+# Event Timing API) and the HSTS/HTTPS deferral to risk R-4.
+#
+# Disclosure: this repository currently has no git history and no CI runner
+# attached, so THIS FILE WAS NOT EXECUTED in this environment — it is provided
+# ready-wired so a runner picks the gates up the moment one exists. The gates
+# themselves are not aspirational: both were run by hand against
+# http://localhost:3137 on the delivered build and their observed output is
+# checked in under docs/reports/. Lighthouse itself is not installed (see the
+# item 11 record in docs/reports/PHASE_2_NOTES.md) — the CWV metrics are the
+# inputs Lighthouse's Performance score is derived from, measured directly at
+# the same local-HTTP origin instead of simulated.
+
+name: cwv-budget
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Production build
+        run: npm run build
+
+      - name: Install Edge (the CDP browser the harnesses verified against)
+        uses: browser-actions/setup-edge@v1
+        with:
+          edge-version: stable
+
+      - name: Start production server (local HTTP — HSTS/HTTPS deferred to R-4)
+        run: |
+          npm run start -- --port 3137 &
+          for _ in $(seq 1 60); do
+            curl -sf http://localhost:3137/ && echo "server up" && exit 0
+            sleep 1
+          done
+          echo "server did not come up" && exit 1
+
+      - name: Start headless Edge with CDP
+        run: |
+          msedge --headless=new --no-first-run --no-default-browser-check \
+            --remote-debugging-port=9334 --user-data-dir="$RUNNER_TEMP/edge-cdp" \
+            about:blank &
+          for _ in $(seq 1 60); do
+            curl -sf http://127.0.0.1:9334/json && echo "edge up" && exit 0
+            sleep 1
+          done
+          echo "edge CDP did not come up" && exit 1
+
+      - name: Accessibility gate (axe, zero serious/critical)
+        run: npm run a11y:scan
+
+      - name: Core Web Vitals budget gate
+        run: npm run cwv
+
+      - name: Upload gate logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-logs
+          path: docs/reports/*.log

@@ -1,0 +1,101 @@
+[req] / Accept-Language=undefined cookie="lang=fa"
+
+=== / (fa/RTL, 1280px) ===
+lang=fa dir=rtl title="مرکز جراحی فوق تخصصی دکتر خیرخواه | کاشان" h1Count=1
+h1: ["تاج سلامتی، سزاوار شماست"]
+headings (DOM order, level+name): ["H1:تاج سلامتی، سزاوار شماست","H2:چطور می‌توانیم به شما کمک کنید","H2:خدمات تخصصی مرکز جراحی","H2:در تمام مراحل کنار شما هستیم","H2:مراحل مراجعه و پذیرش","H2:استانداردهای بهداشت و ایمنی مر","H2:آماده پاسخ‌گویی به شما هستیم","H2:بخش‌ها","H2:ساعات کاری"]
+AX headings (order): ["ساعات کاری","تاج سلامتی،سزاوار شماست","خدمات تخصصی مرکز جراحی","در تمام مراحل کنار شما هستیم","مراحل مراجعه و پذیرش","استانداردهای بهداشت و ایمنی ","آماده پاسخ‌گویی به شما هستیم","بخش‌ها","چطور می‌توانیم به شما کمک کن"]
+landmarks: {"banner":[""],"main":[""],"contentinfo":[""],"navigation":["منو","بخش‌ها"],"region":["خدمات ما"]}
+images: 1 (unnamed: 0)
+live regions (status/alert): [""] [""]
+unnamed interactive elements: 0
+role counts: {
+  link: 25,
+  banner: 1,
+  main: 1,
+  contentinfo: 1,
+  navigation: 2,
+  region: 1,
+  paragraph: 14,
+  heading: 9,
+  list: 6,
+  alert: 1,
+  button: 2,
+  status: 1,
+  listitem: 18,
+  image: 1
+}
+[req] /services Accept-Language=undefined cookie="lang=fa"
+
+=== /services (fa/RTL, 1280px) ===
+lang=fa dir=rtl title="خدمات | مرکز جراحی فوق تخصصی دکتر خیرخواه | مرکز جراحی فوق تخصصی دکتر خیرخواه" h1Count=1
+h1: ["خدمات ما در مسیر سلامت شما"]
+headings (DOM order, level+name): ["H1:خدمات ما در مسیر سلامت شما","H2:خدمات جراحی","H3:جراحی عمومی و لاپاراسکوپی","H3:جراحی پلاستیک و زیبایی","H3:ارتوپدی","H3:ارولوژی و مجاری ادراری","H3:جراحی چشم","H3:گوش، حلق و بینی","H3:زنان، زایمان و ناباروری","H2:خدمات پزشکی","H3:خدمات زیبایی، لیزر و کاشت مو و","H3:کلینیک بیهوشی","H3:آندوسکوپی و کولونوسکوپی","H2:سؤالی درباره خدمات دارید؟","H2:بخش‌ها","H2:ساعات کاری"]
+AX headings (order): ["ساعات کاری","خدمات مادر مسیر سلامت شما","خدمات جراحی","خدمات پزشکی","سؤالی درباره خدمات دارید؟","بخش‌ها","جراحی عمومی و لاپاراسکوپی","جراحی پلاستیک و زیبایی","ارتوپدی","ارولوژی و مجاری ادراری","جراحی چشم","گوش، حلق و بینی","زنان، زایمان و ناباروری","خدمات زیبایی، لیزر و کاشت مو","کلینیک بیهوشی","آندوسکوپی و کولونوسکوپی"]
+landmarks: {"banner":[""],"main":[""],"contentinfo":[""],"navigation":["منو","بخش‌ها","breadcrumb"]}
+images: 11 (unnamed: 0)
+live regions (status/alert): [] [""]
+unnamed interactive elements: 0
+role counts: {
+  link: 23,
+  banner: 1,
+  main: 1,
+  contentinfo: 1,
+  navigation: 3,
+  paragraph: 15,
+  heading: 16,
+  list: 5,
+  alert: 1,
+  button: 1,
+  listitem: 13,
+  image: 11
+}
+[req] /services/gen Accept-Language=undefined cookie="lang=fa"
+
+=== /services/gen (fa/RTL, 1280px) ===
+lang=fa dir=rtl title="جراحی عمومی و لاپاراسکوپی | مرکز جراحی فوق تخصصی دکتر خیرخواه" h1Count=1
+h1: ["جراحی عمومی و لاپاراسکوپی"]
+headings (DOM order, level+name): ["H1:جراحی عمومی و لاپاراسکوپی","H2:جراحی عمومی و لاپاراسکوپی","H3:جراحی کیسه صفرا","H3:جراحی فتق","H3:جراحی روده","H3:جراحی معده و چاقی","H3:جراحی تیروئید","H2:بخش‌ها","H2:ساعات کاری"]
+AX headings (order): ["ساعات کاری","جراحی عمومی و لاپاراسکوپی","جراحی عمومی و لاپاراسکوپی","بخش‌ها","جراحی کیسه صفرا","جراحی فتق","جراحی روده","جراحی معده و چاقی","جراحی تیروئید"]
+landmarks: {"banner":[""],"main":[""],"contentinfo":[""],"navigation":["منو","breadcrumb","بخش‌ها"]}
+images: 6 (unnamed: 0)
+live regions (status/alert): [] [""]
+unnamed interactive elements: 0
+role counts: {
+  link: 15,
+  banner: 1,
+  main: 1,
+  contentinfo: 1,
+  navigation: 3,
+  paragraph: 7,
+  heading: 9,
+  list: 4,
+  alert: 1,
+  button: 1,
+  listitem: 10,
+  image: 6
+}
+[req] /nonexistent-page Accept-Language=undefined cookie="lang=fa"
+
+=== /nonexistent-page (fa/RTL, 1280px) ===
+lang=fa dir=rtl title="صفحه مورد نظر یافت نشد | مرکز جراحی فوق تخصصی دکتر خیرخواه" h1Count=1
+h1: ["صفحه مورد نظر یافت نشد"]
+headings (DOM order, level+name): ["H1:صفحه مورد نظر یافت نشد","H2:بخش‌ها","H2:ساعات کاری"]
+AX headings (order): ["ساعات کاری","صفحه مورد نظر یافت نشد","بخش‌ها"]
+landmarks: {"banner":[""],"main":[""],"contentinfo":[""],"navigation":["منو","بخش‌ها"]}
+images: 0 (unnamed: 0)
+live regions (status/alert): [] [""]
+unnamed interactive elements: 0
+role counts: {
+  link: 13,
+  banner: 1,
+  main: 1,
+  contentinfo: 1,
+  navigation: 2,
+  paragraph: 2,
+  heading: 3,
+  list: 3,
+  alert: 1,
+  button: 1,
+  listitem: 7
+}

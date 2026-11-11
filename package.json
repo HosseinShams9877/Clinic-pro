@@ -1,0 +1,43 @@
+{
+  "name": "kheirkhah-clinic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dr. Kheirkhah Super-Specialty Surgical Center — public website (home through complete Services section)",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "seed": "node scripts/seed-content.mjs",
+    "seed:write": "node scripts/seed-content.mjs --write",
+    "a11y:scan": "node scripts/a11y-scan.mjs",
+    "cwv": "node scripts/cwv-audit.mjs",
+    "ui-fix:verify": "node scripts/ui-fix-verification.mjs"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.62.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.1.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "axe-core": "^4.14.0",
+    "jsdom": "^25.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

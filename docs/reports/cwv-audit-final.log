@@ -1,0 +1,30 @@
+
+> kheirkhah-clinic@1.0.0 cwv
+> node scripts/cwv-audit.mjs
+
+CWV audit — origin http://localhost:3137 (local HTTP; HSTS/HTTPS deferred to R-4)
+routes: /, /services, /services/gen, /nonexistent-page × widths 393, 1280 px, lang=fa
+budget: ttfb ≤ 300 ms, fcp ≤ 1200 ms, lcp ≤ 1500 ms, cls ≤ 0.100, inp ≤ 200 ms
+cold runs are reported; the GATE runs on warm loads (see header).
+
+info  / @393px cold ttfb=15 ms  fcp=136 ms  lcp=136 ms  cls=0.000  inp=n/a  (0 gesture(s), no interaction target on this route; event-timing entries: 0 — diagnostic only)
+PASS  / @393px warm ttfb=17 ms  fcp=92 ms  lcp=92 ms  cls=0.000  inp=44 ms  (3 gesture(s), 3× button[aria-controls="mobile-menu"]; event-timing entries: 0 — diagnostic only)
+info  /services @393px cold ttfb=19 ms  fcp=96 ms  lcp=96 ms  cls=0.000  inp=n/a  (0 gesture(s), no interaction target on this route; event-timing entries: 0 — diagnostic only)
+PASS  /services @393px warm ttfb=16 ms  fcp=100 ms  lcp=100 ms  cls=0.000  inp=45 ms  (3 gesture(s), 3× button[aria-controls="mobile-menu"]; event-timing entries: 0 — diagnostic only)
+info  /services/gen @393px cold ttfb=18 ms  fcp=80 ms  lcp=132 ms  cls=0.000  inp=n/a  (0 gesture(s), no interaction target on this route; event-timing entries: 0 — diagnostic only)
+PASS  /services/gen @393px warm ttfb=16 ms  fcp=84 ms  lcp=84 ms  cls=0.000  inp=43 ms  (3 gesture(s), 3× button[aria-controls="mobile-menu"]; event-timing entries: 0 — diagnostic only)
+info  /nonexistent-page @393px cold ttfb=9 ms  fcp=64 ms  lcp=64 ms  cls=0.000  inp=n/a  (0 gesture(s), no interaction target on this route; event-timing entries: 0 — diagnostic only)
+PASS  /nonexistent-page @393px warm ttfb=14 ms  fcp=80 ms  lcp=80 ms  cls=0.000  inp=43 ms  (3 gesture(s), 3× button[aria-controls="mobile-menu"]; event-timing entries: 0 — diagnostic only)
+info  / @1280px cold ttfb=19 ms  fcp=344 ms  lcp=344 ms  cls=0.040  inp=n/a  (0 gesture(s), no interaction target on this route; event-timing entries: 0 — diagnostic only)
+PASS  / @1280px warm ttfb=15 ms  fcp=88 ms  lcp=88 ms  cls=0.000  inp=47 ms  (3 gesture(s), 3× button[aria-haspopup="menu"]; event-timing entries: 0 — diagnostic only)
+info  /services @1280px cold ttfb=16 ms  fcp=84 ms  lcp=84 ms  cls=0.061  inp=n/a  (0 gesture(s), no interaction target on this route; event-timing entries: 0 — diagnostic only)
+PASS  /services @1280px warm ttfb=17 ms  fcp=84 ms  lcp=84 ms  cls=0.000  inp=44 ms  (3 gesture(s), 3× button[aria-haspopup="menu"]; event-timing entries: 0 — diagnostic only)
+info  /services/gen @1280px cold ttfb=15 ms  fcp=68 ms  lcp=124 ms  cls=0.000  inp=n/a  (0 gesture(s), no interaction target on this route; event-timing entries: 0 — diagnostic only)
+PASS  /services/gen @1280px warm ttfb=13 ms  fcp=68 ms  lcp=68 ms  cls=0.000  inp=44 ms  (3 gesture(s), 3× button[aria-haspopup="menu"]; event-timing entries: 0 — diagnostic only)
+info  /nonexistent-page @1280px cold ttfb=9 ms  fcp=64 ms  lcp=64 ms  cls=0.001  inp=n/a  (0 gesture(s), no interaction target on this route; event-timing entries: 0 — diagnostic only)
+PASS  /nonexistent-page @1280px warm ttfb=11 ms  fcp=64 ms  lcp=64 ms  cls=0.000  inp=42 ms  (3 gesture(s), 3× button[aria-haspopup="menu"]; event-timing entries: 0 — diagnostic only)
+
+PASS: CWV budget over 8 warm page-runs (0 breaching)
+note: INP here is the longest of the audit's own gestures (pointerdown → first
+frame after click handlers), measured from inside the page — a proxy for a field
+p98, not a field p98; TTFB is measured against local HTTP (no TLS — R-4).

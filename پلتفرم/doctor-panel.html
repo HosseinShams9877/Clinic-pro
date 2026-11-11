@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پنل پزشک | مرکز جراحی دکتر خیرخواه</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/css/panel.css">
+</head>
+<body data-app="doctor">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="p-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></symbol>
+  <symbol id="p-cal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h2M14 14h2M8 17.5h2"/></symbol>
+  <symbol id="p-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="p-file" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8Z"/><path d="M14 2.5V8h5.5M8.5 13h7M8.5 17h5"/></symbol>
+  <symbol id="p-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></symbol>
+  <symbol id="p-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></symbol>
+  <symbol id="p-bed" viewBox="0 0 24 24"><path d="M3 5v15M3 16h18v4M21 16v-4a3 3 0 0 0-3-3h-7v7"/><circle cx="7" cy="11.5" r="2"/></symbol>
+  <symbol id="p-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20.5 20.5-4.5-4.5"/></symbol>
+  <symbol id="p-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="p-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="p-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="p-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="p-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="p-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="p-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20Z"/><path d="M12 10v4M12 17h.01"/></symbol>
+  <symbol id="p-swap" viewBox="0 0 24 24"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></symbol>
+  <symbol id="p-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></symbol>
+  <symbol id="p-done" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/></symbol>
+  <symbol id="p-door" viewBox="0 0 24 24"><path d="M4 21h16M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><circle cx="14.5" cy="12" r=".9" fill="currentColor"/></symbol>
+  <symbol id="p-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></symbol>
+  <symbol id="p-filter" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4 2v-8Z"/></symbol>
+  <symbol id="p-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></symbol>
+  <symbol id="p-out" viewBox="0 0 24 24"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l-5-5 5-5M5 12h11"/></symbol>
+  <symbol id="p-logo" viewBox="0 0 48 48"><path d="M24 3 41 12.5v19L24 45 7 31.5v-19Z" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M17 15v18M17 24l8-9M19.6 21.2 25.5 33M30 15v18M37 15v18M30 24h7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<div class="app">
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="side" id="side">
+    <a class="logo" href="index.html"><span><svg><use href="#p-logo"/></svg></span><div><small>مرکز جراحی فوق تخصصی</small><b>دکتر خیرخواه</b></div></a>
+    <nav class="snav">
+      <a class="dis"><svg><use href="#p-home"/></svg>داشبورد</a>
+      <a class="on" href="#" id="navSched" style="cursor:pointer"><svg><use href="#p-cal"/></svg>برنامه جراحی</a>
+      <a class="dis" data-r="doctor"><svg><use href="#p-user"/></svg>بیماران من</a>
+      <a class="dis" data-r="reception"><svg><use href="#p-user"/></svg>پذیرش بیماران</a>
+      <a class="dis" data-r="reception"><svg><use href="#p-bed"/></svg>بیماران بستری</a>
+      <a class="dis" data-r="doctor"><svg><use href="#p-file"/></svg>سوابق جراحی</a>
+      <a href="#income" class="lnk-in" id="navInc" style="cursor:pointer"><svg><use href="#p-chart"/></svg>کارکرد و درآمد من</a>
+      <a class="dis"><svg><use href="#p-gear"/></svg>تنظیمات</a>
+    </nav>
+    <div class="side-demo">
+      <b>نسخه نمایشی</b>
+      <p>اطلاعات بیماران ساختگی است و فقط در همین مرورگر ذخیره می‌شود.</p>
+      <button type="button" id="resetDemo"><svg><use href="#p-reset"/></svg>بازنشانی داده‌ها</button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <!-- ===== TOPBAR ===== -->
+    <header class="top">
+      <button class="ic burger" id="burger" aria-label="menu"><svg><use href="#p-list"/></svg></button>
+      <h1><svg><use href="#p-cal"/></svg><span id="pageTitle">برنامه جراحی</span></h1>
+      <label class="tsearch"><svg><use href="#p-search"/></svg><input id="q" type="search" placeholder="جستجوی بیمار، نوع عمل یا کد ملی…"></label>
+      <button class="ic bell" id="bell" aria-label="اعلان‌ها"><svg><use href="#p-bell"/></svg><i id="bellN" hidden></i></button>
+      <div class="me" id="me"></div>
+    </header>
+
+    <!-- ===== KPIs ===== -->
+    <section class="kpis" id="kpis"></section>
+
+    <!-- ===== TOOLBAR ===== -->
+    <section class="bar">
+      <div class="wk">
+        <button class="ic" id="prevW" aria-label="هفته قبل"><svg><use href="#p-chev"/></svg></button>
+        <b id="wkLabel"></b>
+        <button class="ic flip" id="nextW" aria-label="هفته بعد"><svg><use href="#p-chev"/></svg></button>
+        <button class="chip-btn" id="today">امروز</button>
+      </div>
+      <div class="filters">
+        <select id="fRoom" aria-label="اتاق عمل"></select>
+        <select id="fDoc" aria-label="پزشک"></select>
+        <select id="fStatus" aria-label="وضعیت"></select>
+      </div>
+      <div class="views">
+        <button data-view="week" class="on"><svg><use href="#p-cal"/></svg>هفته</button>
+        <button data-view="list"><svg><use href="#p-list"/></svg>لیست</button>
+      </div>
+      <button class="btn pri" id="newBtn"><svg><use href="#p-plus"/></svg>ثبت جراحی جدید</button>
+    </section>
+
+    <!-- ===== LEGEND ===== -->
+    <div class="legend" id="legend"></div>
+
+    <!-- ===== CONTENT ===== -->
+    <section class="board" id="board"></section>
+
+    <!-- ===== کارکرد و درآمد من (inside the doctor panel) ===== -->
+    <section class="inc" id="incWrap" hidden></section>
+  </div>
+</div>
+
+<!-- ===== DRAWER ===== -->
+<!-- ===== DOCTOR LOGIN ===== -->
+<div class="login" id="login" hidden>
+  <div class="lg-card">
+    <a class="logo" href="index.html"><span><svg><use href="#p-logo"/></svg></span><div><small>مرکز جراحی فوق تخصصی</small><b>دکتر خیرخواه</b></div></a>
+    <h1>ورود به پنل پزشک</h1>
+    <p class="lg-sub">ثبت و پیگیری درخواست‌های جراحی شما در این مرکز</p>
+    <div id="lgBody"></div>
+    <p class="lg-demo">فقط پزشکانی که شماره موبایلشان در مرکز ثبت شده است می‌توانند وارد شوند.</p>
+    <a class="lg-back" href="index.html">بازگشت به سایت</a>
+  </div>
+</div>
+
+<div class="dr-back" id="drBack" hidden></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <header><h2 id="drTitle"></h2><button class="ic" id="drClose" aria-label="بستن"><svg><use href="#p-x"/></svg></button></header>
+  <div class="dr-body" id="drBody"></div>
+  <footer id="drFoot"></footer>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="assets/js/panel.js"></script>
+</body>
+</html>

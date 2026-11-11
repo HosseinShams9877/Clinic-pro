@@ -1,0 +1,110 @@
+/* =========================================================
+   Vivid gradients — a livelier colour layer on top of the calm teal base.
+   Loaded LAST on every public page. Remove this file to return to the flat look.
+   ========================================================= */
+:root{
+  --g-teal:linear-gradient(135deg,#0B7A83 0%,#14B8A6 100%);
+  --g-ocean:linear-gradient(135deg,#0E5E8C 0%,#0EA5E9 55%,#22D3EE 100%);
+  --g-mint:linear-gradient(135deg,#0D9488 0%,#34D399 100%);
+  --g-sky:linear-gradient(135deg,#2563EB 0%,#38BDF8 100%);
+  --g-violet:linear-gradient(135deg,#6D28D9 0%,#8B5CF6 50%,#38BDF8 100%);
+  --g-sunset:linear-gradient(135deg,#F59E0B 0%,#F97316 100%);
+  --g-deep:linear-gradient(135deg,#063F4A 0%,#0B6E79 55%,#14B8A6 100%);
+  --g-soft:linear-gradient(135deg,#E6FBF8 0%,#E0F2FE 100%);
+}
+
+/* buttons */
+.btn-primary{background:var(--g-teal);box-shadow:0 10px 24px rgba(20,184,166,.28)}
+.btn-primary:hover{background:linear-gradient(135deg,#096A72,#0FA394)}
+
+/* section kickers & accent headings */
+.h-kick,.ix-kick{background:var(--g-ocean);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ix-kick{-webkit-background-clip:border-box;background-clip:border-box;color:#fff;background:var(--g-ocean)}
+.h-copy h1 em,html[lang="fa"] .h-copy h1.h-slogan em{background:linear-gradient(90deg,#0EA5E9,#14B8A6 55%,#34D399);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* home: stats, help cards, steps, safety */
+.hs-i{background:var(--g-soft);color:#0B7A83}
+.h-stats li:hover .hs-i{background:var(--g-teal);color:#fff}
+.h-stats li:nth-child(2) .hs-i{color:#0E7490}.h-stats li:nth-child(3) .hs-i{color:#2563EB}.h-stats li:nth-child(4) .hs-i{color:#0D9488}
+.hst-i{background:var(--g-teal)!important;color:#fff!important}
+.h-steps .hst:nth-child(2) .hst-i{background:var(--g-ocean)!important}
+.h-steps .hst:nth-child(3) .hst-i{background:var(--g-sky)!important}
+.h-steps .hst:nth-child(4) .hst-i{background:var(--g-mint)!important}
+.h-why svg{background:var(--g-teal);color:#fff}
+.h-why article:nth-child(2) svg{background:var(--g-ocean)}
+.h-why article:nth-child(3) svg{background:var(--g-sky)}
+.h-why article:nth-child(4) svg{background:var(--g-mint)}
+.h-why article:nth-child(5) svg{background:var(--g-violet)}
+.h-why article:nth-child(6) svg{background:var(--g-deep)}
+.hw-n{background:linear-gradient(180deg,#D7F3F1,#EEF8FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.h-why article::after{content:"";position:absolute;inset-inline:0;bottom:0;height:3px;background:var(--g-ocean);transform:scaleX(0);transform-origin:right;transition:transform .4s}
+.h-why article:hover::after{transform:scaleX(1)}
+
+/* loan section */
+.ln-box{background:radial-gradient(90% 120% at 100% 0%,#22D3EE 0%,transparent 55%),radial-gradient(90% 120% at 0% 100%,#34D399 0%,transparent 50%),linear-gradient(135deg,#063F4A,#0B6E79 60%,#0E7490)}
+.ln-si{background:rgba(255,255,255,.12)}
+.ln-f-i{background:var(--g-ocean)}
+
+/* info pages */
+.ix-num{background:var(--g-teal)}
+.ix-ic{background:var(--g-soft);color:#0B7A83}
+.ix-tabs a.on{background:var(--g-teal);box-shadow:0 8px 18px rgba(20,184,166,.28)}
+.ix-tabs a.on svg{color:#fff}
+.ix-facts li{background:var(--g-soft)}
+.ix-badge b{background:linear-gradient(90deg,#0B7A83,#0EA5E9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ix-card.alt{background:var(--g-deep)}
+.ix-cta-i{background:var(--g-ocean)}
+.ix-cta{background:linear-gradient(135deg,#fff 60%,#ECFDF9)}
+.ix-steps::before{background:linear-gradient(#14B8A6,#38BDF8)}
+.ix-steps li:nth-child(2) .ix-num{background:var(--g-ocean)}
+.ix-steps li:nth-child(3) .ix-num{background:var(--g-sky)}
+.ix-steps li:nth-child(4) .ix-num{background:var(--g-mint)}
+.ix-steps li:nth-child(5) .ix-num{background:var(--g-violet)}
+.ix-axis-h .ix-ic{background:var(--g-teal);color:#fff}
+.ix-axis:nth-child(2) .ix-axis-h .ix-ic{background:var(--g-ocean)}
+.ix-axis:nth-child(3) .ix-axis-h .ix-ic{background:var(--g-sky)}
+.ix-axis:nth-child(4) .ix-axis-h .ix-ic{background:var(--g-violet)}
+.ix-axis:nth-child(5) .ix-axis-h .ix-ic{background:var(--g-mint)}
+.ix-card.why .ix-ic,.ix-card.tr .ix-ic{background:var(--g-teal);color:#fff}
+.ix-grid>.ix-card.why:nth-child(6n+2) .ix-ic,.ix-grid>.ix-card.tr:nth-child(6n+2) .ix-ic{background:var(--g-ocean)}
+.ix-grid>.ix-card.why:nth-child(6n+3) .ix-ic,.ix-grid>.ix-card.tr:nth-child(6n+3) .ix-ic{background:var(--g-sky)}
+.ix-grid>.ix-card.why:nth-child(6n+4) .ix-ic,.ix-grid>.ix-card.tr:nth-child(6n+4) .ix-ic{background:var(--g-mint)}
+.ix-grid>.ix-card.why:nth-child(6n+5) .ix-ic,.ix-grid>.ix-card.tr:nth-child(6n+5) .ix-ic{background:var(--g-violet)}
+.ix-grid>.ix-card.why:nth-child(6n+6) .ix-ic,.ix-grid>.ix-card.tr:nth-child(6n+6) .ix-ic{background:var(--g-deep)}
+.ix-stats div{background:linear-gradient(160deg,#fff 40%,#EEFBF9)}
+.ix-stats b{background:linear-gradient(90deg,#0B7A83,#0EA5E9);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* about: floors — each level its own lively gradient */
+.ix-floors li{transition:transform .3s,box-shadow .3s}
+.ix-floors li:hover{transform:translateX(-4px);box-shadow:0 14px 30px rgba(14,116,144,.12)}
+[dir="ltr"] .ix-floors li:hover{transform:translateX(4px)}
+.ix-floors li:nth-child(1) .ix-lvl{background:var(--g-violet)}
+.ix-floors li:nth-child(2) .ix-lvl{background:var(--g-sky)}
+.ix-floors li:nth-child(3) .ix-lvl{background:var(--g-ocean)}
+.ix-floors li:nth-child(4) .ix-lvl{background:linear-gradient(135deg,#DB2777,#F472B6)}
+.ix-floors li:nth-child(5) .ix-lvl{background:var(--g-mint)}
+.ix-floors li:nth-child(6) .ix-lvl{background:var(--g-teal)}
+.ix-floors li:nth-child(1) .k{background:#EDE9FE;color:#6D28D9}
+.ix-floors li:nth-child(2) .k{background:#DBEAFE;color:#1D4ED8}
+.ix-floors li:nth-child(3) .k{background:#E0F2FE;color:#0369A1}
+.ix-floors li:nth-child(4) .k{background:#FCE7F3;color:#BE185D}
+.ix-floors li:nth-child(5) .k{background:#D1FAE5;color:#047857}
+.ix-floors li:nth-child(6) .k{background:#CCFBF1;color:#0F766E}
+.ix-floors li:nth-child(1) .ix-fl-h>svg{color:#7C3AED}.ix-floors li:nth-child(2) .ix-fl-h>svg{color:#2563EB}
+.ix-floors li:nth-child(3) .ix-fl-h>svg{color:#0284C7}.ix-floors li:nth-child(4) .ix-fl-h>svg{color:#DB2777}
+.ix-floors li:nth-child(5) .ix-fl-h>svg{color:#059669}.ix-floors li:nth-child(6) .ix-fl-h>svg{color:#0D9488}
+
+/* about: goals */
+.ix-goal.g1{background:var(--g-ocean)}
+.ix-goal.g2{background:var(--g-violet)}
+.ix-goal.g3{background:var(--g-mint)}
+.ix-goal{box-shadow:0 16px 36px rgba(14,116,144,.18)}
+
+/* clinics */
+.ix-laser{background:radial-gradient(80% 120% at 0% 0%,#8B5CF6 0%,transparent 55%),linear-gradient(135deg,#0B3F47,#0E7490)}
+.ix-pill{background:var(--g-soft)}
+.ix-mini a:hover{background:var(--g-soft)}
+
+/* doctors cards (home) */
+.hd-btn{transition:.25s}
+.hdoc:hover .hd-btn{background:var(--g-teal)!important;color:#fff!important}

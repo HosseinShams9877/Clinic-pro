@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نقشه پلتفرم | مرکز جراحی فوق تخصصی دکتر خیرخواه</title>
+<meta name="robots" content="noindex">
+<style>
+@font-face{font-family:"Vazirmatn";src:url("assets/fonts/Vazirmatn-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+:root{--ink:#0E2E36;--mut:#5D6F77;--line:#E0EAED;--bg:#F1F7F9;--pub:#0E7080;--pub50:#E6F4F5;--pat:#2470C9;--pat50:#EAF3FC;--doc:#6A55B5;--doc50:#F1EEFB;--staff:#B7651F;--staff50:#FFF1E4;--mgr:#15855A;--mgr50:#E7F6EE}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:"Vazirmatn",Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:14.5px}
+svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:68px}
+.logo{display:flex;align-items:center;gap:10px}.logo>span{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--pub50);color:var(--pub)}.logo>span svg{width:28px;height:28px}
+.logo small{display:block;font-size:11px;color:var(--mut)}.logo b{display:block;color:var(--pub);font-size:16px}
+.reset{display:flex;align-items:center;gap:6px;border:1px solid #F2D3D1;background:#fff;color:#C2413B;border-radius:12px;padding:8px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.hero{padding:30px 0 6px}.hero h1{font-size:clamp(26px,3vw,36px);margin:0;color:#0E3E6B}.hero p{max-width:760px;color:#4A6070;margin:6px 0 14px}
+.legend{display:flex;gap:8px;flex-wrap:wrap}
+.legend span,.flow li>span{display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;font-size:12.5px;font-weight:800}
+.t-pub{background:var(--pub50);color:var(--pub)}.t-pat{background:var(--pat50);color:var(--pat)}.t-doc{background:var(--doc50);color:var(--doc)}.t-staff{background:var(--staff50);color:var(--staff)}.t-mgr{background:var(--mgr50);color:var(--mgr)}
+.gt{display:flex;align-items:center;gap:10px;font-size:18px;margin:30px 0 12px}
+.gt i{width:12px;height:12px;border-radius:4px}.gt i.t-pub{background:var(--pub)}.gt i.t-pat{background:var(--pat)}.gt i.t-doc{background:var(--doc)}.gt i.t-staff{background:var(--staff)}.gt i.t-mgr{background:var(--mgr)}
+.gt small{font-size:12.5px;color:var(--mut);font-weight:500}
+.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g1{grid-template-columns:1fr}
+.card{position:relative;display:flex;flex-direction:column;gap:4px;padding:18px;background:#fff;border:1px solid var(--line);border-top:4px solid;border-radius:18px;box-shadow:0 8px 22px rgba(14,46,54,.05);transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(14,46,54,.1)}
+.card .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:6px}.card .ic svg{width:24px;height:24px}
+.card b{font-size:15.5px}.card>small,.bd>small{color:var(--mut);font-size:12.5px;line-height:1.9}
+.card em{margin-top:auto;padding-top:8px;font-style:normal;font-size:11.5px;color:var(--mut);direction:ltr;text-align:right}
+.pub{border-top-color:var(--pub)}.pub .ic{background:var(--pub50);color:var(--pub)}
+.pat{border-top-color:var(--pat)}.pat .ic{background:var(--pat50);color:var(--pat)}
+.doc{border-top-color:var(--doc)}.doc .ic{background:var(--doc50);color:var(--doc)}
+.staff{border-top-color:var(--staff)}.staff .ic{background:var(--staff50);color:var(--staff)}
+.mgr{border-top-color:var(--mgr)}.mgr .ic{background:var(--mgr50);color:var(--mgr)}
+.lg{margin-top:auto;padding:8px 12px;border-radius:12px;background:var(--bg);display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.card .lg{margin-top:12px}
+.lg small{font-size:11.5px;color:var(--mut)}.lg b{font-size:13.5px}
+.big{flex-direction:row;align-items:center;gap:18px}.big .ic{margin:0;width:60px;height:60px}.big .bd{flex:1;min-width:0}.big .lg{margin:0;flex-direction:column;align-items:flex-start;min-width:170px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:10px 0 0;padding:0}
+.chips li{padding:3px 10px;border-radius:999px;background:var(--pat50);color:var(--pat);font-size:12px;font-weight:700}
+.chips li.new{background:var(--mgr50);color:var(--mgr)}
+.flow{margin-top:34px;padding:22px;background:#fff;border:1px solid var(--line);border-radius:20px}
+.flow h2{margin:0 0 4px;font-size:18px}.flow>p{margin:0 0 12px;color:var(--mut);font-size:13.5px}
+.flow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.flow li{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:12px 14px;border-radius:14px;background:var(--bg)}
+.flow li>svg{width:16px;height:16px;color:var(--mut);transform:scaleX(1)}
+.flow li p{width:100%;margin:4px 0 0;font-size:13px;color:#3A5058}
+.flow.demo ol.steps{display:block;counter-reset:s}
+.flow.demo .steps li{display:block;counter-increment:s;margin-bottom:8px;padding-inline-start:46px;position:relative;font-size:13.5px}
+.flow.demo .steps li::before{content:counter(s);position:absolute;inset-inline-start:12px;top:11px;width:24px;height:24px;border-radius:50%;background:#0E3E6B;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.foot{text-align:center;color:var(--mut);font-size:12px;margin:24px 0 40px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,160%);background:#0E2E36;color:#fff;padding:12px 20px;border-radius:12px;font-size:13.5px;transition:transform .3s}
+.toast.in{transform:translate(-50%,0)}
+@media (max-width:1020px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .g4,.g2{grid-template-columns:1fr}
+  .big{flex-direction:column;align-items:flex-start}.big .lg{width:100%}
+  .flow ol{grid-template-columns:1fr}
+  .reset{font-size:0;padding:9px}.reset svg{width:20px;height:20px}
+  .top-in{height:60px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-logo" viewBox="0 0 48 48"><path d="M24 3 41 12.5v19L24 45 7 31.5v-19Z" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M17 15v18M17 24l8-9M19.6 21.2 25.5 33M30 15v18M37 15v18M30 24h7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+  <symbol id="i-call" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.5-2.3 1.5a11 11 0 0 0 6.5 6.5l1.5-2.3 4.5 1.8V19a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3 5.5a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8Z"/><path d="M14 2.5V8h5.5M8.5 13h7M8.5 17h5"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M4 20h16"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20.5 20.5-4.5-4.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20Z"/><path d="M12 10v4M12 17h.01"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M12 13v4M10 15h4"/></symbol>
+  <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 21a2 2 0 0 1 2-2h13v2"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4Z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l-5-5 5-5M5 12h11"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10v-6Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2.5"/><path d="M3 9.5h18M15.5 14.5h2"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14a6.5 6.5 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-sunset" viewBox="0 0 24 24"><path d="M7 17a5 5 0 0 1 10 0M3 17h18M5 21h14M12 3v5M9.5 6l2.5 2.5L14.5 6M4.2 10.2l1.4 1.4M19.8 10.2l-1.4 1.4"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5v2M3 13h18"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4Z"/></symbol>
+</defs></svg>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="index.html"><span><svg><use href="#i-logo"/></svg></span><div><small>مرکز جراحی فوق تخصصی</small><b>دکتر خیرخواه</b></div></a>
+    <button class="reset" id="reset" type="button"><svg><use href="#i-out"/></svg>پاک کردن همه داده‌های نمایشی</button>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <h1>نقشه پلتفرم</h1>
+    <p>همه بخش‌های نسخه نمایشی در یک صفحه. روی هر کارت بزنید تا وارد همان بخش شوید. شماره‌های ورود نمایشی هم کنار هر پنل آمده است؛ کد تأیید روی صفحه ورود نمایش داده می‌شود.</p>
+    <div class="legend">
+      <span class="t-pub">سایت عمومی</span><span class="t-pat">بیمار</span><span class="t-doc">پزشک</span><span class="t-staff">کارکنان مرکز</span><span class="t-mgr">مدیریت</span>
+    </div>
+  </section>
+
+  <h2 class="gt"><i class="t-pub"></i>سایت عمومی <small>برای همه بازدیدکنندگان · بدون ورود</small></h2>
+  <div class="grid g4">
+    <a class="card pub" href="index.html"><span class="ic"><svg><use href="#i-home"/></svg></span><b>صفحه اصلی</b><small>معرفی مرکز، وضعیت پذیرش، جستجوی پزشک و خدمات</small><em>index.html</em></a>
+    <a class="card pub" href="services.html"><span class="ic"><svg><use href="#i-list"/></svg></span><b>خدمات</b><small>دسته‌بندی جراحی‌ها و خدمات مرکز</small><em>services.html</em></a>
+    <a class="card pub" href="doctors.html"><span class="ic"><svg><use href="#i-users"/></svg></span><b>پزشکان</b><small>فهرست ۶۶ پزشک با جستجو و فیلتر تخصص</small><em>doctors.html</em></a>
+    <a class="card pub" href="doctor.html?id=taheri-nassaj"><span class="ic"><svg><use href="#i-user"/></svg></span><b>پروفایل پزشک</b><small>نمونه: دکتر حسین طاهری نساج</small><em>doctor.html</em></a>
+    <a class="card pub" href="guide.html"><span class="ic"><svg><use href="#i-book"/></svg></span><b>راهنمای بیماران</b><small>فهرست جراحی‌ها و راهنمای قبل و بعد از عمل</small><em>guide.html</em></a>
+    <a class="card pub" href="guide-item.html?id=gallbladder"><span class="ic"><svg><use href="#i-doc"/></svg></span><b>راهنمای یک جراحی</b><small>نمونه: جراحی کیسه صفرا · قبل و بعد از عمل</small><em>guide-item.html</em></a>
+    <a class="card pub" href="assistant.html"><span class="ic"><svg><use href="#i-search"/></svg></span><b>راهنمای هوشمند</b><small>بیمه، برآورد هزینه، نوبت من و سؤالات متداول</small><em>assistant.html</em></a>
+    <a class="card pub" href="about.html"><span class="ic"><svg><use href="#i-home"/></svg></span><b>درباره ما</b><small>تاریخچه و طبقات، رسالت و چشم‌انداز، اهداف، سیاست‌ها، چرا خیرخواه</small><em>about.html</em></a>
+    <a class="card pub" href="clinics.html"><span class="ic"><svg><use href="#i-list"/></svg></span><b>خدمات پزشکی مرکز</b><small>کلینیک جراحی و بیهوشی · کلینیک زیبایی (کاشت مو، لیزر، پوست و مو)</small><em>clinics.html</em></a>
+    <a class="card pub" href="visiting.html"><span class="ic"><svg><use href="#i-doc"/></svg></span><b>قوانین و ساعات ملاقات</b><small>ساعت ملاقات و نکات بیماران و همراهان</small><em>visiting.html</em></a>
+    <a class="card pub" href="patient-rights.html"><span class="ic"><svg><use href="#i-doc"/></svg></span><b>منشور حقوق بیمار</b><small>پنج محور حقوق بیمار و ثبت شکایت</small><em>patient-rights.html</em></a>
+    <a class="card pub" href="admission.html"><span class="ic"><svg><use href="#i-doc"/></svg></span><b>پذیرش و ترخیص بیماران</b><small>مدارک لازم، مراحل بستری، هزینه و ترخیص</small><em>admission.html</em></a>
+    <a class="card pub" href="loan.html"><span class="ic"><svg><use href="#i-doc"/></svg></span><b>وام درمانی بانک تجارت</b><small>معرفی وام و فرم «شماره‌تان را بگذارید تا تماس بگیریم»</small><em>loan.html</em></a>
+  </div>
+
+  <h2 class="gt"><i class="t-pat"></i>پنل بیمار</h2>
+  <div class="grid g1">
+    <a class="card big pat" href="patient-panel.html">
+      <span class="ic"><svg><use href="#i-user"/></svg></span>
+      <div class="bd"><b>پنل بیمار</b><small>ثبت درخواست جراحی با عکس برگه پزشک، پیگیری وضعیت، جواب آزمایش، پیام‌ها و نظرسنجی پس از خدمت</small>
+        <ul class="chips"><li>داشبورد</li><li>درخواست جراحی</li><li>درخواست‌های من</li><li>آزمایش‌های من</li><li>پیام‌ها و اطلاع‌رسانی</li><li>حساب کاربری</li><li class="new">نظرسنجی پس از عمل</li></ul></div>
+      <div class="lg"><small>ورود</small><b>هر شماره موبایل</b><small>+ کد نمایشی روی صفحه</small></div>
+    </a>
+  </div>
+
+  <h2 class="gt"><i class="t-doc"></i>پنل پزشک <small>دو بخش جدا با یک ورود</small></h2>
+  <div class="grid g2">
+    <a class="card doc" href="doctor-panel.html"><span class="ic"><svg><use href="#i-cal"/></svg></span><b>برنامه جراحی من</b><small>ارسال جراحی‌های آینده به پذیرش و دیدن وضعیت تأیید و اتاق عمل</small><div class="lg"><small>ورود</small><b dir="ltr">0913 111 0001</b><small>تا ۰۰۰۴ · چهار پزشک</small></div></a>
+    <a class="card doc" href="doctor-income.html"><span class="ic"><svg><use href="#i-wallet"/></svg></span><b>کارکرد و درآمد من</b><small>صورتحساب‌های منتشرشده، پرداخت‌ها، مانده و اعلام مغایرت</small><div class="lg"><small>ورود</small><b>همان ورود پنل پزشک</b></div></a>
+  </div>
+
+  <h2 class="gt"><i class="t-staff"></i>کارکنان مرکز</h2>
+  <div class="grid g4">
+    <a class="card staff" href="surgery-panel.html"><span class="ic"><svg><use href="#i-cal"/></svg></span><b>پنل پذیرش جراحی</b><small>صف درخواست‌ها، تأیید با اتاق عمل آزاد، تقویم هفتگی</small><div class="lg"><small>ورود</small><b>بدون ورود (نمایشی)</b></div></a>
+    <a class="card staff" href="staff-panel.html"><span class="ic"><svg><use href="#i-brief"/></svg></span><b>پنل پرسنل</b><small>شیفت، فیش حقوقی، مرخصی، پیام‌ها؛ سرپرست درخواست‌های تیم را بررسی می‌کند</small><div class="lg"><small>ورود</small><b dir="ltr">0913 123 0001</b><small>تا ۰۰۰۵ · ۵ نقش</small></div></a>
+    <a class="card staff" href="finance-panel.html"><span class="ic"><svg><use href="#i-wallet"/></svg></span><b>پنل مالی · تسویه پزشکان</b><small>ثبت کارکرد روزانه پزشک، انتشار صورتحساب، ثبت پرداخت</small><div class="lg"><small>ورود</small><b dir="ltr">0913 124 0001</b><small>حسابدار: ۰۹۱۳۱۲۳۰۰۰۴</small></div></a>
+    <a class="card staff" href="insurance-panel.html"><span class="ic"><svg><use href="#i-shield"/></svg></span><b>امور بیمه و راهنمای بیماران</b><small>بیمه‌های طرف قرارداد، تعرفه‌ها، پاسخ برآورد هزینه، پرسش‌ها</small><div class="lg"><small>ورود</small><b dir="ltr">0913 125 0001</b></div></a>
+  </div>
+
+  <h2 class="gt"><i class="t-mgr"></i>مدیریت</h2>
+  <div class="grid g2">
+    <a class="card mgr" href="quality-panel.html"><span class="ic"><svg><use href="#i-check"/></svg></span><b>گزارش رضایت بیماران</b><small>نمره هر بخش، نقاط قوت و نیازمند بهبود، روند، به تفکیک پزشک، نظرات و پیگیری، خروجی CSV</small><div class="lg"><small>ورود</small><b dir="ltr">0913 126 0001</b><small>مدیر: ۰۹۱۳۱۲۶۰۰۰۲</small></div></a>
+  </div>
+
+  <section class="flow">
+    <h2>بخش‌ها چطور به هم وصل‌اند</h2>
+    <p>هر پنل فقط اطلاعات مربوط به خودش را می‌بیند، ولی داده‌ها بین پنل‌ها جریان دارد:</p>
+    <ol>
+      <li><span class="t-doc">پزشک</span><svg><use href="#i-arrow"/></svg><span class="t-staff">پذیرش</span><p>جراحی‌های آینده که پزشک ثبت می‌کند، در صف پذیرش می‌نشیند و پذیرش با اتاق عمل آزاد تأیید می‌کند.</p></li>
+      <li><span class="t-pat">بیمار</span><svg><use href="#i-arrow"/></svg><span class="t-staff">پذیرش</span><p>برگه پزشک و درخواست جراحی بیمار؛ وضعیت، تماس‌ها و زمان حضور در پنل بیمار نمایش داده می‌شود.</p></li>
+      <li><span class="t-staff">مالی</span><svg><use href="#i-arrow"/></svg><span class="t-doc">پزشک</span><p>صورتحساب کارکرد پس از تأیید مسئول مالی در «کارکرد و درآمد من» منتشر می‌شود؛ پزشک می‌تواند مغایرت اعلام کند.</p></li>
+      <li><span class="t-staff">امور بیمه</span><svg><use href="#i-arrow"/></svg><span class="t-pub">راهنمای هوشمند</span><p>اطلاعات بیمه و تعرفه‌ای که کارشناس تأیید می‌کند همان چیزی است که بیمار می‌بیند؛ برآورد دقیق به پنل بیمار پیام می‌شود.</p></li>
+      <li><span class="t-pat">بیمار</span><svg><use href="#i-arrow"/></svg><span class="t-mgr">مدیریت کیفیت</span><p>پس از انجام عمل یا آماده شدن جواب آزمایش، بیمار نظرسنجی را پر می‌کند و نتیجه در گزارش رضایت جمع می‌شود.</p></li>
+      <li><span class="t-staff">پرسنل</span><svg><use href="#i-arrow"/></svg><span class="t-staff">سرپرست بخش</span><p>درخواست مرخصی و جابه‌جایی شیفت برای سرپرست همان بخش می‌رود و نتیجه به کارمند پیام می‌شود.</p></li>
+    </ol>
+  </section>
+
+  <section class="flow demo">
+    <h2>پیشنهاد ترتیب نمایش به کارفرما</h2>
+    <ol class="steps">
+      <li>سایت عمومی: صفحه اصلی ← پزشکان ← راهنمای بیماران ← راهنمای هوشمند (بیمه دانا + کیسه صفرا)</li>
+      <li>پنل بیمار: ثبت درخواست جراحی با عکس برگه؛ با «شبیه‌ساز» پایین صفحه، مراحل پذیرش را جلو ببرید تا «انجام عمل و ترخیص» و نظرسنجی</li>
+      <li>پنل پزشک: ثبت جراحی آینده ← پنل پذیرش در زبانه دیگر: تأیید با اتاق عمل</li>
+      <li>پنل مالی: ثبت کارکرد چند عمل ← انتشار ← در «کارکرد و درآمد من» پزشک دیده می‌شود</li>
+      <li>گزارش رضایت بیماران: نظری که در مرحله ۲ ثبت کردید در گزارش و «نظرات و پیگیری» دیده می‌شود</li>
+    </ol>
+  </section>
+  <p class="foot">نسخه نمایشی · همه داده‌ها ساختگی است و فقط در همین مرورگر ذخیره می‌شود.</p>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+document.getElementById("reset").addEventListener("click", function () {
+  if (!confirm("همه داده‌های نمایشی (درخواست‌ها، صورتحساب‌ها، نظرسنجی‌ها و ورودها) پاک شود؟")) return;
+  var keys = []; for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (/^kh-/.test(k)) keys.push(k); }
+  keys.forEach(function (k) { localStorage.removeItem(k); });
+  var t = document.getElementById("toast"); t.textContent = "داده‌های نمایشی پاک شد (" + keys.length + " مورد)."; t.className = "toast in"; setTimeout(function () { t.className = "toast"; }, 2600);
+});
+</script>
+
+</body>
+</html>

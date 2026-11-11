@@ -1,0 +1,120 @@
+/* =========================================================
+   print.css — the print surface (Phase 2, item 5)
+   Real, scoped print CSS: every rule below sits inside
+   `@media print`, so this file cannot change a single pixel of
+   the on-screen rendering. It is imported UNLAYERED (like
+   typography.css / layout.css) so it outranks Tailwind's
+   `utilities` layer without `!important` where specificity
+   allows; `!important` marks only the few rules that must beat
+   an inline or utility style outright.
+   =========================================================
+   What it does, and why each decision:
+   1. FLATTEN THE SURFACE (tokens, not a reskin): the tinted
+      page background, surfaces and shadows drop to paper white.
+      The accent BANDS (`bg-accent-strong`) flatten to a pale
+      tint via the theme alias `--color-accent-strong` while the
+      semantic `--accent-strong` (which `text-primary` resolves
+      through) is left dark — the same name serves both a band
+      background and a text color, so only the band side flips.
+      Band text (`--fg-inverted`, also the button background) is
+      re-pointed to ink so it stays legible on the tint.
+   2. HIDE SCREEN-ONLY CHROME: the sticky header (its navigation
+      is meaningless on paper; the footer carries the clinic's
+      name, address, phone and visiting hours — the part a
+      printed page is actually for), the scroll progress bar,
+      the hero particles, and the floating actions.
+   3. NEVER LET SCROLL-REVEAL BLANK THE PAGE: `.fx [data-reveal]`
+      starts at opacity 0 until an IntersectionObserver fires;
+      in print nothing scrolls, so every hidden element is
+      forced visible. (Without this, printing a fresh page can
+      emit large blank regions.)
+   4. WAYFINDING: internal links in <main> print their target
+      path after their label — on paper a card that reads only
+      "جراحی چشم" no longer tells you where it goes.
+   5. PAGE BREAKS: images and card blocks stay whole; headings
+      do not get orphaned at a page bottom.
+   ========================================================= */
+
+@media print {
+  :root {
+    /* Paper surface — flatten tints, drop shadows. */
+    --bg: #fff;
+    --surface: #fff;
+    --surface-alt: #f2f6f7;
+    --fg: #10262f;
+    --fg-muted: #4a5d65;
+    --border: #b9c8cc;
+    --primary-50: #f2f6f7;
+    --sh-1: none;
+    --sh-2: none;
+
+    /* The accent bands: pale tint instead of an ink-flooded teal block.
+       The SEMANTIC --accent-strong stays dark so text-primary (which
+       resolves --color-primary → --accent-strong) keeps its contrast. */
+    --color-accent-strong: #e8f3f4;
+    /* Band text (and the on-accent button background): ink, legible on tint. */
+    --fg-inverted: #10262f;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+
+  html {
+    font-size: 11pt;
+  }
+
+  body {
+    background: #fff;
+    color: var(--fg);
+  }
+
+  /* --- 2. screen-only chrome ------------------------------------------- */
+
+  .site-header,
+  .scroll-progress,
+  .hero-particles,
+  .float-actions,
+  .skip-link {
+    display: none !important;
+  }
+
+  /* --- 3. scroll-reveal must never blank the printed page --------------- */
+
+  .fx [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* --- 4. wayfinding: print the target of internal links ---------------- */
+
+  main a[href^="/"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: var(--fg-muted);
+    text-decoration: none;
+  }
+
+  /* The on-paper CTA: an outline button, not a solid rectangle of ink. */
+  main a[href^="tel:"],
+  main button {
+    background: #fff !important;
+    color: #0b4f5c !important;
+    border: 1px solid #0b4f5c;
+  }
+
+  /* --- 5. keep blocks whole across page breaks -------------------------- */
+
+  img,
+  figure,
+  main a[href^="/services/"] {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+}

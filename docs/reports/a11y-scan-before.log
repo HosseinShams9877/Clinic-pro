@@ -1,0 +1,563 @@
+FAIL  [light/fa]/  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×4  wcag2aa wcag143
+            · .items-end > .max-w-xl.gap-3.flex-col > .bg-accent\/10.text-accent.kicker
+            · .gap-4.flex-col > .md\:text-\[28px\]
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .px-2\.5
+FAIL  [light/fa]/services  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×4  wcag2aa wcag143
+            · h1
+            · .duration-300.hover\:-translate-y-1[href$="anes"] > .flex-1.p-5.gap-2 > .mt-auto.pt-3.gap-1\.5
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .px-2\.5
+FAIL  [light/fa]/services/gen  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/plastic  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/ortho  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/uro  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/eye  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/ent  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/gyn  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/aes  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/anes  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/fa]/services/endo  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/en]/  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×6  wcag2aa wcag143
+            · .items-end > .max-w-xl.gap-3.flex-col > .bg-accent\/10.text-accent.kicker
+            · #steps > .gap-10.container.flex-col > .text-center.mx-auto.max-w-xl > .bg-accent\/10.text-accent.kicker
+            · #why > .gap-10.container.flex-col > .text-center.mx-auto.max-w-xl > .bg-accent\/10.text-accent.kicker
+            · .gap-4.flex-col > .md\:text-\[28px\]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .px-2\.5
+            · .gap-4.flex-col > a[href="/"]
+FAIL  [light/en]/services  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · h1
+            · em
+            · a[href$="gen"] > .flex-1.p-5.gap-2 > .mt-auto.pt-3.gap-1\.5
+            · a[href$="plastic"] > .flex-1.p-5.gap-2 > .mt-auto.pt-3.gap-1\.5
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .px-2\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/gen  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/plastic  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/ortho  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/uro  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/eye  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/ent  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/gyn  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/aes  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/anes  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/en]/services/endo  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .bg-accent\/10
+            · nav[aria-label="Departments"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [light/ar]/  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · #why > .gap-10.container.flex-col > .text-center.mx-auto.max-w-xl > .bg-accent\/10.text-accent.kicker
+            · .gap-4.flex-col > .md\:text-\[28px\]
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .px-2\.5
+FAIL  [light/ar]/services  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · h1
+            · a[href$="endo"] > .flex-1.p-5.gap-2 > .mt-auto.pt-3.gap-1\.5
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .px-2\.5
+FAIL  [light/ar]/services/gen  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/plastic  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/ortho  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/uro  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/eye  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/ent  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/gyn  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/aes  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/anes  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×1  wcag2aa wcag143
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [light/ar]/services/endo  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×2  wcag2aa wcag143
+            · .bg-accent\/10
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×10  wcag2aa wcag143
+            · .text-\[12px\]
+            · .bg-primary.p-5.text-on-accent > div > .block.text-\[24px\]
+            · .bg-primary.p-5.text-on-accent > div > .on-accent
+            · .items-end > .max-w-xl.gap-3.flex-col > .text-\[26px\].md\:text-\[32px\]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .px-2\.5
+FAIL  [dark/fa]/services  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×8  wcag2aa wcag143
+            · b[aria-current="page"]
+            · h1
+            · #surgical > .gap-4.items-center > div > h2
+            · #surgical > .gap-4.items-center > div > p
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .px-2\.5
+FAIL  [dark/fa]/services/gen  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×7  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .max-w-xl
+            · .items-start:nth-child(1) > .pt-1\.5
+            · .items-start:nth-child(2) > .pt-1\.5
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/plastic  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×5  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .max-w-xl
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/ortho  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×7  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .max-w-xl
+            · .items-start:nth-child(1) > .pt-1\.5
+            · .items-start:nth-child(3) > .pt-1\.5
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/uro  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×11  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+            · h1
+            · .max-w-xl
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/eye  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×10  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+            · h1
+            · .max-w-xl
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/ent  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×6  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .max-w-xl
+            · .items-start:nth-child(3) > .pt-1\.5
+            · nav[aria-label="بخش‌ها"] > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/gyn  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×6  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .max-w-xl
+            · .items-start:nth-child(3) > .pt-1\.5
+            · nav[aria-label="بخش‌ها"] > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/aes  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×8  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .max-w-xl
+            · .items-start:nth-child(1) > .pt-1\.5
+            · .items-start:nth-child(2) > .pt-1\.5
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/anes  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×5  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .items-start:nth-child(3) > .pt-1\.5
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/fa]/services/endo  html={"lang":"fa","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×4  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · nav[aria-label="بخش‌ها"] > h4
+            · div:nth-child(3) > h4
+            · .py-5 > span:nth-child(1)
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/en]/  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .text-\[12px\]
+            · .bg-primary.p-5.text-on-accent > div > .block.text-\[24px\]
+            · .bg-primary.p-5.text-on-accent > div > .on-accent
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .px-2\.5
+            · .gap-4.flex-col > a[href="/"]
+FAIL  [dark/en]/services  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×25  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .hover\:opacity-100.transition-opacity[href="/"]
+            · b[aria-current="page"]
+            · h1
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .px-2\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/gen  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/plastic  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/ortho  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/uro  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/eye  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/ent  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/gyn  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/aes  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/anes  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/en]/services/endo  html={"lang":"en","dir":"ltr"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×15  wcag2aa wcag143
+            · .text-\[11px\].font-medium.text-muted
+            · .pt-8 > .hover\:text-primary.transition-colors[href="/"]
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×3  wcag21a wcag253
+            · .brand
+            · .gap-1\.5
+            · .gap-4.flex-col > .gap-3[href="/"]
+FAIL  [dark/ar]/  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×6  wcag2aa wcag143
+            · .text-\[12px\]
+            · .bg-primary.p-5.text-on-accent > div > .block.text-\[24px\]
+            · .items-end > .max-w-xl.gap-3.flex-col > .leading-loose.text-\[14px\]
+            · .gap-4.flex-col > .md\:text-\[28px\]
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .px-2\.5
+FAIL  [dark/ar]/services  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×6  wcag2aa wcag143
+            · b[aria-current="page"]
+            · h1
+            · #surgical > .gap-4.items-center > div > h2
+            · a[href$="endo"] > .flex-1.p-5.gap-2 > .mt-auto.pt-3.gap-1\.5
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .px-2\.5
+FAIL  [dark/ar]/services/gen  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×6  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+            · h1
+            · h2
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/plastic  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · div:nth-child(3) > h4
+            · .py-5 > span:nth-child(1)
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/ortho  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×7  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+            · h1
+            · .items-start:nth-child(1) > .pt-1\.5
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/uro  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×4  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .items-start:nth-child(3) > .pt-1\.5
+            · div:nth-child(3) > h4
+            · .py-5 > span:nth-child(1)
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/eye  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×7  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · b[aria-current="page"]
+            · h1
+            · .items-start:nth-child(1) > .pt-1\.5
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/ent  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×4  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .items-start:nth-child(3) > .pt-1\.5
+            · div:nth-child(3) > h4
+            · .py-5 > span:nth-child(1)
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/gyn  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×4  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .items-start:nth-child(3) > .pt-1\.5
+            · div:nth-child(3) > h4
+            · .py-5 > span:nth-child(1)
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/aes  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · div:nth-child(3) > h4
+            · .py-5 > span:nth-child(1)
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/anes  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×3  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · div:nth-child(3) > h4
+            · .py-5 > span:nth-child(1)
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+FAIL  [dark/ar]/services/endo  html={"lang":"ar","dir":"rtl"}  serious=2 critical=0 moderate=0 minor=0
+        → serious/color-contrast (Elements must meet minimum color contrast ratio thresholds) ×4  wcag2aa wcag143
+            · .pt-8 > .hover\:text-primary.transition-colors[href$="services"]
+            · .max-w-xl
+            · div:nth-child(3) > h4
+            · .py-5 > span:nth-child(1)
+        → serious/label-content-name-mismatch (Elements must have their visible text as part of their accessible name) ×1  wcag21a wcag253
+            · .gap-1\.5
+
+FAIL: axe scan over 72 page-runs (12 routes × 3 locales × 2 themes) — serious=144 critical=0 moderate=0 minor=0

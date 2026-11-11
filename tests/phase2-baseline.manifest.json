@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "frozenAs": "Phase 3 regression baseline (Phase 2 item 14)",
+  "frozenAt": "2026-11-11",
+  "suite": {
+    "files": 29,
+    "tests": 222
+  },
+  "environment": {
+    "node": "v26.13.0",
+    "vitest": "2.1.9",
+    "next": "15.5.29",
+    "react": "19.3.1",
+    "typescript": "5.9.3"
+  },
+  "gate": "Every file in `files` must exist on disk with the SAME sha256 (enforced by tests/phase2-baseline.test.ts). Removing or editing a baseline test file fails the suite. Adding new test files is allowed and NOT a violation — the manifest lists the frozen set, not a cap. To change a frozen file: run `node scripts/baseline-freeze.mjs --write` and record the reason in docs/reports/PHASE_2_BASELINE.md.",
+  "files": {
+    "src/app/api/status/route.test.ts": {
+      "sha256": "3d4c0e801c0ce83700609e6eb51d819c9ac953a0da47f7e4cab8bb741aad049e",
+      "tests": 6
+    },
+    "src/app/error.test.tsx": {
+      "sha256": "e7365e3179d2ed66c27998ba5b876549a68e35d893f3e2e50164dced428d10d5",
+      "tests": 4
+    },
+    "src/app/not-found.test.tsx": {
+      "sha256": "a46a2407bf62e8e166acb459256c11d0340d82f9ac5a9182e37b55af9359d7c6",
+      "tests": 4
+    },
+    "src/app/page.test.tsx": {
+      "sha256": "d9df670a385bd56eb7d8a6dfdedc41a3efaac81bd9fd93158548ad198ed612a4",
+      "tests": 9
+    },
+    "src/app/services/[category]/page.test.tsx": {
+      "sha256": "e07abfd89c3d81ffc73764c2db9d8de707722e90242b9cf7a4b8b52cbbd5957a",
+      "tests": 6
+    },
+    "src/app/services/page.test.tsx": {
+      "sha256": "7fcab1fe9363ffd2cd682fdded0ee405ea97cc80fedd4182539fcb7e6a43debb",
+      "tests": 7
+    },
+    "src/app/sitemap.test.ts": {
+      "sha256": "73f8e1f3be1cc9e987d463d9c38d208c0e11426ce34f2e9c9f78d4d200f850f8",
+      "tests": 7
+    },
+    "src/components/layout/LanguageSwitcher.test.tsx": {
+      "sha256": "2784583e0fad99f025be91e6e5cc5ebcf39b5cbcf0033b2674683ea0af4d8f01",
+      "tests": 3
+    },
+    "src/components/layout/SiteHeader.test.tsx": {
+      "sha256": "ed0a67846b21793390b6270456b3394cd0bc3de94e105d7355a75bcc13d72275",
+      "tests": 5
+    },
+    "src/components/layout/focus-ring-clip.test.tsx": {
+      "sha256": "abcab5292584b9959dc11b0a3611eb6a821cecc54e303c2766d3ab46996fead3",
+      "tests": 5
+    },
+    "src/components/shared/LiveStatus.test.tsx": {
+      "sha256": "4b3505a1a05d5c95b38be1ceeae2ef529fc0b174beb71d1cc0aa0989278f8158",
+      "tests": 8
+    },
+    "src/components/shared/LivingEffects.test.tsx": {
+      "sha256": "e639a893b99f2b9c8e1370cc84c069108d238055f880ee322db035ac44c1099f",
+      "tests": 5
+    },
+    "src/core/i18n/digits.test.ts": {
+      "sha256": "2d045799eaca5fca022ba57b2cc0efa5c0dea4181066d679814f21b89cfa43f5",
+      "tests": 8
+    },
+    "src/core/i18n/jalali.test.ts": {
+      "sha256": "1f8d8111df523713f017cb87e91eb7411ffa9fe88c8855711af45146ed8f9306",
+      "tests": 14
+    },
+    "src/core/openHours.test.ts": {
+      "sha256": "a5176336e1f03150fe44048b3699d45ec079ede40dad7e6218bc2d1894076549",
+      "tests": 17
+    },
+    "src/core/rateLimit.test.ts": {
+      "sha256": "ea9e7bb334cd873aeeb32a229d15bb5716f033ad6b678381669cadf0039caec9",
+      "tests": 5
+    },
+    "src/hooks/useMediaQuery.test.tsx": {
+      "sha256": "4ee52eef8148612968252e5a6e3d621bdf8c060295f9e8a33eca5e36f60f42bf",
+      "tests": 5
+    },
+    "src/hooks/useReducedMotion.test.tsx": {
+      "sha256": "36bfd74eaf662cf55b587c490e2f551582a694e663d5d1ae69ed66471c61ae33",
+      "tests": 6
+    },
+    "src/modules/i18n/messages/index.test.ts": {
+      "sha256": "57add1d2998ffd5a864575c3bcb122fc005d15825ba5c2c4ce8ed6f2f75fc5ed",
+      "tests": 8
+    },
+    "src/modules/seo/lib/metadata.test.ts": {
+      "sha256": "89c7df3c743e0a7c112e9834437b80f458a89959614f7a6cf0813c7ed1c1d190",
+      "tests": 6
+    },
+    "src/modules/seo/lib/structuredData.test.ts": {
+      "sha256": "34971697f34be216a3cec20d332c8ff7d91dd401971ff9fbdd314e4edcf358cb",
+      "tests": 16
+    },
+    "src/modules/services/components/image-pipeline.test.ts": {
+      "sha256": "28ee3799c38287ac2df9bc945a25ba2bf255ffc316d67dafafac5b17dfb95ac9",
+      "tests": 7
+    },
+    "src/modules/services/content/categories.test.ts": {
+      "sha256": "5b25aeabfafd7318a6fe20177fa20ed09b0de03f26cc6101aaa886a0c47ee06e",
+      "tests": 6
+    },
+    "src/modules/services/queries/statusQueries.test.ts": {
+      "sha256": "8921b9b9d06d537ccdd6eb1746042a3102416bfe1e805af0d4b87770208862fc",
+      "tests": 18
+    },
+    "src/modules/services/schemas/statusEquivalence.test.ts": {
+      "sha256": "b4db1dabe375cbb9215e6e84790b61b94d245fc2bb2e1dcff788634dcfc6eecc",
+      "tests": 3
+    },
+    "src/styles/globalCss/cascade.test.ts": {
+      "sha256": "ea05714c00d071b856470d0a57080e997e82aca05488790a01e94ec66c2cc882",
+      "tests": 6
+    },
+    "src/styles/globalCss/print.test.ts": {
+      "sha256": "1d0f71e33cedb450d1180d7a65b24c0f1e64f211626c08bdfeaad1a47341519e",
+      "tests": 6
+    },
+    "src/styles/globalCss/themes.test.ts": {
+      "sha256": "74c0600541e0ec7c5f50b10a9f578133383ada7fb5abb030ba2085a7f9bea296",
+      "tests": 4
+    },
+    "tests/cwv-budget.test.ts": {
+      "sha256": "227c749e6d5e368a2934301f0b134de3a13800f1787e5f936215fe192deed38b",
+      "tests": 18
+    }
+  }
+}

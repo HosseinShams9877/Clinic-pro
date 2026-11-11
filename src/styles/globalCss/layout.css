@@ -1,0 +1,141 @@
+/* =========================================================
+   layout.css — containers, section rhythm, grids
+   Breakpoints live in tokens.css @theme (640/960/1024/1100/1180).
+   ========================================================= */
+
+@layer components {
+  .container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  .section {
+    padding-block: 88px;
+  }
+
+  @media (max-width: 639px) {
+    .section {
+      padding-block: 56px;
+    }
+  }
+}
+
+@layer utilities {
+  /* Guard against horizontal overflow at any width, including 320px. */
+  .clip-x {
+    overflow-x: clip;
+  }
+}
+
+  /* Skip link: visually hidden until focused, then the first prominent
+     element on screen (a11y gate, SEO_ACCESSIBILITY_SECURITY.md §5). */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    inset-inline-start: 16px;
+    z-index: 100;
+    border-radius: var(--r-sm);
+    background: var(--accent-strong);
+    color: var(--fg-inverted);
+    padding: 10px 18px;
+    font-weight: 600;
+    transition: top var(--ease) 160ms;
+  }
+
+  .skip-link:focus-visible {
+    top: 12px;
+  }
+
+  /* ---------------------------------------------------------
+     Living layer (P1-12) — scroll progress, hero particles,
+     reveal-on-scroll. All decorative; all no-ops without the
+     `.fx` class the client island sets only when motion is
+     allowed, so no-JS / reduced-motion HTML is fully visible.
+     --------------------------------------------------------- */
+
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+    z-index: 60;
+    height: 3px;
+    background: var(--c-gold);
+    transform: scaleX(var(--sp, 0));
+    transform-origin: 0 50%;
+  }
+
+  html[dir="rtl"] .scroll-progress {
+    transform-origin: 100% 50%;
+  }
+
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-particles i {
+    position: absolute;
+    bottom: -12px;
+    border-radius: 999px;
+    background: var(--c-gold);
+    opacity: 0.55;
+    animation: kh-rise linear infinite;
+  }
+
+  @keyframes kh-rise {
+    to {
+      transform: translate3d(var(--dx, 0), -110vh, 0);
+    }
+  }
+
+  .fx [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s var(--ease),
+      transform 0.6s var(--ease);
+  }
+
+  .fx [data-reveal].in {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* The motion layer is disarmed entirely: nothing hides, nothing slides,
+       nothing scrolls smoothly. The canonical reduced-motion reset (WCAG
+       2.3.3) also makes every interaction-triggered transition instant —
+       card hover lifts included. These rules sit unlayered, above Tailwind's
+       `utilities` layer, so they win without `!important`.
+       .hero-particles is pure decoration (it never carries content), so it
+       drops out of the tree instead of animating. */
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0s;
+      animation-iteration-count: 1;
+      transition-duration: 0s;
+    }
+
+    .hero-particles {
+      display: none;
+    }
+
+    .hero-particles i {
+      animation: none;
+    }
+
+    .fx [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }

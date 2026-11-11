@@ -1,0 +1,27 @@
+/* =========================================================
+   index.css — the global CSS entry (imported by app/globals.css)
+   Cascade layer order is declared BEFORE the Tailwind import so
+   the reference's unscoped-vivid.css failure mode can't recur
+   (approved Q9, GLOBAL_CSS_ARCHITECTURE.md §2).
+
+   P2 item 6 (2026-11-10) — CRITICAL FIX: the Tailwind import is
+   NOT wrapped in layer(utilities). Wrapping it moved Tailwind's
+   internal @layer base (preflight: *{margin:0;padding:0}) into
+   the ROOT utilities layer, which sorts after @layer components —
+   and layer order beats specificity, so every components-layer
+   rule (.container gutters, .section rhythm) was silently dead.
+   Unlayered, Tailwind's own layer statement merges at root:
+   preflight lands in base (before components) and its utilities
+   stay in utilities (after components) — the intended order.
+   ========================================================= */
+
+@layer base, components, utilities;
+
+@import "tailwindcss";
+@import "./tokens.css" layer(base);
+@import "./themes.css" layer(base);
+@import "./typography.css";
+@import "./layout.css";
+@import "./utilities.css";
+/* Unlayered and fully inside @media print — zero on-screen effect (P2 item 5). */
+@import "./print.css";

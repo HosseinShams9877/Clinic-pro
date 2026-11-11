@@ -1,0 +1,5 @@
+/* Spec-mandated entry: app/globals.css imports the centralized
+   globalCss architecture (NEXTJS_APP_ROUTER.md §2).
+   Relative path: CSS @import runs through postcss-loader, which does not
+   resolve the tsconfig "@/" alias. */
+@import "../styles/globalCss/index.css";

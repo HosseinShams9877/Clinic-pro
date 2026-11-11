@@ -1,0 +1,90 @@
+/* =========================================================
+   tokens.css — design tokens
+   The :root block below is copied VERBATIM from the reference
+   (پلتفرم/assets/css/style.css lines 12–37). It is the source of
+   truth for the visual identity; the only edit allowed here is
+   adding new tokens, never changing these values.
+   ========================================================= */
+
+:root {
+  --c-primary:#0B4F5C;      /* deep surgical teal */
+  --c-primary-600:#0E6271;
+  --c-primary-50:#E8F3F4;
+  --c-accent:#1AA3A8;       /* clean teal accent */
+  --c-gold:#1C9AA0;         /* facade light gold */
+  --c-navy:#0B3F47;
+  --c-ink:#10262F;
+  --c-muted:#5D6F77;
+  --c-line:#E3ECEE;
+  --c-bg:#F4F8F9;
+  --c-white:#fff;
+
+  --t-1:#E8F3F4; --t-1i:#0E6271;
+  --t-2:#FDEEF0; --t-2i:#C24A63;
+  --t-3:#FFF3E6; --t-3i:#C9772B;
+  --t-4:#EAF1FD; --t-4i:#3463B8;
+  --t-5:#E9F7F1; --t-5i:#17855C;
+  --t-6:#F1EEFB; --t-6i:#6A55B5;
+
+  --r-sm:10px; --r-md:16px; --r-lg:24px; --r-xl:32px;
+  --sh-1:0 1px 2px rgba(7,26,38,.04),0 4px 16px rgba(7,26,38,.05);
+  --sh-2:0 10px 40px rgba(7,26,38,.10);
+  --container:1240px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* ---------------------------------------------------------
+   Tailwind v4 CSS-first theme bridge (approved Q6).
+   NO tailwind.config.ts in this project. Utilities below are
+   generated from the reference tokens above, so the palette in
+   Tailwind classes can never drift from the visual identity.
+   --------------------------------------------------------- */
+@theme {
+  /* Semantic colors resolve through themes.css, so every utility below
+     flips with the theme. (Audit 2026-11-10: these were mapped to the raw
+     --c-* palette, which never flips — dark mode rendered light-theme
+     surfaces, ink, and muted text.) Light values are identical to the raw
+     palette, so the light theme is visually unchanged. */
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-foreground: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-border: var(--border);
+  --color-primary: var(--accent-strong);
+  --color-primary-600: var(--c-primary-600);
+  --color-primary-50: var(--primary-50);
+  --color-accent: var(--c-accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent: var(--fg-inverted);
+  --color-navy: var(--c-navy);
+  --color-t1: var(--t-1);
+  --color-t1i: var(--t-1i);
+  --color-t2: var(--t-2);
+  --color-t2i: var(--t-2i);
+  --color-t3: var(--t-3);
+  --color-t3i: var(--t-3i);
+  --color-t4: var(--t-4);
+  --color-t4i: var(--t-4i);
+  --color-t5: var(--t-5);
+  --color-t5i: var(--t-5i);
+  --color-t6: var(--t-6);
+  --color-t6i: var(--t-6i);
+
+  --font-sans: var(--font-vazirmatn), Tahoma, ui-sans-serif, system-ui, sans-serif;
+  --font-nastaliq: var(--font-nastaliq), serif;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1100px;
+  --breakpoint-2xl: 1180px;
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --shadow-1: var(--sh-1);
+  --shadow-2: var(--sh-2);
+  --ease-smooth: var(--ease);
+}
