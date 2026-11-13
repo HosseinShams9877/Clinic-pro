@@ -16,8 +16,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
+import { headers } from "next/headers";
 
-import { siteConfig } from "@/config/site.config";
+import { siteConfig, ROUTES } from "@/config/site.config";
 import { getLocale } from "@/core/i18n/getLocale";
 import { LOCALES } from "@/core/i18n/locales";
 import { t } from "@/modules/i18n/messages";
@@ -26,6 +27,8 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { LivingEffects } from "@/components/shared/LivingEffects";
+import { MagneticButtons } from "@/components/shared/MagneticButtons";
+import { MenuSpy } from "@/components/shared/MenuSpy";
 import { ScrollProgress } from "@/components/shared/ScrollProgress";
 import { Providers } from "./providers";
 import "./globals.css";
@@ -78,6 +81,11 @@ const organizationLd = organizationJsonLd();
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale();
+  // The middleware mirrors the request path into a request header; the header
+  // needs it to mark the current section's menu link active, the way the
+  // reference hardcodes `class="active"` on index.html / services.html.
+  const headerStore = await headers();
+  const pathname = headerStore.get("x-pathname") ?? ROUTES.home;
 
   return (
     <html
@@ -93,15 +101,19 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         </a>
         {/* Client provider tree — React Query for the live badge only. */}
         <Providers>
-          <SiteHeader locale={locale} />
+          <SiteHeader locale={locale} pathname={pathname} />
           <main id="main-content">{children}</main>
           <SiteFooter locale={locale} />
         </Providers>
         {/* Living layer (P1-12): decorative only — content is server-rendered
-            and fully visible without these islands. Both read their gates
-            (prefers-reduced-motion) client-side; both render no content. */}
+            and fully visible without these islands. All read their gates
+            (prefers-reduced-motion / pointer: fine) client-side; all render
+            no content. MenuSpy + MagneticButtons are the B-6 fidelity port of
+            main.js's scroll-spy and magnetic primary buttons. */}
         <ScrollProgress />
         <LivingEffects />
+        <MenuSpy />
+        <MagneticButtons />
         {/* The organization's structured data (P1-14), on every route. */}
         <JsonLd document={organizationLd} />
       </body>

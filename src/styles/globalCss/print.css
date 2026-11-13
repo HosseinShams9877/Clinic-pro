@@ -22,7 +22,7 @@
       is meaningless on paper; the footer carries the clinic's
       name, address, phone and visiting hours — the part a
       printed page is actually for), the scroll progress bar,
-      the hero particles, and the floating actions.
+      and the floating actions.
    3. NEVER LET SCROLL-REVEAL BLANK THE PAGE: `.fx [data-reveal]`
       starts at opacity 0 until an IntersectionObserver fires;
       in print nothing scrolls, so every hidden element is
@@ -73,7 +73,6 @@
 
   .site-header,
   .scroll-progress,
-  .hero-particles,
   .float-actions,
   .skip-link {
     display: none !important;

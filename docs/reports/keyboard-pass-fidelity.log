@@ -1,0 +1,26 @@
+ok      [375]/  tabbable=47 tabSteps=33 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services  tabbable=28 tabSteps=22 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/gen  tabbable=26 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/plastic  tabbable=25 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/ortho  tabbable=24 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/uro  tabbable=25 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/eye  tabbable=25 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/ent  tabbable=25 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/gyn  tabbable=25 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/aes  tabbable=25 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/anes  tabbable=24 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [375]/services/endo  tabbable=25 tabSteps=15 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/  tabbable=47 tabSteps=38 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services  tabbable=28 tabSteps=27 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/gen  tabbable=26 tabSteps=25 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/plastic  tabbable=25 tabSteps=24 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/ortho  tabbable=24 tabSteps=23 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/uro  tabbable=25 tabSteps=24 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/eye  tabbable=25 tabSteps=24 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/ent  tabbable=25 tabSteps=24 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/gyn  tabbable=25 tabSteps=24 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/aes  tabbable=25 tabSteps=24 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/anes  tabbable=24 tabSteps=23 coverage=ok ring=ok disclosures=ok skipLink=ok
+ok      [1440]/services/endo  tabbable=25 tabSteps=24 coverage=ok ring=ok disclosures=ok skipLink=ok
+
+PASS: keyboard-only pass over 24 page-runs (12 routes × 2 widths) — skip link first, Enter activation, full Tab coverage, DOM order, no lost focus, visible focus ring, disclosure menus

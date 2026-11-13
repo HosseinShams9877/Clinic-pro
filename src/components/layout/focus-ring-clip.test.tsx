@@ -7,9 +7,19 @@
  * inset by less than 5px loses part of its ring — measured as 36 real failures
  * across four routes before the fix. The sub-menu and the language dropdown
  * carried `overflow-hidden` merely to keep their hover backgrounds inside the
- * rounded corners; the corner radius now lives on the first/last link instead.
+ * rounded corners; the corner radius then lived on the first/last link.
  * A live CDP geometry probe (4 routes × 2 widths, fa/RTL) reported 0 failures
- * after this change; these tests pin the markup at the component level.
+ * after that change.
+ *
+ * Visual fidelity pass (B-1, 2026-11-11) refreeze: the dropdowns are now the
+ * reference's own geometry (style.css L798-815 / L115-119), ported into
+ * reference.css: the panels keep `padding:8px|6px` + their own radius
+ * (16px / 14px) and each item carries its own `border-radius:10px`, so no
+ * ancestor clipping is needed at all. The tests now pin the invariant in
+ * that form: the ported panel rules must not clip (no `overflow:hidden`),
+ * and nothing in the rendered markup may reintroduce a Tailwind overflow or
+ * radius utility that would fight the ported geometry. Justification
+ * recorded in docs/reports/PHASE_2_BASELINE.md §"Refreeze record".
  */
 
 import { readFileSync } from "node:fs";
@@ -24,6 +34,21 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 const focusRuleCss = () =>
   readFileSync(join(process.cwd(), "src/styles/globalCss/typography.css"), "utf8");
 
+const portedCss = () =>
+  readFileSync(join(process.cwd(), "src/styles/globalCss/reference.css"), "utf8");
+
+/** Extract a single rule body from the ported stylesheet (rules are one line). */
+const ruleBody = (css: string, selector: string): string => {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return css.match(new RegExp(`${escaped}\\{([^}]*)\\}`))?.[1] ?? "";
+};
+
+const expectNoClip = (selector: string) => {
+  const body = ruleBody(portedCss(), selector);
+  expect(body, `${selector} missing from the ported dropdown rules`).toBeTruthy();
+  expect(body, `${selector} would clip a focus ring`).not.toMatch(/overflow:\s*hidden/);
+};
+
 const submenuLinks = (container: HTMLElement): [HTMLAnchorElement, HTMLAnchorElement] => {
   const surgical = container.querySelector('a[href="/services#surgical"]');
   const medical = container.querySelector('a[href="/services#medical"]');
@@ -33,7 +58,7 @@ const submenuLinks = (container: HTMLElement): [HTMLAnchorElement, HTMLAnchorEle
 
 describe("SiteHeader services sub-menu", () => {
   it("clips no link's focus ring — no overflow-hidden anywhere up the subtree", () => {
-    const { container } = render(<SiteHeader locale="fa" />);
+    const { container } = render(<SiteHeader locale="fa" pathname="/" />);
     for (const link of submenuLinks(container)) {
       for (let n: Element | null = link.parentElement; n && n !== document.body; n = n.parentElement) {
         expect(n.className ?? "", "an ancestor clips the focus ring").not.toMatch(/overflow-hidden/);
@@ -41,13 +66,19 @@ describe("SiteHeader services sub-menu", () => {
     }
   });
 
-  it("keeps the rounded corners on the first/last link instead", () => {
-    const { container } = render(<SiteHeader locale="fa" />);
+  it("rounds each item itself (reference geometry) — no clipping utility anywhere", () => {
+    const { container } = render(<SiteHeader locale="fa" pathname="/" />);
     const [surgical, medical] = submenuLinks(container);
-    expect(surgical.className).toMatch(/rounded-t-lg/);
-    expect(medical.className).toMatch(/rounded-b-lg/);
-    const item = surgical.closest("li");
-    expect(item?.className).toMatch(/rounded-lg/);
+    // No Tailwind overflow/radius utility may fight the ported `.menu .sub a`
+    // rule (items are border-radius:10px; the panel is 16px with padding:8px).
+    for (const link of [surgical, medical]) {
+      expect(link.className).not.toMatch(/overflow-hidden|rounded-/);
+      expect(link.closest("li")?.className ?? "").not.toMatch(/overflow-hidden|rounded-/);
+    }
+    const css = portedCss();
+    expect(css).toMatch(/\.menu \.sub a\{[^}]*border-radius:10px/);
+    expect(css).toMatch(/\.menu \.sub\{[^}]*border-radius:16px/);
+    expectNoClip(".menu .sub");
   });
 });
 
@@ -66,15 +97,20 @@ describe("LanguageSwitcher dropdown", () => {
     }
   });
 
-  it("carries the corner radius on the first/last menuitem", () => {
+  it("rounds each item itself (reference geometry) — no clipping utility anywhere", () => {
     render(<LanguageSwitcher locale="fa" />);
     fireEvent.click(screen.getByRole("button", { name: /زبان|language/i }));
     const items = screen.getAllByRole("menuitem");
     const first = items[0];
     const last = items[items.length - 1];
     if (!first || !last) throw new Error("language dropdown menuitems missing");
-    expect(first.className).toMatch(/rounded-t-lg/);
-    expect(last.className).toMatch(/rounded-b-lg/);
+    for (const item of [first, last]) {
+      expect(item.className).not.toMatch(/overflow-hidden|rounded-/);
+    }
+    const css = portedCss();
+    expect(css).toMatch(/\.lang-list button,\.lang-list a\{[^}]*border-radius:10px/);
+    expect(css).toMatch(/\.lang-list\{[^}]*border-radius:14px/);
+    expectNoClip(".lang-list");
   });
 });
 

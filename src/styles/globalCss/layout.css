@@ -23,6 +23,21 @@
 }
 
 @layer utilities {
+  /* Container-width guard (fidelity pass 2026-11-12). Tailwind v4 emits its
+     own built-in `container` utility at every --breakpoint-* (640/960/1024/
+     1100/1180) whenever the `container` class appears in markup, and those
+     rules land in THIS layer — later than the components-layer port above,
+     so @media(min-width:1180px){.container{max-width:1180px}} silently beat
+     max-width:var(--container) (1240px) and pinned the whole site to 1180px
+     (measured vs reference: nav 1140→1200, hero grid columns 522.5/577.5→
+     551/609). Layer order beats specificity, so the port cannot self-defend;
+     re-asserting here wins by later source order (layout.css is imported
+     after the tailwindcss import in index.css) at equal specificity (0,1,0)
+     — media queries add none. Rule-probe evidence: scripts/rule-probe.mjs. */
+  .container {
+    max-width: var(--container);
+  }
+
   /* Guard against horizontal overflow at any width, including 320px. */
   .clip-x {
     overflow-x: clip;
@@ -55,49 +70,32 @@
      allowed, so no-JS / reduced-motion HTML is fully visible.
      --------------------------------------------------------- */
 
+  /* Reference (style.css L756) final: gradient fill, no shadow, origin
+     driven by --sp-origin (default right = the RTL default page). Kept
+     here unlayered as in the reference; colors are tokens, never raw. */
   .scroll-progress {
     position: fixed;
     top: 0;
     inset-inline: 0;
     z-index: 60;
     height: 3px;
-    background: var(--c-gold);
+    background: linear-gradient(90deg, var(--c-accent), var(--accent-strong));
+    box-shadow: none;
     transform: scaleX(var(--sp, 0));
-    transform-origin: 0 50%;
+    transform-origin: var(--sp-origin, right) 50%;
   }
 
-  html[dir="rtl"] .scroll-progress {
-    transform-origin: 100% 50%;
-  }
-
-  .hero-particles {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .hero-particles i {
-    position: absolute;
-    bottom: -12px;
-    border-radius: 999px;
-    background: var(--c-gold);
-    opacity: 0.55;
-    animation: kh-rise linear infinite;
-  }
-
-  @keyframes kh-rise {
-    to {
-      transform: translate3d(var(--dx, 0), -110vh, 0);
-    }
+  html[dir="ltr"] .scroll-progress {
+    --sp-origin: left;
   }
 
   .fx [data-reveal] {
     opacity: 0;
     transform: translateY(24px);
+    /* Reference .reveal is .7s — matched (B-6 audit). */
     transition:
-      opacity 0.6s var(--ease),
-      transform 0.6s var(--ease);
+      opacity 0.7s var(--ease),
+      transform 0.7s var(--ease);
   }
 
   .fx [data-reveal].in {
@@ -110,9 +108,7 @@
        nothing scrolls smoothly. The canonical reduced-motion reset (WCAG
        2.3.3) also makes every interaction-triggered transition instant —
        card hover lifts included. These rules sit unlayered, above Tailwind's
-       `utilities` layer, so they win without `!important`.
-       .hero-particles is pure decoration (it never carries content), so it
-       drops out of the tree instead of animating. */
+       `utilities` layer, so they win without `!important`. */
     html {
       scroll-behavior: auto;
     }
@@ -123,14 +119,6 @@
       animation-duration: 0s;
       animation-iteration-count: 1;
       transition-duration: 0s;
-    }
-
-    .hero-particles {
-      display: none;
-    }
-
-    .hero-particles i {
-      animation: none;
     }
 
     .fx [data-reveal] {

@@ -10,9 +10,18 @@
  * /services/<unknown-id>, where page.tsx calls notFound() (P1-10) and the
  * router falls through to this boundary.
  *
- * The reference has no 404 page of its own, so every string here is UI chrome
- * from the message catalog (err.*, nav.*) — no invented clinic content, and no
- * text hardcoded in the component.
+ * The B-5 fidelity port: the page is the reference's own inner-page hero
+ * frame — `section.phx > .container > .phx-in > (.phx-t + .phx-v)`
+ * (style.css L769-786, as used by about.html L126-135 and every other inner
+ * page) — so the 404 speaks exactly the reference's design language: the same
+ * card, radius, crumbs, h1 clamp and 360px split as the real inner pages,
+ * with light theme and the reference's own `.btn` treatments.
+ *
+ * The reference has no 404 page of its own, so the frame's fill is the app's
+ * chrome, never invented clinic content: the copy is the message catalog
+ * (err.*, nav.*), the recovery link is the implemented Services landing, and
+ * the `.phx-v` slot carries the status code as pure decoration
+ * (aria-hidden, exactly as the reference marks its own `.phx-v`).
  */
 
 import type { Metadata } from "next";
@@ -34,33 +43,29 @@ export default async function NotFound() {
   const locale = await getLocale();
 
   return (
-    <section className="relative overflow-hidden bg-accent-strong text-on-accent">
-      <div className="container flex flex-col items-center gap-6 py-20 text-center md:py-28">
-        {/* The status code is chrome, not content — the only non-translated
-            text on the page. */}
-        <span className="text-[64px] font-extrabold leading-none md:text-[88px]" aria-hidden="true">
-          404
-        </span>
-        <h1 className="max-w-2xl text-[28px] font-extrabold leading-tight md:text-[36px]">
-          {t(locale, "err.notFoundTitle")}
-        </h1>
-        <p className="max-w-xl text-[15px] leading-loose on-accent">{t(locale, "err.notFoundBody")}</p>
-
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <Link
-            href={ROUTES.home}
-            className="inline-flex items-center gap-2 rounded-lg bg-on-accent px-6 py-3.5 text-[15px] font-bold text-accent-strong transition hover:opacity-90"
-          >
-            <Icon name="i-arrow" size={20} className="arr" />
-            {t(locale, "nav.home")}
-          </Link>
-          <Link
-            href={ROUTES.services}
-            className="inline-flex items-center gap-2 rounded-lg border border-on-accent/50 px-6 py-3.5 text-[15px] font-bold text-on-accent transition hover:bg-on-accent/10"
-          >
-            <Icon name="i-layers" size={20} />
-            {t(locale, "nav.services")}
-          </Link>
+    <section className="phx">
+      <div className="container">
+        <div className="phx-in">
+          <div className="phx-t">
+            <nav className="crumbs" aria-label="breadcrumb">
+              <Link href={ROUTES.home}>{t(locale, "nav.home")}</Link>
+              <span>/</span>
+              <b aria-current="page">{t(locale, "err.notFoundTitle")}</b>
+            </nav>
+            <h1>{t(locale, "err.notFoundTitle")}</h1>
+            <p>{t(locale, "err.notFoundBody")}</p>
+            <div className="phx-cta">
+              <Link href={ROUTES.services} className="btn btn-primary">
+                <Icon name="i-layers" />
+                <span>{t(locale, "nav.services")}</span>
+              </Link>
+            </div>
+          </div>
+          {/* The status code is chrome, not content — the only non-translated
+              text on the page, parked in the frame's own decorative slot. */}
+          <div className="phx-v" aria-hidden="true">
+            <span className="phx-code">404</span>
+          </div>
         </div>
       </div>
     </section>

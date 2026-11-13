@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- The reference's own brand mark: پلتفرم/index.html line 55, symbol #i-logo,
+       drawn in the reference's --c-primary (style.css L13, #0B4F5C). Added
+       2026-11-12 so the browser's implicit /favicon.ico request stops 404ing
+       (console-check gate); the reference demo ships no icon of its own, so
+       the mark itself — not a new one — is used. -->
+  <path d="M24 3 41 12.5v19L24 45 7 31.5v-19Z" fill="none" stroke="#0B4F5C" stroke-width="2.2"/>
+  <path d="M17 15v18M17 24l8-9M19.6 21.2 25.5 33M30 15v18M37 15v18M30 24h7" fill="none" stroke="#0B4F5C" stroke-width="2.6" stroke-linecap="round"/>
+</svg>

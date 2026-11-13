@@ -109,8 +109,9 @@ describe("LiveStatus", () => {
     expect(badge?.querySelector("b")?.textContent).toBe("پذیرش هم‌اکنون باز است");
     // The SSR countdown text, not a placeholder and not a blank.
     expect(badge?.textContent).toContain(SNAPSHOT_SUB_FA);
-    // The dot paints for the server snapshot (green = open).
-    expect(badge?.querySelector(".live-dot")?.className).toContain("bg-[var(--open)]");
+    // The dot paints for the server snapshot: the reference's `.live-dot`
+    // (no `.off` modifier while open — the pulsing green state).
+    expect(badge?.querySelector(".live-dot")?.className).not.toContain("off");
     // The mount fetch fired once and is pending; the badge did not wait.
     expect(fetchCalls).toBe(1);
   });
@@ -120,7 +121,7 @@ describe("LiveStatus", () => {
     const badge = document.getElementById("live-status");
     expect(badge?.querySelector("b")?.textContent).toBe("Admissions closed now");
     expect(badge?.textContent).toContain("Opens today at 07:30");
-    expect(badge?.querySelector(".live-dot")?.className).toContain("bg-[var(--closed)]");
+    expect(badge?.querySelector(".live-dot")?.className).toContain("off");
   });
 
   it("switches to validated server data once it arrives", async () => {
@@ -129,7 +130,7 @@ describe("LiveStatus", () => {
     await screen.findByText("۱ ساعت و ۰ دقیقه تا پایان پذیرش");
     expect(fetchCalls).toBe(1);
     const badge = document.getElementById("live-status");
-    expect(badge?.querySelector(".live-dot")?.className).toContain("bg-[var(--open)]");
+    expect(badge?.querySelector(".live-dot")?.className).not.toContain("off");
   });
 
   it("regresses to the snapshot (never an empty badge) if the fetch rejects", async () => {

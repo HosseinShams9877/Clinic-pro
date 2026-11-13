@@ -8,9 +8,18 @@
  * from the other side. `isLocale` guards it; anything unexpected falls back to
  * fa (Persian-first, always).
  *
- * Renders inside the root layout, so the 404/error surface keeps the header,
+ * Renders inside the root layout, so the error surface keeps the header,
  * footer, skip link, lang direction and JSON-LD. The raw error is intentionally
  * never surfaced to the visitor — it is UI chrome, not diagnostic output.
+ *
+ * The B-5 fidelity port: the boundary is the reference's own inner-page hero
+ * frame (`section.phx > .phx-in > (.phx-t + .phx-v)`, style.css L769-786) —
+ * the same card, radius, crumbs-free h1 clamp and 360px split as the real
+ * inner pages. The reference has no error page of its own, so the frame's fill
+ * is the app's chrome: the copy is the message catalog (err.*, nav.*), the
+ * actions are the reference's own `.btn` treatments, and the `.phx-v` slot
+ * carries a single decorative shield icon (aria-hidden, exactly as the
+ * reference marks its own `.phx-v`).
  */
 
 "use client";
@@ -33,28 +42,28 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-accent-strong text-on-accent">
-      <div className="container flex flex-col items-center gap-6 py-20 text-center md:py-28">
-        <h1 className="max-w-2xl text-[28px] font-extrabold leading-tight md:text-[36px]">
-          {t(locale, "err.errorTitle")}
-        </h1>
-        <p className="max-w-xl text-[15px] leading-loose on-accent">{t(locale, "err.errorBody")}</p>
-
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <button
-            type="button"
-            onClick={reset}
-            className="inline-flex items-center gap-2 rounded-lg bg-on-accent px-6 py-3.5 text-[15px] font-bold text-accent-strong transition hover:opacity-90"
-          >
-            <Icon name="i-arrow" size={20} className="arr" />
-            {t(locale, "err.retry")}
-          </button>
-          <Link
-            href={ROUTES.home}
-            className="inline-flex items-center gap-2 rounded-lg border border-on-accent/50 px-6 py-3.5 text-[15px] font-bold text-on-accent transition hover:bg-on-accent/10"
-          >
-            {t(locale, "nav.home")}
-          </Link>
+    <section className="phx">
+      <div className="container">
+        <div className="phx-in">
+          <div className="phx-t">
+            <h1>{t(locale, "err.errorTitle")}</h1>
+            <p>{t(locale, "err.errorBody")}</p>
+            <div className="phx-cta">
+              <button type="button" onClick={reset} className="btn btn-primary">
+                <Icon name="i-arrow" className="arr" />
+                <span>{t(locale, "err.retry")}</span>
+              </button>
+              <Link href={ROUTES.home} className="btn btn-line">
+                <Icon name="i-arrow" className="arr" />
+                <span>{t(locale, "nav.home")}</span>
+              </Link>
+            </div>
+          </div>
+          <div className="phx-v" aria-hidden="true">
+            <span className="phx-ico">
+              <Icon name="i-shield" />
+            </span>
+          </div>
         </div>
       </div>
     </section>

@@ -1,10 +1,10 @@
 {
   "version": 1,
   "frozenAs": "Phase 3 regression baseline (Phase 2 item 14)",
-  "frozenAt": "2026-11-11",
+  "frozenAt": "2026-11-12",
   "suite": {
-    "files": 29,
-    "tests": 222
+    "files": 31,
+    "tests": 232
   },
   "environment": {
     "node": "v26.13.0",
@@ -28,7 +28,7 @@
       "tests": 4
     },
     "src/app/page.test.tsx": {
-      "sha256": "d9df670a385bd56eb7d8a6dfdedc41a3efaac81bd9fd93158548ad198ed612a4",
+      "sha256": "ad5bcf080872b60db77f4b9fa7aef50c73768329f68647d296616c2930dcb028",
       "tests": 9
     },
     "src/app/services/[category]/page.test.tsx": {
@@ -48,20 +48,28 @@
       "tests": 3
     },
     "src/components/layout/SiteHeader.test.tsx": {
-      "sha256": "ed0a67846b21793390b6270456b3394cd0bc3de94e105d7355a75bcc13d72275",
-      "tests": 5
+      "sha256": "caba0e5182018d22c38674823c11c2824451b5bc16914e0b48afade371701206",
+      "tests": 6
     },
     "src/components/layout/focus-ring-clip.test.tsx": {
-      "sha256": "abcab5292584b9959dc11b0a3611eb6a821cecc54e303c2766d3ab46996fead3",
+      "sha256": "8fb0d2b5105d7c6d1fa8ecb3cad2d6544b7ff1a5835c76a6a2aff1941db6dd95",
       "tests": 5
     },
     "src/components/shared/LiveStatus.test.tsx": {
-      "sha256": "4b3505a1a05d5c95b38be1ceeae2ef529fc0b174beb71d1cc0aa0989278f8158",
+      "sha256": "1b884a95e00db7b01586692b00022397aee1a06385fd05c0c480f51bb1bc684f",
       "tests": 8
     },
     "src/components/shared/LivingEffects.test.tsx": {
       "sha256": "e639a893b99f2b9c8e1370cc84c069108d238055f880ee322db035ac44c1099f",
       "tests": 5
+    },
+    "src/components/shared/MagneticButtons.test.tsx": {
+      "sha256": "79b4cc00c46927da33ecac43b7670159ba72a6810fedb348830f81d5f4149da6",
+      "tests": 4
+    },
+    "src/components/shared/MenuSpy.test.tsx": {
+      "sha256": "97712fee8eab67335d84c0d2913c0862f66b26c1155d266bc283573b883ae0f5",
+      "tests": 4
     },
     "src/core/i18n/digits.test.ts": {
       "sha256": "2d045799eaca5fca022ba57b2cc0efa5c0dea4181066d679814f21b89cfa43f5",
@@ -100,8 +108,8 @@
       "tests": 16
     },
     "src/modules/services/components/image-pipeline.test.ts": {
-      "sha256": "28ee3799c38287ac2df9bc945a25ba2bf255ffc316d67dafafac5b17dfb95ac9",
-      "tests": 7
+      "sha256": "a9c034b28cf5e8b514dbbc44b3aabfcd95d83c8b72866d5261fd384c1c295e26",
+      "tests": 8
     },
     "src/modules/services/content/categories.test.ts": {
       "sha256": "5b25aeabfafd7318a6fe20177fa20ed09b0de03f26cc6101aaa886a0c47ee06e",
@@ -120,7 +128,7 @@
       "tests": 6
     },
     "src/styles/globalCss/print.test.ts": {
-      "sha256": "1d0f71e33cedb450d1180d7a65b24c0f1e64f211626c08bdfeaad1a47341519e",
+      "sha256": "9d12304b91bae630bebf305cc2d0ea056619be37f712a199dba5204d5dafbde2",
       "tests": 6
     },
     "src/styles/globalCss/themes.test.ts": {

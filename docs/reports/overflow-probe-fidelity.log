@@ -1,0 +1,68 @@
+ok    /  innerWidth=320 scrollWidth=309
+ok    /services  innerWidth=320 scrollWidth=309
+ok    /services/gen  innerWidth=320 scrollWidth=309
+ok    /services/plastic  innerWidth=320 scrollWidth=309
+ok    /services/ortho  innerWidth=320 scrollWidth=309
+ok    /services/uro  innerWidth=320 scrollWidth=309
+ok    /services/eye  innerWidth=320 scrollWidth=309
+ok    /services/ent  innerWidth=320 scrollWidth=309
+ok    /services/gyn  innerWidth=320 scrollWidth=309
+ok    /services/aes  innerWidth=320 scrollWidth=309
+ok    /services/anes  innerWidth=320 scrollWidth=309
+ok    /services/endo  innerWidth=320 scrollWidth=309
+ok    /?lang=en  innerWidth=320 scrollWidth=317
+ok    /services?lang=en  innerWidth=320 scrollWidth=317  offenders=60
+        → <A class="scat"> right=438
+            ↑ <DIV class="scats"> w=305
+            ↑ <DIV class="sgrp"> w=273
+            ↑ <SECTION class="container scats-wrap"> w=305
+            ↑ <DIV class="page-services"> w=305
+        → <SPAN class="sc-i"> right=390
+            ↑ <A class="scat"> w=138
+            ↑ <DIV class="scats"> w=305
+            ↑ <DIV class="sgrp"> w=273
+            ↑ <SECTION class="container scats-wrap"> w=305
+        → <svg class=""> right=381
+            ↑ <SPAN class="sc-i"> w=42
+            ↑ <A class="scat"> w=138
+            ↑ <DIV class="scats"> w=305
+            ↑ <DIV class="sgrp"> w=273
+        → <path class=""> right=373
+            ↑ <svg class=""> w=24
+            ↑ <SPAN class="sc-i"> w=42
+            ↑ <A class="scat"> w=138
+            ↑ <DIV class="scats"> w=305
+        → <path class=""> right=377
+            ↑ <svg class=""> w=24
+            ↑ <SPAN class="sc-i"> w=42
+            ↑ <A class="scat"> w=138
+            ↑ <DIV class="scats"> w=305
+        → <B class=""> right=406
+            ↑ <A class="scat"> w=138
+            ↑ <DIV class="scats"> w=305
+            ↑ <DIV class="sgrp"> w=273
+            ↑ <SECTION class="container scats-wrap"> w=305
+ok    /services/gen?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/plastic?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/ortho?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/uro?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/eye?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/ent?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/gyn?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/aes?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/anes?lang=en  innerWidth=320 scrollWidth=317
+ok    /services/endo?lang=en  innerWidth=320 scrollWidth=317
+ok    /?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/gen?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/plastic?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/ortho?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/uro?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/eye?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/ent?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/gyn?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/aes?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/anes?lang=ar  innerWidth=320 scrollWidth=318
+ok    /services/endo?lang=ar  innerWidth=320 scrollWidth=318
+
+PASS: 36/36 measured routes have no horizontal overflow at 320px

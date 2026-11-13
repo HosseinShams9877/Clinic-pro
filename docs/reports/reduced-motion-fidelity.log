@@ -1,0 +1,26 @@
+ok      [reduce]/  fx=false reveal=0/0 counts=3/0 animated=0
+ok      [reduce]/services  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/gen  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/plastic  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/ortho  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/uro  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/eye  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/ent  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/gyn  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/aes  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/anes  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [reduce]/services/endo  fx=false reveal=0/0 counts=0/0 animated=0
+ok      [no-pref]/  fx=true reveal=0/0 counts=3/0 animated=16
+ok      [no-pref]/services  fx=true reveal=0/0 counts=0/0 animated=7
+ok      [no-pref]/services/gen  fx=true reveal=0/0 counts=0/0 animated=7
+ok      [no-pref]/services/plastic  fx=true reveal=0/0 counts=0/0 animated=6
+ok      [no-pref]/services/ortho  fx=true reveal=0/0 counts=0/0 animated=5
+ok      [no-pref]/services/uro  fx=true reveal=0/0 counts=0/0 animated=6
+ok      [no-pref]/services/eye  fx=true reveal=0/0 counts=0/0 animated=6
+ok      [no-pref]/services/ent  fx=true reveal=0/0 counts=0/0 animated=6
+ok      [no-pref]/services/gyn  fx=true reveal=0/0 counts=0/0 animated=6
+ok      [no-pref]/services/aes  fx=true reveal=0/0 counts=0/0 animated=6
+ok      [no-pref]/services/anes  fx=true reveal=0/0 counts=0/0 animated=5
+ok      [no-pref]/services/endo  fx=true reveal=0/0 counts=0/0 animated=6
+
+PASS: interactive reduced-motion pass over 24 page-runs (12 routes × {reduce, no-preference}) — content fully visible and static under reduce; motion layer armed under no-preference; controls still toggled

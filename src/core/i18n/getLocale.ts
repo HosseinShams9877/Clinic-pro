@@ -4,9 +4,10 @@
  *
  * Resolution order, highest priority first:
  *   1. `?lang=` query override  (lets a link pin a locale, e.g. /services?lang=en)
- *   2. `lang` cookie           (set by the client language switcher)
- *   3. `Accept-Language` header (quality-value aware)
- *   4. fa                      (canonical default)
+ *   2. `x-locale` header       (set by middleware for the current request)
+ *   3. `lang` cookie           (set by the client language switcher)
+ *   4. `Accept-Language` header (quality-value aware)
+ *   5. fa                      (canonical default)
  *
  * The resolved locale is baked server-side into <html lang dir> by the root
  * layout. It is never read from the URL path — there are no locale-prefixed
@@ -68,17 +69,21 @@ export async function getLocale(
   const queryValue = Array.isArray(queryRaw) ? queryRaw[0] : queryRaw;
   if (isLocale(queryValue)) return queryValue;
 
-  // 2. cookie
+  // 2. x-locale header (set by middleware)
+  const headerStore = await headers();
+  const headerLocale = headerStore.get("x-locale");
+  if (isLocale(headerLocale)) return headerLocale;
+
+  // 3. cookie
   const cookieStore = await cookies();
   const cookieValue = cookieStore.get(LOCALE_COOKIE)?.value;
   if (isLocale(cookieValue)) return cookieValue;
 
-  // 3. Accept-Language
-  const headerStore = await headers();
+  // 4. Accept-Language
   const accepted = parseAcceptLanguage(headerStore.get("accept-language"));
   if (accepted.length > 0) return accepted[0] as Locale;
 
-  // 4. canonical default
+  // 5. canonical default
   return DEFAULT_LOCALE;
 }
 

@@ -3,9 +3,18 @@
  *
  * Pre-rendered for all ten reference category ids (generateStaticParams), so
  * every Services link resolves to a real, fully rendered page — no stubs
- * (CLAUDE.md §2 rule 4). Unknown ids fall through to notFound(). Content is
- * read from the Zod-validated module catalog; metadata and a BreadcrumbList
- * are generated from the same source.
+ * (CLAUDE.md §2 rule 4). Unknown ids fall through to notFound().
+ *
+ * The B-4 fidelity port: the page IS the reference's detail view
+ * (services.html L135–157): `section.container.sdetail` (ServiceDetailPanel)
+ * followed by `section.container.sitems-wrap` (SubServiceGrid), with the
+ * category's own breadcrumb living inside the panel (the reference's
+ * `.sd-crumb`). The app-only back-to-the-landing affordance closes the page
+ * (the reference's single-page model never needed one) in the reference's own
+ * `.btn .btn-line` treatment.
+ *
+ * Content is read from the Zod-validated module catalog; metadata and a
+ * BreadcrumbList are generated from the same source.
  */
 
 import type { Metadata } from "next";
@@ -48,41 +57,22 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   if (category === undefined) notFound();
 
   return (
-    <div className="container">
-      {/* Breadcrumbs — the reference's sd-crumb; structured data lives in
-          the JSON-LD block generated alongside (BreadcrumbList). */}
-      <nav className="flex items-center gap-2 pt-8 text-[12.5px] text-muted" aria-label="breadcrumb">
-        <Link href={ROUTES.home} className="transition-colors hover:text-primary">
-          {t(locale, "nav.home")}
-        </Link>
-        <span>/</span>
-        <Link href={ROUTES.services} className="transition-colors hover:text-primary">
-          {t(locale, "nav.services")}
-        </Link>
-        <span>/</span>
-        <b className="text-foreground" aria-current="page">
-          {category.name}
-        </b>
-      </nav>
-
+    <>
       <ServiceDetailPanel category={category} locale={locale} />
-      <SubServiceGrid category={category} />
+      <SubServiceGrid category={category} locale={locale} />
 
-      {/* Back-to-services — same-bounds alternative to the reference's
-          out-of-scope bottom links. */}
-      <div className="pb-16">
-        <Link
-          href={ROUTES.services}
-          className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
-        >
-          <Icon name="i-arrow" size={18} className="arr" />
-          {t(locale, "sv.all")}
+      {/* Back-to-services — the app's route model adds the exit the reference's
+          single page never needed; the reference's own button treatment. */}
+      <section className="container svc-back">
+        <Link href={ROUTES.services} className="btn btn-line">
+          <Icon name="i-arrow" className="arr" />
+          <span>{t(locale, "sv.all")}</span>
         </Link>
-      </div>
+      </section>
 
       {/* Structured data (P1-14): the Service document plus a BreadcrumbList
-          whose entries mirror the visible nav above, both built from the same
-          catalog the page renders. */}
+          whose entries mirror the visible nav inside the panel, both built
+          from the same catalog the page renders. */}
       <JsonLd document={serviceJsonLd(id, locale)} />
       <JsonLd
         document={breadcrumbJsonLd([
@@ -91,6 +81,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           { name: category.name, path: category.path },
         ])}
       />
-    </div>
+    </>
   );
 }

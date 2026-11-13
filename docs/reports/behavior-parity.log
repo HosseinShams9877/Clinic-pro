@@ -1,0 +1,15 @@
+ok   hero .h-slogan final opacity: 1
+ok   scroll-progress present: true
+ok   live-dot animation: live 1.8s running
+ok   hw-n numeral (content:attr(data-n)): {"attr":"01","painted":"\"01\"","w":49}
+ok   hst-i icon painted: {"w":26,"h":26}
+ok   footer: {"brandMark":true,"phoneAnim":"bob 4s"}
+ok   magnetic armed: 3/3
+ok   magnetic after real mousemove: inline=translate(6.4px, 3px) computed=matrix(1, 0, 0, 1, 6.39526, 2.99778)
+ok   nav spy @top: [{"active":true,"txt":"خانه"},{"active":false,"txt":"خدمات"},{"active":false,"txt":"خدمات جراحی"},{"active":false,"txt":"خدمات پزشکی"},{"active":false,"txt":"تماس با ما"}]
+ok   nav spy @contact: [{"active":false,"txt":"خانه"},{"active":false,"txt":"خدمات"},{"active":false,"txt":"خدمات جراحی"},{"active":false,"txt":"خدمات پزشکی"},{"active":true,"txt":"تماس با ما"}]
+ok   cur panel @960: menu open
+ok   cur chev closed: {"li":"has-sub","sub":"none","chev":"none"}
+ok   cur chev open: {"li":"has-sub open","sub":"block","chev":"matrix(-1, 0, 0, -1, 0, 0)"}
+ok   REF chev closed: {"li":"has-sub","sub":"none","chev":"none"}
+ok   REF chev open: {"li":"has-sub open","sub":"block","chev":"matrix(-1, 0, 0, -1, 0, 0)"}

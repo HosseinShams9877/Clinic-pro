@@ -229,6 +229,9 @@ async function measureRoute(route, width, cold) {
     deviceScaleFactor: 1,
     mobile: width < 640,
   });
+  // Cold pass: cache disabled for this load, so it really pays the per-width
+  // AVIF encode (see the header). The warm load of the same URL then measures
+  // the cached path the gate cares about.
   await send("Network.setCacheDisabled", { cacheDisabled: cold });
   await send("Page.navigate", { url: `${ORIGIN}${route}?lang=fa` });
   await sleep(SETTLE_MS);

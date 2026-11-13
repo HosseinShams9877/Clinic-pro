@@ -27,6 +27,32 @@
      accent-colored text needs a deeper value; the same name flips to the
      bright accent in dark, where the bright value is the passing one). */
   --accent-ink: var(--c-primary-600);
+  /* Primary button face/ink (.btn-primary + the white .h-contact button,
+     R-6 audit 2026-11-12). Light is reference-identical (= --accent-strong,
+     #0B4F5C, 9.18:1 with white). In dark the reference-bright accent would be
+     the button face and 3.06:1 with a white 15px label — the dark value is a
+     permitted dark-mode token change, chosen in the same hue family and
+     measured 4.92:1 with white in both roles. --accent-strong itself is left
+     untouched (other dark uses, e.g. .hst p a on --surface, are 5.11:1 today
+     and would break at this value). */
+  --btn-strong: var(--accent-strong);
+  /* Kicker text (.h-kick, home.css L6). The reference's RENDERED skin is
+     vivid.css L21 — a g-ocean gradient clipped to the glyphs — and the port
+     paints exactly that (reference.css vivid fold). --kick-ink stays as the
+     `color` value, which is what axe/any contrast tool measures (the
+     reference's own color there is transparent, i.e. unmeasurable) and the
+     fallback where background-clip:text is unsupported. The original
+     reconciliation stands behind it: the vivid gradient's own mid stop
+     (#0EA5E9) is ~2.6:1 on the home background — the reference demo itself
+     fails WCAG AA on this pair — while this deep-teal fallback is 4.76:1,
+     so the gate stays green with zero light-mode pixel deviation. */
+  --kick-ink: #0B7A83;
+  /* Active menu link ink (.menu a.active, style.css L104). Light is
+     reference-identical (= --accent-strong, #0B4F5C on the --primary-50 tile,
+     9.2:1). In dark the bright accent on the inverted tile measures only
+     4.37:1, so the dark value flips to the brighter accent — a permitted
+     dark-mode token change, 6.09:1. */
+  --menu-active-ink: var(--accent-strong);
   /* Primary-tinted chips/hovers. Flips in dark so the light tint does not
      paint a white tile on a dark surface. */
   --primary-50: var(--c-primary-50);
@@ -64,8 +90,121 @@
     --accent-strong: #1aa3a8;
     --accent-deep: #e8f3f4;
     --accent-ink: #3bc0c5;
+    --btn-strong: #0E7D82;
+    --kick-ink: #3bc0c5;
+    --menu-active-ink: #3bc0c5;
     --primary-50: #12333d;
     --open: #4cc38f;
     --closed: #e08aa0;
+
+    /* Fidelity-pass --ref-* inversions. Per the fidelity directive only
+       COLOR may differ in dark mode (layout, shape, radius, shadow and
+       composition must match); these overrides keep the ported reference
+       surface set coherent in dark. Decorative vivid hues (gradient pairs,
+       group-icon gradients, status dots) are left as the reference's own
+       values — they read correctly on dark as-is. */
+    --ref-page-home:#0b1c22;
+    --ref-page-services:#0b1c22;
+    --ref-hero-light-a:#10262f;  --ref-hero-light-b:#0b1c22;
+    --ref-hero-home-a:#0e2028;   --ref-hero-home-b:#0b1c22;
+    --ref-care-a:#10262f;        --ref-help-bg:#0b1c22;
+
+    --ref-line-soft:#23414a;  --ref-line-stat:#23414a; --ref-line-input:#2c4a54;
+    --ref-surface-input:#12333d;
+
+    --ref-tint-a:#12333d; --ref-tint-b:#12333d; --ref-tint-c:#1a3a44;
+    --ref-tint-d:#1a3a44; --ref-tint-e:#12333d; --ref-tint-f:#12333d;
+    --ref-tint-g:#12333d; --ref-tint-h:#12333d; --ref-tint-i:#12333d;
+    --ref-tint-j:#12333d;
+
+    --ref-glass-92:rgba(16,38,47,.92);
+    --ref-glass-95:rgba(16,38,47,.95);
+    --ref-glass-96:rgba(16,38,47,.96);
+
+    --ref-ink-strong:#e8f3f4;
+    --ref-ink:#e8f3f4;
+    --ref-ink-2:#cfe2e6;
+    --ref-ink-3:#b9cfd5;
+    --ref-ink-4:#9db8bf;
+    --ref-ink-5:#9db8bf;
+    --ref-ink-6:#7fc0c6;
+    --ref-ink-7:#9db8bf;
+
+    --ref-mono-stroke:rgba(59,192,197,.35);
+    --ref-mono-s:rgba(232,243,244,.5);
+
+    /* icon-chip tints: translucent surface, original (readable) fg */
+    --ref-c1-bg:rgba(47,111,176,.18);  --ref-c2-bg:rgba(201,119,43,.18);
+    --ref-c3-bg:rgba(194,74,99,.18);   --ref-c4-bg:rgba(14,124,131,.20);
+    --ref-c5-bg:rgba(74,94,184,.20);   --ref-c6-bg:rgba(185,133,22,.20);
+    --ref-c7-bg:rgba(194,65,59,.20);   --ref-c8-bg:rgba(46,138,91,.20);
+    --ref-c1-fg:#8ab8e8; --ref-c2-fg:#e5ab6c; --ref-c3-fg:#e79ab0;
+    --ref-c4-fg:#5fd3d8; --ref-c5-fg:#9fb0e8; --ref-c6-fg:#e8c46c;
+    --ref-c7-fg:#e8918b; --ref-c8-fg:#7fd3a4;
+
+    --ref-blue-tint:#142b3a;  --ref-blue-tint-2:#142b3a;
+    --ref-blue-tint-3:#9fb0e8;
+    --ref-amber-tint:#2c2417; --ref-amber-tint-2:#2c2417;
+    --ref-pink-tint:#311e26;  --ref-red-tint:#311e1e;
+    --ref-green-tint:#14291f; --ref-green-tint-2:#14291f;
+    --ref-violet-tint:#221f33; --ref-orange-tint:#2c2117;
+
+    /* shadows lose their blue cast and soften on dark */
+    --ref-sh-nav:0 8px 30px rgba(0,0,0,.35);
+    --ref-sh-stats:0 16px 40px rgba(0,0,0,.4);
+    --ref-sh-soft:0 8px 24px rgba(0,0,0,.35);
+    --ref-sh-card:0 18px 36px rgba(0,0,0,.4);
+    --ref-sh-card-2:0 18px 40px rgba(0,0,0,.38);
+    --ref-sh-hover:0 22px 44px rgba(0,0,0,.45);
+    --ref-sh-photo:0 24px 50px rgba(0,0,0,.5);
+    --ref-sh-float:0 10px 30px rgba(0,0,0,.4);
+    --ref-sh-bento:0 14px 34px rgba(0,0,0,.45);
+    --ref-sh-bento-hover:0 26px 50px rgba(0,0,0,.55);
+    --ref-sh-primary:0 8px 20px rgba(0,0,0,.4);
+    --ref-sh-sgrp:0 10px 22px rgba(0,0,0,.4);
+    --ref-sh-toast:0 20px 40px rgba(0,0,0,.55);
+    --ref-sh-shf:0 12px 30px rgba(0,0,0,.4);
+    --ref-sh-float2:0 20px 44px rgba(0,0,0,.5);
+    --ref-sh-scat:0 18px 38px rgba(0,0,0,.45);
+    --ref-sh-scat-on:0 18px 40px rgba(0,0,0,.45),0 0 0 4px rgba(59,192,197,.18);
+    --ref-sh-sgo:0 4px 10px rgba(0,0,0,.5);
+    --ref-sh-sd:0 30px 60px rgba(0,0,0,.55);
+    --ref-sh-si:0 22px 44px rgba(0,0,0,.5);
+    --ref-sh-hst:0 16px 36px rgba(0,0,0,.38);
+    --ref-sh-qa:0 12px 30px rgba(0,0,0,.45);
+
+    /* port-only additions: structural surfaces flip; the white veils over
+       photos/bento tiles and the dark mono gradient stops stay (they sit
+       on imagery, same as the reference) */
+    --ref-ink-8:#cfe2e6;
+    --ref-tint-k:#12333d;
+    --ref-tint-l:#12333d;
+    --ref-tint-m:#0e2028;
+    --ref-glass-80:rgba(16,38,47,.8);
+    --ref-help-veil-97:rgba(11,28,34,.97);
+    --ref-help-veil-35:rgba(11,28,34,.35);
+    --ref-help-veil-0:rgba(11,28,34,0);
+    --ref-help-veil-90:rgba(11,28,34,.9);
+    --ref-hero-rad-1:rgba(59,192,197,.14);
+    --ref-hero-rad-2:rgba(59,192,197,.16);
+    --ref-photo-shade:rgba(0,0,0,.4);
+    --ref-frame-line:rgba(59,192,197,.5);
+    --ref-mono-glow:rgba(59,192,197,.2);
+    --ref-mono-ink:rgba(232,243,244,.35);
+    --ref-ben-tint:rgba(59,192,197,.18);
+    --ref-video-veil-1:rgba(0,0,0,.82);
+    --ref-video-veil-2:rgba(0,0,0,.15);
+    --ref-pulse-ring:rgba(59,192,197,.5);
+
+    /* vivid fold, dark-coherent: g-soft (the .hs-i tile) and hw-n (the
+       watermark numerals) are light-fabric values — a pale tile and pale
+       digits would paint light-mode fabric on a dark card. Flipped to dark-
+       family equivalents (a permitted dark-mode COLOR deviation; the
+       saturated gradients g-teal/ocean/sky/mint/violet/deep/g-em keep the
+       reference values — they read correctly on dark as-is, same decision as
+       the other decorative vivid hues above). */
+    --ref-g-soft:linear-gradient(135deg,rgba(59,192,197,.14) 0%,rgba(14,165,233,.12) 100%);
+    --ref-g-hwn:linear-gradient(180deg,#1a3a44,#12333d);
   }
 }
+

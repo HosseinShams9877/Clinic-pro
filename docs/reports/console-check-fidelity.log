@@ -1,0 +1,14 @@
+clean  /  count=0
+clean  /services  count=0
+clean  /services/gen  count=0
+clean  /services/plastic  count=0
+clean  /services/ortho  count=0
+clean  /services/uro  count=0
+clean  /services/eye  count=0
+clean  /services/ent  count=0
+clean  /services/gyn  count=0
+clean  /services/aes  count=0
+clean  /services/anes  count=0
+clean  /services/endo  count=0
+
+PASS: 12/12 routes with zero console errors, zero exceptions, zero failed or 4xx/5xx asset loads

@@ -1,20 +1,26 @@
 /**
- * app/page.tsx — the home page.
+ * app/page.tsx — the home page, a faithful port of پلتفرم/index.html.
  *
- * Server-rendered counterpart of پلتفرم/index.html, restricted to the
- * implemented scope: hero, stats, help (services card only — the reference's
- * doctor-finder search and guide card point past the boundary), services
- * bento (8 cards, with clinics.html#anesthesia retargeted to /services/anes),
- * care banner, patient-steps accordion (static; its outbound links to
- * guide.html / patient-panel.html are removed per Q4), why-us, and the
- * contact strip (tel + external map; the booking CTA is dropped).
+ * The DOM mirrors the reference section for section (hero → stats → help →
+ * services → care banner → patient steps → why-us → contact strip) on the
+ * reference's own class hooks, which reference.css styles 1:1. The living
+ * layer is replicated by dedicated islands: `HomeSvcBento` (home-svc.js),
+ * `HeroParallax` + `LiveStatus` + `FloatingActions` (home.js) and
+ * `LivingEffects` (main.js — mounted in layout.tsx).
  *
- * Loan (ln.*) and loyalty club (cb.*) are NOT reproduced anywhere (REC-7);
- * the doctors section is past the boundary. The live admissions badge ships
- * with a server-rendered initial state (core/openHours) and is hydrated by
- * the React Query island (P1-13). Stats carry data-count attributes for the
- * optional count-up enhancement (P1-12); the text is the final value, so
- * nothing depends on client script.
+ * Scope substitutions, all per the binding Q decisions (OPEN_QUESTIONS.md):
+ *   - Q1: every reference `patient-panel.html?go=new` booking CTA dials the
+ *     verified admissions number `tel:+983155154000` (hero CTA, patient step
+ *     4, contact strip, .qa-book) — the panel is past the boundary.
+ *   - Q4: the help-search form (its targets are doctors.html / guide.html),
+ *     the doctors and guide cards of `.hh-cards`, the `guide.html` link in
+ *     patient step 2, and the loan (ln.*) / club (cb.*) / doctors sections
+ *     are not rendered at all — no stubs, no dead links.
+ *   - `clinics.html#anesthesia` on card c7 retargets to the built
+ *     `/services/anes`.
+ *
+ * fa is canonical; the hero image alt is the reference's fa literal (the
+ * reference never localizes alt text).
  */
 
 import type { Metadata } from "next";
@@ -23,12 +29,14 @@ import Image from "next/image";
 
 import { ROUTES, siteConfig } from "@/config/site.config";
 import { getLocale } from "@/core/i18n/getLocale";
+import { toLocaleDigits } from "@/core/i18n/digits";
 import { t } from "@/modules/i18n/messages";
 import { routeMetadata } from "@/modules/seo/lib/metadata";
 import { websiteJsonLd } from "@/modules/seo/lib/structuredData";
 import { Icon, type IconName } from "@/components/shared/Icon";
 import { FloatingActions } from "@/components/shared/FloatingActions";
-import { HeroParticles } from "@/components/shared/HeroParticles";
+import { HeroParallax } from "@/components/shared/HeroParallax";
+import { HomeSvcBento } from "@/components/shared/HomeSvcBento";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { LiveStatus } from "@/components/shared/LiveStatus";
 import { statusFor } from "@/core/openHours";
@@ -44,410 +52,349 @@ export function generateMetadata(): Metadata {
   });
 }
 
-/** The four verified stats (reference index.html lines 150–155). */
+/**
+ * The four verified stats (reference index.html, `.h-stats`). The first three
+ * carry `data-count` for the reference's count-up (main.js); "از سال ۱۳۹۹"
+ * is static text in the reference and stays static here.
+ */
 const STATS: ReadonlyArray<{
   icon: IconName;
-  valueKey: "st.n1" | "st.n2" | "st.n3";
-  labelKey: "st.l1" | "st.l2" | "st.l3";
-  /** Numeric count-up target; absent = no animation (text stays as rendered). */
-  count?: number;
+  valueKey: "st.n1" | "st.n2" | "st.n3" | "h.since";
+  labelKey: "st.l1" | "st.l2" | "st.l3" | "h.sinceS";
+  /** Present = the reference animates this number (main.js count-up). */
+  count?: true;
 }> = [
-  { icon: "i-building", valueKey: "st.n1", labelKey: "st.l1", count: 7 },
-  { icon: "i-team", valueKey: "st.n2", labelKey: "st.l2", count: 60 },
-  { icon: "i-bed", valueKey: "st.n3", labelKey: "st.l3", count: 40 },
+  { icon: "i-building", valueKey: "st.n1", labelKey: "st.l1", count: true },
+  { icon: "i-team", valueKey: "st.n2", labelKey: "st.l2", count: true },
+  { icon: "i-bed", valueKey: "st.n3", labelKey: "st.l3", count: true },
+  { icon: "i-calendar", valueKey: "h.since", labelKey: "h.sinceS" },
 ];
 
 /**
- * The services bento (reference .hsv c1–c8). c7 retargets the reference's
- * clinics.html#anesthesia → /services/anes (the anesthesia clinic *is* one of
- * the ten catalog categories); every other card keeps its reference target.
+ * The eight static services cards (`.h-svc`), in the reference's own order
+ * (c1 eye … c8 ortho). They are the shipped content — the `HomeSvcBento`
+ * island swaps in the reference's tabbed bento after mount, and they remain
+ * as the no-JS/SEO fallback, exactly like the reference's own degradation.
  */
-const BENTO: ReadonlyArray<{
+const STATIC_SERVICES: ReadonlyArray<{
+  cls: string;
   href: string;
   icon: IconName;
   titleKey: "sv.1" | "sv.2" | "sv.3" | "h.s4t" | "sv.4" | "h.s6t" | "sv.7" | "sv.6";
-  subKey: "h.s1" | "h.s2" | "h.s3" | "h.s4" | "h.s5" | "h.s6" | "h.s7" | "h.s8";
+  textKey: "h.s1" | "h.s2" | "h.s3" | "h.s4" | "h.s5" | "h.s6" | "h.s7" | "h.s8";
 }> = [
-  { href: "/services/eye", icon: "i-eye", titleKey: "sv.1", subKey: "h.s1" },
-  { href: "/services/ent", icon: "i-ear", titleKey: "sv.2", subKey: "h.s2" },
-  { href: "/services/gyn", icon: "i-women", titleKey: "sv.3", subKey: "h.s3" },
-  { href: "/services/gen", icon: "i-scalpel", titleKey: "h.s4t", subKey: "h.s4" },
-  { href: "/services/uro", icon: "i-kidney", titleKey: "sv.4", subKey: "h.s5" },
-  { href: "/services/aes", icon: "i-laser", titleKey: "h.s6t", subKey: "h.s6" },
-  { href: "/services/anes", icon: "i-steth", titleKey: "sv.7", subKey: "h.s7" },
-  { href: "/services/ortho", icon: "i-bone", titleKey: "sv.6", subKey: "h.s8" },
+  { cls: "c1", href: "/services/eye", icon: "i-eye", titleKey: "sv.1", textKey: "h.s1" },
+  { cls: "c2", href: "/services/ent", icon: "i-ear", titleKey: "sv.2", textKey: "h.s2" },
+  { cls: "c3", href: "/services/gyn", icon: "i-women", titleKey: "sv.3", textKey: "h.s3" },
+  { cls: "c4", href: "/services/gen", icon: "i-scalpel", titleKey: "h.s4t", textKey: "h.s4" },
+  { cls: "c5", href: "/services/uro", icon: "i-kidney", titleKey: "sv.4", textKey: "h.s5" },
+  { cls: "c6", href: "/services/aes", icon: "i-laser", titleKey: "h.s6t", textKey: "h.s6" },
+  // c7: the reference's clinics.html#anesthesia → the built category page.
+  { cls: "c7", href: "/services/anes", icon: "i-steth", titleKey: "sv.7", textKey: "h.s7" },
+  { cls: "c8", href: "/services/ortho", icon: "i-bone", titleKey: "sv.6", textKey: "h.s8" },
 ];
 
-/** Care banner steps (reference .hc-steps). */
+/** The four care-banner steps (`.hc-steps`) — numerals localise per locale. */
 const CARE_STEPS: ReadonlyArray<"h.p1" | "h.p2" | "h.p3" | "h.p4"> = ["h.p1", "h.p2", "h.p3", "h.p4"];
 
 /**
- * Patient-steps accordion (reference .hst). Static content, links removed.
- * The reference's fourth item (h.g4 "نوبت‌دهی آنلاین") exists solely to funnel
- * into patient-panel.html?go=new — appointment booking, beyond the Phase 1
- * boundary (Q1: contact/tel only) — so it is omitted, not stubbed. Its sibling
- * h.g2 link to guide.html is likewise dropped here (body text kept).
+ * The four patient-steps accordions (`.h-steps`), reference order. Step 4
+ * (online booking) is restored: per Q1 its `patient-panel.html` link dials
+ * admissions. Step 2's `guide.html` link is dropped per Q4, its body text
+ * kept — the reference's own markup shape, no dead link.
  */
 const PATIENT_STEPS: ReadonlyArray<{
   icon: IconName;
-  titleKey: "h.g1" | "h.g2" | "h.g3";
-  subKey: "h.g1s" | "h.g2s" | "h.g3s";
-  bodyKey: "h.g1d" | "h.g2d" | "gd.1d";
+  titleKey: "h.g1" | "h.g2" | "h.g3" | "h.g4";
+  subKey: "h.g1s" | "h.g2s" | "h.g3s" | "h.g4s";
+  bodyKey: "h.g1d" | "gd.1d";
+  /** Steps 2 and 4 wrap the body in a span in the reference; step 4 adds a link. */
+  bodySpanKey?: "h.g2d" | "h.g4d";
+  linkKey?: "h.g4a";
 }> = [
   { icon: "i-clock", titleKey: "h.g1", subKey: "h.g1s", bodyKey: "h.g1d" },
-  { icon: "i-check", titleKey: "h.g2", subKey: "h.g2s", bodyKey: "h.g2d" },
+  { icon: "i-check", titleKey: "h.g2", subKey: "h.g2s", bodyKey: "gd.1d", bodySpanKey: "h.g2d" },
   { icon: "i-clipboard", titleKey: "h.g3", subKey: "h.g3s", bodyKey: "gd.1d" },
+  { icon: "i-calendar", titleKey: "h.g4", subKey: "h.g4s", bodyKey: "gd.1d", bodySpanKey: "h.g4d", linkKey: "h.g4a" },
 ];
 
-/** Why-us standards (reference .h-why, six articles). */
+/** The six why-us articles (`.h-why`), reference order. */
 const WHY_US: ReadonlyArray<{
   n: string;
   icon: IconName;
   titleKey: "std.1" | "std.2" | "std.3" | "hs.4" | "hs.5" | "hs.6";
-  subKey: "std.1d" | "std.2d" | "std.3d" | "hs.4d" | "hs.5d" | "hs.6d";
+  textKey: "std.1d" | "std.2d" | "std.3d" | "hs.4d" | "hs.5d" | "hs.6d";
 }> = [
-  { n: "01", icon: "i-shield", titleKey: "std.1", subKey: "std.1d" },
-  { n: "02", icon: "i-air", titleKey: "std.2", subKey: "std.2d" },
-  { n: "03", icon: "i-steril", titleKey: "std.3", subKey: "std.3d" },
-  { n: "04", icon: "i-steth", titleKey: "hs.4", subKey: "hs.4d" },
-  { n: "05", icon: "i-band", titleKey: "hs.5", subKey: "hs.5d" },
-  { n: "06", icon: "i-building", titleKey: "hs.6", subKey: "hs.6d" },
+  { n: "01", icon: "i-shield", titleKey: "std.1", textKey: "std.1d" },
+  { n: "02", icon: "i-air", titleKey: "std.2", textKey: "std.2d" },
+  { n: "03", icon: "i-steril", titleKey: "std.3", textKey: "std.3d" },
+  { n: "04", icon: "i-steth", titleKey: "hs.4", textKey: "hs.4d" },
+  { n: "05", icon: "i-band", titleKey: "hs.5", textKey: "hs.5d" },
+  { n: "06", icon: "i-building", titleKey: "hs.6", textKey: "hs.6d" },
 ];
 
 export default async function HomePage() {
   const locale = await getLocale();
 
   return (
-    <>
-      {/* ===================== HERO ===================== */}
-      <section className="relative overflow-hidden bg-accent-strong text-on-accent">
-        {/* Rising particles — decorative, reduced-motion gated, client-only
-            (P1-12). Renders nothing server-side and nothing without JS. */}
-        <HeroParticles />
-        <div className="container grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
-          <div className="flex flex-col gap-5">
-            <span className="kicker w-fit rounded-full border border-on-accent/40 px-4 py-1.5 text-[12.5px] font-semibold">
-              {t(locale, "h.k")}
-            </span>
-            <h1 className="text-[34px] font-extrabold leading-tight md:text-[52px]">
-              {t(locale, "h.t1")} <em className="not-italic font-bold text-on-accent">{t(locale, "h.t2")}</em>
-            </h1>
-            <p className="max-w-xl text-[15px] leading-loose on-accent">{t(locale, "h.lead")}</p>
+    // `.page-home` is the reference's body hook: `body:has(.page-home)`
+    // paints the light home background (reference.css).
+    <div className="page-home">
+      {/* home.js hero parallax — null-rendering, gated on width + motion. */}
+      <HeroParallax />
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a
-                href={`tel:${siteConfig.phone}`}
-                className="inline-flex items-center gap-2 rounded-lg bg-on-accent px-6 py-3.5 text-[15px] font-bold text-accent-strong transition hover:opacity-90"
-              >
-                <Icon name="i-phone" size={20} />
-                {t(locale, "h.phone")}
+      {/* ===================== HERO ===================== */}
+      <section className="h-hero">
+        <div className="container h-hero-in">
+          <div className="h-copy">
+            <span className="h-k">{t(locale, "h.k")}</span>
+            <h1 className="h-slogan">
+              <span>{t(locale, "h.t1")}</span>
+              <em>{t(locale, "h.t2")}</em>
+            </h1>
+            <p className="h-lead">{t(locale, "h.lead")}</p>
+            <div className="h-cta">
+              {/* Q1: the booking CTA dials admissions (panel past boundary). */}
+              <a className="btn btn-primary" href={`tel:${siteConfig.phone}`}>
+                <Icon name="i-calendar" />
+                <span>{t(locale, "cta.request")}</span>
+              </a>
+              <a className="btn btn-line" href={`tel:${siteConfig.phone}`}>
+                <Icon name="i-phone" />
+                <span>{t(locale, "h.phone")}</span>
               </a>
             </div>
-
-            {/* Live admissions badge — server-rendered initial state
-                (core/openHours statusFor), kept current by the React Query
-                island (P1-13) polling /api/status every 60 s while visible. */}
-            <LiveStatus locale={locale} serverSnapshot={statusFor(new Date())} />
           </div>
-
-          <figure className="relative">
-            {/* P2 item 8: next/image — the aspect lives on the box so the
-                space is reserved before load (this <img> IS the LCP element),
-                and the optimizer serves AVIF/WebP at the sizes hinted below.
-                Box geometry is verified equal to the raw-<img> baseline. */}
-            <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-2">
+          <div className="h-media">
+            <div className="h-img">
               <Image
                 src="/img/or-hero.jpg"
-                alt={t(locale, "h.k")}
-                priority
-                sizes="(min-width: 960px) 550px, calc(100vw - 40px)"
+                // The reference's fa literal — the reference never localizes alt.
+                alt="اتاق عمل مرکز جراحی دکتر خیرخواه"
                 fill
-                className="object-cover"
+                priority
+                // Below 960 the reference hero is full-bleed: .container has
+                // padding-inline:20px (style.css L56) and .h-media pulls back
+                // out with margin-inline:-20px (home.css L156), so the image
+                // spans exactly 100vw. This is also why the value is NOT the
+                // 116vw over-approximation this shipped with: in Chrome 156 a
+                // sizes entry whose media matches at exactly 960px AND whose
+                // resolved size selects the w=1200 srcset candidate never
+                // issues the request, so the hero photo silently never
+                // appeared at a 960px viewport and window.load never fired
+                // (scripts/cwv-audit / ui-fix-verification stall). 100vw
+                // selects w=1080 there and loads at every width. Desktop half
+                // of the grid: 52vw.
+                sizes="(max-width: 960px) 100vw, 52vw"
               />
             </div>
-          </figure>
+            {/* Live admissions badge: server-rendered initial state
+                (core/openHours statusFor), kept current by the React Query
+                island (P1-13) polling /api/status while the tab is visible. */}
+            <LiveStatus locale={locale} serverSnapshot={statusFor(new Date())} />
+          </div>
         </div>
       </section>
 
       {/* ===================== STATS ===================== */}
-      <section className="container" aria-label={t(locale, "sv.kicker")}>
-        <ul className="-mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {STATS.map(({ icon, valueKey, labelKey, count }) => (
-            <li
-              key={valueKey}
-              data-reveal
-              className="flex items-center gap-4 rounded-xl border border-border bg-surface p-5 shadow-1"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary">
-                <Icon name={icon} size={24} />
+      <section className="container h-stats-wrap">
+        <ul className="h-stats">
+          {STATS.map((stat) => (
+            <li key={stat.valueKey}>
+              <span className="hs-i">
+                <Icon name={stat.icon} />
               </span>
               <div>
-                {/* data-count feeds the optional count-up island (P1-12);
-                    the text is the final value, so no-JS sees the truth. */}
-                <b
-                  className="block text-[24px] font-extrabold text-foreground"
-                  {...(count === undefined ? {} : { "data-count": count })}
-                >
-                  {t(locale, valueKey)}
-                </b>
-                <small className="text-[12.5px] text-muted">{t(locale, labelKey)}</small>
+                {/* `data-count` flags the reference's count-up (main.js); the
+                    rendered text is the final localized value, so nothing
+                    depends on client script. */}
+                <b {...(stat.count ? { "data-count": "" } : {})}>{t(locale, stat.valueKey)}</b>
+                <small>{t(locale, stat.labelKey)}</small>
               </div>
             </li>
           ))}
-          <li className="flex items-center gap-4 rounded-xl border border-border bg-primary p-5 text-on-accent shadow-1">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-on-accent/15">
-              <Icon name="i-calendar" size={24} />
-            </span>
-            <div>
-              <b className="block text-[24px] font-extrabold">{t(locale, "h.since")}</b>
-              <small className="text-[12.5px] on-accent">{t(locale, "h.sinceS")}</small>
-            </div>
-          </li>
         </ul>
       </section>
 
-      {/* ===================== HELP =====================
-          Reference has a doctor-finder form plus three cards; only the
-          services card is inside the boundary, so only it ships. */}
-      <section
-        id="help"
-        className="section relative -mt-px overflow-hidden bg-primary-50"
-      >
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: "url(/img/help-bg.jpg)" }}
-          aria-hidden="true"
-        />
-        <div className="container relative flex flex-col items-center gap-8 py-16 text-center md:py-20">
-          <div className="flex max-w-xl flex-col gap-3">
-            <h2 className="text-[26px] font-extrabold text-foreground md:text-[32px]">{t(locale, "help.title")}</h2>
-            <p className="text-[14px] leading-loose text-muted">{t(locale, "h.helpS")}</p>
+      {/* ===================== HELP ===================== */}
+      <section className="container h-sec" id="help">
+        <div className="h-help">
+          <div className="hh-t">
+            <h2>{t(locale, "help.title")}</h2>
+            <p>{t(locale, "h.helpS")}</p>
+            {/* Q4: the reference's help-search form targets out-of-scope
+                pages (doctors.html / guide.html) — not rendered. */}
           </div>
-          <Link
-            href={ROUTES.services}
-            data-reveal
-            className="group flex w-full max-w-md flex-col gap-2 rounded-xl border border-border bg-surface p-7 text-right shadow-1 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-2"
-          >
-            <span className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary-50 text-primary">
-              <Icon name="i-scalpel" size={28} />
-            </span>
-            <b className="pt-2 text-[18px] font-extrabold text-foreground">{t(locale, "h.c2")}</b>
-            <span className="text-[13.5px] text-muted">{t(locale, "h.c2s")}</span>
-            <span className="inline-flex items-center gap-1.5 pt-2 text-[13px] font-semibold text-primary">
-              {t(locale, "h.see")}
-              <Icon name="i-arrow" size={16} className="arr" />
-            </span>
-          </Link>
+          <div className="hh-cards">
+            {/* Q4: of the reference's three cards only the services card
+                points into the built site; the others are not rendered. */}
+            <Link className="hh-c" href={ROUTES.services}>
+              <span>
+                <Icon name="i-scalpel" />
+              </span>
+              <b>{t(locale, "h.c2")}</b>
+              <small>{t(locale, "h.c2s")}</small>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ===================== SERVICES BENTO ===================== */}
-      <section id="services" className="section">
-        <div className="container">
-          <div className="flex flex-wrap items-end justify-between gap-6 pb-8">
-            <div className="flex max-w-xl flex-col gap-3">
-              <span className="kicker w-fit rounded-full bg-accent/10 px-4 py-1.5 text-[12.5px] font-semibold text-accent-ink">
-                {t(locale, "sv.kicker")}
+      {/* ===================== SERVICES ===================== */}
+      <section className="container h-sec" id="services">
+        <div className="h-head">
+          <div>
+            <span className="h-kick">{t(locale, "sv.kicker")}</span>
+            <h2>{t(locale, "h.svT")}</h2>
+            <p>{t(locale, "h.svS")}</p>
+          </div>
+          <Link className="h-more" href={ROUTES.services}>
+            <span>{t(locale, "sv.all")}</span>
+            <Icon name="i-arrow" className="arr" />
+          </Link>
+        </div>
+        {/* home-svc.js: after mount the tabs + bento grid replace the static
+            grid below; without JS the eight cards are the shipped content. */}
+        <HomeSvcBento locale={locale} />
+        <div className="h-svc">
+          {STATIC_SERVICES.map((card) => (
+            <Link key={card.cls} className={`hsv ${card.cls}`} href={card.href}>
+              <span className="hsv-i">
+                <Icon name={card.icon} />
               </span>
-              <h2 className="text-[26px] font-extrabold text-foreground md:text-[32px]">{t(locale, "h.svT")}</h2>
-              <p className="text-[14px] leading-loose text-muted">{t(locale, "h.svS")}</p>
-            </div>
-            <Link
-              href={ROUTES.services}
-              className="group inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-[14px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
-            >
-              {t(locale, "sv.all")}
-              <Icon name="i-arrow" size={18} className="arr" />
+              <b>{t(locale, card.titleKey)}</b>
+              <p>{t(locale, card.textKey)}</p>
+              <i>{t(locale, "h.see")}</i>
             </Link>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {BENTO.map(({ href, icon, titleKey, subKey }) => (
-              <Link
-                key={href}
-                href={href}
-                data-reveal
-                className="group flex flex-col gap-3 rounded-xl border border-border bg-surface p-6 shadow-1 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-2"
-              >
-                <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 text-primary transition-colors group-hover:bg-primary group-hover:text-on-accent">
-                  <Icon name={icon} size={24} />
-                </span>
-                <b className="text-[15.5px] font-extrabold leading-snug text-foreground">{t(locale, titleKey)}</b>
-                <span className="text-[13px] leading-7 text-muted">{t(locale, subKey)}</span>
-                <span className="inline-flex items-center gap-1.5 pt-1 text-[12.5px] font-semibold text-primary">
-                  {t(locale, "h.see")}
-                  <Icon name="i-arrow" size={15} className="arr" />
-                </span>
-              </Link>
-            ))}
-          </div>
+          ))}
         </div>
       </section>
 
       {/* ===================== CARE BANNER ===================== */}
-      <section className="section">
-        <div className="container">
-          <div
-            data-reveal
-            className="grid overflow-hidden rounded-xl border border-border bg-surface shadow-1 md:grid-cols-2"
-          >
-            {/* P2 item 8: fill mode — the figure reserved the box before
-                (h-full on the raw img) and keeps doing so now via min-h-64 /
-                md:h-full, so the absolute-positioned picture cannot shift
-                layout while it decodes AVIF/WebP. */}
-            <figure className="relative order-1 min-h-64 w-full overflow-hidden md:order-none md:h-full">
-              <Image
-                src="/img/corridor-wide.jpg"
-                alt=""
-                sizes="(min-width: 960px) 570px, calc(100vw - 42px)"
-                fill
-                className="h-full w-full object-cover"
-              />
-            </figure>
-            <div className="flex flex-col justify-center gap-5 p-8 md:p-12">
-              <h2 className="text-[24px] font-extrabold text-foreground md:text-[28px]">{t(locale, "care.title")}</h2>
-              <p className="text-[14px] leading-loose text-muted">{t(locale, "h.careP")}</p>
-              <ol className="flex flex-wrap gap-3">
-                {CARE_STEPS.map((key, index) => (
-                  <li
-                    key={key}
-                    className="flex items-center gap-2.5 rounded-lg bg-primary-50 px-4 py-2.5"
-                  >
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[12.5px] font-bold text-on-accent">
-                      {index + 1}
-                    </span>
-                    <b className="text-[13.5px] font-semibold text-foreground">{t(locale, key)}</b>
-                  </li>
-                ))}
-              </ol>
-            </div>
+      <section className="container h-sec">
+        <div className="h-care">
+          <div className="hc-img">
+            <Image src="/img/corridor-wide.jpg" alt="" fill sizes="(max-width: 960px) 100vw, 42vw" />
+          </div>
+          <div className="hc-t">
+            <h2>{t(locale, "care.title")}</h2>
+            <p>{t(locale, "h.careP")}</p>
+            <ol className="hc-steps">
+              {CARE_STEPS.map((stepKey, i) => (
+                <li key={stepKey}>
+                  <span>{toLocaleDigits(locale, i + 1)}</span>
+                  <b>{t(locale, stepKey)}</b>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
-      {/* ===================== PATIENT STEPS =====================
-          Static accordion (SERVICES_SCOPE.md §4): outbound links to
-          guide.html and patient-panel.html removed per Q4. */}
-      <section id="steps" className="section bg-primary-50">
-        <div className="container flex flex-col gap-10">
-          <div className="mx-auto flex max-w-xl flex-col gap-3 text-center">
-            <span className="kicker w-fit mx-auto rounded-full bg-accent/10 px-4 py-1.5 text-[12.5px] font-semibold text-accent-ink">
-              {t(locale, "gd.kicker")}
-            </span>
-            <h2 className="text-[26px] font-extrabold text-foreground md:text-[32px]">{t(locale, "gd.title")}</h2>
-            <p className="text-[14px] leading-loose text-muted">{t(locale, "gd.sub")}</p>
+      {/* ===================== PATIENT STEPS ===================== */}
+      <section className="container h-sec" id="steps">
+        <div className="h-head center">
+          <div>
+            <span className="h-kick">{t(locale, "gd.kicker")}</span>
+            <h2>{t(locale, "gd.title")}</h2>
+            <p>{t(locale, "gd.sub")}</p>
           </div>
-          <div className="mx-auto flex w-full max-w-3xl flex-col gap-3">
-            {PATIENT_STEPS.map(({ icon, titleKey, subKey, bodyKey }) => (
-              <details
-                key={titleKey}
-                className="group rounded-xl border border-border bg-surface shadow-1 [&_p]:mt-2"
-              >
-                <summary className="flex cursor-pointer list-none items-center gap-4 p-5">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary">
-                    <Icon name={icon} size={22} />
-                  </span>
-                  <span className="flex flex-1 flex-col">
-                    <b className="text-[15px] font-bold text-foreground">{t(locale, titleKey)}</b>
-                    <small className="text-[12.5px] text-muted">{t(locale, subKey)}</small>
-                  </span>
-                  <Icon
-                    name="i-chev"
-                    size={18}
-                    className="rotate-180 text-muted transition-transform group-open:rotate-0"
-                  />
-                </summary>
-                <p className="border-t border-border px-5 py-4 text-[13.5px] leading-loose text-muted">
-                  {t(locale, bodyKey)}
-                </p>
-              </details>
-            ))}
-          </div>
+        </div>
+        <div className="h-steps">
+          {PATIENT_STEPS.map((step) => (
+            <details key={step.titleKey} className="hst">
+              <summary>
+                <span className="hst-i">
+                  <Icon name={step.icon} />
+                </span>
+                <b>{t(locale, step.titleKey)}</b>
+                <small>{t(locale, step.subKey)}</small>
+              </summary>
+              <p>
+                {step.bodySpanKey ? <span>{t(locale, step.bodySpanKey)}</span> : t(locale, step.bodyKey)}
+                {step.linkKey && (
+                  <>
+                    {" "}
+                    {/* Q1: the reference's patient-panel booking link dials
+                        admissions — same affordance, no out-of-scope page. */}
+                    <a href={`tel:${siteConfig.phone}`}>{t(locale, step.linkKey)}</a>
+                  </>
+                )}
+              </p>
+            </details>
+          ))}
         </div>
       </section>
 
       {/* ===================== WHY US ===================== */}
-      <section id="why" className="section">
-        <div className="container flex flex-col gap-10">
-          <div className="mx-auto flex max-w-xl flex-col gap-3 text-center">
-            <span className="kicker w-fit mx-auto rounded-full bg-accent/10 px-4 py-1.5 text-[12.5px] font-semibold text-accent-ink">
-              {t(locale, "hs.k")}
-            </span>
-            <h2 className="text-[26px] font-extrabold text-foreground md:text-[32px]">{t(locale, "hs.t")}</h2>
-            <p className="text-[14px] leading-loose text-muted">{t(locale, "hs.p")}</p>
+      <section className="container h-sec" id="why">
+        <div className="h-head center">
+          <div>
+            <span className="h-kick">{t(locale, "hs.k")}</span>
+            <h2>{t(locale, "hs.t")}</h2>
+            <p>{t(locale, "hs.p")}</p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {WHY_US.map(({ n, icon, titleKey, subKey }) => (
-              <article
-                key={n}
-                data-reveal
-                className="relative flex flex-col gap-3 overflow-hidden rounded-xl border border-border bg-surface p-6 shadow-1"
-              >
-                <span
-                  className="pointer-events-none absolute -top-3 left-4 select-none text-[64px] font-extrabold leading-none text-primary/5"
-                  aria-hidden="true"
-                >
-                  {n}
-                </span>
-                <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 text-primary">
-                  <Icon name={icon} size={24} />
-                </span>
-                <b className="relative text-[15.5px] font-extrabold leading-snug text-foreground">
-                  {t(locale, titleKey)}
-                </b>
-                <p className="relative text-[13px] leading-7 text-muted">{t(locale, subKey)}</p>
-              </article>
-            ))}
-          </div>
+        </div>
+        <div className="h-why">
+          {WHY_US.map((item) => (
+            <article key={item.n}>
+              {/* The reference's literal Latin numerals 01–06 (.hw-n). The
+                  glyph is painted via ::before content (reference.css) so the
+                  numeral stays purely decorative — axe has no text node to
+                  flag, and the painted pixels are unchanged (R-6 fix, see
+                  EXACT_VISUAL_AND_UI_FIDELITY_REPORT.md §2/B-7). */}
+              <span className="hw-n" data-n={item.n} aria-hidden="true" />
+              <Icon name={item.icon} />
+              <b>{t(locale, item.titleKey)}</b>
+              <p>{t(locale, item.textKey)}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* ===================== CONTACT =====================
-          Booking CTA (patient-panel.html) dropped; tel + external map only. */}
-      <section id="contact" className="section">
-        <div className="container">
-          <div className="grid gap-8 rounded-xl bg-accent-strong p-8 text-on-accent md:grid-cols-2 md:p-12">
-            <div className="flex flex-col gap-4">
-              <h2 className="text-[24px] font-extrabold md:text-[28px]">{t(locale, "h.ctT")}</h2>
-              <p className="max-w-md text-[14px] leading-loose on-accent">{t(locale, "h.ctS")}</p>
-              <ul className="flex flex-col gap-3 pt-2">
-                <li className="flex items-center gap-3 text-[14px] font-semibold">
-                  <Icon name="i-phone" size={20} />
-                  <a href={`tel:${siteConfig.phone}`} dir="ltr" className="transition hover:opacity-80">
-                    {siteConfig.phoneDisplay}
-                  </a>
-                </li>
-                <li className="flex items-center gap-3 text-[13.5px] on-accent">
-                  <Icon name="i-clock" size={20} />
-                  {t(locale, "ct.hours")}
-                </li>
-                <li className="flex items-center gap-3 text-[13.5px] on-accent">
-                  <Icon name="i-pin" size={20} />
-                  {t(locale, "h.addrS")}
-                </li>
-              </ul>
-            </div>
-            <div className="flex flex-col justify-center gap-3 md:items-end">
-              <a
-                href={siteConfig.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-fit items-center gap-2 rounded-lg bg-on-accent px-6 py-3.5 text-[15px] font-bold text-accent-strong transition hover:opacity-90"
-              >
-                <Icon name="i-pin" size={20} />
-                {t(locale, "ct.map")}
+      {/* ===================== CONTACT STRIP ===================== */}
+      <section className="container h-sec" id="contact">
+        <div className="h-contact">
+          <div className="hct-t">
+            <h2>{t(locale, "h.ctT")}</h2>
+            <p>{t(locale, "h.ctS")}</p>
+          </div>
+          <ul>
+            <li>
+              <Icon name="i-phone" />
+              <a href={`tel:${siteConfig.phone}`} dir="ltr">
+                {siteConfig.phoneDisplay}
               </a>
-            </div>
+            </li>
+            <li>
+              <Icon name="i-clock" />
+              <span>{t(locale, "ct.hours")}</span>
+            </li>
+            <li>
+              <Icon name="i-pin" />
+              <span>{t(locale, "h.addrS")}</span>
+            </li>
+          </ul>
+          <div className="hct-b">
+            {/* Q1: the booking CTA dials admissions (panel past boundary). */}
+            <a className="btn btn-primary" href={`tel:${siteConfig.phone}`}>
+              <Icon name="i-calendar" />
+              <span>{t(locale, "cta.request")}</span>
+            </a>
+            <a className="btn btn-line" href={siteConfig.mapsUrl} target="_blank" rel="noopener">
+              <Icon name="i-pin" />
+              <span>{t(locale, "ct.map")}</span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Floating quick actions — tel + back-to-top (reference .qa, trimmed). */}
+      {/* Floating quick actions (.qa) — call, book (Q1: tel), back-to-top. */}
       <FloatingActions locale={locale} />
 
       {/* WebSite structured data (P1-14). No SearchAction: search does not
           exist in the implemented scope, and schema must not describe
           nonexistent functionality (SEO_ACCESSIBILITY_SECURITY.md §1.3). */}
       <JsonLd document={websiteJsonLd()} />
-    </>
+    </div>
   );
 }

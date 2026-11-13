@@ -118,10 +118,20 @@ const STATE = `(() => {
     revealWithTransition: reveals.filter((element) => getComputedStyle(element).transitionDuration !== "0s").length,
     countTotal: counts.length,
     countsStuckAtZero: motionful.length,
-    particles: document.querySelectorAll(".hero-particles span, .hero-particles i").length,
-    animated: [...document.querySelectorAll("body *")].filter(
-      (element) => getComputedStyle(element).animationName !== "none" && getComputedStyle(element).animationPlayState === "running",
-    ).length,
+    animated: [...document.querySelectorAll("body *")].filter((element) => {
+      const style = getComputedStyle(element);
+      // 0s duration counts as halted, not running: the app's reduced-motion
+      // reset (layout.css @media reduce) zeroes animation-duration while
+      // leaving animation-name set — the canonical WCAG 2.3.3 reset. Nulling
+      // the names instead would leave heroIn-gated content (opacity:0 until
+      // heroIn ... forwards completes) invisible under reduce. With duration 0s
+      // the animation resolves instantly to its final frame: nothing moves.
+      return (
+        style.animationName !== "none" &&
+        style.animationPlayState === "running" &&
+        style.animationDuration !== "0s"
+      );
+    }).length,
   };
   return JSON.stringify(decor);
 })()`;
@@ -131,7 +141,7 @@ const TOGGLE_INTERACTIVE = `(() => {
   // its aria-controls: querySelector("button[aria-expanded]") matches the FIRST
   // such button in DOM order, which is the language-switcher opener, not the
   // burger (same trap the keyboard pass documents).
-  const burger = document.querySelector("button[aria-controls='mobile-menu']");
+  const burger = document.querySelector("button[aria-controls='menu']");
   if (burger === null) return JSON.stringify({ error: "no burger button" });
   burger.click();
   const expandedAfterClick = burger.getAttribute("aria-expanded");
@@ -175,8 +185,6 @@ async function runPreference(value, label) {
         routeProblems.push(`${state.countsStuckAtZero}/${state.countTotal} [data-count] number(s) left at 0 — count-up ran or stripped the value`);
       }
       if (state.animated > 0) routeProblems.push(`${state.animated} element(s) with a running animation`);
-      // Particles: the island must not mount them under reduced motion.
-      if (state.particles > 0) routeProblems.push(`${state.particles} hero particle(s) mounted under reduced motion`);
     } else {
       // Under no-preference the motion layer must be ARMED (this is the proof
       // the gate is live, not permanently disabled).
@@ -200,7 +208,7 @@ async function runPreference(value, label) {
 
     if (routeProblems.length === 0) {
       console.log(
-        `ok      [${label}]${route}  fx=${state.fx} reveal=${state.revealTotal}/${state.revealHidden} counts=${state.countTotal}/${state.countsStuckAtZero} particles=${state.particles} animated=${state.animated}`,
+        `ok      [${label}]${route}  fx=${state.fx} reveal=${state.revealTotal}/${state.revealHidden} counts=${state.countTotal}/${state.countsStuckAtZero} animated=${state.animated}`,
       );
       summary.push({ label, route, state, ok: true });
     } else {

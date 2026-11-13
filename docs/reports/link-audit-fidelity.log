@@ -1,0 +1,14 @@
+ok    /  anchors=31 unique=17 outOfScope=0
+ok    /services  anchors=25 unique=18 outOfScope=0
+ok    /services/gen  anchors=22 unique=9 outOfScope=0
+ok    /services/plastic  anchors=21 unique=9 outOfScope=0
+ok    /services/ortho  anchors=20 unique=9 outOfScope=0
+ok    /services/uro  anchors=21 unique=9 outOfScope=0
+ok    /services/eye  anchors=21 unique=9 outOfScope=0
+ok    /services/ent  anchors=21 unique=9 outOfScope=0
+ok    /services/gyn  anchors=21 unique=9 outOfScope=0
+ok    /services/aes  anchors=21 unique=9 outOfScope=0
+ok    /services/anes  anchors=20 unique=9 outOfScope=0
+ok    /services/endo  anchors=21 unique=9 outOfScope=0
+
+PASS: anchor boundary audit over 12 routes

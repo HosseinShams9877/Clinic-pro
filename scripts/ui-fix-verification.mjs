@@ -15,14 +15,23 @@
  *   B-2  the header carries no search affordance: no header link with an
  *        aria-label and no /#help anchor in the chrome (the #help section
  *        itself stays on the home page).
- *   B-3  the services dropdown anchors at the reading-direction start edge of
- *        its trigger, is at least as wide as the reference's 236 px menu, and
- *        never overflows the viewport in either direction.
+ *   B-3  the services dropdown matches the reference .menu .sub contract
+ *        exactly: ul.sub is min-width:236px, anchored (inset-inline-start:0)
+ *        to the li.has-sub edge (its position:relative containing block —
+ *        NOT the anchor inside it, which carries its own padding), sits below
+ *        the trigger with the reference's 6px margin, and never overflows the
+ *        viewport. The reference desktop dropdown exists only at ≥1025px; at
+ *        ≤1024px the submenu is a static section of the mobile menu opened by
+ *        the .sub-tg button, and that is what is pinned there instead.
  *   B-4  the open/closed badge: the dot sits on the reading-direction start
  *        side of the text (right in RTL, left in LTR) and is vertically
  *        centered.
- *   B-5  the phone CTA: the icon sits on the start side of the anchor
- *        (right in RTL, left in LTR).
+ *   B-5  the header phone CTA: the icon sits on the start side of the anchor
+ *        (right in RTL, left in LTR). The reference's own CTA carries
+ *        hide-sm (display:none at ≤1180px) — per the absolute standard that
+ *        behaviour is copied, not "improved", so below 1180px the probe pins
+ *        that the CTA is hidden (the small-screen phone affordance is
+ *        FloatingActions, as in the reference's own page).
  *   B-6  every in-scope route × locale renders <html lang dir> consistently
  *        and has no horizontal overflow at mobile and desktop widths.
  *
@@ -59,13 +68,18 @@ const EXPECTED_LANG = { fa: "fa", en: "en", ar: "ar" };
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function findTarget() {
+  // Open a FRESH page rather than reusing an existing one: a tab left over
+  // from a previous probe run can be hung (its renderer wedged under disk
+  // pressure) and will navigate but never settle, which looks exactly like a
+  // page bug. A new target starts from a clean renderer.
   for (let attempt = 0; attempt < 40; attempt += 1) {
     try {
-      const list = await (await fetch(`http://127.0.0.1:${CDP_PORT}/json`)).json();
-      const page = list.find((target) => target.type === "page");
-      if (page) return page;
+      const target = await (
+        await fetch(`http://127.0.0.1:${CDP_PORT}/json/new?about:blank`, { method: "PUT" })
+      ).json();
+      if (target?.webSocketDebuggerUrl) return target;
     } catch {
-      // Edge not ready yet.
+      // Browser not ready yet.
     }
     await sleep(250);
   }
@@ -114,13 +128,31 @@ async function evaluate(expression) {
 }
 
 async function navigate(url, width = 1280, height = 800) {
-  await send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 700 });
   await send("Page.navigate", { url });
-  await sleep(2200); // load + CSS + hydration
+  await waitFor("document.readyState === 'complete'", 15_000); // load + CSS
+  await waitFor("!!document.querySelector('header')", 15_000); // + hydration
+  await send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 700 });
+  await sleep(250);
   // The overflow-probe lesson: with mobile:true this Edge does not pin
   // innerWidth, so re-assert the emulated width before measuring.
   const inner = await evaluate("window.innerWidth");
   if (inner !== width) throw new Error(`emulation did not hold: innerWidth=${inner} expected=${width}`);
+}
+
+/**
+ * Poll a JS condition in the page instead of trusting a fixed sleep. Under
+ * disk pressure the browser can need far longer than any fixed budget, and a
+ * fixed sleep that expires mid-load makes the probes below query a page that
+ * has not rendered its chrome yet.
+ */
+async function waitFor(expression, timeoutMs) {
+  const deadline = Date.now() + timeoutMs;
+  for (;;) {
+    const ok = await evaluate(`(${expression})`).catch(() => false);
+    if (ok === true) return;
+    if (Date.now() > deadline) throw new Error(`waitFor timed out (${timeoutMs}ms): ${expression}`);
+    await sleep(150);
+  }
 }
 
 async function click(x, y) {
@@ -168,7 +200,12 @@ console.log("B-1: language switcher — full document navigation per switch");
       continue;
     }
     await click(item.x + item.w / 2, item.y + item.h / 2);
-    await sleep(2600);
+    // A native anchor click is a full document load, not a client swap: wait
+    // for the new document to land before reading it (a fixed sleep can
+    // expire mid-navigation on a slow machine and read the OLD page).
+    await waitFor(`location.href.includes("lang=${to}")`, 20_000);
+    await waitFor("document.readyState === 'complete'", 20_000);
+    await waitFor("!!document.querySelector('header')", 20_000);
     const after = await evaluate(pageState);
     const detail = `url=${after.url} lang=${after.htmlLang} dir=${after.htmlDir} navHome=${after.navHome} switcher=${after.switcherLabel}`;
     record(
@@ -199,55 +236,133 @@ for (const locale of LOCALES) {
   );
 }
 
-// ─── B-3: services dropdown anchors at the reading-direction start ─────────
-console.log("B-3: services dropdown — start-anchored, in-viewport");
+// ─── B-3: services dropdown, exactly the reference's two behaviours ─────────
+console.log("B-3: services dropdown — reference .menu .sub contract");
+// Desktop (≥1025px): hover opens ul.sub. The reference anchors inset-inline-
+// start:0 to li.has-sub (position:relative, line 791/795 of the reference
+// style.css) — the anchor inside it carries padding:9px 11px of its own, so
+// the submenu must be measured against the li, not the anchor. min-width:236px
+// applies to the ul border box (its inner li content measures 236 − 16 padding
+// − 2 border = 218 — measuring the li and expecting ≥236 was a probe bug).
 for (const locale of LOCALES) {
-  for (const width of [1280, 960]) {
-    await navigate(`${ORIGIN}/?lang=${locale}`, width, 900);
-    const geometry = await evaluate(`(() => {
-      const li = document.querySelector('header nav li.group');
-      const trigger = li.querySelector('a').getBoundingClientRect();
-      return { trigger: { x: Math.round(trigger.x), right: Math.round(trigger.right), y: Math.round(trigger.y), bottom: Math.round(trigger.bottom) } };
-    })()`);
-    await hover(geometry.trigger.x + (geometry.trigger.right - geometry.trigger.x) / 2, geometry.trigger.y + 12);
-    await sleep(700);
-    const open = await evaluate(`(() => {
-      const li = document.querySelector('header nav li.group');
-      const trigger = li.querySelector('a').getBoundingClientRect();
-      const menu = li.querySelector('ul > li').getBoundingClientRect();
-      const winW = window.innerWidth;
-      return {
-        dir: document.documentElement.dir,
-        triggerX: Math.round(trigger.x),
-        triggerRight: Math.round(trigger.right),
-        menuX: Math.round(menu.x),
-        menuRight: Math.round(menu.right),
-        menuTop: Math.round(menu.top),
-        menuBottom: Math.round(menu.bottom),
-        menuW: Math.round(menu.width),
-        triggerBottom: Math.round(trigger.bottom),
-        pageOverflow: document.documentElement.scrollWidth > winW,
-      };
-    })()`);
-    // start = right in RTL, left in LTR; the menu's start edge must line up
-    // with the trigger's start edge (the reference .menu .sub contract:
-    // inset-inline-start:0; min-width:236px).
-    const rtl = open.dir === "rtl";
-    const startAligned = rtl ? open.menuRight === open.triggerRight : open.menuX === open.triggerX;
-    const underTrigger = open.menuTop >= open.triggerBottom - 1;
-    const ok =
-      startAligned &&
-      underTrigger &&
-      open.menuW >= 236 &&
-      open.menuX >= 0 &&
-      open.menuRight <= width &&
-      !open.pageOverflow;
-    record(
-      `B-3 dropdown (${locale}, ${width}px)`,
-      ok,
-      `dir=${open.dir} trigger=[${open.triggerX}..${open.triggerRight}] menu=[${open.menuX}..${open.menuRight}] w=${open.menuW} top=${open.menuTop} triggerBottom=${open.triggerBottom} pageOverflow=${open.pageOverflow}`,
-    );
+  await navigate(`${ORIGIN}/?lang=${locale}`, 1280, 900);
+  const geometry = await evaluate(`(() => {
+    const li = document.querySelector('header nav li.has-sub');
+    const liRect = li.getBoundingClientRect();
+    const trigger = li.querySelector('a').getBoundingClientRect();
+    return { liX: Math.round(liRect.x), liRight: Math.round(liRect.right),
+      trigger: { x: Math.round(trigger.x), right: Math.round(trigger.right), y: Math.round(trigger.y), bottom: Math.round(trigger.bottom) } };
+  })()`);
+  await hover(geometry.trigger.x + (geometry.trigger.right - geometry.trigger.x) / 2, geometry.trigger.y + 12);
+  await sleep(700);
+  const open = await evaluate(`(() => {
+    const li = document.querySelector('header nav li.has-sub');
+    const liRect = li.getBoundingClientRect();
+    const trigger = li.querySelector('a').getBoundingClientRect();
+    const sub = li.querySelector('ul.sub');
+    const r = sub.getBoundingClientRect();
+    const winW = window.innerWidth;
+    return {
+      dir: document.documentElement.dir,
+      liX: Math.round(liRect.x), liRight: Math.round(liRect.right),
+      triggerBottom: Math.round(trigger.bottom),
+      subX: Math.round(r.x), subRight: Math.round(r.right),
+      subTop: Math.round(r.top), subW: Math.round(r.width),
+      pageOverflow: document.documentElement.scrollWidth > winW,
+    };
+  })()`);
+  const rtl = open.dir === "rtl";
+  const startAligned = rtl ? open.subRight === open.liRight : open.subX === open.liX;
+  const ok =
+    startAligned &&
+    open.subW >= 236 &&
+    open.subTop >= open.triggerBottom &&
+    open.subX >= 0 &&
+    open.subRight <= 1280 &&
+    !open.pageOverflow;
+  record(
+    `B-3 dropdown (${locale}, 1280px)`,
+    ok,
+    `dir=${open.dir} sub=[${open.subX}..${open.subRight}] w=${open.subW} top=${open.subTop} triggerBottom=${open.triggerBottom} li=[${open.liX}..${open.liRight}] pageOverflow=${open.pageOverflow}`,
+  );
+}
+// Mobile menu (≤1024px): the reference's desktop dropdown does not exist at
+// this width — .menu is a hidden panel opened by the #burger, and .menu .sub
+// is position:static inside it, opened only via the .sub-tg toggle button
+// (reference style.css lines 370/379–381 and 801–813), whose chevron rotates
+// 180deg when the item is .open. That exact sequence is pinned here.
+for (const locale of LOCALES) {
+  await navigate(`${ORIGIN}/?lang=${locale}`, 960, 900);
+  // Let the viewport-change transition settle: navigate() flips the emulated
+  // width after load, and .menu's transition:.25s keeps computed `visibility`
+  // at its old value for the whole duration on the visible→hidden leg — a
+  // synchronous read inside that window reports a lie.
+  await sleep(400);
+  // Step 1: the burger opens the panel (main.js L40–L52). The after-state is
+  // read after a settle for the same transition reason.
+  const step1 = await evaluate(`(() => {
+    const burger = document.querySelector('header button.burger');
+    const menu = document.querySelector('header ul#menu');
+    if (!burger || !menu) return { error: 'no burger/menu' };
+    const burgerVisible = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
+    const before = { burgerVisible: burgerVisible(burger), menuOpen: menu.classList.contains('open'),
+      menuVisible: getComputedStyle(menu).visibility, burgerExpanded: burger.getAttribute('aria-expanded') };
+    burger.click();
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const r = menu.getBoundingClientRect();
+        resolve({ before,
+          after: { menuOpen: menu.classList.contains('open'),
+            menuVisible: getComputedStyle(menu).visibility,
+            menuOpacity: getComputedStyle(menu).opacity,
+            menuH: Math.round(r.height),
+            burgerExpanded: burger.getAttribute('aria-expanded') } });
+      }, 350);
+    });
+  })()`);
+  if (step1.error) {
+    record(`B-3 mobile submenu (${locale}, 960px)`, false, step1.error);
+    continue;
   }
+  // Step 2: inside the open panel, the .sub-tg accordion expands the submenu
+  // and rotates its chevron (transition .2s — read the TERMINAL state).
+  const step2 = await evaluate(`(() => {
+    const li = document.querySelector('header nav li.has-sub');
+    const tg = li.querySelector('button.sub-tg');
+    const sub = li.querySelector('ul.sub');
+    const tgVisible = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
+    const start = performance.now();
+    tg.click();
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const cs = getComputedStyle(tg.querySelector('svg'));
+        resolve({
+          tgVisible: tgVisible(tg),
+          subDisplay: getComputedStyle(sub).display,
+          liOpen: li.classList.contains('open'),
+          tgExpanded: tg.getAttribute('aria-expanded'),
+          chevron: cs.transform,
+          elapsedMs: Math.round(performance.now() - start),
+        });
+      }, 300);
+    });
+  })()`);
+  const ok =
+    step1.before.burgerVisible &&
+    step1.before.menuVisible === "hidden" && !step1.before.menuOpen &&
+    step1.after.menuOpen && step1.after.menuVisible === "visible" &&
+    step1.after.menuOpacity === "1" && step1.after.menuH > 0 &&
+    step1.after.burgerExpanded === "true" &&
+    step2.tgVisible &&
+    step2.subDisplay === "block" && step2.liOpen && step2.tgExpanded === "true" &&
+    // rotate(180deg) resolves to matrix(-1, 0, 0, -1, 0, 0); "none" would mean
+    // the ported rule never applied.
+    step2.chevron.includes("-1");
+  record(
+    `B-3 mobile submenu (${locale}, 960px)`,
+    ok,
+    `panel ${step1.before.menuVisible}→${step1.after.menuVisible} opacity=${step1.after.menuOpacity} h=${step1.after.menuH} (.open ${step1.before.menuOpen}→${step1.after.menuOpen}); sub display=${step2.subDisplay} .open=${step2.liOpen} aria-expanded=${step2.tgExpanded}; chevron '${step2.chevron}' after ${step2.elapsedMs}ms`,
+  );
 }
 
 // ─── B-4 / B-5: direction-class geometry on the home page ─────────────────
@@ -257,13 +372,18 @@ for (const locale of LOCALES) {
     await navigate(`${ORIGIN}/?lang=${locale}`, width, 900);
     const measured = await evaluate(`(() => {
       const box = document.getElementById('live-status');
-      const phone = document.querySelector('a[href^="tel:"]');
+      // The HEADER phone CTA (SiteHeader) — the reference's own booking CTA,
+      // which carries hide-sm (display:none at ≤1180px). Its icon side is only
+      // meaningful above that width; below it the pinned behaviour is the
+      // reference's own: hidden, with FloatingActions as the affordance.
+      const phone = document.querySelector('header a[href^="tel:"]');
       const r = (el) => el.getBoundingClientRect();
       return {
         dir: document.documentElement.dir,
         dotX: box ? Math.round(r(box.querySelector('.live-dot')).x) : null,
         dotCenterOff: box ? Math.round(r(box.querySelector('.live-dot')).y + r(box.querySelector('.live-dot')).height / 2 - (r(box).y + r(box).height / 2)) : null,
         textBoxX: box ? Math.round(r(box.querySelector('div')).x) : null,
+        phoneW: phone ? Math.round(r(phone).width) : null,
         iconX: phone ? Math.round(r(phone.querySelector('svg')).x) : null,
         iconW: phone ? Math.round(r(phone.querySelector('svg')).width) : null,
         anchorCenter: phone ? Math.round(r(phone).x + r(phone).width / 2) : null,
@@ -272,19 +392,27 @@ for (const locale of LOCALES) {
     })()`);
     const rtl = measured.dir === "rtl";
     const dotOnStartSide = rtl ? measured.dotX > measured.textBoxX : measured.dotX < measured.textBoxX;
-    const iconOnStartSide = rtl
-      ? measured.iconX + measured.iconW / 2 > measured.anchorCenter
-      : measured.iconX + measured.iconW / 2 < measured.anchorCenter;
     record(
       `B-4 badge (${locale}, ${width}px)`,
       dotOnStartSide && measured.dotCenterOff === 0,
       `dir=${measured.dir} dotX=${measured.dotX} textBoxX=${measured.textBoxX} centerOff=${measured.dotCenterOff}`,
     );
-    record(
-      `B-5 phone icon (${locale}, ${width}px)`,
-      iconOnStartSide,
-      `dir=${measured.dir} iconX=${measured.iconX} anchorCenter=${measured.anchorCenter}`,
-    );
+    // Reference contract: the header CTA is visible (icon on the start side)
+    // above 1180px and carries hide-sm below it.
+    const visible = measured.phoneW > 0;
+    let b5ok;
+    let b5detail;
+    if (width > 1180) {
+      const iconOnStartSide = rtl
+        ? measured.iconX + measured.iconW / 2 > measured.anchorCenter
+        : measured.iconX + measured.iconW / 2 < measured.anchorCenter;
+      b5ok = visible && iconOnStartSide;
+      b5detail = `dir=${measured.dir} iconX=${measured.iconX} anchorCenter=${measured.anchorCenter}`;
+    } else {
+      b5ok = !visible;
+      b5detail = `header CTA width=${measured.phoneW} (reference hide-sm: display:none at ≤1180px; FloatingActions is the small-screen affordance)`;
+    }
+    record(`B-5 phone icon (${locale}, ${width}px)`, b5ok, b5detail);
     if (measured.pageOverflow) record(`B-6 overflow (${locale}, ${width}px, /)`, false, "scrollWidth > innerWidth");
   }
 }

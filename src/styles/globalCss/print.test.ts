@@ -74,7 +74,7 @@ describe("the print stylesheet (P2 item 5)", () => {
 
   it("drops the screen-only chrome", () => {
     const print = withoutComments(read("print.css"));
-    const hidden = /\.site-header[\s\S]*?\.scroll-progress[\s\S]*?\.hero-particles[\s\S]*?\.float-actions[\s\S]*?\{[\s\S]*?display:\s*none/;
+    const hidden = /\.site-header[\s\S]*?\.scroll-progress[\s\S]*?\.float-actions[\s\S]*?\{[\s\S]*?display:\s*none/;
     expect(print, "the screen-only chrome selectors are not hidden together").toMatch(hidden);
     expect(print, ".skip-link not hidden").toMatch(/\.skip-link\s*\{[\s\S]*?display:\s*none/);
   });

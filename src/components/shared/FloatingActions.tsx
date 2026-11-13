@@ -1,9 +1,15 @@
 /**
  * FloatingActions.tsx — the reference's floating quick-actions bar (.qa),
- * trimmed to the implemented scope: the call button (qa-call) and the
- * back-to-top button (qa-top). The reference's qa-book pointed at the
- * patient panel, which is past the boundary, so it is not reproduced
- * (no stub, no dead button — CLAUDE.md §2 rule 4).
+ * on the reference's own markup and styles (پلتفرم/index.html: `.qa >
+ * .qa-call` + `.qa-book` + `button.qa-top`).
+ *
+ * Scope substitution (Q1, OPEN_QUESTIONS.md): the reference's `.qa-book`
+ * pointed at `patient-panel.html?go=new`, which is past the implementation
+ * boundary. Per Q1 the verified phone CTA `tel:+983155154000` is the primary
+ * action, so `.qa-book` dials the admissions desk instead of linking to a
+ * page that does not exist — the bar keeps its exact reference shape and
+ * behaviour (three buttons, `.qa-call` ring animation, `.qa-top` chevron)
+ * with no stub and no dead link.
  *
  * Client component because the bar only appears after the user scrolls
  * (>= 500px, same threshold as home.js) and the top button scrolls the
@@ -37,25 +43,24 @@ export function FloatingActions({ locale }: { locale: Locale }) {
   }, []);
 
   return (
-    <div
-      className={`float-actions fixed bottom-5 z-40 flex flex-col gap-2.5 transition-all duration-300 ltr:right-4 rtl:left-4 ${
-        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
-      }`}
-    >
-      <a
-        href={`tel:${siteConfig.phone}`}
-        aria-label={t(locale, "h.qaCall")}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-strong text-on-accent shadow-2 transition hover:opacity-90"
-      >
-        <Icon name="i-phone" size={22} />
+    <div className={`float-actions qa${visible ? " show" : ""}`} id="qa">
+      <a className="qa-call" href={`tel:${siteConfig.phone}`} aria-label={t(locale, "h.qaCall")}>
+        <Icon name="i-phone" />
+        <span>{t(locale, "h.qaCall")}</span>
+      </a>
+      {/* Q1: the reference's booking button dials admissions (its original
+          destination, patient-panel.html, is out of scope). */}
+      <a className="qa-book" href={`tel:${siteConfig.phone}`} aria-label={t(locale, "cta.request")}>
+        <Icon name="i-calendar" />
+        <span>{t(locale, "cta.request")}</span>
       </a>
       <button
+        className="qa-top"
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label={t(locale, "a11y.top")}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-surface text-primary shadow-2 transition hover:bg-primary-50"
       >
-        <Icon name="i-chev" size={22} className="rotate-180" />
+        <Icon name="i-chev" />
       </button>
     </div>
   );

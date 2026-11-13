@@ -33,6 +33,217 @@
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 
+/* =========================================================
+   Fidelity-pass additions (2026-11-11).
+   The reference hardcodes many one-off values beyond the
+   verbatim tokens above. They are added here as --ref-* raw
+   values so no color is ever hardcoded outside
+   tokens.css/themes.css (the fidelity directive's token rule),
+   while the verbatim :root block above stays untouched —
+   additions only, nothing above was changed.
+   Light values are the EXACT reference values. themes.css
+   adapts the structural ones (surfaces, inks, lines, shadows)
+   for dark mode — color differences in dark mode are the only
+   accepted deviation per the fidelity directive; layout,
+   shape, radius and composition are unaffected.
+   ========================================================= */
+:root {
+  /* page / section backgrounds */
+  --ref-page-home:#F3F8F9;
+  --ref-page-services:#F4F8F8;
+  --ref-hero-light-a:#EEF5F6;
+  --ref-hero-light-b:#F4F8F8;
+  --ref-hero-home-a:#EAF4F5;
+  --ref-hero-home-b:#F3F8F9;
+  --ref-care-a:#E4F1F2;
+  --ref-help-bg:#F3F8F9;
+
+  /* hairlines & input surfaces */
+  --ref-line-soft:#E3EEF0;
+  --ref-line-stat:#E7F0F1;
+  --ref-line-input:#DCE8EA;
+  --ref-surface-input:#F7FBFB;
+
+  /* light tints used by cards, chips and placeholders */
+  --ref-tint-a:#E6F4F4;
+  --ref-tint-b:#E4F1F2;
+  --ref-tint-c:#CFE6E8;
+  --ref-tint-d:#C9E3E6;
+  --ref-tint-e:#E7F1F1;
+  --ref-tint-f:#E5EDEF;
+  --ref-tint-g:#E1ECEE;
+  --ref-tint-h:#E4F2F3;
+  --ref-tint-i:#F7FAFA;
+  --ref-tint-j:#F7FBFB;
+
+  /* glass surfaces */
+  --ref-glass-92:rgba(255,255,255,.92);
+  --ref-glass-95:rgba(255,255,255,.95);
+  --ref-glass-96:rgba(255,255,255,.96);
+
+  /* inks (light theme text on light surfaces) */
+  --ref-ink-strong:#0B3F47;
+  --ref-ink:#0A2230;
+  --ref-ink-2:#0E3340;
+  --ref-ink-3:#3B4F57;
+  --ref-ink-4:#3E535B;
+  --ref-ink-5:#4A5F66;
+  --ref-ink-6:#3D6870;
+  --ref-ink-7:#46595F;
+
+  /* teal / aqua ramp */
+  --ref-teal-1:#0E7C83;
+  --ref-teal-2:#0B7A83;
+  --ref-teal-3:#13858B;
+  --ref-teal-4:#14B8A6;
+  --ref-teal-5:#22D3EE;
+  --ref-teal-6:#0F766E;
+  --ref-teal-7:#0E7490;
+  --ref-teal-8:#0E6E85;
+  --ref-aqua-1:#BFE9EA;
+  --ref-aqua-2:#7FD8E0;
+  --ref-aqua-3:#7CCFD2;
+  --ref-aqua-4:#D6F2F2;
+  --ref-aqua-5:#7FF0E0;
+
+  /* gradient pairs (bento .g0…g5) */
+  --ref-g0-a:#22D3EE; --ref-g0-b:#0F766E;
+  --ref-g1-a:#0EA5E9; --ref-g1-b:#0B7A83;
+  --ref-g2-a:#8B5CF6; --ref-g2-b:#0E7490;
+  --ref-g3-a:#14B8A6; --ref-g3-b:#065F46;
+  --ref-g4-a:#3B82F6; --ref-g4-b:#1E3A8A;
+  --ref-g5-a:#EC4899; --ref-g5-b:#6D28D9;
+
+  /* service icon-chip tints (.c1…c8) */
+  --ref-c1-bg:#E6F2FB; --ref-c1-fg:#2F6FB0;
+  --ref-c2-bg:#FFF1E6; --ref-c2-fg:#C9772B;
+  --ref-c3-bg:#FDECEF; --ref-c3-fg:#C24A63;
+  --ref-c4-bg:#E4F4F4; --ref-c4-fg:#0E7C83;
+  --ref-c5-bg:#EEF1FB; --ref-c5-fg:#4A5EB8;
+  --ref-c6-bg:#FFF6E0; --ref-c6-fg:#B98516;
+  --ref-c7-bg:#FDECEC; --ref-c7-fg:#C2413B;
+  --ref-c8-bg:#EAF6EF; --ref-c8-fg:#2E8A5B;
+
+  /* other hues (group icons, badges) */
+  --ref-violet-1:#8B5CF6; --ref-violet-2:#6D28D9; --ref-violet-3:#38BDF8;
+  --ref-blue-1:#3B82F6;  --ref-blue-2:#1E3A8A;  --ref-blue-3:#0EA5E9;
+  --ref-pink:#EC4899;
+  --ref-green-1:#065F46; --ref-green-2:#2E8A5B;
+  --ref-amber-1:#C9772B; --ref-amber-2:#B98516;
+  --ref-red-1:#C24A63;   --ref-red-2:#C2413B;
+  --ref-blue-tint:#EEF1FB;  --ref-blue-tint-2:#EAF1FD; --ref-blue-tint-3:#4A5EB8;
+  --ref-amber-tint:#FFF1E6; --ref-amber-tint-2:#FFF6E0;
+  --ref-pink-tint:#FDECEF;
+  --ref-red-tint:#FDECEC;
+  --ref-green-tint:#EAF6EF; --ref-green-tint-2:#E9F7F1;
+  --ref-violet-tint:#F1EEFB;
+  --ref-orange-tint:#FFF3E6;
+
+  /* placeholder / mono illustrations */
+  --ref-mono-stroke:rgba(14,124,131,.35);
+  --ref-mono-s:rgba(11,63,71,.5);
+
+  /* open/closed live indicator (reference values) */
+  --ref-live:#22C55E;        --ref-live-ring:rgba(34,197,94,.6);
+  --ref-live-off:#EF4444;    --ref-live-off-ring:rgba(239,68,68,.6);
+
+  /* white / ink alphas */
+  --ref-w-05:rgba(255,255,255,.05);  --ref-w-06:rgba(255,255,255,.06);
+  --ref-w-08:rgba(255,255,255,.08);  --ref-w-10:rgba(255,255,255,.10);
+  --ref-w-12:rgba(255,255,255,.12);  --ref-w-14:rgba(255,255,255,.14);
+  --ref-w-16:rgba(255,255,255,.16);  --ref-w-22:rgba(255,255,255,.22);
+  --ref-w-28:rgba(255,255,255,.28);  --ref-w-35:rgba(255,255,255,.35);
+  --ref-w-50:rgba(255,255,255,.50);  --ref-w-55:rgba(255,255,255,.55);
+  --ref-w-65:rgba(255,255,255,.65);  --ref-w-72:rgba(255,255,255,.72);
+  --ref-w-74:rgba(255,255,255,.74);  --ref-w-85:rgba(255,255,255,.85);
+  --ref-w-88:rgba(255,255,255,.88);  --ref-w-97:rgba(255,255,255,.97);
+  --ref-k-10:rgba(0,0,0,.10);  --ref-k-25:rgba(0,0,0,.25);
+  --ref-k-35:rgba(0,0,0,.35);  --ref-k-45:rgba(0,0,0,.45);
+  --ref-bento-veil-1:rgba(6,40,48,.05);
+  --ref-bento-veil-2:rgba(6,40,48,.35);
+  --ref-bento-veil-3:rgba(5,38,46,.92);
+
+  /* shadows (reference values; the chrome/primary ones replace
+     earlier overrides per the cumulative reference order) */
+  --ref-sh-nav:0 8px 30px rgba(11,63,71,.06);
+  --ref-sh-stats:0 16px 40px rgba(11,63,71,.08);
+  --ref-sh-soft:0 8px 24px rgba(11,63,71,.06);
+  --ref-sh-card:0 18px 36px rgba(11,63,71,.12);
+  --ref-sh-card-2:0 18px 40px rgba(11,63,71,.1);
+  --ref-sh-hover:0 22px 44px rgba(11,63,71,.12);
+  --ref-sh-photo:0 24px 50px rgba(11,63,71,.14);
+  --ref-sh-float:0 10px 30px rgba(11,63,71,.12);
+  --ref-sh-bento:0 14px 34px rgba(11,63,71,.12);
+  --ref-sh-bento-hover:0 26px 50px rgba(11,63,71,.24);
+  --ref-sh-primary:0 8px 20px rgba(11,79,92,.18);
+  --ref-sh-accent:0 12px 30px rgba(26,163,168,.35);
+  --ref-sh-sgrp:0 10px 22px rgba(20,184,166,.25);
+  --ref-sh-toast:0 20px 40px rgba(0,0,0,.25);
+  --ref-sh-shf:0 12px 30px rgba(11,79,92,.07);
+  --ref-sh-float2:0 20px 44px rgba(7,26,38,.16);
+  --ref-sh-scat:0 18px 38px rgba(7,26,38,.10);
+  --ref-sh-scat-on:0 18px 40px rgba(11,79,92,.14),0 0 0 4px rgba(28,154,160,.15);
+  --ref-sh-sgo:0 4px 10px rgba(0,0,0,.08);
+  --ref-sh-sd:0 30px 60px rgba(7,26,38,.18);
+  --ref-sh-si:0 22px 44px rgba(7,26,38,.12);
+  --ref-sh-hst:0 16px 36px rgba(11,63,71,.1);
+  --ref-sh-qa:0 12px 30px rgba(11,63,71,.22);
+
+  /* port-only additions (values the reference hardcodes once) */
+  --ref-ink-8:#23383F;
+  --ref-tint-k:#EAF4F5;
+  --ref-tint-l:#E7F1F2;
+  --ref-tint-m:#D7E6E8;
+  --ref-glass-80:rgba(255,255,255,.8);
+  --ref-help-veil-97:rgba(243,248,249,.97);
+  --ref-help-veil-35:rgba(243,248,249,.35);
+  --ref-help-veil-0:rgba(243,248,249,0);
+  --ref-help-veil-90:rgba(243,248,249,.9);
+  --ref-hero-rad-1:rgba(26,163,168,.12);
+  --ref-hero-rad-2:rgba(28,154,160,.14);
+  --ref-photo-shade:rgba(11,63,71,.18);
+  --ref-frame-line:rgba(28,154,160,.55);
+  --ref-mono-glow:rgba(26,163,168,.25);
+  --ref-mono-ink:rgba(11,63,71,.35);
+  --ref-mono-a:#0E3B48;
+  --ref-mono-b:#071A26;
+  --ref-ben-tint:rgba(28,154,160,.14);
+  --ref-video-veil-1:rgba(7,26,38,.85);
+  --ref-video-veil-2:rgba(7,26,38,.1);
+  --ref-pulse-ring:rgba(28,154,160,.6);
+  --ref-w-15:rgba(255,255,255,.15);
+  --ref-w-25:rgba(255,255,255,.25);
+  --ref-w-75:rgba(255,255,255,.75);
+
+  /* vivid.css fold (2026-11-12). پلتفرم/assets/css/vivid.css loads LAST on
+     every public page (index.html L10–16), AFTER style.css + home.css + the
+     per-page sheets — so these are the reference's RENDERED values, and the
+     calm teal bases above (e.g. style.css L755 .btn-primary) are what vivid
+     overrides in the demo. A separate skin file is barred (Q9 / the
+     "vivid.css lesson"), so the rendered values live here as raw tokens and
+     are consumed by the components layer in reference.css, in the reference's
+     own cumulative order (the fold sits at the END of the port). Light values
+     are the exact vivid.css L5–39 values. themes.css adapts the two
+     light-fabric ones (g-soft, hw-n) for dark; the saturated gradients keep
+     the saturated gradients keep the reference values, which read
+     correctly on dark as-is. The ix-*, ln-* and hdoc rules target
+     sections not implemented (Q3/Q4 — report §4). */
+  --ref-g-teal:linear-gradient(135deg,#0B7A83 0%,#14B8A6 100%);
+  --ref-g-ocean:linear-gradient(135deg,#0E5E8C 0%,#0EA5E9 55%,#22D3EE 100%);
+  --ref-g-mint:linear-gradient(135deg,#0D9488 0%,#34D399 100%);
+  --ref-g-sky:linear-gradient(135deg,#2563EB 0%,#38BDF8 100%);
+  --ref-g-violet:linear-gradient(135deg,#6D28D9 0%,#8B5CF6 50%,#38BDF8 100%);
+  --ref-g-deep:linear-gradient(135deg,#063F4A 0%,#0B6E79 55%,#14B8A6 100%);
+  --ref-g-soft:linear-gradient(135deg,#E6FBF8 0%,#E0F2FE 100%);
+  --ref-g-em:linear-gradient(90deg,#0EA5E9,#14B8A6 55%,#34D399);
+  --ref-g-hwn:linear-gradient(180deg,#D7F3F1,#EEF8FF);
+  --ref-g-btn-hover:linear-gradient(135deg,#096A72,#0FA394);
+  --ref-sh-vivid-btn:0 10px 24px rgba(20,184,166,.28);
+  --ref-hs-i-2:#0E7490;
+  --ref-hs-i-3:#2563EB;
+  --ref-hs-i-4:#0D9488;
+}
+
 /* ---------------------------------------------------------
    Tailwind v4 CSS-first theme bridge (approved Q6).
    NO tailwind.config.ts in this project. Utilities below are

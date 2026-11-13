@@ -109,7 +109,12 @@ export function LivingEffects() {
       { threshold: 0.6 },
     );
 
-    document.querySelectorAll("[data-reveal]").forEach((element) => revealObserver.observe(element));
+    document.querySelectorAll("[data-reveal]").forEach((element, i) => {
+      // main.js: `el.style.transitionDelay = (i % 4) * 70 + "ms"` — the
+      // quarter-group stagger of the reference's reveal sequence.
+      (element as HTMLElement).style.transitionDelay = `${(i % 4) * 70}ms`;
+      revealObserver.observe(element);
+    });
     document.querySelectorAll("[data-count]").forEach((element) => countObserver.observe(element));
     return () => {
       revealObserver.disconnect();

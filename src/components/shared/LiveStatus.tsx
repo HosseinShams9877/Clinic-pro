@@ -1,5 +1,8 @@
 /**
- * LiveStatus.tsx — the live admissions badge (P1-13).
+ * LiveStatus.tsx — the live admissions badge, on the reference's `.h-live`
+ * markup (پلتفرم/index.html: `<div class="h-live"><span class="live-dot"
+ * id="hDot"></span><div><b id="hOpen">…</b><small id="openLeft">…</small>
+ * </div></div>`).
  *
  * The reference computes this client-side only (home.js, every 30 s). Here
  * the initial state is server-rendered from the same pure core
@@ -12,7 +15,9 @@
  * markup exactly — no hydration mismatch, no flash of empty badge.
  *
  * Announced politely (role="status") so assistive technology hears "admissions
- * open / closed" updates without the countdown spam.
+ * open / closed" updates without the countdown spam. The dot's open/closed
+ * colour comes from `.live-dot` / `.live-dot.off` in reference.css
+ * (the reference's own `live` pulse animation included).
  */
 
 "use client";
@@ -50,18 +55,13 @@ export function LiveStatus({
   const { title, sub } = statusText(locale, snapshot);
 
   return (
-    <div
-      id="live-status"
-      role="status"
-      className="flex w-fit items-center gap-3 rounded-full border border-on-accent/30 bg-on-accent/10 px-4 py-2.5"
-    >
-      <span
-        className={`live-dot h-2.5 w-2.5 rounded-full ${snapshot.open ? "bg-[var(--open)]" : "bg-[var(--closed)]"}`}
-        aria-hidden="true"
-      />
-      <div className="flex flex-col">
-        <b className="text-[13.5px]">{title}</b>
-        <span className="text-[12px]">{sub}</span>
+    // The pair of ids/role from the reference markup plus the stable hook
+    // the badge's own tests pin (`#live-status`, role="status").
+    <div className="h-live" id="live-status" role="status">
+      <span className={`live-dot${snapshot.open ? "" : " off"}`} aria-hidden="true" />
+      <div>
+        <b>{title}</b>
+        <small>{sub}</small>
       </div>
     </div>
   );

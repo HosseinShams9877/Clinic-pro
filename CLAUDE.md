@@ -24,6 +24,11 @@ in `docs/` and is **not yet built**.
 6. **Mandatory stack** (no silent substitution): Next.js App Router + React + TS strict + Server
    Components by default + Route Handlers + Prisma 6 + PostgreSQL (prod) / SQLite (dev+test) +
    TanStack React Query v5 + Tailwind with centralized tokens + Zod + Vitest.
+7. **Visual Fidelity Standard: Every new UI element, page, or component built in any future phase
+   MUST match the read-only reference (پلتفرم/) exactly in style, spacing, curves, and animations.
+   No improvisation or 'better' redesigns are allowed.** This is binding exactly like the Q1–Q9
+   decisions (`docs/reports/OPEN_QUESTIONS.md`) and is enforced at every release gate
+   (`docs/reports/EXACT_VISUAL_AND_UI_FIDELITY_REPORT.md`).
 
 ## 3. Where things are
 

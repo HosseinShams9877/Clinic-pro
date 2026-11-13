@@ -1,0 +1,24 @@
+
+===== 1280px (scrollWidth ref=1265 cur=1265) =====
+DIFF  brand → x: ref=1040 cur=1010 | fam: ref="Vazirmatn" cur="vazirmatn"
+DIFF  nav → x: ref=33 cur=63 | w: ref=1200 cur=1140 | fam: ref="Vazirmatn" cur="vazirmatn"
+DIFF  burger → fam: ref="Vazirmatn" cur="vazirmatn" | pad: ref="1px 6px" cur="0px"
+DIFF  hero h1 → x: ref=682 cur=680 | w: ref=551 cur=523 | fam: ref="\"KH Nastaliq\"" cur="notoNastaliq"
+DIFF  hero p → x: ref=682 cur=683 | w: ref=551 cur=520 | h: ref=127 cur=164 | font: ref="15.5px/31.775px 400" cur="16px/32.8px 400" | fam: ref="Vazirmatn" cur="vazirmatn"
+DIFF  hero cta → x: ref=1060 cur=1030 | y: ref=523 cur=559 | fam: ref="Vazirmatn" cur="vazirmatn" | shadow: ref="rgba(20, 184, 166, 0.28) 0px 10px 24px 0" cur="rgba(11, 79, 92, 0.18) 0px 8px 20px 0px" | bg: ref="rgba(0, 0, 0, 0)" cur="rgb(11, 79, 92)"
+DIFF  hst-i → x: ref=1062 cur=1039 | y: ref=3976 cur=2570 | fam: ref="Vazirmatn" cur="vazirmatn" | bg: ref="rgba(0, 0, 0, 0)" cur="rgb(232, 243, 244)" | color: ref="rgb(255, 255, 255)" cur="rgb(11, 79, 92)"
+DIFF  hw-n → x: ref=862 cur=852 | y: ref=4355 cur=2949 | fam: ref="Vazirmatn" cur="vazirmatn" | color: ref="rgba(0, 0, 0, 0)" cur="rgb(234, 244, 245)"
+DIFF  steps summary → x: ref=946 cur=931 | y: ref=3952 cur=2546 | w: ref=286 cur=271 | fam: ref="Vazirmatn" cur="vazirmatn"
+DIFF  footer phone → x: ref=121 cur=214 | y: ref=5958 cur=3904 | fam: ref="Vazirmatn" cur="vazirmatn"
+
+===== 393px (scrollWidth ref=378 cur=378) =====
+DIFF  brand → fam: ref="Vazirmatn" cur="vazirmatn"
+DIFF  nav → fam: ref="Vazirmatn" cur="vazirmatn"
+DIFF  burger → fam: ref="Vazirmatn" cur="vazirmatn" | pad: ref="1px 6px" cur="0px"
+DIFF  hero h1 → fam: ref="\"KH Nastaliq\"" cur="notoNastaliq"
+DIFF  hero p → h: ref=191 cur=230 | font: ref="15.5px/31.775px 400" cur="16px/32.8px 400" | fam: ref="Vazirmatn" cur="vazirmatn"
+DIFF  hero cta → y: ref=757 cur=796 | fam: ref="Vazirmatn" cur="vazirmatn" | shadow: ref="rgba(20, 184, 166, 0.28) 0px 10px 24px 0" cur="rgba(11, 79, 92, 0.18) 0px 8px 20px 0px" | bg: ref="rgba(0, 0, 0, 0)" cur="rgb(11, 79, 92)"
+DIFF  hst-i → y: ref=6068 cur=3730 | fam: ref="Vazirmatn" cur="vazirmatn" | bg: ref="rgba(0, 0, 0, 0)" cur="rgb(232, 243, 244)" | color: ref="rgb(255, 255, 255)" cur="rgb(11, 79, 92)"
+DIFF  hw-n → y: ref=7039 cur=4702 | fam: ref="Vazirmatn" cur="vazirmatn" | color: ref="rgba(0, 0, 0, 0)" cur="rgb(234, 244, 245)"
+DIFF  steps summary → y: ref=6044 cur=3706 | fam: ref="Vazirmatn" cur="vazirmatn"
+DIFF  footer phone → y: ref=11069 cur=7108 | fam: ref="Vazirmatn" cur="vazirmatn"

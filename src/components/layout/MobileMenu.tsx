@@ -1,123 +1,108 @@
 "use client";
-/**
- * MobileMenu.tsx — the burger-driven disclosure nav, below md.
- *
- * The scope-limited mirror of the reference `.menu` (services.html lines
- * 72–85): home, services, the two service groups, contact. No links to
- * pages past the Services section (CLAUDE.md §2 rule 4: no dead ends).
- * Closes on blur-away and on link activation; focus returns to the burger.
- */
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useEffect, useRef } from "react";
 
-import { ROUTES } from "@/config/site.config";
-import type { Locale } from "@/core/i18n/locales";
+import { type Locale } from "@/core/i18n/locales";
 import { t } from "@/modules/i18n/messages";
 import { Icon } from "@/components/shared/Icon";
 
+/**
+ * MobileMenu — the reference `#burger` island (پلتفرم/assets/js/main.js
+ * L40–L52). It is a single icon button that toggles the *server-rendered*
+ * `#menu` in place; the panel itself is the same `<ul class="menu">` the
+ * desktop nav uses, restyled by the ≤1024px media block in the reference
+ * port (reference.css "header responsive").
+ *
+ * Replicated main.js behaviors:
+ *   - burger click (stopPropagation) → `#menu.classList.toggle("open")` +
+ *     its aria-expanded;
+ *   - `.sub-tg` click (stopPropagation) → `li.has-sub.classList.toggle("open")`
+ *     + its aria-expanded (the mobile submenu accordion);
+ *   - any menu link click → close the menu (and collapse open submenus);
+ *   - document click → close the menu.
+ *
+ * Two a11y behaviors the reference does NOT have are kept from the Phase 2
+ * pass because they are release gates (SEO_ACCESSIBILITY_SECURITY.md §5):
+ * Escape closes the open menu and focus returns to the burger.
+ */
 export function MobileMenu({ locale }: { locale: Locale }) {
-  const [open, setOpen] = useState(false);
   const burgerRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!open) return;
-    const onClickOutside = (event: MouseEvent) => {
-      if (
-        panelRef.current !== null &&
-        !panelRef.current.contains(event.target as Node) &&
-        burgerRef.current !== null &&
-        !burgerRef.current.contains(event.target as Node)
-      ) {
-        setOpen(false);
+    const burger = burgerRef.current;
+    if (!burger) return;
+    const menu = burger
+      .closest(".site-header")
+      ?.querySelector<HTMLUListElement>("#menu");
+    if (!menu) return;
+
+    const setExpanded = (el: Element | null, open: boolean) => {
+      if (el instanceof HTMLElement) el.setAttribute("aria-expanded", String(open));
+    };
+
+    const closeMenu = () => {
+      menu.classList.remove("open");
+      setExpanded(burger, false);
+      menu.querySelectorAll("li.has-sub.open").forEach((li) => {
+        li.classList.remove("open");
+        setExpanded(li.querySelector(".sub-tg"), false);
+      });
+    };
+
+    const onBurgerClick = (event: MouseEvent) => {
+      event.stopPropagation();
+      const open = menu.classList.toggle("open");
+      setExpanded(burger, open);
+    };
+
+    const onMenuClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      const toggle = target?.closest(".sub-tg");
+      if (toggle) {
+        // Submenu accordion (main.js sub-tg handler).
+        event.stopPropagation();
+        const li = toggle.closest("li");
+        if (!li) return;
+        const open = li.classList.toggle("open");
+        setExpanded(toggle, open);
+        return;
+      }
+      if (target?.closest("a")) closeMenu(); // main.js "menu a click → close"
+    };
+
+    const onDocumentClick = () => {
+      if (menu.classList.contains("open")) closeMenu();
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && menu.classList.contains("open")) {
+        closeMenu();
+        burger.focus();
       }
     };
-    const onEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-        burgerRef.current?.focus();
-      }
-    };
-    document.addEventListener("mousedown", onClickOutside);
-    document.addEventListener("keydown", onEscape);
+
+    burger.addEventListener("click", onBurgerClick);
+    menu.addEventListener("click", onMenuClick);
+    document.addEventListener("click", onDocumentClick);
+    document.addEventListener("keydown", onKeyDown);
     return () => {
-      document.removeEventListener("mousedown", onClickOutside);
-      document.removeEventListener("keydown", onEscape);
+      burger.removeEventListener("click", onBurgerClick);
+      menu.removeEventListener("click", onMenuClick);
+      document.removeEventListener("click", onDocumentClick);
+      document.removeEventListener("keydown", onKeyDown);
     };
-  }, [open]);
+  }, []);
 
   return (
-    <>
-      <button
-        ref={burgerRef}
-        type="button"
-        className="inline-flex rounded-md p-2 text-foreground transition-colors hover:bg-primary-50 md:hidden"
-        aria-label={t(locale, "a11y.menu")}
-        aria-expanded={open}
-        aria-controls="mobile-menu"
-        onClick={() => setOpen((value) => !value)}
-      >
-        <Icon name={open ? "i-x" : "i-menu"} size={24} />
-      </button>
-
-      {open && (
-        <div
-          ref={panelRef}
-          id="mobile-menu"
-          className="absolute inset-x-0 top-[72px] z-40 border-b border-border bg-surface shadow-2 md:hidden"
-        >
-          <nav className="container py-3" aria-label={t(locale, "a11y.menu")}>
-            <ul className="flex flex-col gap-1">
-              <li>
-                <Link
-                  href={ROUTES.home}
-                  className="block rounded-md px-3 py-2.5 text-[15px] font-medium text-foreground transition-colors hover:bg-primary-50 hover:text-primary"
-                  onClick={() => setOpen(false)}
-                >
-                  {t(locale, "nav.home")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={ROUTES.services}
-                  className="block rounded-md px-3 py-2.5 text-[15px] font-medium text-foreground transition-colors hover:bg-primary-50 hover:text-primary"
-                  onClick={() => setOpen(false)}
-                >
-                  {t(locale, "nav.services")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`${ROUTES.services}#surgical`}
-                  className="block rounded-md px-3 py-2.5 ps-8 text-[14px] text-muted transition-colors hover:bg-primary-50 hover:text-primary"
-                  onClick={() => setOpen(false)}
-                >
-                  {t(locale, "nav.svcSurg")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`${ROUTES.services}#medical`}
-                  className="block rounded-md px-3 py-2.5 ps-8 text-[14px] text-muted transition-colors hover:bg-primary-50 hover:text-primary"
-                  onClick={() => setOpen(false)}
-                >
-                  {t(locale, "nav.svcMed")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`${ROUTES.home}#contact`}
-                  className="block rounded-md px-3 py-2.5 text-[15px] font-medium text-foreground transition-colors hover:bg-primary-50 hover:text-primary"
-                  onClick={() => setOpen(false)}
-                >
-                  {t(locale, "nav.contact")}
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      )}
-    </>
+    <button
+      ref={burgerRef}
+      type="button"
+      className="icon-btn burger"
+      aria-label={t(locale, "a11y.menu")}
+      aria-expanded="false"
+      aria-controls="menu"
+    >
+      <Icon name="i-menu" size={20} />
+    </button>
   );
 }

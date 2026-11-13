@@ -1,0 +1,115 @@
+B-1: language switcher — full document navigation per switch
+B-2: header chrome — no search affordance
+B-3: services dropdown — reference .menu .sub contract
+B-4/B-5: badge dot side + phone icon side, per direction
+B-6: all in-scope routes × locales — lang/dir sanity + overflow
+
+=== ui-fix-verification results ===
+PASS  B-1 fa→en (before)  htmlLang=fa
+PASS  B-1 fa→en  url=http://localhost:3137/?lang=en lang=en dir=ltr navHome=Super-Specialty Surgical CenterDr. Kheirkhah switcher=EN
+PASS  B-1 en→ar (before)  htmlLang=en
+PASS  B-1 en→ar  url=http://localhost:3137/?lang=ar lang=ar dir=rtl navHome=مركز الجراحة فوق التخصصيةالدكتور خيرخواه switcher=AR
+PASS  B-1 ar→fa (before)  htmlLang=ar
+PASS  B-1 ar→fa  url=http://localhost:3137/?lang=fa lang=fa dir=rtl navHome=مرکز جراحی فوق تخصصیدکتر خیرخواه switcher=FA
+PASS  B-2 no-search-affordance (fa)  labelled=[] helpLinks=[] (the home #help section itself exists)
+PASS  B-2 no-search-affordance (en)  labelled=[] helpLinks=[] (the home #help section itself exists)
+PASS  B-2 no-search-affordance (ar)  labelled=[] helpLinks=[] (the home #help section itself exists)
+PASS  B-3 dropdown (fa, 1280px)  dir=rtl sub=[474..710] w=236 top=81 triggerBottom=75 li=[636..710] pageOverflow=false
+PASS  B-3 dropdown (en, 1280px)  dir=ltr sub=[585..821] w=236 top=81 triggerBottom=75 li=[585..670] pageOverflow=false
+PASS  B-3 dropdown (ar, 1280px)  dir=rtl sub=[471..707] w=236 top=81 triggerBottom=75 li=[625..707] pageOverflow=false
+PASS  B-3 mobile submenu (fa, 960px)  panel hidden→visible opacity=1 h=177 (.open false→true); sub display=block .open=true aria-expanded=true; chevron 'matrix(-1, 0, 0, -1, 0, 0)' after 304ms
+PASS  B-3 mobile submenu (en, 960px)  panel hidden→visible opacity=1 h=165 (.open false→true); sub display=block .open=true aria-expanded=true; chevron 'matrix(-1, 0, 0, -1, 0, 0)' after 313ms
+PASS  B-3 mobile submenu (ar, 960px)  panel hidden→visible opacity=1 h=179 (.open false→true); sub display=block .open=true aria-expanded=true; chevron 'matrix(-1, 0, 0, -1, 0, 0)' after 303ms
+PASS  B-4 badge (fa, 1280px)  dir=rtl dotX=215 textBoxX=71 centerOff=0
+PASS  B-5 phone icon (fa, 1280px)  dir=rtl iconX=160 anchorCenter=124
+PASS  B-4 badge (fa, 960px)  dir=rtl dotX=183 textBoxX=38 centerOff=0
+PASS  B-5 phone icon (fa, 960px)  header CTA width=0 (reference hide-sm: display:none at ≤1180px; FloatingActions is the small-screen affordance)
+PASS  B-4 badge (fa, 375px)  dir=rtl dotX=171 textBoxX=26 centerOff=0
+PASS  B-5 phone icon (fa, 375px)  header CTA width=0 (reference hide-sm: display:none at ≤1180px; FloatingActions is the small-screen affordance)
+PASS  B-4 badge (en, 1280px)  dir=ltr dotX=1035 textBoxX=1057 centerOff=0
+PASS  B-5 phone icon (en, 1280px)  dir=ltr iconX=1085 anchorCenter=1141
+PASS  B-4 badge (en, 960px)  dir=ltr dotX=748 textBoxX=770 centerOff=0
+PASS  B-5 phone icon (en, 960px)  header CTA width=0 (reference hide-sm: display:none at ≤1180px; FloatingActions is the small-screen affordance)
+PASS  B-4 badge (en, 375px)  dir=ltr dotX=194 textBoxX=216 centerOff=0
+PASS  B-5 phone icon (en, 375px)  header CTA width=0 (reference hide-sm: display:none at ≤1180px; FloatingActions is the small-screen affordance)
+PASS  B-4 badge (ar, 1280px)  dir=rtl dotX=194 textBoxX=71 centerOff=0
+PASS  B-5 phone icon (ar, 1280px)  dir=rtl iconX=192 anchorCenter=140
+PASS  B-4 badge (ar, 960px)  dir=rtl dotX=161 textBoxX=38 centerOff=0
+PASS  B-5 phone icon (ar, 960px)  header CTA width=0 (reference hide-sm: display:none at ≤1180px; FloatingActions is the small-screen affordance)
+PASS  B-4 badge (ar, 375px)  dir=rtl dotX=149 textBoxX=26 centerOff=0
+PASS  B-5 phone icon (ar, 375px)  header CTA width=0 (reference hide-sm: display:none at ≤1180px; FloatingActions is the small-screen affordance)
+PASS  B-6 lang/dir (fa, /, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/gen, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/gen, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/gen, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/gen, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/gen, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/gen, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/plastic, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/plastic, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/plastic, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/plastic, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/plastic, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/plastic, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/ortho, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/ortho, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/ortho, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/ortho, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/ortho, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/ortho, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/uro, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/uro, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/uro, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/uro, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/uro, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/uro, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/eye, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/eye, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/eye, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/eye, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/eye, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/eye, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/ent, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/ent, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/ent, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/ent, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/ent, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/ent, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/gyn, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/gyn, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/gyn, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/gyn, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/gyn, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/gyn, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/aes, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/aes, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/aes, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/aes, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/aes, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/aes, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/anes, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/anes, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/anes, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/anes, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/anes, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/anes, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (fa, /services/endo, 1280px)  lang=fa dir=rtl overflow=false
+PASS  B-6 overflow (fa, /services/endo, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (en, /services/endo, 1280px)  lang=en dir=ltr overflow=false
+PASS  B-6 overflow (en, /services/endo, 375px)  scrollWidth>innerWidth=false
+PASS  B-6 lang/dir (ar, /services/endo, 1280px)  lang=ar dir=rtl overflow=false
+PASS  B-6 overflow (ar, /services/endo, 375px)  scrollWidth>innerWidth=false
+
+checks: 105, failed: 0
+ui-fix-verification: PASS

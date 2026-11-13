@@ -111,18 +111,19 @@ async function key(type, keyName, code, keyCode, text = undefined) {
 }
 
 async function tab(forward = true) {
-  const mods = forward ? [] : [{ keyCode: 16, code: "ShiftLeft", key: "Shift", type: "keyDown" }];
-  for (const mod of mods) {
-    await send("Input.dispatchKeyEvent", { ...mod, windowsVirtualKeyCode: mod.keyCode });
-  }
-  await key("keyDown", "Tab", "Tab", 9);
-  await key("keyUp", "Tab", "Tab", 9);
-  for (const mod of mods) {
+  // Shift must be conveyed via the `modifiers` bitmask (Shift = 8) on the Tab
+  // key events themselves. A separately dispatched Shift keyDown is NOT held
+  // across a later dispatched Tab in headless CDP — verified live: a keyDown
+  // Shift + Tab sequence moved focus FORWARD every time (burger-probe.mjs),
+  // while modifiers on the Tab events moves it backward correctly.
+  const mods = forward ? {} : { modifiers: 8 };
+  for (const type of ["keyDown", "keyUp"]) {
     await send("Input.dispatchKeyEvent", {
-      type: "keyUp",
-      key: "Shift",
-      code: "ShiftLeft",
-      windowsVirtualKeyCode: 16,
+      type,
+      key: "Tab",
+      code: "Tab",
+      windowsVirtualKeyCode: 9,
+      ...mods,
     });
   }
 }
@@ -165,6 +166,15 @@ const FOCUSABLES = `(() => {
     const shown = style.visibility !== "hidden" && style.display !== "none";
     const ariaHidden = element.closest("[aria-hidden='true']");
     if (ariaHidden !== null) continue;
+    // Chrome 156 hides the content of a CLOSED details element with the UA
+    // rule details:not([open]) > :not(summary) { content-visibility: hidden }.
+    // content-visibility is NOT reflected in computed display/visibility
+    // (the element still computes display:block and even reports a rect), so
+    // without this guard the probe would count links inside closed
+    // disclosures as rest-tabbable and then flag them unreachable when the
+    // real Tab walk — correctly — skipped them (verified with tab-trace.mjs;
+    // the reference's own .hst disclosures hide the same way).
+    if (element.tagName !== "SUMMARY" && element.closest("details:not([open])") !== null) continue;
     tabbable.push({
       tag: element.tagName,
       cls: (typeof element.className === "string" ? element.className : "").slice(0, 60),
@@ -388,18 +398,21 @@ for (const width of WIDTHS) {
     //    Escape to close with focus restored to the burger (MobileMenu.tsx).
     //    The burger is selected by aria-controls, NOT aria-expanded — the
     //    language switcher's opener also carries aria-expanded and sits earlier
-    //    in the DOM, so the older selector tested the wrong button.
+    //    in the DOM, so the older selector tested the wrong button. The B-1
+    //    reference port kept the reference's own id (`#menu`, the server-
+    //    rendered <ul> the desktop nav shares) — the panel never leaves the
+    //    DOM, so open/closed is read off the `open` class, not node removal.
     if (width === 375) {
       const burgerState = JSON.parse(
         await evaluate(`(() => {
-          const burger = document.querySelector("button[aria-controls='mobile-menu']");
+          const burger = document.querySelector("button[aria-controls='menu']");
           if (burger === null) return JSON.stringify({ missing: true });
           burger.focus();
           return JSON.stringify({ missing: false, expanded: burger.getAttribute("aria-expanded") });
         })()`),
       );
       if (burgerState.missing) {
-        routeProblems.push("no burger button (button[aria-controls='mobile-menu']) found at 375 px");
+        routeProblems.push("no burger button (button[aria-controls='menu']) found at 375 px");
       } else if (burgerState.expanded !== "false") {
         routeProblems.push(`burger initial aria-expanded is ${burgerState.expanded}, expected "false"`);
       } else {
@@ -407,11 +420,11 @@ for (const width of WIDTHS) {
         await sleep(220);
         const opened = JSON.parse(
           await evaluate(`(() => {
-            const burger = document.querySelector("button[aria-controls='mobile-menu']");
-            const panel = document.getElementById("mobile-menu");
+            const burger = document.querySelector("button[aria-controls='menu']");
+            const panel = document.getElementById("menu");
             return JSON.stringify({
               expanded: burger.getAttribute("aria-expanded"),
-              panelOpen: panel !== null,
+              panelOpen: panel !== null && panel.classList.contains("open"),
               links: panel === null ? 0 : panel.querySelectorAll("a").length,
             });
           })()`),
@@ -421,26 +434,41 @@ for (const width of WIDTHS) {
         } else if (opened.links === 0) {
           routeProblems.push("open mobile menu contains zero links");
         } else {
-          // Tab from the burger into the disclosed menu and verify focus lands
-          // on a link inside #mobile-menu and that the link carries a ring.
-          await tab(true);
-          await sleep(60);
-          const inMenu = JSON.parse(
-            await evaluate(`(() => {
-              const active = document.activeElement;
-              const inside = active !== null && active.closest("#mobile-menu") !== null;
-              if (!inside) return JSON.stringify({ inside: false, ring: false });
-              const style = getComputedStyle(active);
-              return JSON.stringify({
-                inside: true,
-                ring: style.outlineStyle !== "none" && parseFloat(style.outlineWidth) >= 2,
-                outline: style.outlineWidth + " " + style.outlineStyle,
-              });
-            })()`),
-          );
+          // Shift+Tab from the burger backward into the disclosed menu and
+          // verify focus lands on a link inside #menu with a ring. Backward,
+          // not forward, because the reference's own header DOM order
+          // (index.html L88–L126, kept verbatim in SiteHeader.tsx) is
+          // brand → ul#menu → .nav-tools: the burger is the LAST tabbable in
+          // the header, so plain Tab correctly moves forward into main content
+          // (the reference demo's own behaviour — its main.js toggles the
+          // class and does zero focus management), while the disclosed menu
+          // is reached backward from the burger. The language switcher sits
+          // between the menu and the burger (the header CTA is display:none
+          // below 1180 px), so it takes two Shift+Tabs; when the menu is
+          // closed its links are visibility:hidden and are skipped, so
+          // landing on a menu link also proves the disclosure actually joins
+          // the tab order when it opens.
+          let inMenu = { inside: false, ring: false };
+          for (let back = 0; back < 3 && !inMenu.inside; back += 1) {
+            await tab(false);
+            await sleep(60);
+            inMenu = JSON.parse(
+              await evaluate(`(() => {
+                const active = document.activeElement;
+                const inside = active !== null && active.closest("#menu") !== null;
+                if (!inside) return JSON.stringify({ inside: false, ring: false });
+                const style = getComputedStyle(active);
+                return JSON.stringify({
+                  inside: true,
+                  ring: style.outlineStyle !== "none" && parseFloat(style.outlineWidth) >= 2,
+                  outline: style.outlineWidth + " " + style.outlineStyle,
+                });
+              })()`),
+            );
+          }
           if (!inMenu.inside) {
             const active = JSON.parse(await evaluate(ACTIVE));
-            routeProblems.push(`Tab after opening the menu did not enter it (active=${signature(active)})`);
+            routeProblems.push(`Shift+Tab after opening the menu did not enter it (active=${signature(active)})`);
           } else if (!inMenu.ring) {
             routeProblems.push(`focused mobile-menu link has no visible focus ring (outline=${inMenu.outline})`);
           }
@@ -450,11 +478,12 @@ for (const width of WIDTHS) {
           await sleep(220);
           const closed = JSON.parse(
             await evaluate(`(() => {
-              const burger = document.querySelector("button[aria-controls='mobile-menu']");
+              const burger = document.querySelector("button[aria-controls='menu']");
+              const panel = document.getElementById("menu");
               return JSON.stringify({
                 expanded: burger.getAttribute("aria-expanded"),
                 focusOnBurger: document.activeElement === burger,
-                panelGone: document.getElementById("mobile-menu") === null,
+                panelGone: panel === null || !panel.classList.contains("open"),
               });
             })()`),
           );
@@ -551,7 +580,7 @@ for (const width of WIDTHS) {
     {
       const switcher = JSON.parse(
         await evaluate(`(() => {
-          const opener = document.querySelector(".relative button[aria-haspopup='menu']");
+          const opener = document.querySelector("button.lang-btn[aria-haspopup='menu']");
           if (opener === null) return JSON.stringify({ missing: true });
           opener.focus();
           return JSON.stringify({ missing: false });

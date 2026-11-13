@@ -1,0 +1,61 @@
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+[1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90mD:/New folder/Clinic-pro[39m
+
+ [32m✓[39m src/modules/services/components/image-pipeline.test.ts [2m([22m[2m8 tests[22m[2m)[22m[90m 10[2mms[22m[39m
+ [32m✓[39m src/components/shared/LiveStatus.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[90m 204[2mms[22m[39m
+ [32m✓[39m src/components/layout/SiteHeader.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 344[2mms[22m[39m
+ [32m✓[39m src/app/page.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[33m 799[2mms[22m[39m
+   [33m[2m✓[22m[39m home page (fa)[2m > [22mrenders the hero, the stats and the contact strip as plain text [33m308[2mms[22m[39m
+ [32m✓[39m src/app/services/[category]/page.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 947[2mms[22m[39m
+   [33m[2m✓[22m[39m /services/[category] detail page[2m > [22mrenders the reference catalog content for every category, in every locale [33m815[2mms[22m[39m
+ [32m✓[39m src/components/shared/LivingEffects.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[90m 64[2mms[22m[39m
+ [32m✓[39m src/modules/seo/lib/structuredData.test.ts [2m([22m[2m16 tests[22m[2m)[22m[90m 41[2mms[22m[39m
+ [32m✓[39m tests/cwv-budget.test.ts [2m([22m[2m18 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/app/services/page.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 551[2mms[22m[39m
+ [32m✓[39m src/components/layout/focus-ring-clip.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[90m 201[2mms[22m[39m
+ [32m✓[39m src/modules/services/content/categories.test.ts [2m([22m[2m6 tests[22m[2m)[22m[90m 10[2mms[22m[39m
+ [32m✓[39m src/modules/services/queries/statusQueries.test.ts [2m([22m[2m18 tests[22m[2m)[22m[90m 15[2mms[22m[39m
+ [32m✓[39m src/core/openHours.test.ts [2m([22m[2m17 tests[22m[2m)[22m[90m 38[2mms[22m[39m
+ [32m✓[39m src/styles/globalCss/print.test.ts [2m([22m[2m6 tests[22m[2m)[22m[90m 6[2mms[22m[39m
+ [32m✓[39m src/components/shared/MagneticButtons.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[90m 64[2mms[22m[39m
+ [32m✓[39m src/components/shared/MenuSpy.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[90m 60[2mms[22m[39m
+ [32m✓[39m src/styles/globalCss/themes.test.ts [2m([22m[2m4 tests[22m[2m)[22m[90m 6[2mms[22m[39m
+ [32m✓[39m src/app/api/status/route.test.ts [2m([22m[2m6 tests[22m[2m)[22m[90m 286[2mms[22m[39m
+ [32m✓[39m src/app/not-found.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[90m 97[2mms[22m[39m
+ [32m✓[39m src/hooks/useMediaQuery.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[90m 28[2mms[22m[39m
+ [32m✓[39m src/components/layout/LanguageSwitcher.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[90m 163[2mms[22m[39m
+[90mstderr[2m | src/components/layout/LanguageSwitcher.test.tsx
+[22m[39mError: Not implemented: navigation (except hash changes)
+    at module.exports (D:\New folder\Clinic-pro\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at navigateFetch (D:\New folder\Clinic-pro\node_modules\jsdom\lib\jsdom\living\window\navigation.js:77:3)
+    at exports.navigate (D:\New folder\Clinic-pro\node_modules\jsdom\lib\jsdom\living\window\navigation.js:55:3)
+    at Timeout._onTimeout (D:\New folder\Clinic-pro\node_modules\jsdom\lib\jsdom\living\nodes\HTMLHyperlinkElementUtils-impl.js:81:7)
+    at listOnTimeout (node:internal/timers:685:17)
+    at processTimers (node:internal/timers:618:7) [90mundefined[39m
+Error: Not implemented: navigation (except hash changes)
+    at module.exports (D:\New folder\Clinic-pro\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at navigateFetch (D:\New folder\Clinic-pro\node_modules\jsdom\lib\jsdom\living\window\navigation.js:77:3)
+    at exports.navigate (D:\New folder\Clinic-pro\node_modules\jsdom\lib\jsdom\living\window\navigation.js:55:3)
+    at Timeout._onTimeout (D:\New folder\Clinic-pro\node_modules\jsdom\lib\jsdom\living\nodes\HTMLHyperlinkElementUtils-impl.js:81:7)
+    at listOnTimeout (node:internal/timers:685:17)
+    at processTimers (node:internal/timers:618:7) [90mundefined[39m
+
+ [32m✓[39m src/modules/services/schemas/statusEquivalence.test.ts [2m([22m[2m3 tests[22m[2m)[22m[90m 7[2mms[22m[39m
+ [32m✓[39m src/core/i18n/jalali.test.ts [2m([22m[2m14 tests[22m[2m)[22m[90m 23[2mms[22m[39m
+ [32m✓[39m tests/phase2-baseline.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 303[2mms[22m[39m
+ [32m✓[39m src/app/error.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[90m 184[2mms[22m[39m
+ [32m✓[39m src/styles/globalCss/comment-hygiene.test.ts [2m([22m[2m2 tests[22m[2m)[22m[90m 5[2mms[22m[39m
+ [32m✓[39m src/hooks/useReducedMotion.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[90m 28[2mms[22m[39m
+ [32m✓[39m src/core/rateLimit.test.ts [2m([22m[2m5 tests[22m[2m)[22m[90m 4[2mms[22m[39m
+ [32m✓[39m src/app/sitemap.test.ts [2m([22m[2m7 tests[22m[2m)[22m[90m 7[2mms[22m[39m
+ [32m✓[39m src/styles/globalCss/cascade.test.ts [2m([22m[2m6 tests[22m[2m)[22m[90m 5[2mms[22m[39m
+ [32m✓[39m src/modules/seo/lib/metadata.test.ts [2m([22m[2m6 tests[22m[2m)[22m[90m 5[2mms[22m[39m
+ [32m✓[39m src/modules/i18n/messages/index.test.ts [2m([22m[2m8 tests[22m[2m)[22m[90m 18[2mms[22m[39m
+ [32m✓[39m src/core/i18n/digits.test.ts [2m([22m[2m8 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m33 passed[39m[22m[90m (33)[39m
+[2m      Tests [22m [1m[32m238 passed[39m[22m[90m (238)[39m
+[2m   Start at [22m 20:02:56
+[2m   Duration [22m 15.09s[2m (transform 883ms, setup 7.65s, collect 4.96s, tests 4.54s, environment 43.48s, prepare 3.96s)[22m
+

@@ -1,0 +1,11 @@
+{
+ "fa": {
+  "RAW": "{\"id\":3,\"result\":{\"result\":{\"type\":\"string\",\"value\":\"{\\\"dir\\\":\\\"rtl\\\",\\\"innerWidth\\\":320,\\\"scrollWidth\\\":309,\\\"nav\\\":{\\\"w\\\":273},\\\"brand\\\":{\\\"w\\\":157},\\\"tools\\\":{\\\"w\\\":115,\\\"right\\\":111},\\\"kids\\\":[{\\\"cls\\\":\\\"lang\\\",\\\"disp\\\":\\\"block\\\",\\\"w\\\":65,\\\"right\\\":111},{\\\"cls\\\":\\\"icon-btn\\\",\\\"disp\\\":\\\"none\\\",\\\"w\\\":0,\\\"right\\\":0},{\\\"cls\\\":\\\"btn btn-primary btn-sm hide-sm magnetic\\\",\\\"disp\\\":\\\"none\\\",\\\"w\\\":0,\\\"right\\\":0},{\\\"cls\\\":\\\"icon-btn burger\\\",\\\"disp\\\":\\\"grid\\\",\\\"w\\\":40,\\\"right\\\":36}],\\\"langLabel\\\":\\\"FA"
+ },
+ "en": {
+  "RAW": "{\"id\":5,\"result\":{\"result\":{\"type\":\"string\",\"value\":\"{\\\"dir\\\":\\\"ltr\\\",\\\"innerWidth\\\":320,\\\"scrollWidth\\\":356,\\\"nav\\\":{\\\"w\\\":273},\\\"brand\\\":{\\\"w\\\":202},\\\"tools\\\":{\\\"w\\\":116,\\\"right\\\":356},\\\"kids\\\":[{\\\"cls\\\":\\\"lang\\\",\\\"disp\\\":\\\"block\\\",\\\"w\\\":66,\\\"right\\\":306},{\\\"cls\\\":\\\"icon-btn\\\",\\\"disp\\\":\\\"none\\\",\\\"w\\\":0,\\\"right\\\":0},{\\\"cls\\\":\\\"btn btn-primary btn-sm hide-sm magnetic\\\",\\\"disp\\\":\\\"none\\\",\\\"w\\\":0,\\\"right\\\":0},{\\\"cls\\\":\\\"icon-btn burger\\\",\\\"disp\\\":\\\"grid\\\",\\\"w\\\":40,\\\"right\\\":356}],\\\"langLabel\\\":\\\"E"
+ },
+ "ar": {
+  "RAW": "{\"id\":7,\"result\":{\"result\":{\"type\":\"string\",\"value\":\"{\\\"dir\\\":\\\"rtl\\\",\\\"innerWidth\\\":320,\\\"scrollWidth\\\":324,\\\"nav\\\":{\\\"w\\\":273},\\\"brand\\\":{\\\"w\\\":170},\\\"tools\\\":{\\\"w\\\":117,\\\"right\\\":98},\\\"kids\\\":[{\\\"cls\\\":\\\"lang\\\",\\\"disp\\\":\\\"block\\\",\\\"w\\\":67,\\\"right\\\":98},{\\\"cls\\\":\\\"icon-btn\\\",\\\"disp\\\":\\\"none\\\",\\\"w\\\":0,\\\"right\\\":0},{\\\"cls\\\":\\\"btn btn-primary btn-sm hide-sm magnetic\\\",\\\"disp\\\":\\\"none\\\",\\\"w\\\":0,\\\"right\\\":0},{\\\"cls\\\":\\\"icon-btn burger\\\",\\\"disp\\\":\\\"grid\\\",\\\"w\\\":40,\\\"right\\\":21}],\\\"langLabel\\\":\\\"AR\\\""
+ }
+}

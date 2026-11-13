@@ -23,5 +23,11 @@
 @import "./typography.css";
 @import "./layout.css";
 @import "./utilities.css";
+/* The fidelity port (2026-11-11): every rule copied from the read-only
+   reference (پلتفرم/), in the reference's own cumulative order. Assigned to
+   the components layer on purpose — Tailwind utilities (in utilities) still
+   beat these rules, and base (preflight, tokens, themes, focus ring) stays
+   below — so the port composes with the app, not over it. */
+@import "./reference.css";
 /* Unlayered and fully inside @media print — zero on-screen effect (P2 item 5). */
 @import "./print.css";

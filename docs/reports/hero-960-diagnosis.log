@@ -1,0 +1,101 @@
+# Hero image stall at exactly 960px — diagnosis log (evidence)
+
+Captured 2026-11-12 during the fidelity pass. The scripts that produced lines
+[1]–[7] were scratch diagnostics (`scripts/diag-nav-stall{1..8}.mjs`), deleted
+after this log was written; their outputs are reproduced here verbatim.
+
+## [1] Symptom — `scripts/ui-fix-verification.mjs` (the gate)
+
+    Error: waitFor timed out (15000ms): document.readyState === 'complete'
+      at waitFor (...ui-fix-verification.mjs:153)
+      at async navigate (...:132)
+      at async ...:295          <-- the 960x900 navigation
+
+Deterministic: reproduced on a FRESH Chrome (so not cumulative strain), with
+the metrics override applied before navigation (the gate's pattern), and also
+with a real `--window-size=960,900` window and no override at all.
+
+## [2] `readyState` never leaves "interactive"
+
+    diag-nav-stall2: nav1 @1280 complete, nav2 @1280 complete,
+                     nav3 @960 STUCK, nav4 @960 STUCK
+
+## [3] The load-blocking element — the eager hero <img>
+
+    diag-nav-stall4: box=945x300 display=block visibility=visible hasSrcset=true
+                     currentSrc="" complete=false naturalWidth=0
+    (8 of 9 imgs pending; all below-fold lazy imgs are NOT the blocker —
+     the eager hero is the only image that never requests.)
+
+## [4] Width sweep, BEFORE the fix — only 960 fails
+
+    width=1280: readyState=complete heroComplete=true  currentSrc w=750
+    width=1100: readyState=complete heroComplete=true  currentSrc w=750
+    width=1024: readyState=complete heroComplete=true  currentSrc w=750
+    width=961:  readyState=complete heroComplete=true  currentSrc w=750
+    width=960:  readyState=INTERACTIVE heroComplete=false currentSrc="" box=945x300
+    width=640:  readyState=complete heroComplete=true  currentSrc w=750
+    width=393:  readyState=complete heroComplete=true  currentSrc w=750
+
+## [5] Control on the REFERENCE home page (file:// index.html)
+
+    reference @1280:        readyState=complete after ~425ms, 8 of 12 imgs pending
+    reference @960:         readyState=complete after ~430ms, 11 of 12 imgs pending
+    reference @960 (2nd):   readyState=complete after ~440ms
+    reference @1280 (back): readyState=complete after ~425ms
+
+The reference fires `load` with 11 unrequested LAZY images. Lazy images do not
+block load. The port's stall is therefore a real defect, not harness behavior.
+
+## [6] Minimal repro — NO Next.js at all (plain http server, 5 markup variants)
+
+    Variant A: exact port markup (preload imageSrcSet + img, sizes 116vw)
+    Variant B: same img, no preload
+    Variant C: preload with href + img
+    Variant D: sizes 100vw (otherwise port markup)
+    Variant E: sizes with a 959px boundary
+
+    width=960:  A=PENDING B=PENDING C=PENDING D=OK(w=1080) E=OK(w=640)
+    width=961:  all OK -> w=1080
+    width=640:  all OK -> w=1080
+
+So: at exactly 960px, any `<img>` whose `sizes` media query `(max-width:960px)`
+matches AND whose resolved size (116vw = 1113.6px) selects the `w=1200` srcset
+candidate never issues the request — preload present or absent, href or
+imageSrcSet. A `100vw` value (-> w=1080) loads at every width; a 959px boundary
+(-> w=640) also loads. This is a Chrome 156 resource-selection quirk exposed by
+the port's `sizes` value — NOT a Next.js bug and NOT a preload bug.
+
+## [7] Width sweep, AFTER the fix (`sizes="(max-width: 960px) 100vw, 52vw"`)
+
+    width=1280: readyState=complete heroComplete=true naturalW=665  w=750  box=697x490
+    width=1100: readyState=complete heroComplete=true naturalW=572  w=750  box=604x491
+    width=1024: readyState=complete heroComplete=true naturalW=532  w=750  box=558x476
+    width=961:  readyState=complete heroComplete=true naturalW=499  w=750  box=520x498
+    width=960:  readyState=complete heroComplete=true naturalW=960  w=1080 box=945x300
+    width=640:  readyState=complete heroComplete=true naturalW=640  w=1080 box=640x240
+    width=393:  readyState=complete heroComplete=true naturalW=393  w=1080 box=393x240
+
+Every width now loads; 960 selects w=1080 exactly as 100vw predicts.
+
+## Why 100vw is the reference-exact value (not a workaround)
+
+`پلتفرم/assets/css/style.css` L56:
+    .container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
+`پلتفرم/assets/css/home.css` L154-157:
+    @media (max-width:960px){ .h-hero-in{grid-template-columns:1fr}
+      .h-media{order:-1;min-height:300px;margin-inline:-20px}
+      .h-img{...inset:0;...border-radius:0 0 40px 40px} }
+
+`.h-media`'s `margin-inline:-20px` pulls the media back out through the
+container's 20px padding, so the hero image spans EXACTLY 100vw at <=960px.
+The shipped `116vw` was an over-approximation: it both over-served the image
+at 960px and tripped the quirk. `100vw` is the reference's own geometry.
+
+## User-visible impact of the defect (before the fix)
+
+At a real 960px viewport (a common laptop/tablet width, and one of the
+project's own breakpoints) the home page rendered WITHOUT its hero photograph
+— the `<img>` element stayed empty with `naturalWidth: 0` — and `window.load`
+never fired, so any load-event-dependent behaviour (including the
+`ui-fix-verification` and `cwv-audit` gates) hung indefinitely.

@@ -8,3 +8,6 @@ next-env.d.ts
 coverage
 .vitest
 .DS_Store
+.cdp-profile/
+.cdp-profile-chrome/
+.cdp-tmp/

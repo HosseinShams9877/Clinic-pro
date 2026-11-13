@@ -53,6 +53,8 @@ export const fa = {
 
   /* CTAs — booking CTA replaced by tel: per Q1 */
   "cta.request": "درخواست نوبت",
+  /* header CTA — reference: index.html line 122 / services.html line 96 */
+  "cta.book": "نوبت و مشاوره",
 
   /* hero */
   "h.k": "مرکز جراحی فوق تخصصی در کاشان",
@@ -101,6 +103,18 @@ export const fa = {
   "h.s7": "ارزیابی و مشاوره بیهوشی پیش از عمل",
   "h.s8": "جراحی استخوان و مفاصل",
 
+  /* bento one-liners — reference: home-svc.js SHORT (per category id) */
+  "short.gen": "کیسه صفرا، فتق، معده و روده با روش کم‌تهاجمی",
+  "short.plastic": "جراحی‌های ترمیمی و زیبایی با تیم بیهوشی اختصاصی",
+  "short.ortho": "جراحی استخوان و مفاصل",
+  "short.uro": "سنگ‌شکن، یورتروسکوپی و سیستوسکوپی",
+  "short.eye": "قرنیه، لیزیک، اسمایل، شبکیه و آب‌مروارید",
+  "short.ent": "سینوس، بینی، لوزه و جراحی سر و گردن",
+  "short.gyn": "جراحی‌های تخصصی زنان و درمان ناباروری",
+  "short.aes": "جراحی زیبایی، لیزر سه‌طول‌موج، کاشت مو و ابرو",
+  "short.anes": "ارزیابی و مشاوره بیهوشی پیش از عمل",
+  "short.endo": "آندوسکوپی و کولونوسکوپی تشخیصی و درمانی",
+
   /* care banner */
   "care.title": "در تمام مراحل کنار شما هستیم",
   "h.careP":
@@ -120,10 +134,22 @@ export const fa = {
   "h.g2": "آمادگی قبل از جراحی",
   "h.g2s": "نکات مهم قبل از عمل",
   "h.g2d": "ناشتایی، داروها و آزمایش‌ها را طبق دستور پزشک آماده کنید.",
+  /* guide link — reference: index.html line 269 (guide.html is out of scope;
+     the string is kept so the label stays canonical when used in-scope) */
+  "h.g2l": "راهنمای کامل ←",
   "h.g3": "مدارک لازم",
   "h.g3s": "مدارک مورد نیاز برای پذیرش",
   "gd.1d":
     "کارت ملی یا کارت شناسایی معتبر عکس‌دار، دستور بستری پزشک، مدارک پزشکی و فهرست داروهای مصرفی.",
+  /* fourth step — reference: index.html line 271. Its patient-panel.html?go=new
+     target is out of scope; the strings ship so the step can render with an
+     in-scope substituted action (tel), per the fidelity directive's
+     "no fake routes, but exact UI behavior" constraint. */
+  "h.g4": "نوبت‌دهی آنلاین",
+  "h.g4s": "ثبت درخواست جراحی بدون مراجعه حضوری",
+  "h.g4d":
+    "برگه معرفی پزشک را آنلاین ارسال کنید؛ همکاران ما ظرف ۲۴ تا ۴۸ ساعت کاری برای تعیین زمان عمل با شما تماس می‌گیرند.",
+  "h.g4a": "ثبت درخواست نوبت",
 
   /* why us */
   "hs.k": "ایمنی بیمار",
@@ -174,6 +200,15 @@ export const fa = {
   "sv2.askP":
     "کارشناسان پذیرش آماده پاسخ‌گویی به سؤالات شما و راهنمایی برای انتخاب پزشک و روش درمانی مناسب هستند.",
   "sv2.call": "تماس با ما",
+  /* sd-cta / video / online consult — reference: services.html lines 142–146.
+     sv2.online's index.html#international target is out of scope; the string
+     ships for an in-scope substituted action. */
+  "sv2.book": "درخواست نوبت و مشاوره",
+  "sv2.docs": "مشاهده پزشکان این حوزه",
+  "sv2.vid": "معرفی خدمات",
+  "sv2.online": "ارسال مدارک و مشاوره آنلاین",
+  /* video placeholder toast — reference: services.js VID.fa */
+  "sv2.vidSoon": "ویدیوی معرفی این بخش به‌زودی اضافه می‌شود.",
   "sv2.a1": "پاسخ‌گویی در ساعات کاری",
   "sv2.a1s": "شنبه تا پنجشنبه · ۷:۳۰ تا ۲۰:۰۰",
   "sv2.a2": "راهنمایی کامل",
@@ -186,6 +221,11 @@ export const fa = {
   "floor.ground": "طبقه همکف",
   "floor.second": "طبقه دوم",
   "floor.third": "طبقه سوم",
+  /* short floor labels — reference: home-svc.js FL.SHORT (bento chips) */
+  "floorS.basm": "زیرزمین",
+  "floorS.ground": "همکف",
+  "floorS.second": "طبقه دوم",
+  "floorS.third": "طبقه سوم",
 
   /* live admissions status — reference: home.js T.fa */
   "status.open": "پذیرش هم‌اکنون باز است",

@@ -1,11 +1,17 @@
 /**
  * ServiceGroupSection.tsx — one group block of the /services landing
- * (the reference's `.sgrp`, services.html lines 126–136).
+ * (the reference's `.sgrp`, services.html lines 125–132).
  *
- * Heading = group label + the group's reference subtitle (sg.surgS / sg.medS);
- * body = the group's category cards in the reference's client-requested
- * order. The section id (#surgical / #medical) is what the header sub-links
- * and the landing breadcrumbs target, exactly like the reference.
+ * The B-3 fidelity port: `.sgrp` + `.sgrp-h` (icon tile `span.sgrp-i` —
+ * `.med` for the medical group — plus `h2` group label and `small` group
+ * subtitle) and the `.scats` grid. The reference distinguishes the two
+ * grids by id and class: the surgical group is `#sCatsS` (7 columns), the
+ * medical group is `.g3#sCatsM` (3 columns) — both rules are ported into
+ * reference.css, so the port reuses the exact same hooks.
+ *
+ * The two `.sgrp` blocks are siblings inside the same
+ * `section.container.scats-wrap`, which is what the ported
+ * `.sgrp+.sgrp{margin-top:34px}` rhythm keys on.
  */
 
 import type { Locale } from "@/core/i18n/locales";
@@ -17,29 +23,33 @@ import { ServiceCategoryCard } from "./ServiceCategoryCard";
 
 const GROUP_ICON: Readonly<Record<ServiceGroup, IconName>> = { surg: "i-scalpel", med: "i-steth" };
 const GROUP_SECTION_ID: Readonly<Record<ServiceGroup, string>> = { surg: "surgical", med: "medical" };
+const GROUP_GRID_ID: Readonly<Record<ServiceGroup, string>> = { surg: "sCatsS", med: "sCatsM" };
 
 export function ServiceGroupSection({ group, locale }: { group: ServiceGroup; locale: Locale }) {
   const categories = getLocalizedCategoriesByGroup(group, locale);
   const titleKey: MessageKey = group === "surg" ? "sg.surg" : "sg.med";
   const subtitleKey: MessageKey = group === "surg" ? "sg.surgS" : "sg.medS";
+  // The medical group's icon tile carries the reference's `.med` modifier
+  // (violet gradient) and its grid the reference's `.g3` modifier (3 cols).
+  const iconClass = group === "med" ? "sgrp-i med" : "sgrp-i";
+  const gridClass = group === "med" ? "scats g3" : "scats";
 
   return (
-    <section id={GROUP_SECTION_ID[group]} className="scats-wrap flex scroll-mt-24 flex-col gap-6">
-      <div className="flex items-center gap-4">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary">
-          <Icon name={GROUP_ICON[group]} size={28} />
+    <div className="sgrp" id={GROUP_SECTION_ID[group]}>
+      <div className="sgrp-h">
+        <span className={iconClass}>
+          <Icon name={GROUP_ICON[group]} />
         </span>
         <div>
-          <h2 className="text-[24px] font-extrabold text-foreground">{t(locale, titleKey)}</h2>
-          <p className="text-[13.5px] text-muted">{t(locale, subtitleKey)}</p>
+          <h2>{t(locale, titleKey)}</h2>
+          <small>{t(locale, subtitleKey)}</small>
         </div>
       </div>
-      {/* Surgical grid: 3 columns wide; medical group: 3 in the reference's `g3`. */}
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={gridClass} id={GROUP_GRID_ID[group]}>
         {categories.map((category) => (
           <ServiceCategoryCard key={category.id} category={category} />
         ))}
       </div>
-    </section>
+    </div>
   );
 }

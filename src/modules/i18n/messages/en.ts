@@ -46,6 +46,8 @@ export const en = {
   "nav.svcMed": "Medical services",
 
   "cta.request": "Request an Appointment",
+  /* header CTA — reference: i18n.js line 56 */
+  "cta.book": "Appointment",
 
   "h.k": "Super-specialty surgical center in Kashan",
   "h.t1": "The crown of health,",
@@ -92,6 +94,18 @@ export const en = {
   "h.s7": "Pre-op anesthesia assessment & consultation",
   "h.s8": "Bone & joint surgery",
 
+  /* bento one-liners — reference: home-svc.js SHORT (per category id) */
+  "short.gen": "Gallbladder, hernia, stomach & bowel — minimally invasive",
+  "short.plastic": "Reconstructive & cosmetic surgery with a dedicated anesthesia team",
+  "short.ortho": "Bone & joint surgery",
+  "short.uro": "Lithotripsy, ureteroscopy & cystoscopy",
+  "short.eye": "Cornea, LASIK, SMILE, retina & cataract",
+  "short.ent": "Sinus, nose, tonsils and head & neck surgery",
+  "short.gyn": "Specialist gynecologic surgery & infertility care",
+  "short.aes": "Aesthetic surgery, triple-wavelength laser, hair & eyebrow transplant",
+  "short.anes": "Pre-operative anesthesia assessment & consultation",
+  "short.endo": "Diagnostic & therapeutic endoscopy and colonoscopy",
+
   "care.title": "We are with you at every step",
   "h.careP":
     "From first consultation to discharge, our team is by your side with respect and honesty, so your experience is calm and confident.",
@@ -109,10 +123,15 @@ export const en = {
   "h.g2": "Getting ready for surgery",
   "h.g2s": "Key tips before surgery",
   "h.g2d": "Prepare fasting, medicines and tests as your doctor instructs.",
+  "h.g2l": "Full guide →",
   "h.g3": "Required documents",
   "h.g3s": "What to bring for admission",
   "gd.1d":
     "National ID or valid photo ID, your doctor's admission order, medical records and a list of current medications.",
+  "h.g4": "Online booking",
+  "h.g4s": "Request surgery without visiting in person",
+  "h.g4d": "Send your doctor's referral online; our team will call you within 24–48 working hours to schedule your surgery.",
+  "h.g4a": "Request an appointment",
 
   "hs.k": "Patient safety",
   "hs.t": "Hygiene & safety standards at Dr. Kheirkhah Center",
@@ -165,6 +184,12 @@ export const en = {
   "sv2.askP":
     "Our admissions team will answer your questions and help you choose the right doctor and treatment.",
   "sv2.call": "Call us",
+  "sv2.book": "Request appointment",
+  "sv2.docs": "Doctors in this field",
+  "sv2.vid": "Department overview",
+  "sv2.online": "Send records & consult online",
+  /* video placeholder toast — reference: services.js VID.en */
+  "sv2.vidSoon": "This department's video is coming soon.",
   "sv2.a1": "Answers during working hours",
   "sv2.a1s": "Sat – Thu · 07:30 – 20:00",
   "sv2.a2": "Full guidance",
@@ -176,6 +201,11 @@ export const en = {
   "floor.ground": "Ground floor",
   "floor.second": "2nd floor",
   "floor.third": "3rd floor",
+  /* short floor labels — reference: home-svc.js FL.SHORT (bento chips) */
+  "floorS.basm": "Basement",
+  "floorS.ground": "Ground floor",
+  "floorS.second": "2nd floor",
+  "floorS.third": "3rd floor",
 
   "status.open": "Admissions open now",
   "status.closed": "Admissions closed now",

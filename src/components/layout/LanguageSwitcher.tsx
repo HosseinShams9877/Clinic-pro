@@ -3,10 +3,10 @@
  * LanguageSwitcher.tsx — the trilingual switcher (fa / en / ar).
  *
  * The reference home-rolls this as a dropdown of buttons that rewrite
- * data-i18n attributes client-side. Here the same three options are plain
- * anchors carrying `?lang=<locale>`: middleware mirrors the value into the
- * `lang` cookie and the server re-renders the whole page in the chosen
- * locale.
+ * data-i18n attributes client-side (پلتفرم/assets/js/main.js L21–L38). The
+ * same three options are here plain anchors carrying `?lang=<locale>`:
+ * middleware mirrors the value into the `lang` cookie and the server
+ * re-renders the whole page in the chosen locale.
  *
  * The options MUST stay plain `<a>` (never next/link `<Link>`). A `?lang=`
  * change is a searchParams-only update of the same route segment: next/link
@@ -17,9 +17,15 @@
  * switcher reading "FA"). A native anchor is a document navigation, so the
  * server rebuilds `<html lang dir>` from the cookie — no client-only fake,
  * and it still works without JS.
+ *
+ * The visual layer is the reference's own: `.lang` / `.lang-btn` /
+ * `.lang-list` from style.css L111–L119 (ported into reference.css). The
+ * reference's options are `<button>`s; ours are anchors for the reason
+ * above, so the ported `.lang-list` selectors match both (see reference.css
+ * note on the `.lang-list button, .lang-list a` rule).
  */
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import type { Locale } from "@/core/i18n/locales";
@@ -32,44 +38,56 @@ const CODES: Readonly<Record<Locale, string>> = { fa: "FA", en: "EN", ar: "AR" }
 
 export function LanguageSwitcher({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  // `pathname` is null in the isolated header test (no router context);
+  // the fallback keeps the option hrefs root-relative there.
   const current = pathname ?? "/";
 
+  useEffect(() => {
+    if (!open) return;
+    const onDocumentClick = (event: MouseEvent) => {
+      // main.js: any click outside the widget closes the dropdown.
+      if (!wrapRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("click", onDocumentClick, { capture: true });
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("click", onDocumentClick);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
-    <div className="relative">
+    <div className={`lang${open ? " open" : ""}`} ref={wrapRef}>
       <button
         type="button"
-        className="flex items-center gap-1.5 rounded-md border border-border px-2.5 py-2 text-[13px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+        className="lang-btn"
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={`${t(locale, "lang.label")}: ${CODES[locale]}`}
-        onClick={() => setOpen((value) => !value)}
+        onClick={(e) => { e.stopPropagation(); setOpen((value) => !value); }}
       >
         <span>{CODES[locale]}</span>
-        <Icon name="i-globe" size={18} />
+        <Icon name="i-chev" size={16} />
       </button>
       {open && (
-        <ul
-          role="menu"
-          className="absolute end-0 top-full z-50 mt-2 rounded-lg border border-border bg-surface py-1 shadow-2"
-        >
-          {/* No overflow-hidden: it would clip the focus ring of the menuitems
-              (5px ring extent vs 1px inner padding here). The first/last
-              menuitem carry the corner radius instead (P2 item 6). */}
-          {LOCALES.map((option, i) => (
+        <ul className="lang-list" role="menu" style={{ display: open ? 'block' : 'none', opacity: 1, visibility: 'visible' }}>
+          {LOCALES.map((option) => (
             <li key={option} role="none">
               {/* Plain <a>, deliberately NOT next/link: see the file header. */}
               <a
                 role="menuitem"
                 href={`${current}?lang=${option}`}
                 aria-current={option === locale ? "true" : undefined}
-                className={`flex min-w-[140px] items-center justify-between gap-3 px-4 py-2 text-[14px] text-foreground transition-colors hover:bg-primary-50 hover:text-primary${
-                  i === 0 ? " rounded-t-lg" : i === LOCALES.length - 1 ? " rounded-b-lg" : ""
-                }`}
+                className={option === locale ? "on" : undefined}
                 onClick={() => setOpen(false)}
               >
                 {LABELS[option]}
-                <b className="text-[11px] font-bold text-muted">{CODES[option]}</b>
+                <b>{CODES[option]}</b>
               </a>
             </li>
           ))}

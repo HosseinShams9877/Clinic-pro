@@ -1,29 +1,37 @@
 /**
  * app/services/page.tsx — the Services landing page.
  *
- * Server-rendered counterpart of the reference's services.html: the sv2 hero,
- * the two group sections (#surgical / #medical) holding all ten category
- * cards, and the advisory strip. The reference loads the catalog client-side
- * from services-data.js; here the same catalog is imported server-side and
- * Zod-validated at the module boundary, so the HTML ships complete.
+ * The B-3 fidelity port: a section-for-section transcription of the
+ * reference's services.html (پلتفرم/services.html lines 103–177) onto the
+ * reference's own class hooks, with all geometry, decoration and motion
+ * supplied by the ported `reference.css` (services.css/doctors.css rules).
  *
- * Boundary compliance: the video button (sv2.vid) and the "online consult"
- * link (index.html#international) are dropped — both point outside the
- * Services section (Q1: contact/tel only). The nav crumbs, group anchors and
- * category links all resolve inside the implemented scope.
+ *   <main>                          (app layout — children render in <main>)
+ *   <div class="page-services">     the reference's <body class="page-services">
+ *     section.shero  > .container.shero-grid > .shero-in + figure.sh-vis
+ *     section.container.scats-wrap > .sgrp#surgical + .sgrp#medical
+ *     section.container > .sask > .sask-t + ul.sask-l + .sask-img
+ *
+ * Boundary compliance (Q1/Q4): the reference's second sask button
+ * (index.html#international, sv2.online) is dropped — it points outside the
+ * implemented scope — and the sask CTA is the verified clinic tel: number,
+ * exactly like the reference's own `tel:+983155154000`. The reference's
+ * `.scat` tiles are client-side tab buttons driving a same-page detail
+ * panel; here each tile is a real link to the category's own route (the
+ * detail panel lives on `/services/[category]`, B-4), so no tab semantics
+ * are shipped.
  */
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 
-import { ROUTES } from "@/config/site.config";
+import { ROUTES, siteConfig } from "@/config/site.config";
 import { getLocale } from "@/core/i18n/getLocale";
 import { t } from "@/modules/i18n/messages";
 import { routeMetadata } from "@/modules/seo/lib/metadata";
 import { Icon } from "@/components/shared/Icon";
 import { ServiceGroupSection } from "@/modules/services/components/ServiceGroupSection";
-import { siteConfig } from "@/config/site.config";
 
 export function generateMetadata(): Metadata {
   return routeMetadata({
@@ -53,89 +61,103 @@ export default async function ServicesPage() {
   const locale = await getLocale();
 
   return (
-    <>
-      {/* ---- sv2 hero ---- */}
-      <section className="relative overflow-hidden bg-accent-strong text-on-accent">
-        <div className="container grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
-          <div className="flex flex-col gap-5">
-            <nav className="flex items-center gap-2 text-[12.5px]" aria-label="breadcrumb">
-              <Link href={ROUTES.home} className="transition-opacity hover:opacity-80">
-                {t(locale, "nav.home")}
-              </Link>
+    <div className="page-services">
+      {/* ---- shero (services.html L104–122) ---- */}
+      <section className="shero">
+        <div className="container shero-grid">
+          <div className="shero-in">
+            <nav className="crumbs" aria-label="breadcrumb">
+              <Link href={ROUTES.home}>{t(locale, "nav.home")}</Link>
               <span>/</span>
               <b aria-current="page">{t(locale, "nav.services")}</b>
             </nav>
-            <span className="kicker w-fit rounded-full border border-on-accent/40 px-4 py-1.5 text-[12.5px] font-semibold">
-              {t(locale, "sv2.k")}
-            </span>
-            <h1 className="text-[34px] font-extrabold leading-tight md:text-[46px]">
-              {t(locale, "sv2.t1")} <em className="not-italic font-bold text-on-accent">{t(locale, "sv2.t2")}</em>
+            <span className="sh-k">{t(locale, "sv2.k")}</span>
+            <h1>
+              <span>{t(locale, "sv2.t1")}</span>
+              <em>{t(locale, "sv2.t2")}</em>
             </h1>
-            <p className="max-w-xl text-[15px] leading-loose opacity-90">{t(locale, "sv2.p")}</p>
-            <ul className="flex flex-wrap gap-x-6 gap-y-3 pt-2">
+            <p>{t(locale, "sv2.p")}</p>
+            <ul className="sh-f">
               {HERO_FEATURES.map(({ key, icon }) => (
-                <li key={key} className="flex items-center gap-2 text-[13.5px] font-medium">
-                  <Icon name={icon} size={20} />
-                  {t(locale, key)}
+                <li key={key}>
+                  <Icon name={icon} />
+                  <span>{t(locale, key)}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <figure className="relative">
-            {/* P2 item 8: this <img> is /services's LCP element — priority +
-                reserved aspect box (see app/page.tsx for the same treatment). */}
-            <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-2">
+          {/* The reference ships the figure with ONLY .sh-photo — no .sh-frame,
+              no .float chips (services.html L117–120) — so the port does too. */}
+          <figure className="sh-vis">
+            {/* P2 item 8: this is /services's LCP element — priority + a
+                `fill` picture inside the reference's own .sh-photo box
+                (position:relative + aspect-ratio:4/3 in reference.css), so
+                decoded AVIF cannot shift layout. Decorative, as in the
+                reference (alt=""). */}
+            <div className="sh-photo">
               <Image
                 src="/img/guide/v-or.jpg"
-                alt={t(locale, "nav.services")}
-                priority
-                sizes="(min-width: 960px) 550px, calc(100vw - 40px)"
+                alt=""
                 fill
-                className="object-cover"
+                priority
+                sizes="(min-width: 961px) 440px, calc(100vw - 40px)"
               />
             </div>
           </figure>
         </div>
       </section>
 
-      {/* ---- the ten categories, in the reference's two groups ---- */}
-      <div className="container flex flex-col gap-14 py-16 md:py-20">
+      {/* ---- the ten categories, in the reference's two groups (L124–133) ---- */}
+      <section className="container scats-wrap">
         <ServiceGroupSection group="surg" locale={locale} />
         <ServiceGroupSection group="med" locale={locale} />
-      </div>
+      </section>
 
-      {/* ---- advisory strip (sask): tel-only CTA ---- */}
-      <section className="container pb-20">
-        <div className="grid gap-8 overflow-hidden rounded-xl bg-primary-50 p-8 md:grid-cols-[1.2fr_1fr] md:p-12">
-          <div className="flex flex-col gap-4">
-            <span className="kicker w-fit rounded-full bg-accent/10 px-4 py-1.5 text-[12.5px] font-semibold text-accent-ink">
-              {t(locale, "sv2.askK")}
-            </span>
-            <h2 className="text-[24px] font-extrabold text-foreground">{t(locale, "sv2.askT")}</h2>
-            <p className="max-w-md text-[14px] leading-loose text-muted">{t(locale, "sv2.askP")}</p>
-            <a
-              href={`tel:${siteConfig.phone}`}
-              className="btn-primary mt-2 inline-flex w-fit items-center gap-2 rounded-lg bg-accent-strong px-6 py-3.5 text-[15px] font-bold text-on-accent transition hover:opacity-90"
-            >
-              <Icon name="i-phone" size={20} />
-              {t(locale, "sv2.call")}
-            </a>
+      {/* ---- sask, the advisory strip (L159–177) ---- */}
+      <section className="container">
+        <div className="sask">
+          <div className="sask-t">
+            <span className="kicker">{t(locale, "sv2.askK")}</span>
+            <h2>{t(locale, "sv2.askT")}</h2>
+            <p>{t(locale, "sv2.askP")}</p>
+            <div className="sask-b">
+              {/* Q1: the reference's own tel: CTA is the primary action. The
+                  reference's second button (sv2.online → index.html#international)
+                  is dropped — no in-scope destination exists (Q4). */}
+              <a className="btn btn-primary" href={`tel:${siteConfig.phone}`}>
+                <Icon name="i-phone" />
+                <span>{t(locale, "sv2.call")}</span>
+              </a>
+            </div>
           </div>
-          <ul className="flex flex-col gap-4">
+          <ul className="sask-l">
             {ADVISORY_ITEMS.map(({ icon, titleKey, subKey }) => (
-              <li key={titleKey} className="flex items-start gap-3">
-                <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface text-accent-ink shadow-1">
-                  <Icon name={icon} size={18} />
-                </span>
+              <li key={titleKey}>
+                <Icon name={icon} />
                 <div>
-                  <b className="block text-[14px] font-bold text-foreground">{t(locale, titleKey)}</b>
-                  <small className="text-[12.5px] text-muted">{t(locale, subKey)}</small>
+                  <b>{t(locale, titleKey)}</b>
+                  <small>{t(locale, subKey)}</small>
                 </div>
               </li>
             ))}
           </ul>
+          {/* .sask-img is NOT positioned in the reference, so a `fill` picture
+              (absolute, inset 0) would collapse against the initial containing
+              box — the picture ships non-fill with the source's true intrinsic
+              size (1200×422), which the ported `.sask-img img` rules override,
+              exactly like the reference's own static <img>. */}
+          <div className="sask-img">
+            <Image
+              src="/img/services/or.jpg"
+              alt=""
+              width={1200}
+              height={422}
+              loading="lazy"
+              sizes="(min-width: 1181px) 340px, (min-width: 641px) calc((100vw - 136px) / 2), calc(100vw - 72px)"
+            />
+          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

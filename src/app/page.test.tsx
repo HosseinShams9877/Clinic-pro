@@ -4,7 +4,8 @@
  * The page is rendered as a server component (the component function is
  * awaited, exactly as the App Router would), with next/headers mocked so the
  * locale resolves deterministically. The assertions pin the boundary:
- *   - the eight services bento cards link only into the built catalog,
+ *   - the eight static services cards link only into the built catalog, and
+ *     so does every services link the mounted bento island adds,
  *   - the loan (ln.*) and loyalty club (cb.*) sections of the reference are
  *     nowhere in the markup — not their Persian strings, not their anchors,
  *   - the live badge paints its server snapshot before any fetch resolves
@@ -63,21 +64,36 @@ describe("home page (fa)", () => {
     await renderHome();
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(t("fa", "h.t1"));
     // The three verified stats — text is the final value, no JS needed.
-    expect(screen.getByText(t("fa", "st.n1"))).toBeInTheDocument();
-    expect(screen.getByText(t("fa", "st.l1"))).toBeInTheDocument();
-    // Contact strip keeps its tel link, and no booking CTA exists.
+    // (Scoped to the stats list: the mounted services-bento island renders
+    // its own group counters in the same document, e.g. em.hx-n "۷".)
+    const stats = within(document.querySelector(".h-stats") as HTMLElement);
+    expect(stats.getByText(t("fa", "st.n1"))).toBeInTheDocument();
+    expect(stats.getByText(t("fa", "st.l1"))).toBeInTheDocument();
+    // Contact strip keeps its tel link (the booking CTA dials the same
+    // number per Q1 — also a tel: anchor, not an out-of-scope page).
     const tel = document.querySelector('a[href^="tel:"]');
     expect(tel).not.toBeNull();
   });
 
-  it("renders the eight services bento cards, each linking to a built catalog page", async () => {
+  it("renders the eight static services cards, and every services link (including the mounted bento island) stays inside the built catalog", async () => {
     await renderHome();
-    const cards = screen.getAllByRole("link", { name: /./ }).filter((link) =>
-      link.getAttribute("href")?.startsWith("/services/"),
+    // The no-JS/SEO fallback grid: the reference's own eight cards, c1–c8.
+    const fallback = document.querySelector(".h-svc");
+    expect(fallback).not.toBeNull();
+    const fallbackHrefs = [...(fallback?.querySelectorAll("a") ?? [])].map((link) =>
+      link.getAttribute("href"),
     );
-    const hrefs = cards.map((link) => link.getAttribute("href"));
-    expect(new Set(hrefs).size).toBe(8);
-    for (const href of hrefs) {
+    expect(fallbackHrefs).toHaveLength(8);
+    for (const href of fallbackHrefs) {
+      expect(href).toMatch(/^\/services\/(gen|gyn|uro|ortho|plastic|aes|eye|ent|endo|anes)$/);
+    }
+    // The mounted HomeSvcBento island (home-svc.js) renders the active tab's
+    // cards as real anchors too — none of them may leave the catalog either.
+    const allHrefs = [...document.querySelectorAll('a[href^="/services/"]')].map((link) =>
+      link.getAttribute("href"),
+    );
+    expect(allHrefs.length).toBeGreaterThanOrEqual(8);
+    for (const href of allHrefs) {
       expect(href).toMatch(/^\/services\/(gen|gyn|uro|ortho|plastic|aes|eye|ent|endo|anes)$/);
     }
   });

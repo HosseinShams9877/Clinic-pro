@@ -89,8 +89,8 @@ const TYPE_MAP = new Map();
 
 await send("Page.enable");
 await send("Runtime.enable");
-await send("Network.enable");
 await send("Log.enable");
+await send("Network.enable");
 
 const results = [];
 for (const route of ROUTES) {
@@ -114,7 +114,15 @@ for (const route of ROUTES) {
     } else if (method === "Runtime.consoleAPICalled" && (params.type === "error" || params.type === "warning")) {
       problems.push({ kind: `console.${params.type}`, detail: params.args.map((arg) => arg.value ?? arg.description ?? "").join(" ").slice(0, 200) });
     } else if (method === "Log.entryAdded" && params.entry.level === "error") {
-      problems.push({ kind: "log.error", detail: `${params.entry.text} ${url(params.entry)}`.slice(0, 200) });
+      // Document-level aborts during re-navigation are normal (the previous
+      // route's subresources are cancelled when the next navigation lands)
+      // and surface here as "Failed to load resource: net::ERR_ABORTED" —
+      // only real failures count. CSP blocks surface as
+      // net::ERR_BLOCKED_BY_CLIENT and must NOT be suppressed.
+      const text = `${params.entry.text} ${url(params.entry)}`;
+      if (!/net::ERR_ABORTED/.test(text)) {
+        problems.push({ kind: "log.error", detail: text.slice(0, 200) });
+      }
     } else if (method === "Network.responseReceived" && params.response.status >= 400) {
       problems.push({ kind: `http ${params.response.status}`, detail: params.response.url });
     } else if (method === "Network.loadingFailed") {

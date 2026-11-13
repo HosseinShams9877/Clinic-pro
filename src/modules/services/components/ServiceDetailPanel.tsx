@@ -1,72 +1,85 @@
 /**
  * ServiceDetailPanel.tsx — the header block of /services/[category]
- * (the reference's `.sdetail`, services.html lines 138–156).
+ * (the reference's `section.sdetail`, services.html lines 135–152, filled by
+ * services.js render()).
  *
- * CTA is tel-only (Q1): the reference's booking button pointed at the patient
- * panel and its "doctors of this field" button at doctors.html — both are
- * past the Services section, so neither is reproduced (REC-3). The reference
- * paired the text with a video button (sd-video); per the same ruling the
- * static category image carries the visual instead.
+ * The B-4 fidelity port: a section-for-section transcription onto the
+ * reference's own DOM —
+ *
+ *   <section class="container sdetail" id="sDetail">
+ *     <div class="sd-text">
+ *       <nav class="crumbs sd-crumb">…</nav>
+ *       <h2 id="sdName">                     → h1 here (see below)
+ *       <p id="sdDesc">
+ *       <ul class="sd-ben" id="sdBen">       li[svg, span] per benefit
+ *       <div class="sd-cta">                 a.btn.btn-primary
+ *     <button class="sd-video" id="sdVideo"> (ServiceVideoButton island)
+ *
+ * Two deliberate divergences from the reference's same-page panel, both
+ * consequences of the app's route-based model and recorded in the fidelity
+ * report:
+ *   1. The category name renders as an h1, not the reference's h2 — the
+ *      reference's panel shares its page with the landing's own h1, while
+ *      this route's level-one heading must be the category itself. The ported
+ *      `.sd-text h2` typography rule was extended to `.sd-text h1` so the
+ *      rendered geometry is identical.
+ *   2. The breadcrumb carries a home entry (the reference's sd-crumb starts at
+ *      "services" because the tiles are in view); on a standalone route the
+ *      three-step path is the app's own Phase 1 contract, pinned by the
+ *      frozen detail-page test.
+ *
+ * CTA substitution (Q1/Q4): the reference's booking button points at
+ * patient-panel.html?go=new and its "doctors of this field" button at
+ * doctors.html — both are past the Services section, so the booking action is
+ * retargeted to the verified clinic tel: number (the reference's own primary
+ * action elsewhere on the page) and the doctors button is dropped rather than
+ * given a dead destination.
  */
 
-import Image from "next/image";
+import Link from "next/link";
 
-import { siteConfig } from "@/config/site.config";
+import { ROUTES, siteConfig } from "@/config/site.config";
 import type { Locale } from "@/core/i18n/locales";
 import { t } from "@/modules/i18n/messages";
 import { Icon, type IconName } from "@/components/shared/Icon";
 import type { LocalizedCategory } from "@/modules/services/services";
+import { ServiceVideoButton } from "./ServiceVideoButton";
 
-export function ServiceDetailPanel({ category, locale }: { category: LocalizedCategory; locale: Locale }) {
+export function ServiceDetailPanel({
+  category,
+  locale,
+}: {
+  category: LocalizedCategory;
+  locale: Locale;
+}) {
   return (
-    <section className="grid items-center gap-10 py-14 md:grid-cols-2 md:py-20">
-      <div className="flex flex-col gap-5">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 text-primary">
-            <Icon name={category.icon as IconName} size={26} />
-          </span>
-          <span className="rounded-full bg-accent/10 px-3.5 py-1 text-[12.5px] font-semibold text-accent-ink">
-            {category.floorLabel}
-          </span>
-        </div>
-        <h1 className="text-[30px] font-extrabold leading-tight text-foreground md:text-[40px]">
-          {category.name}
-        </h1>
-        <p className="max-w-xl text-[15px] leading-loose text-muted">{category.description}</p>
-
-        {/* Benefits — the reference's sd-ben. */}
-        <ul className="flex flex-col gap-3 pt-1">
+    <section className="container sdetail" id="sDetail">
+      <div className="sd-text">
+        <nav className="crumbs sd-crumb" aria-label="breadcrumb">
+          <Link href={ROUTES.home}>{t(locale, "nav.home")}</Link>
+          <span>/</span>
+          <Link href={ROUTES.services}>{t(locale, "nav.services")}</Link>
+          <span>/</span>
+          <b aria-current="page">{category.name}</b>
+        </nav>
+        <h1 id="sdName">{category.name}</h1>
+        <p id="sdDesc">{category.description}</p>
+        <ul className="sd-ben" id="sdBen">
           {category.benefits.map((benefit) => (
-            <li key={benefit.title} className="flex items-start gap-3">
-              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-t5 text-t5i">
-                <Icon name={benefit.icon as IconName} size={18} />
-              </span>
-              <b className="pt-1.5 text-[14px] font-semibold text-foreground">{benefit.title}</b>
+            <li key={benefit.title}>
+              <Icon name={benefit.icon as IconName} />
+              <span>{benefit.title}</span>
             </li>
           ))}
         </ul>
-
-        <a
-          href={`tel:${siteConfig.phone}`}
-          className="btn-primary mt-3 inline-flex w-fit items-center gap-2 rounded-lg bg-accent-strong px-6 py-3.5 text-[15px] font-bold text-on-accent transition hover:opacity-90"
-        >
-          <Icon name="i-phone" size={20} />
-          {t(locale, "sv2.call")}
-        </a>
+        <div className="sd-cta">
+          <a className="btn btn-primary" href={`tel:${siteConfig.phone}`}>
+            <Icon name="i-calendar" />
+            <span>{t(locale, "sv2.book")}</span>
+          </a>
+        </div>
       </div>
-
-      {/* P2 item 8: fill inside a reserved aspect-[4/3] figure — the picture
-          decodes AVIF/WebP without changing the shipped box (353x265 /
-          550x413, verified). */}
-      <figure className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-2">
-        <Image
-          src={category.image}
-          alt={category.name}
-          sizes="(min-width: 960px) 550px, calc(100vw - 40px)"
-          fill
-          className="object-cover"
-        />
-      </figure>
+      <ServiceVideoButton category={category} locale={locale} />
     </section>
   );
 }
