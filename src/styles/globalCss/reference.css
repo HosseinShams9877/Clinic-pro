@@ -606,7 +606,7 @@ html:not(.js-svc) .hx-tabs{display:none}
 @media (max-width:1180px){.scats#sCatsS{grid-template-columns:repeat(4,1fr)}}
 
 /* ---- detail ---- */
-.sdetail{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-block:56px 30px}
+.sdetail{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-block:130px 30px}
 .sdetail.swap .sd-text>*,.sdetail.swap .sd-video{animation:docIn .55s var(--ease) both}
 .sdetail.swap .sd-text>*:nth-child(1){animation-delay:.05s}
 .sdetail.swap .sd-text>*:nth-child(2){animation-delay:.1s}
