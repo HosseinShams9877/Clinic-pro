@@ -69,7 +69,10 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={`${t(locale, "lang.label")}: ${CODES[locale]}`}
-        onClick={(e) => { e.stopPropagation(); setOpen((value) => !value); }}
+        onClick={(e) => { e.stopPropagation(); 
+            console.log("CLICKED! open was:", open);
+
+          setOpen((value) => !value); }}
       >
         <span>{CODES[locale]}</span>
         <Icon name="i-chev" size={16} />

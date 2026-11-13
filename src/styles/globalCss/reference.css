@@ -293,7 +293,7 @@ html[lang="ar"] body{line-height:1.85}
 .h-live small{font-size:11.5px;color:var(--fg-muted)}
 
 /* ---- stats ---- */
-.h-stats-wrap{position:relative;z-index:3;margin-top:-50px}
+.h-stats-wrap{position:relative;z-index:3;margin-top:20px}
 .h-stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-radius:22px;box-shadow:var(--ref-sh-stats);border:1px solid var(--ref-line-soft);padding:8px}
 .h-stats li{display:flex;align-items:center;gap:14px;padding:18px 20px}
 .h-stats li+li{border-inline-start:1px solid var(--ref-line-stat)}
@@ -418,7 +418,7 @@ html:not([lang="fa"]) .h-copy h1.h-slogan{font-size:clamp(34px,4.1vw,54px)}
   .hct-b{grid-column:1/-1;grid-template-columns:1fr 1fr}
 }
 @media (max-width:960px){
-  .h-copy{padding-bottom:70px}
+  .h-copy{padding-bottom:130px}
   .h-hero-in{grid-template-columns:1fr}
   .h-media{order:-1;min-height:300px;margin-inline:-20px}
   .h-img,[dir="rtl"] .h-img{inset:0;transform:none;mask:none;-webkit-mask:none;border-radius:0 0 40px 40px}
