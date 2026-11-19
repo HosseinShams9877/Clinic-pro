@@ -11,3 +11,9 @@ coverage
 .cdp-profile/
 .cdp-profile-chrome/
 .cdp-tmp/
+.env
+.env.*
+!.env.example
+
+prisma/*.db
+prisma/*.db-journal

@@ -1,0 +1,5 @@
+"username": "kalano",
+"password": "gY2#kL95@zM3fQ",
+"terminalId": "1784451768W1PXZ"
+   
+url: https://sandbox-jetpay.simotechtest.ir

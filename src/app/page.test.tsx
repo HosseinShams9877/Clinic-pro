@@ -6,8 +6,9 @@
  * locale resolves deterministically. The assertions pin the boundary:
  *   - the eight static services cards link only into the built catalog, and
  *     so does every services link the mounted bento island adds,
- *   - the loan (ln.*) and loyalty club (cb.*) sections of the reference are
- *     nowhere in the markup — not their Persian strings, not their anchors,
+ *   - the loan (ln.*) section of the reference is present (the owner's
+ *     2026-11-18 loan-feature extension of scope, LOAN_FEATURE_REPORT.md)
+ *     while the loyalty club (cb.*) section stays out,
  *   - the live badge paints its server snapshot before any fetch resolves
  *     (this is the "HTML without JS is complete" gate),
  *   - stats and contact text are present as final text, not client-ified.
@@ -98,19 +99,21 @@ describe("home page (fa)", () => {
     }
   });
 
-  it("ships no loan (ln.*) and no loyalty club (cb.*) content anywhere in the markup", async () => {
+  it("ships the loan section (2026-11-18 scope extension) but no loyalty club (cb.*) content", async () => {
     const { container } = await renderHome();
     const html = container.innerHTML;
-    // The reference's own Persian strings for those two sections.
-    expect(html).not.toContain("وام درمانی");
+    // The loan section is now built: the reference's own Persian heading,
+    // its start CTA, and the /loan entry point (no loan.html leftovers).
+    expect(html).toContain("وام درمانی");
+    expect(html).toContain("/loan");
+    expect(html).not.toContain("loan.html");
+    // The loyalty club section of the reference stays out of scope (Q3).
     expect(html).not.toContain("باشگاه");
     expect(html).not.toContain("کارت عضویت");
     expect(html).not.toContain("عضویت");
-    // And none of their anchors.
-    expect(html).not.toContain("loan.html");
     expect(html).not.toContain("club");
-    // No i18n key leaks either.
-    expect(html).not.toMatch(/\b(ln|cb)\./);
+    // No cb.* i18n key leaks anywhere.
+    expect(html).not.toMatch(/\bcb\./);
   });
 
   it("renders no doctors section — doctor pages are past the boundary", async () => {

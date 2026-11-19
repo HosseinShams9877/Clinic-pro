@@ -57,7 +57,10 @@ export type IconName =
   | "i-play"
   | "i-chat"
   | "i-ext"
-  | "i-band";
+  | "i-band"
+  | "i-money"
+  | "i-alert"
+  | "i-hand";
 
 /** viewBox of each symbol, from the reference sprite. i-logo is 48×48, rest 24×24. */
 const VIEW_BOX: Readonly<Record<IconName, string>> = {
@@ -101,6 +104,9 @@ const VIEW_BOX: Readonly<Record<IconName, string>> = {
   "i-chat": "0 0 24 24",
   "i-ext": "0 0 24 24",
   "i-band": "0 0 24 24",
+  "i-money": "0 0 24 24",
+  "i-alert": "0 0 24 24",
+  "i-hand": "0 0 24 24",
 };
 
 /**
@@ -320,6 +326,27 @@ const ICONS: Readonly<Record<IconName, JSX.Element>> = {
       <rect x="3" y="8" width="18" height="8" rx="4" />
       <path d="M8 12h5" />
       <circle cx="16.5" cy="12" r="1" />
+    </>
+  ),
+  /* The three symbols the loan pages use (پلتفرم/loan.html sprite,
+     transcribed verbatim — never redrawn). */
+  "i-money": (
+    <>
+      <rect x="2.5" y="6" width="19" height="12" rx="2.5" />
+      <circle cx="12" cy="12" r="2.5" />
+      <path d="M6 9.5v5M18 9.5v5" />
+    </>
+  ),
+  "i-alert": (
+    <>
+      <path d="M12 3 2 20h20Z" />
+      <path d="M12 10v4M12 17h.01" />
+    </>
+  ),
+  "i-hand": (
+    <>
+      <path d="M3 12h4l3 3h4a2 2 0 0 0 0-4h-3" />
+      <path d="M7 12l4-4h3l5 5v5l-3 2H8" />
     </>
   ),
 };

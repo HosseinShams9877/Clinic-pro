@@ -2,8 +2,9 @@
  * sitemap.test.ts — the P1-14 "sitemap URL list asserted" gate.
  *
  * The sitemap is the site's complete advertisement to crawlers, so it must
- * contain exactly the twelve built routes and nothing else: no panels, no
- * search, no route beyond the implementation boundary.
+ * contain exactly the thirteen built routes and nothing else: no panels, no
+ * search, no route beyond the implementation boundary. /loan was added by
+ * the owner's 2026-11-18 loan-feature extension (LOAN_FEATURE_REPORT.md).
  */
 
 import { describe, expect, it } from "vitest";
@@ -13,20 +14,20 @@ import { SERVICE_CATEGORY_ORDER } from "@/modules/services/constants";
 import sitemap from "./sitemap";
 import robots from "./robots";
 
-const EXPECTED_PATHS = ["/", "/services", ...SERVICE_CATEGORY_ORDER.map((id) => `/services/${id}`)];
+const EXPECTED_PATHS = ["/", "/services", "/loan", ...SERVICE_CATEGORY_ORDER.map((id) => `/services/${id}`)];
 
 describe("sitemap()", () => {
   const entries = sitemap();
 
-  it("lists exactly the twelve built routes — nothing out of scope", () => {
+  it("lists exactly the thirteen built routes — nothing out of scope", () => {
     expect(entries.map((entry) => entry.url)).toEqual(
       EXPECTED_PATHS.map((path) => `${siteConfig.url}${path}`),
     );
-    expect(entries).toHaveLength(12);
+    expect(entries).toHaveLength(13);
   });
 
   it("includes all ten category routes in the catalog's display order", () => {
-    const categoryUrls = entries.slice(2).map((entry) => entry.url);
+    const categoryUrls = entries.slice(3).map((entry) => entry.url);
     expect(categoryUrls).toEqual(
       SERVICE_CATEGORY_ORDER.map((id) => `${siteConfig.url}/services/${id}`),
     );
@@ -48,10 +49,11 @@ describe("sitemap()", () => {
     }
   });
 
-  it("ranks home above the landing above the category pages", () => {
+  it("ranks home above the landing pages above the category pages", () => {
     expect(entries[0]!.priority).toBe(1);
     expect(entries[1]!.priority).toBe(0.9);
-    for (const entry of entries.slice(2)) {
+    expect(entries[2]!.priority).toBe(0.9);
+    for (const entry of entries.slice(3)) {
       expect(entry.priority).toBe(0.8);
     }
   });

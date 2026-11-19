@@ -39,6 +39,7 @@ import { HeroParallax } from "@/components/shared/HeroParallax";
 import { HomeSvcBento } from "@/components/shared/HomeSvcBento";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { LiveStatus } from "@/components/shared/LiveStatus";
+import { LoanHomeSection } from "@/modules/loan/components/LoanHomeSection";
 import { statusFor } from "@/core/openHours";
 
 export function generateMetadata(): Metadata {
@@ -238,6 +239,13 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ===================== LOAN ===================== */}
+      {/* The reference's own section order (index.html): HELP → LOAN →
+          SERVICES. Restored per the owner's 2026-11-18 loan-feature
+          extension; the reference's club section between them stays out
+          of scope (Q3). Ported markup, not improvised: LoanHomeSection. */}
+      <LoanHomeSection locale={locale} />
 
       {/* ===================== SERVICES ===================== */}
       <section className="container h-sec" id="services">

@@ -60,8 +60,16 @@ disclosed gap: the fa screen-reader pass was unobservable on the build machine
 owner-reported bugs B-1…B-6 fixed or audited-clean with regression tests in
 place — the full account is `docs/reports/UI_FIX_PASS_REPORT.md`; the Phase 2
 baseline was refrozen (29 files/222 tests) with the reason recorded in
-`docs/reports/PHASE_2_BASELINE.md` §"Refreeze record".** Phase 3 is NOT
-approved — do not start it.
+`docs/reports/PHASE_2_BASELINE.md` §"Refreeze record".** **Fidelity pass
+delivered (2026-11-12): every route matches the read-only reference — the
+full account is `docs/reports/EXACT_VISUAL_AND_UI_FIDELITY_REPORT.md`, and §2
+rule 7 below now binds every future build.** **Loan feature added (2026-11-18,
+owner-directed scope extension of Q3): a complete, secure JetPay
+credit-consumption request flow — `/loan` route + home `#loan` section + six
+server-side `/api/loan/*` routes + Prisma `LoanRequest`/`Transaction` models;
+lazy-loaded UI, no credentials client-side. The full account is
+`docs/reports/LOAN_FEATURE_REPORT.md`; the baseline was refrozen
+(44 files/334 tests).** Phase 3 is NOT approved — do not start it.
 
 ## 5. Conventions that bind all future work
 

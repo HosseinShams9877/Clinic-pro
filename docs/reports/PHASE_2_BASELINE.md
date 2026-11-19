@@ -402,6 +402,44 @@ explicitly permitted, so no refreeze is warranted for a pure addition.
 `src/app/page.tsx` (the 960px hero `sizes` fix, §2 of the fidelity report) is
 likewise not frozen and required no refreeze.
 
+## Refreeze — 2026-11-18, loan feature (scope extension)
+
+**Manifest:** rewritten — suite `{ files: 44, tests: 334 }` (was
+`{ files: 31, tests: 232 }`). Two frozen files changed; thirteen test files
+added. Frozen from a green vitest JSON run
+(`npx vitest run --reporter=json --outputFile=tmp-baseline.json --exclude
+tests/phase2-baseline.test.ts`, 334 passed / 0 failed — the gate itself
+excluded because the drift it reports is exactly what this refreeze repairs),
+then `node scripts/baseline-freeze.mjs --write --json tmp-baseline.json`;
+`node scripts/baseline-freeze.mjs` (verify) exits 0 and the full suite is
+**45 files / 338 tests green** (44 frozen + the gate file).
+
+**Frozen files changed — `src/app/page.test.tsx` (1 test rewritten) and
+`src/app/sitemap.test.ts` (3 tests adapted).** The owner's 2026-11-18
+instruction (LOAN_FEATURE_REPORT.md) extends the implementation boundary with
+the JetPay credit/loan request flow, which Q3 explicitly excluded at Phase 1:
+the loan section returns to the home page and `/loan` is a built route.
+
+- `page.test.tsx`: the test "ships no loan (ln.*) and no loyalty club (cb.*)
+  content anywhere in the markup" pinned the Q3 exclusion. It is rewritten as
+  "ships the loan section (2026-11-18 scope extension) but no loyalty club
+  (cb.*) content" — same string-level discipline, reversed for loan only:
+  `وام درمانی` and `/loan` must be present; `باشگاه` / `عضویت` / `club` /
+  `cb.*` keys must stay absent (the club half of Q3 is unchanged, and the
+  reference's `loan.html` anchor must never leak — only the built route).
+- `sitemap.test.ts`: twelve routes → thirteen (the list, display order,
+  priority assertions adapted: `/loan` sits with the landing pages at 0.9).
+
+**Why a refreeze is the correct response here (not silent edit):** the freeze
+exists precisely so a boundary change shows up in the audit trail. The two
+edits do not loosen any parity assertion — they update *what the boundary is*
+by the owner's explicit instruction, with the no-club half intact.
+
+**Out of scope of this refreeze:** the thirteen new test files (jetpay client,
+loan service, schemas, client queries, wizard, six route handlers, the /loan
+page) were added by the same change; additions were already allowed and are
+now frozen too. Full account: `docs/reports/LOAN_FEATURE_REPORT.md`.
+
 ## Observed verification at freeze
 
 - `node scripts/baseline-freeze.mjs --write` produced the manifest from a green

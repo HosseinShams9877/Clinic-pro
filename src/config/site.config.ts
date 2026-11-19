@@ -65,12 +65,15 @@ export const siteConfig = {
 } as const;
 
 /**
- * The routes this site builds (Q4 scope: home + services landing + the ten
- * category pages). Source of truth for the sitemap and the nav, so no out-of-
- * scope route can sneak in (implementation boundary, CLAUDE.md §2 rule 4).
+ * The routes this site builds. Source of truth for the sitemap and the
+ * nav, so no out-of-scope route can sneak in (implementation boundary,
+ * CLAUDE.md §2 rule 4). The loan route was added with the owner's
+ * 2026-11-18 loan-feature extension (Q3 amendment, LOAN_FEATURE_REPORT.md).
  */
 export const ROUTES = {
   home: "/",
   services: "/services",
+  /** The Tejarat Bank medical loan request flow (reference: loan.html). */
+  loan: "/loan",
   /** /services/<id> for each of the ten reference category ids. */
 } as const;

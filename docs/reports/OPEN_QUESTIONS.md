@@ -38,6 +38,18 @@ redirected where applicable, without redirect loops.
 **Answer:** Approved. Exclude both demo forms (loan and club) from the homepage; do not reproduce their
 localStorage demo behavior and do not replace them with fake forms.
 
+**AMENDED 2026-11-18 (the loan half, by explicit owner instruction):** the
+owner directed a full, secure credit/loan request flow wired to the Simorq
+Tejarat JetPay API — the loan tea­ser returns to the home page and `/loan`
+becomes a built route with the interactive request flow (national code →
+credit inquiry → amount + OTP → purchase → confirm). The **club half of Q3
+is unchanged** (no club section, no fake form). The work, its constraints
+(no credentials in code or reports, lazy-loaded UI, bank calls server-side
+only, tests with a mocked bank) and its audit trail are recorded in
+`docs/reports/LOAN_FEATURE_REPORT.md`; the Q4 no-dead-links and
+no-placeholders rules still apply (the reference's `loan.html` anchor maps to
+the built `/loan`).
+
 ## Q4 — Header/footer links to out-of-scope pages (doctors, guide, clinics…): show, hide, or stub?
 
 **Evidence:** the reference's nav has 9 top items, 12 sub-items, 7 staff links; only Services is in scope.

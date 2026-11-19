@@ -1,11 +1,13 @@
 /**
  * app/sitemap.ts — the whole of this site's XML sitemap (P1-14).
  *
- * Twelve entries and no more: the home page, the Services landing, and one per
- * catalog category. The list is derived from ROUTES + the Zod-validated
- * catalog, so a route that is not actually built cannot appear here (there is
- * nothing else to advertise — the panels and search of the reference are out
- * of scope, and a sitemap may not point at pages that do not exist).
+ * Thirteen entries: the home page, the Services landing, one per catalog
+ * category, and the loan page (added with the owner's 2026-11-18
+ * loan-feature extension). The list is derived from ROUTES + the
+ * Zod-validated catalog, so a route that is not actually built cannot
+ * appear here (there is nothing else to advertise — the panels and
+ * search of the reference are out of scope, and a sitemap may not point
+ * at pages that do not exist).
  *
  * No lastModified is emitted: nothing in the reference records a modification
  * date for this content, and writing a fabricated one would break provenance
@@ -42,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
       alternates: { languages: trilingual(ROUTES.services) },
+    },
+    {
+      url: `${siteConfig.url}${ROUTES.loan}`,
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: { languages: trilingual(ROUTES.loan) },
     },
     ...categoryEntries,
   ];

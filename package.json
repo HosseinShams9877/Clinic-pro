@@ -17,9 +17,13 @@
     "seed:write": "node scripts/seed-content.mjs --write",
     "a11y:scan": "node scripts/a11y-scan.mjs",
     "cwv": "node scripts/cwv-audit.mjs",
-    "ui-fix:verify": "node scripts/ui-fix-verification.mjs"
+    "ui-fix:verify": "node scripts/ui-fix-verification.mjs",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.3",
     "@tanstack/react-query": "^5.62.0",
     "next": "^15.1.0",
     "react": "^19.0.0",
@@ -36,8 +40,14 @@
     "@vitejs/plugin-react": "^4.3.0",
     "axe-core": "^4.14.0",
     "jsdom": "^25.0.0",
+    "prisma": "^6.19.3",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0",
     "vitest": "^2.1.0"
+  },
+  "allowScripts": {
+    "@prisma/client@6.19.3": true,
+    "prisma@6.19.3": true,
+    "@prisma/engines@6.19.3": true
   }
 }

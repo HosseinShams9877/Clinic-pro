@@ -1,0 +1,75 @@
+/* =========================================================
+   loan.css — the loan WIZARD's own styles (new, 2026-11-18).
+ *
+ * Everything above lives on the reference's own classes
+ * (reference.css, the verbatim loan.css port). The rules below style
+ * the parts the reference never had — the multi-step request flow
+ * inside the .ln-form card — and follow the project's own rules, not
+ * the reference's: semantic tokens only (CLAUDE.md §5), no raw colour
+ * values, and the components layer so Tailwind utilities still win.
+ * The visual vocabulary stays the reference's: the same radii
+ * (13–18px), the same 44–48px input heights, the same soft tint
+ * surfaces and accent focus rings as ln.css's form rules.
+   ========================================================= */
+
+@layer components {
+  /* The 4-step indicator, recoloured for the white form card: the
+     reference's .ln-steps assume the dark teal .ln-box surface. */
+  .ln-w-steps{margin:4px 0 14px}
+  .ln-w-steps li{color:var(--c-muted)}
+  .ln-w-steps .ln-n{background:var(--c-line);color:var(--c-navy)}
+  .ln-w-steps .ln-si{background:var(--c-primary-50);border-color:var(--c-line);color:var(--c-primary)}
+  .ln-w-steps li.on{color:var(--c-navy)}
+  .ln-w-steps li.on .ln-n{background:var(--c-primary);color:var(--c-white)}
+  .ln-w-steps li.on .ln-si{box-shadow:0 0 0 3px var(--c-primary-50)}
+  .ln-w-steps li.done{color:var(--c-navy)}
+  .ln-w-steps li.done .ln-n{background:var(--c-primary);color:var(--c-white)}
+  .ln-w-steps li.done .ln-si{color:var(--c-primary)}
+
+  /* The national-code summary row ("1234567890 · change"). */
+  .ln-w-nc{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px 12px;border:1px solid var(--c-line);border-radius:13px;background:var(--c-bg);color:var(--c-navy);font-size:13.5px;font-weight:700}
+  .ln-w-nc svg{color:var(--c-accent);flex-shrink:0}
+  .ln-w-nc span{flex:1;letter-spacing:.5px}
+  .ln-w-nc .ln-again{flex-shrink:0}
+
+  /* The credit picker (single-credit summary or a radio list). */
+  .ln-w-credits{border:0;padding:0;margin:0 0 12px}
+  .ln-w-credits legend{padding:0}
+  .ln-w-credit{display:block;cursor:pointer}
+  .ln-w-credit input{position:absolute;opacity:0;width:0;height:0}
+  .ln-w-c-box,.ln-w-one{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--c-line);border-radius:14px;background:var(--c-white)}
+  .ln-w-credit .ln-w-c-box{transition:border-color .15s,background .15s}
+  .ln-w-credit:hover .ln-w-c-box{border-color:var(--c-accent)}
+  .ln-w-credit input:checked+.ln-w-c-box{border-color:var(--c-primary);background:var(--c-primary-50)}
+  .ln-w-credit input:focus-visible+.ln-w-c-box{outline:2px solid var(--c-accent);outline-offset:2px}
+  .ln-w-c-box b,.ln-w-one b{color:var(--c-navy);font-size:14.5px;font-weight:800}
+  .ln-w-c-box em,.ln-w-one em{font-style:normal;color:var(--c-primary);font-size:13px;font-weight:800}
+  .ln-w-c-box small,.ln-w-one small{color:var(--c-muted);font-size:12.5px}
+
+  .ln-w-hint{display:block;margin:-4px 0 12px;font-size:12px;color:var(--c-muted);line-height:1.8}
+
+  /* The masked-mobile notice above the OTP field. */
+  .ln-w-mobile{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:var(--c-primary-50);color:var(--c-primary);font-size:13px;font-weight:700;line-height:1.9}
+
+  /* Processing / failure / success result blocks ride the reference's
+     .ln-ok shape; only the pulsing dot and the failure tint are new. */
+  .ln-w-proc{display:flex;align-items:center;gap:10px;margin:8px 0 4px;color:var(--c-navy);font-size:14px;font-weight:800}
+  .ln-dot{width:12px;height:12px;border-radius:50%;background:var(--c-primary);animation:lnWDot 1.2s ease-in-out infinite;flex-shrink:0}
+  @keyframes lnWDot{0%,100%{opacity:1}50%{opacity:.25}}
+  .ln-w-fail-i{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 12px;border-radius:50%;background:var(--ref-red-tint);color:var(--ref-red-2)}
+  .ln-w-fail-i svg{width:32px;height:32px;stroke-width:2.6}
+  .ln-w-fail p{color:var(--c-muted)}
+
+  /* The receipt: reference number / transaction id / amount / status. */
+  .ln-w-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;margin:14px 0 4px;padding:0;text-align:start}
+  .ln-w-facts div{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--c-line);border-radius:12px;background:var(--c-bg)}
+  .ln-w-facts dt{font-size:11.5px;color:var(--c-muted);font-weight:700}
+  .ln-w-facts dd{margin:0;font-size:13.5px;color:var(--c-navy);font-weight:800;word-break:break-all}
+
+  .ln-w-resend{display:block;width:100%;text-align:center;margin-top:10px}
+  .ln-w-js{display:block;margin:6px 0 0;font-size:13px;color:var(--c-muted);line-height:2}
+
+  @media (max-width:560px){
+    .ln-w-facts{grid-template-columns:minmax(0,1fr)}
+  }
+}

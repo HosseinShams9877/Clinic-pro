@@ -1,0 +1,70 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/* =========================================================
+   The loan feature (2026-11-18, LOAN_FEATURE_REPORT.md)
+
+   LoanRequest is one user journey through the JetPay credit-consumption
+   flow: created at credit inquiry (status INQUIRY), advanced through
+   OTP_SENT → PURCHASED → CONFIRMED (or FAILED) as the user proceeds.
+   `requestId` is the bank's own inquiry requestId ("CR-4560-…"), which
+   every later bank call (send-otp, purchase) requires verbatim.
+
+   Transaction mirrors the bank's per-step records (its `/inquiry` returns
+   a step list: PURCHASE / CONFIRM …) so the request can be rebuilt from
+   bank state alone — nothing depends on our rows being in sync.
+
+   Engine notes (PRISMA_6_STRATEGY §6): no provider-specific column types,
+   no native enums (status is a String validated by Zod at the edge),
+   BigInt amounts for values above Int32 (the bank's own sample
+   transaction-list shows totalAmount = 3,000,000,000 IRR), and plain
+   indexes only. Applies unchanged to SQLite (dev/test) and PostgreSQL
+   (prod, provider switch via DATABASE_URL).
+   ========================================================= */
+
+model LoanRequest {
+  id              String        @id @default(cuid())
+  nationalCode    String
+  amount          BigInt
+  creditId        String
+  requestId       String
+  status          String
+  referenceNumber String?
+  transactionId   Int?
+  mobile          String?
+  firstName       String?
+  lastName        String?
+  creditName      String?
+  creditBalance   BigInt?
+  note            String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  transactions    Transaction[]
+
+  @@index([nationalCode])
+  @@index([requestId])
+}
+
+model Transaction {
+  id               String      @id @default(cuid())
+  loanRequestId    String
+  bankTransactionId Int?
+  referenceNumber  String?
+  step             String
+  status           String
+  amount           BigInt
+  createdAt        DateTime    @default(now())
+
+  loanRequest      LoanRequest @relation(fields: [loanRequestId], references: [id], onDelete: Cascade)
+
+  @@index([loanRequestId])
+}
+

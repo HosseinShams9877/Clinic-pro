@@ -1,13 +1,13 @@
 {
   "version": 1,
   "frozenAs": "Phase 3 regression baseline (Phase 2 item 14)",
-  "frozenAt": "2026-11-12",
+  "frozenAt": "2026-11-18",
   "suite": {
-    "files": 31,
-    "tests": 232
+    "files": 44,
+    "tests": 334
   },
   "environment": {
-    "node": "v26.13.0",
+    "node": "v24.19.0",
     "vitest": "2.1.9",
     "next": "15.5.29",
     "react": "19.3.1",
@@ -15,6 +15,30 @@
   },
   "gate": "Every file in `files` must exist on disk with the SAME sha256 (enforced by tests/phase2-baseline.test.ts). Removing or editing a baseline test file fails the suite. Adding new test files is allowed and NOT a violation — the manifest lists the frozen set, not a cap. To change a frozen file: run `node scripts/baseline-freeze.mjs --write` and record the reason in docs/reports/PHASE_2_BASELINE.md.",
   "files": {
+    "src/app/api/loan/confirm/route.test.ts": {
+      "sha256": "125fc930a4bc9d854abd95331eba96bf43cfdc6131ec2ca1e54e8c157a2b2265",
+      "tests": 4
+    },
+    "src/app/api/loan/inquiry/route.test.ts": {
+      "sha256": "75eb2e467df7c79521725107d92cd44477bed654abbeebd96535cff1b8346b8e",
+      "tests": 8
+    },
+    "src/app/api/loan/send-otp/route.test.ts": {
+      "sha256": "86308a2f18114cd1ab8274dc2d1d3a0247ca686c390a159a46ee65672b3d5630",
+      "tests": 4
+    },
+    "src/app/api/loan/status/route.test.ts": {
+      "sha256": "38c8149b70ba9bd77ccd9423f3ba16cfb6682a30173bad37b402e9314f45832e",
+      "tests": 5
+    },
+    "src/app/api/loan/transactions/route.test.ts": {
+      "sha256": "80754ae85e5071207ef8309baa8e8730cae098d6854b6166331562f7d84a199f",
+      "tests": 7
+    },
+    "src/app/api/loan/verify/route.test.ts": {
+      "sha256": "7c5778c329e0bc33f0bcaa7e0c4dfa03479a33e78e9de2901af2b29107f74679",
+      "tests": 6
+    },
     "src/app/api/status/route.test.ts": {
       "sha256": "3d4c0e801c0ce83700609e6eb51d819c9ac953a0da47f7e4cab8bb741aad049e",
       "tests": 6
@@ -23,12 +47,16 @@
       "sha256": "e7365e3179d2ed66c27998ba5b876549a68e35d893f3e2e50164dced428d10d5",
       "tests": 4
     },
+    "src/app/loan/page.test.tsx": {
+      "sha256": "061d9725a6aaccffa0e820e723390b97a1a5f41d21d9713efe1cbbdaae080af3",
+      "tests": 6
+    },
     "src/app/not-found.test.tsx": {
       "sha256": "a46a2407bf62e8e166acb459256c11d0340d82f9ac5a9182e37b55af9359d7c6",
       "tests": 4
     },
     "src/app/page.test.tsx": {
-      "sha256": "ad5bcf080872b60db77f4b9fa7aef50c73768329f68647d296616c2930dcb028",
+      "sha256": "7afee0532e56352bee35b495c6e42042c1f4ca6aa4ae84abc2797202f329fa66",
       "tests": 9
     },
     "src/app/services/[category]/page.test.tsx": {
@@ -40,7 +68,7 @@
       "tests": 7
     },
     "src/app/sitemap.test.ts": {
-      "sha256": "73f8e1f3be1cc9e987d463d9c38d208c0e11426ce34f2e9c9f78d4d200f850f8",
+      "sha256": "1d4639b5d15bc08bce1f202ed44729de625141d3133899b0b50a0e9f9eb86e86",
       "tests": 7
     },
     "src/components/layout/LanguageSwitcher.test.tsx": {
@@ -99,6 +127,26 @@
       "sha256": "57add1d2998ffd5a864575c3bcb122fc005d15825ba5c2c4ce8ed6f2f75fc5ed",
       "tests": 8
     },
+    "src/modules/loan/components/LoanWizard.test.tsx": {
+      "sha256": "565648cd576f165a37fc5722a7aa80c4425ef7cef2a3fd348493a8a48e825c84",
+      "tests": 5
+    },
+    "src/modules/loan/queries/loanQueries.test.ts": {
+      "sha256": "d71bf94eab396dcb5dc0a79da7eb6850707833f010c18739c26477a5a135437d",
+      "tests": 12
+    },
+    "src/modules/loan/schemas/loanSchemas.test.ts": {
+      "sha256": "1c65acfeac6857be11fefb2cc18449654cef54e415462ef256738bad5cca67a3",
+      "tests": 12
+    },
+    "src/modules/loan/services/jetpay.test.ts": {
+      "sha256": "9bb0713bd5809ed65402e9b715821dc4ccc5835a7ccb0a587feaacbbcb3e11be",
+      "tests": 17
+    },
+    "src/modules/loan/services/loanService.test.ts": {
+      "sha256": "23a136dba8b2ceb20cb707f26c45ab25f54576d33a485841245177b1a692418f",
+      "tests": 14
+    },
     "src/modules/seo/lib/metadata.test.ts": {
       "sha256": "89c7df3c743e0a7c112e9834437b80f458a89959614f7a6cf0813c7ed1c1d190",
       "tests": 6
@@ -126,6 +174,10 @@
     "src/styles/globalCss/cascade.test.ts": {
       "sha256": "ea05714c00d071b856470d0a57080e997e82aca05488790a01e94ec66c2cc882",
       "tests": 6
+    },
+    "src/styles/globalCss/comment-hygiene.test.ts": {
+      "sha256": "36ebcb29d165ffb2f02e3b1ac18133fc46bd7ba97bbe90791d077eaaf88d97a0",
+      "tests": 2
     },
     "src/styles/globalCss/print.test.ts": {
       "sha256": "9d12304b91bae630bebf305cc2d0ea056619be37f712a199dba5204d5dafbde2",
