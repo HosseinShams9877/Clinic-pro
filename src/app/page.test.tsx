@@ -24,6 +24,7 @@ import { statusFor } from "@/core/openHours";
 import { statusText } from "@/modules/services/queries/statusQueries";
 import { LOCALES } from "@/core/i18n/locales";
 import { t } from "@/modules/i18n/messages";
+import { internationalPatientsCopy } from "@/modules/publicSite/content/internationalPatients";
 
 /** The locale the mocked next/headers will resolve. */
 let mockedLocale: "fa" | "en" | "ar" | undefined;
@@ -77,7 +78,10 @@ describe("home page (fa)", () => {
   });
 
   it("renders the eight static services cards, and every services link (including the mounted bento island) stays inside the built catalog", async () => {
-    await renderHome();
+    const { container } = await renderHome();
+    const viewAll = container.querySelector<HTMLAnchorElement>("#services .h-more");
+    expect(viewAll).toHaveAttribute("href", "/services");
+    expect(viewAll).toHaveTextContent(t("fa", "sv.all"));
     // The no-JS/SEO fallback grid: the reference's own eight cards, c1–c8.
     const fallback = document.querySelector(".h-svc");
     expect(fallback).not.toBeNull();
@@ -154,5 +158,9 @@ describe("home page in every locale", () => {
     const { container } = await renderHome();
     expect(container.querySelector("main") ?? container).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(t(locale, "h.t1"));
+    const international = container.querySelector("#international");
+    expect(international).toHaveTextContent(internationalPatientsCopy[locale].homeTeaser.title);
+    expect(international).toHaveTextContent(internationalPatientsCopy[locale].homeTeaser.action);
+    expect(international?.querySelector("[lang='fa'][dir='rtl']")).toBeNull();
   });
 });

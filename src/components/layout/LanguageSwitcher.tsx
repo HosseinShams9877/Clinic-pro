@@ -69,16 +69,16 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={`${t(locale, "lang.label")}: ${CODES[locale]}`}
-        onClick={(e) => { e.stopPropagation(); 
-            console.log("CLICKED! open was:", open);
-
-          setOpen((value) => !value); }}
+        onClick={(event) => {
+          event.stopPropagation();
+          setOpen((value) => !value);
+        }}
       >
         <span>{CODES[locale]}</span>
         <Icon name="i-chev" size={16} />
       </button>
       {open && (
-        <ul className="lang-list" role="menu" style={{ display: open ? 'block' : 'none', opacity: 1, visibility: 'visible' }}>
+        <ul className="lang-list" role="menu">
           {LOCALES.map((option) => (
             <li key={option} role="none">
               {/* Plain <a>, deliberately NOT next/link: see the file header. */}

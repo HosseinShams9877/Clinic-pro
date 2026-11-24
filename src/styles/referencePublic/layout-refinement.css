@@ -39,15 +39,15 @@
 .ix-about+.ix-body .ix-card:hover{transform:none;box-shadow:none}
 .ix-about+.ix-body .ix-floors{margin-bottom:0}
 /* New service pages have explicit category, detail and item groups. */
-body[data-service-group] .scats-wrap{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-top:28px;margin-bottom:28px}
-body[data-service-group] .sgrp-h{margin-top:0}
-body[data-service-group] .sdetail{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-top:0;margin-bottom:28px;gap:30px}
-body[data-service-group] .sdetail>*{min-width:0}
-body[data-service-group] .sitems-wrap{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-bottom:30px}
-body[data-service-group] .sitems-wrap .sec-head{margin-top:0}
-body[data-service-group] .sitems{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
-body[data-service-group] .si{min-width:0;box-shadow:none;border:1px solid #dce8ea}
-body[data-service-group] .si-b{min-width:0}
+.service-group-page[data-service-group] .scats-wrap{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-top:28px;margin-bottom:28px}
+.service-group-page[data-service-group] .sgrp-h{margin-top:0}
+.service-group-page[data-service-group] .sdetail{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-top:0;margin-bottom:28px;gap:30px}
+.service-group-page[data-service-group] .sdetail>*{min-width:0}
+.service-group-page[data-service-group] .sitems-wrap{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-bottom:30px}
+.service-group-page[data-service-group] .sitems-wrap .sec-head{margin-top:0}
+.service-group-page[data-service-group] .sitems{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+.service-group-page[data-service-group] .si{min-width:0;box-shadow:none;border:1px solid #dce8ea}
+.service-group-page[data-service-group] .si-b{min-width:0}
 /* International patient journey: independently readable grouped panels. */
 .patient-pages .pp-journey{margin-top:30px;padding:30px;gap:24px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;align-items:start;grid-template-columns:1fr}
 .patient-pages .pp-journey header h2{margin-top:0;font-size:28px}
@@ -55,7 +55,7 @@ body[data-service-group] .si-b{min-width:0}
 .patient-pages .pp-journey header h2 br{display:none}
 .patient-pages .pp-journey ol{min-width:0;border:0;display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
 .patient-pages .pp-journey li:last-child{grid-column:1/-1}
-.patient-pages .pp-journey li{padding:22px 64px 22px 22px;border:1px solid #dce8ea;border-radius:18px;background:#f8fbfc;min-width:0}
+.patient-pages .pp-journey li{padding-block:22px;padding-inline:64px 22px;border:1px solid #dce8ea;border-radius:18px;background:#f8fbfc;min-width:0}
 .patient-pages .pp-journey li:before{inset-inline-start:18px;top:22px;border:0;width:30px;height:30px}
 .patient-pages .pp-journey li p{max-width:none}
 .patient-pages .pp-check{margin-top:26px;padding:0;border:0;gap:24px;align-items:start}
@@ -69,6 +69,6 @@ body[data-service-group] .si-b{min-width:0}
 .patient-pages .pp-path{display:flex;flex-direction:column;box-shadow:none}
 .patient-pages .pp-path>div{flex:1;display:flex;flex-direction:column;align-items:flex-start}
 .patient-pages .pp-path strong{margin-top:auto}
-@media(max-width:1000px){body[data-service-group] .sitems{grid-template-columns:repeat(2,minmax(0,1fr))}.patient-pages .pp-journey{grid-template-columns:1fr}.patient-pages .pp-journey header h2 br{display:none}.patient-pages .pp-journey ol{margin-inline:0;grid-template-columns:1fr}}
+@media(max-width:1000px){.service-group-page[data-service-group] .sitems{grid-template-columns:repeat(2,minmax(0,1fr))}.patient-pages .pp-journey{grid-template-columns:1fr}.patient-pages .pp-journey header h2 br{display:none}.patient-pages .pp-journey ol{margin-inline:0;grid-template-columns:1fr}}
 @media(max-width:860px){.admission-refresh .ix-side{margin-top:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.patient-pages .pp-check{grid-template-columns:1fr}.ix-visit+.ix-body .visit-rules{grid-template-columns:1fr}.visit-rules .ix-card{min-height:0}}
-@media(max-width:600px){.admission-refresh .operation-documents,.admission-refresh .admission-finance,.guide-admission-refresh .guide-insurance-note,.ix-about+.ix-body .ix-sec{padding:20px;border-radius:20px}.admission-refresh .ix-side{grid-template-columns:1fr}.admission-refresh .finance-columns{gap:14px}.admission-refresh .finance-columns>div{padding:18px}.admission-refresh .operation-options{grid-template-columns:1fr}.admission-refresh .ix-steps li{gap:10px}.admission-refresh .ix-steps li>div{padding:16px}.patient-pages .pp-journey{padding:18px;gap:20px}.patient-pages .pp-journey header{padding:20px}.patient-pages .pp-journey li{padding:18px 54px 18px 16px}.patient-pages .pp-journey li:before{inset-inline-start:14px;top:19px;width:27px;height:27px}.patient-pages .pp-check>div,.patient-pages .pp-note{padding:22px}.patient-pages .pp-intro+.pp-paths{margin-top:0}body[data-service-group] .scats-wrap,body[data-service-group] .sdetail,body[data-service-group] .sitems-wrap{padding:18px;border-radius:22px}body[data-service-group] .sitems{grid-template-columns:1fr}.ix-about+.ix-body .ix-fl-h{flex-wrap:wrap}}
+@media(max-width:600px){.admission-refresh .operation-documents,.admission-refresh .admission-finance,.guide-admission-refresh .guide-insurance-note,.ix-about+.ix-body .ix-sec{padding:20px;border-radius:20px}.admission-refresh .ix-side{grid-template-columns:1fr}.admission-refresh .finance-columns{gap:14px}.admission-refresh .finance-columns>div{padding:18px}.admission-refresh .operation-options{grid-template-columns:1fr}.admission-refresh .ix-steps li{gap:10px}.admission-refresh .ix-steps li>div{padding:16px}.patient-pages .pp-journey{padding:18px;gap:20px}.patient-pages .pp-journey header{padding:20px}.patient-pages .pp-journey li{padding-block:18px;padding-inline:54px 16px}.patient-pages .pp-journey li:before{inset-inline-start:14px;top:19px;width:27px;height:27px}.patient-pages .pp-check>div,.patient-pages .pp-note{padding:22px}.patient-pages .pp-intro+.pp-paths{margin-top:0}.service-group-page[data-service-group] .scats-wrap,.service-group-page[data-service-group] .sdetail,.service-group-page[data-service-group] .sitems-wrap{padding:18px;border-radius:22px}.service-group-page[data-service-group] .sitems{grid-template-columns:1fr}.ix-about+.ix-body .ix-fl-h{flex-wrap:wrap}}

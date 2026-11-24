@@ -168,6 +168,12 @@ export function SiteHeader({ locale, pathname }: { locale: Locale; pathname: str
             <li>
               <Link href="/#contact">{t(locale, "nav.contact")}</Link>
             </li>
+            <li className="menu-booking">
+              <a href={`tel:${siteConfig.phone}`}>
+                <Icon name="i-calendar" size={18} />
+                <span>{t(locale, "cta.book")}</span>
+              </a>
+            </li>
           </ul>
 
           <div className="nav-tools">

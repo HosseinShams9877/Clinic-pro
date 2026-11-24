@@ -44,6 +44,7 @@ import { LiveStatus } from "@/components/shared/LiveStatus";
 import { LoanHomeSection } from "@/modules/loan/components/LoanHomeSection";
 import { statusFor } from "@/core/openHours";
 import doctorsSource from "@/modules/publicSite/content/doctors.json";
+import { internationalPatientsCopy } from "@/modules/publicSite/content/internationalPatients";
 import type { PublicDoctor } from "@/modules/publicSite/types";
 
 export function generateMetadata(): Metadata {
@@ -183,6 +184,7 @@ const WHY_US: ReadonlyArray<{
 export default async function HomePage() {
   const locale = await getLocale();
   const publicCopy = HOME_PUBLIC_COPY[locale];
+  const internationalCopy = internationalPatientsCopy[locale].homeTeaser;
 
   return (
     // `.page-home` is the reference's body hook: `body:has(.page-home)`
@@ -394,15 +396,14 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Latest reference content is Persian-only on this section. */}
-      <section className="container h-sec" id="international" lang="fa" dir="rtl">
+      <section className="container h-sec" id="international">
         <div className="h-contact">
           <div className="hct-t">
-            <h2>بیماران بین‌الملل؛ هماهنگی پیش از سفر</h2>
-            <p>مراحل بررسی اولیه، مدارک مورد نیاز، پذیرش و پیگیری درمان را پیش از برنامه‌ریزی سفر به کاشان ببینید.</p>
+            <h2>{internationalCopy.title}</h2>
+            <p>{internationalCopy.lead}</p>
           </div>
           <Link className="btn btn-primary" href={ROUTES.internationalPatients}>
-            راهنمای بیماران بین‌الملل
+            {internationalCopy.action}
           </Link>
         </div>
       </section>

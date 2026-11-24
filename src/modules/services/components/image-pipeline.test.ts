@@ -88,19 +88,26 @@ describe("every image fills a box the markup reserved", () => {
     expect(home).not.toMatch(/<Image[^>]*min-h-64/);
   });
 
-  it("reserves the services hero, advisory and card boxes in the ported geometry", () => {
-    const services = read("app/services/page.tsx");
-    // The B-3 fidelity port: the hero box is the reference's own `.sh-photo`
-    // (position:relative + aspect-ratio:4/3 in reference.css) with a `fill`
-    // <Image> inside, so the picture owns no geometry of its own and decoded
-    // AVIF cannot shift it.
-    expect(services).toMatch(/<div className="sh-photo">[\s\S]*?<Image[\s\S]*?src="\/img\/guide\/v-or\.jpg"[\s\S]*?\bfill\b/);
+  it("reserves the services gateway, group hero, advisory and card boxes", () => {
+    const gateway = read("app/services/page.tsx");
+    const group = read("modules/services/components/ServiceGroupLanding.tsx");
+    // The gateway cards use their source dimensions while `.pp-path img`
+    // owns the rendered box, matching the static reference without CLS.
+    expect(gateway).toMatch(
+      /src="\/img\/services\/or\.jpg"[\s\S]*?width=\{1200\}[\s\S]*?height=\{422\}/,
+    );
+    expect(gateway).toMatch(
+      /src="\/img\/guide\/v-doctor\.jpg"[\s\S]*?width=\{1400\}[\s\S]*?height=\{1050\}/,
+    );
+    // The group-page hero keeps the reference's positioned `.sh-photo` box
+    // and a fill image, so image decoding cannot change its geometry.
+    expect(group).toMatch(/<div className="sh-photo">[\s\S]*?<Image[\s\S]*?src="\/img\/guide\/v-or\.jpg"[\s\S]*?\bfill\b/);
     // The advisory photo lives in the reference's `.sask-img`, which is NOT
     // positioned — a `fill` picture (absolute, inset 0) would collapse against
     // the initial containing box. It ships non-fill with the source's true
     // intrinsic 1200×422 as attributes, which the ported `.sask-img img`
     // (width/height 100%) overrides — the reference's own static-<img> geometry.
-    expect(services).toMatch(
+    expect(group).toMatch(
       /<div className="sask-img">[\s\S]*?<Image[\s\S]*?src="\/img\/services\/or\.jpg"[\s\S]*?width=\{1200\}[\s\S]*?height=\{422\}/,
     );
     // The category tile keeps the reference's `.scat img` geometry
@@ -153,11 +160,14 @@ describe("every image fills a box the markup reserved", () => {
 });
 
 describe("the LCP images are preloaded, the rest are not", () => {
-  it("marks both hero pictures priority (they are the measured LCP element)", () => {
+  it("marks the home, gateway and group hero pictures priority", () => {
     const home = read("app/page.tsx");
-    const services = read("app/services/page.tsx");
+    const gateway = read("app/services/page.tsx");
+    const group = read("modules/services/components/ServiceGroupLanding.tsx");
     expect(home).toMatch(/<Image[\s\S]*?src="\/img\/or-hero\.jpg"[\s\S]*?priority/);
-    expect(services).toMatch(/<Image[\s\S]*?src="\/img\/guide\/v-or\.jpg"[\s\S]*?priority/);
+    expect(gateway).toMatch(/<Image[\s\S]*?src="\/img\/services\/or\.jpg"[\s\S]*?priority/);
+    expect(gateway).toMatch(/<Image[\s\S]*?src="\/img\/guide\/v-doctor\.jpg"[\s\S]*?priority/);
+    expect(group).toMatch(/<Image[\s\S]*?src="\/img\/guide\/v-or\.jpg"[\s\S]*?priority/);
   });
 
   it("does not priority-flag the below-fold pictures", () => {

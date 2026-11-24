@@ -493,3 +493,38 @@ routes; the profile review form is present; and the sitemap includes those
 new public destinations. Three focused test files were added for Smart Guide
 delivery, Crown Club storage/validation, and review rating/submission behavior.
 No unrelated assertion was removed or weakened.
+
+## Refreeze — 2026-11-24, final multilingual UI parity fixes
+
+**Manifest:** rewritten from a green Vitest JSON run excluding only the
+self-referential freeze gate: **50 files / 357 tests**. The complete suite is
+**51 files / 361 tests** including the four freeze-gate assertions.
+
+This refreeze records the owner-requested corrective pass for the current
+reference demo: `/services` is now the reference's two-path gateway, its
+surgical and medical listings remain real destinations, the International
+Patients page renders complete Persian, English, and Arabic content, and the
+shared header is constrained at every required desktop/mobile breakpoint.
+
+**Frozen files changed:**
+
+- `src/app/services/page.test.tsx` now pins the two-card gateway instead of
+  the obsolete combined catalog.
+- `src/app/page.test.tsx` pins Home → View all services → `/services` and the
+  localized International Patients teaser.
+- `src/app/public-routes.test.tsx` pins localized group-page hero copy and the
+  wrapper hook that activates the reference group layout.
+- `src/components/layout/SiteHeader.test.tsx` pins the wider header container,
+  responsive menu breakpoint, mobile booking destination, and removal of the
+  language-switcher debug/inline-style workaround.
+- `src/modules/services/components/image-pipeline.test.ts` follows the current
+  gateway and group-page image/LCP structure.
+
+**Newly frozen file:** `src/app/international-patients/page.test.tsx` (two
+tests covering the complete journey, real in-scope destinations, and all
+three locales). No parity, scope, or accessibility assertion was weakened.
+
+The refreeze source run used the project's documented isolated SQLite test
+posture (`prisma/test.db`) with Node's experimental global web storage disabled
+so JSDOM owns `localStorage`: **357 passed / 0 failed**. The PostgreSQL schema
+and generated client were restored immediately after the run.

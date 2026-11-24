@@ -5,21 +5,11 @@ import { Icon, type IconName } from "@/components/shared/Icon";
 import { siteConfig } from "@/config/site.config";
 import type { Locale } from "@/core/i18n/locales";
 import { t } from "@/modules/i18n/messages";
+import { servicesPageCopy } from "@/modules/services/content/pages";
 import { getLocalizedCategoriesByGroup } from "@/modules/services/services";
 import type { ServiceGroup } from "@/modules/services/types";
 import { ServiceGroupSection } from "./ServiceGroupSection";
 import { SubServiceGrid } from "./SubServiceGrid";
-
-const GROUP_COPY = {
-  surg: {
-    title: "خدمات جراحی",
-    lead: "آشنایی با حوزه‌های جراحی مرکز؛ انتخاب روش مناسب پس از معاینه و نظر پزشک مشخص می‌شود.",
-  },
-  med: {
-    title: "خدمات پزشکی",
-    lead: "ارزیابی بیهوشی، خدمات پوست و مو، لیزر و اسکوپی؛ حوزه مورد نظر را انتخاب کنید.",
-  },
-} as const;
 
 const ADVISORY_ITEMS = [
   { icon: "i-clock", title: "sv2.a1", sub: "sv2.a1s" },
@@ -28,13 +18,15 @@ const ADVISORY_ITEMS = [
 ] as const;
 
 export function ServiceGroupLanding({ group, locale }: { group: ServiceGroup; locale: Locale }) {
-  const copy = GROUP_COPY[group];
+  const copy = servicesPageCopy[locale].groups;
+  const title = t(locale, group === "surg" ? "sg.surg" : "sg.med");
+  const lead = group === "surg" ? copy.surgicalLead : copy.medicalLead;
   const categories = getLocalizedCategoriesByGroup(group, locale);
   const featured = categories[0];
   if (!featured) return null;
 
   return (
-    <div className="page-doctors page-services">
+    <div className="page-doctors page-services service-group-page" data-service-group={group}>
       <section className="shero">
         <div className="container shero-grid">
           <div className="shero-in">
@@ -43,11 +35,11 @@ export function ServiceGroupLanding({ group, locale }: { group: ServiceGroup; lo
               <span>/</span>
               <Link href="/services">{t(locale, "nav.services")}</Link>
               <span>/</span>
-              <b id="service-group-breadcrumb-label">{copy.title}</b>
+              <b id="service-group-breadcrumb-label" aria-current="page">{title}</b>
             </nav>
             <span className="sh-k">{t(locale, "sv2.k")}</span>
-            <h1 lang="fa" dir="rtl">{copy.title}</h1>
-            <p lang="fa" dir="rtl">{copy.lead}</p>
+            <h1>{title}</h1>
+            <p>{lead}</p>
             <div className="service-switch">
               <Link href="/services/surgical" aria-current={group === "surg" ? "page" : undefined}>
                 {t(locale, "nav.svcSurg")}

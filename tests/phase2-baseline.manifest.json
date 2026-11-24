@@ -3,11 +3,11 @@
   "frozenAs": "Phase 3 regression baseline (Phase 2 item 14)",
   "frozenAt": "2026-11-24",
   "suite": {
-    "files": 49,
-    "tests": 355
+    "files": 50,
+    "tests": 357
   },
   "environment": {
-    "node": "v24.19.0",
+    "node": "v26.13.0",
     "vitest": "2.1.9",
     "next": "15.5.29",
     "react": "19.3.1",
@@ -51,6 +51,10 @@
       "sha256": "e7365e3179d2ed66c27998ba5b876549a68e35d893f3e2e50164dced428d10d5",
       "tests": 4
     },
+    "src/app/international-patients/page.test.tsx": {
+      "sha256": "8be6e569ea22af7960ecd7017de4d36ce955aad35a4da605aa9a924df80a8f35",
+      "tests": 2
+    },
     "src/app/loan/page.test.tsx": {
       "sha256": "061d9725a6aaccffa0e820e723390b97a1a5f41d21d9713efe1cbbdaae080af3",
       "tests": 6
@@ -60,20 +64,20 @@
       "tests": 4
     },
     "src/app/page.test.tsx": {
-      "sha256": "7ef5aaaff0c99904b45122c6fc49005d168b955cbc134aaa61f112eb543c679f",
+      "sha256": "c49692252e98eb914bf9421f60e3db0f4a6f0eaeffcca1e79dd66f550bad3e99",
       "tests": 9
     },
     "src/app/public-routes.test.tsx": {
-      "sha256": "09037ccdfe67b96ff137fa9f8fee9b0d00c6ecc31c4c529465b3db65463c8706",
-      "tests": 14
+      "sha256": "c507723774a4a7837b7b4d7762a1e5faca82ae50d06d5064dbd000046fb6e85a",
+      "tests": 15
     },
     "src/app/services/[category]/page.test.tsx": {
       "sha256": "e07abfd89c3d81ffc73764c2db9d8de707722e90242b9cf7a4b8b52cbbd5957a",
       "tests": 6
     },
     "src/app/services/page.test.tsx": {
-      "sha256": "7fcab1fe9363ffd2cd682fdded0ee405ea97cc80fedd4182539fcb7e6a43debb",
-      "tests": 7
+      "sha256": "e0c15468b48fca7ced896c9406eaa78ef374521d92ffb54fb4938e8101c39c75",
+      "tests": 5
     },
     "src/app/sitemap.test.ts": {
       "sha256": "b761eed460139dfad330c338a20c9926421eba821ce87dc45646064a6ea9bd57",
@@ -84,8 +88,8 @@
       "tests": 3
     },
     "src/components/layout/SiteHeader.test.tsx": {
-      "sha256": "b4b08065857c64b6dd7a49453b706e5fe5f5fd498af93eb5d5a1160fcb287ce7",
-      "tests": 6
+      "sha256": "be514cefe299edf205c7438a41bd0b2ecff7469c32a37e83d638422ed6159cfc",
+      "tests": 7
     },
     "src/components/layout/focus-ring-clip.test.tsx": {
       "sha256": "4787152e24b7db68bd80c21206ea9b474a2a66a703348fc162f790cc814acad0",
@@ -176,7 +180,7 @@
       "tests": 16
     },
     "src/modules/services/components/image-pipeline.test.ts": {
-      "sha256": "f41c274e7b283b7be13e841b168753cc70b6b5baa7e84dfdb342e67f717ec734",
+      "sha256": "b71727ac1681c6a4711508182b8c2e449322de8250cb3ef5a1caaf3ca657842b",
       "tests": 8
     },
     "src/modules/services/content/categories.test.ts": {

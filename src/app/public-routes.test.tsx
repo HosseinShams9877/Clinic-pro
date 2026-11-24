@@ -23,6 +23,8 @@ import SurgicalServicesPage from "./services/surgical/page";
 import VisitingPage from "./visiting/page";
 import guide from "@/modules/publicSite/content/guide.json";
 import profiles from "@/modules/publicSite/content/doctor-profiles.json";
+import { servicesPageCopy } from "@/modules/services/content/pages";
+import { t } from "@/modules/i18n/messages";
 
 type AsyncPage = ComponentType<any> | ((props: any) => Promise<ReactNode>);
 
@@ -38,13 +40,34 @@ afterEach(() => {
 
 describe("remaining public route render gates", () => {
   it.each([
-    ["surgical", SurgicalServicesPage, "خدمات جراحی"],
-    ["medical", MedicalServicesPage, "خدمات پزشکی"],
-  ])("renders the %s service-group landing from the reference", async (_name, Page, title) => {
+    ["surgical", "surg", SurgicalServicesPage, "خدمات جراحی"],
+    ["medical", "med", MedicalServicesPage, "خدمات پزشکی"],
+  ] as const)("renders the %s service-group landing from the reference", async (_name, group, Page, title) => {
     const { container } = await renderPage(Page);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(title);
+    expect(container.querySelector(".service-group-page")).toHaveAttribute("data-service-group", group);
     expect(container.querySelectorAll(".scat").length).toBeGreaterThan(0);
     expect(container.innerHTML).not.toMatch(/\.html|patient-panel|assistant/i);
+  });
+
+  it("localizes both service-group heroes without forcing Persian direction", async () => {
+    for (const locale of ["fa", "en", "ar"] as const) {
+      mockedLocale = locale;
+      for (const [group, Page] of [
+        ["surg", SurgicalServicesPage],
+        ["med", MedicalServicesPage],
+      ] as const) {
+        const { container, unmount } = await renderPage(Page);
+        const title = t(locale, group === "surg" ? "sg.surg" : "sg.med");
+        const lead = group === "surg"
+          ? servicesPageCopy[locale].groups.surgicalLead
+          : servicesPageCopy[locale].groups.medicalLead;
+        expect(container.querySelector("h1")).toHaveTextContent(title);
+        expect(container.querySelector(".shero-in>p")).toHaveTextContent(lead);
+        expect(container.querySelector(".shero-in [lang='fa'][dir='rtl']")).toBeNull();
+        unmount();
+      }
+    }
   });
 
   it("renders all 66 doctors and all 12 guide topics", async () => {

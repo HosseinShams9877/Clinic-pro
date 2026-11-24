@@ -57,7 +57,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   if (category === undefined) notFound();
 
   return (
-    <>
+    <div className="page-services service-category-page">
       <ServiceDetailPanel category={category} locale={locale} />
       <SubServiceGrid category={category} locale={locale} />
 
@@ -81,6 +81,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           { name: category.name, path: category.path },
         ])}
       />
-    </>
+    </div>
   );
 }

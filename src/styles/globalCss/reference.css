@@ -62,21 +62,22 @@ html[lang="ar"] body{line-height:1.85}
 /* ==== style.css L82-119 — header chrome (L747-749 finals) ==== */
 .site-header{position:absolute;inset-inline:0;top:16px;z-index:50}
 .site-header.stuck{position:absolute;top:16px;animation:none} /* L673-676: never stuck */
+.site-header>.container{max-width:1440px;padding-inline:16px}
 .nav{display:flex;align-items:center;gap:14px;height:76px;padding-inline:18px;background:var(--ref-glass-96);backdrop-filter:blur(14px);border-radius:20px;box-shadow:var(--ref-sh-nav);border:1px solid var(--ref-line-stat)} /* L749 */
-.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0;min-width:0}
 .brand-mark{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--primary-50);color:var(--accent-strong);flex-shrink:0} /* L747 */
 .brand-mark svg{width:32px;height:32px}
-.brand-text{display:flex;flex-direction:column;line-height:1.3}
+.brand-text{display:flex;flex-direction:column;line-height:1.3;min-width:0}
 .brand-text small{font-size:11.5px;color:var(--fg-muted);font-weight:500}
 .brand-text strong{font-size:19px;color:var(--ref-ink-strong);font-weight:900} /* L748 */
 .brand.light .brand-text small{color:var(--ref-w-65)} /* L98 */
 .brand.light .brand-text strong{color:var(--c-white)} /* L99 */
 .brand.light .brand-mark{background:var(--ref-w-10);color:var(--ref-aqua-1)} /* L754 */
-.menu{display:flex;gap:2px;margin-inline:auto}
+.menu{display:flex;gap:2px;margin-inline:auto;min-width:0}
 .menu a{display:block;white-space:nowrap;padding:9px 11px;border-radius:11px;font-size:13.5px;font-weight:600;color:var(--ref-ink-3);transition:.2s} /* L362-363 */
 .menu a:hover{color:var(--accent-strong);background:var(--bg)}
 .menu a.active{color:var(--menu-active-ink);background:var(--primary-50)} /* style.css L104; ink token per R-6 (see themes.css) */
-.nav-tools{display:flex;align-items:center;gap:10px}
+.nav-tools{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .icon-btn{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--bg);border:0;cursor:pointer;color:var(--fg)}
 .icon-btn svg{width:20px;height:20px}
 /* The reference's burger is a bare <button class="icon-btn burger"> with no
@@ -98,46 +99,62 @@ html[lang="ar"] body{line-height:1.85}
 .lang-list button,.lang-list a{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:10px 12px;border:0;background:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:14px;color:var(--fg)}
 .lang-list button:hover,.lang-list a:hover,.lang-list button.on,.lang-list a.on{background:var(--primary-50);color:var(--accent-strong)}
 .lang-list b{font-size:11px;color:var(--fg-muted)}
+.menu-booking{display:none}
 
-/* ---- header responsive (style.css L~120-135, L355-357) ---- */
+/* ---- header responsive (reference geometry plus multilingual fit) ---- */
 @media (max-width:1180px){
-  .menu a{padding:8px 7px;font-size:13px}
-  .brand-text strong{font-size:17px}
-  .hide-sm{display:none}
-}
-@media (max-width:1024px){
   .burger{display:grid}
-  .menu{position:absolute;top:calc(100% + 8px);inset-inline:20px;flex-direction:column;background:var(--surface);border-radius:18px;box-shadow:var(--sh-2);padding:10px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s}
+  .menu{position:absolute;top:calc(100% + 8px);inset-inline:20px;flex-direction:column;background:var(--surface);border-radius:18px;box-shadow:var(--sh-2);padding:10px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s;max-height:calc(100vh - 110px);overflow-y:auto}
   .menu.open{opacity:1;visibility:visible;transform:none}
-  .menu a{padding:12px 14px;font-size:15px}
+  .menu a{padding:12px 14px;font-size:15px;white-space:normal}
+  .brand-text strong{font-size:17px}
   .nav-tools{margin-inline-start:auto}
 }
 @media (max-width:640px){
   .site-header{top:10px}
-  .nav{height:66px;padding-inline:12px;gap:8px}
-  .brand-mark{width:40px;height:40px}
+  .site-header>.container{padding-inline:10px}
+  .nav{height:66px;padding-inline:10px;gap:6px}
+  .brand{flex:1 1 auto;gap:8px;overflow:visible}
+  .brand-mark{width:38px;height:38px}
   .brand-text strong{font-size:16px}
   .brand-text small{font-size:10.5px}
   .icon-btn,.lang-btn{height:40px}
   .icon-btn{width:40px}
+  .lang-btn{padding-inline:10px}
+  .nav-tools{gap:6px}
+  .site-header .hide-sm{display:none}
+  .menu-booking{display:block}
+  .menu-booking>a{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--btn-strong);color:var(--c-white)}
+  .menu-booking>a:hover{background:var(--c-primary-600);color:var(--c-white)}
 }
-/* 320px release-gate fix (scoped, header-only). The reference's OWN header
-   overflows at 320px: measured live on the reference demo
-   (docs/reports/overflow-ref-measure.json), scrollWidth = 356 in en, 324 in
-   ar, 309 in fa — because .brand is flex-shrink:0 and the small line is a
-   flex item, so it never wraps. Our port reproduced those numbers exactly.
-   Only inside the width band where the reference actually breaks (<=360px)
-   and only in the header, the small line is allowed to wrap; at every width
-   where the reference fits the geometry is untouched — fa's brand-text is
-   105px wide, far below the cap, so the canonical Persian layout is
-   byte-identical to the reference. Owner decision, recorded in
-   EXACT_VISUAL_AND_UI_FIDELITY_REPORT.md §2/B-7. */
+@media (max-width:480px){
+  .site-header .brand-text small{display:none}
+  .site-header .brand-text strong{line-height:1.2;white-space:normal;overflow-wrap:anywhere}
+  .site-header .brand-mark{width:36px;height:36px;border-radius:12px}
+  .site-header .nav-tools{gap:5px}
+  .site-header .lang-btn{padding-inline:8px}
+}
 @media (max-width:360px){
-  .site-header .brand-text{min-width:0;max-width:112px}
-  .site-header .brand-text small{overflow-wrap:break-word}
+  .site-header>.container{padding-inline:8px}
+  .site-header .nav{padding-inline:8px}
+  .site-header .brand-text{max-width:108px}
 }
-[dir="ltr"] .menu a{padding-inline:10px;font-size:13.5px}
-[dir="ltr"] .menu{gap:0}
+@media (min-width:1181px){
+  [dir="ltr"] .menu a{padding-inline:10px;font-size:13.5px}
+  [dir="ltr"] .menu{gap:0}
+}
+@media (min-width:1181px) and (max-width:1320px){
+  .site-header>.container{padding-inline:12px}
+  .site-header .nav{gap:8px;padding-inline:12px}
+  .site-header .brand{gap:8px}
+  .site-header .brand-mark{width:42px;height:42px;border-radius:13px}
+  .site-header .brand-text small{font-size:10.5px}
+  .site-header .brand-text strong{font-size:17px}
+  .site-header .menu a,[dir="ltr"] .site-header .menu a{padding-inline:6px;font-size:12.75px}
+  .site-header .nav-tools{gap:6px}
+  .site-header .lang-btn{padding-inline:10px}
+  .site-header .btn-sm{padding-inline:11px;gap:7px}
+}
 
 /* ==== style.css L791-814 — dropdown menus ==== */
 .menu .has-sub{position:relative;display:flex;align-items:center}
@@ -149,8 +166,7 @@ html[lang="ar"] body{line-height:1.85}
 .menu .has-sub:hover>.sub,.menu .has-sub:focus-within>.sub{opacity:1;visibility:visible;transform:none}
 .menu .sub a{padding:9px 12px;font-size:13.5px;border-radius:10px;white-space:nowrap}
 .menu .sub a.on{color:var(--accent-strong);background:var(--primary-50)}
-@media (max-width:1024px){
-  .menu{max-height:calc(100vh - 110px);overflow-y:auto}
+@media (max-width:1180px){
   .menu .has-sub{flex-wrap:wrap}
   .menu .has-sub>a::after{display:none}
   .menu .sub-tg{display:grid;place-items:center;width:42px;height:42px;border:0;background:var(--bg);border-radius:11px;color:var(--accent-strong);cursor:pointer}

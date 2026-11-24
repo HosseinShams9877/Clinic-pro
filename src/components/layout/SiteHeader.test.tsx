@@ -98,6 +98,19 @@ describe("SiteHeader", () => {
     }
   });
 
+  it("keeps the responsive header actions available without locale-specific offsets", () => {
+    const css = readFileSync("src/styles/globalCss/reference.css", "utf8");
+    const component = readFileSync("src/components/layout/LanguageSwitcher.tsx", "utf8");
+
+    expect(css).toMatch(/\.site-header>\.container\{[^}]*max-width:1440px/);
+    expect(css).toMatch(/@media \(max-width:1180px\)\{[^}]*\.burger\{display:grid\}/s);
+    expect(css).toMatch(/\.nav-tools\{[^}]*flex-shrink:0/);
+    expect(css).toMatch(/\.site-header \.hide-sm\{display:none\}/);
+    expect(css).toMatch(/\.menu-booking\{display:block\}/);
+    expect(component).not.toContain("console.log");
+    expect(component).not.toContain("style={{");
+  });
+
   it("bakes the reference's static active state into the menu (B-6)", () => {
     // index.html L101: on the home page the home link carries class="active"
     // (no aria-current) exactly as the reference ships it. Scoped to #menu —
