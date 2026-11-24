@@ -12,8 +12,7 @@
  *   env override), i.e. **local HTTP**. HTTPS/HSTS is deferred to risk R-4 by
  *   owner decision; the deferral is re-stated in the item-11 notes. The same
  *   budgets apply on a real origin — only TTFB gains a TLS handshake there.
- * - Routes: the three representative in-surface pages plus the item-4 404 —
- *   `/`, `/services`, one SSG category page (`/services/gen`), the 404.
+ * - Routes: representative pages for every public layout family plus the 404.
  * - Widths: 393 px (the spec's 320 px floor is covered by the no-overflow
  *   gate; 393 is the reference's own mobile width) and 1280 px.
  * - Locale: `?lang=fa` always — the canonical locale, and the one that
@@ -47,7 +46,22 @@ import {
 
 const CDP_PORT = process.env.CDP_PORT ?? "9334";
 const ORIGIN = process.env.CWV_ORIGIN ?? process.argv[2] ?? "http://localhost:3137";
-const ROUTES = ["/", "/services", "/services/gen", "/nonexistent-page"];
+const ROUTES = [
+  "/",
+  "/services",
+  "/services/gen",
+  "/services/surgical",
+  "/doctors",
+  "/doctors/aghadoust",
+  "/guide",
+  "/guide/gallbladder",
+  "/about",
+  "/clinics",
+  "/admission",
+  "/international-patients",
+  "/loan",
+  "/nonexistent-page",
+];
 const WIDTHS = [393, 1280];
 const SETTLE_MS = 3000; // paint + hydration + late layout settle per load
 
@@ -219,7 +233,7 @@ function readMetrics(includeInp) {
 
 const buttonForWidth = (width) =>
   width < 640
-    ? 'button[aria-controls="mobile-menu"]' // MobileMenu burger (md:hidden)
+    ? 'button[aria-controls="menu"]' // MobileMenu burger
     : 'button[aria-haspopup="menu"]'; // LanguageSwitcher toggle
 
 async function measureRoute(route, width, cold) {

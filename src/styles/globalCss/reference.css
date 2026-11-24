@@ -164,10 +164,8 @@ html[lang="ar"] body{line-height:1.85}
 
 /* ==== style.css L337-347 — footer (+ L751-753 finals) ==== */
 .footer{background:var(--c-navy);color:var(--ref-w-72);padding-top:64px;font-size:14px} /* L751 */
-/* Three columns, not the reference's four: the quick-links column is out of
-   scope (SERVICES_SCOPE.md §4) and is not faked. Same 1.5fr/1fr/1fr
-   proportions, with `1fr 1fr` at ≤1024 and `1fr` at ≤640 below. */
-.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
+/* All four public reference columns now have real destinations. */
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
 .foot-brand p{margin:18px 0;max-width:340px;line-height:1.9}
 /* style.css L340 styles `h4`; the app renders `h2` here instead so no
    heading level is skipped on any route (P2 a11y item 10), so the rule

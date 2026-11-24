@@ -50,8 +50,8 @@ const expectNoClip = (selector: string) => {
 };
 
 const submenuLinks = (container: HTMLElement): [HTMLAnchorElement, HTMLAnchorElement] => {
-  const surgical = container.querySelector('a[href="/services#surgical"]');
-  const medical = container.querySelector('a[href="/services#medical"]');
+  const surgical = container.querySelector('a[href="/services/surgical"]');
+  const medical = container.querySelector('a[href="/services/medical"]');
   if (!surgical || !medical) throw new Error("sub-menu links missing from SiteHeader");
   return [surgical as HTMLAnchorElement, medical as HTMLAnchorElement];
 };

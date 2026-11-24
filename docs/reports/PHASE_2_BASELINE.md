@@ -440,6 +440,34 @@ loan service, schemas, client queries, wizard, six route handlers, the /loan
 page) were added by the same change; additions were already allowed and are
 now frozen too. Full account: `docs/reports/LOAN_FEATURE_REPORT.md`.
 
+## Refreeze — 2026-11-23, remaining public-site phases
+
+**Manifest:** rewritten from a green Vitest JSON run excluding only the
+self-referential freeze gate: **46 files / 349 tests** (was 44 / 334).
+The complete suite after the write is **47 files / 353 tests** including the
+four freeze-gate assertions.
+
+This refreeze records the owner's explicit instruction to execute every
+remaining public phase while continuing to exclude the demo assistant,
+accounts, and every admin/staff/doctor/finance/insurance/quality panel.
+
+**Frozen files changed:**
+
+- `src/app/page.test.tsx` now requires the restored four-card doctors section.
+- `src/app/sitemap.test.ts` requires all 39 built public routes.
+- `src/components/layout/SiteHeader.test.tsx` requires the complete public
+  navigation while continuing to reject assistant/account/panel links.
+- `src/components/layout/focus-ring-clip.test.tsx` follows the real
+  `/services/surgical` and `/services/medical` submenu routes.
+- `src/modules/services/components/image-pipeline.test.ts` extends the
+  responsive-image gate to the new doctors and guide React image sites.
+
+**Newly frozen files:** `src/app/public-routes.test.tsx` (14 render/provenance
+tests covering service-group landings, 66 doctors, four publishable profiles,
+12 guide topics and six static public pages) and the previously added
+`src/modules/loan/services/loanIntegration.test.ts` (one end-to-end loan
+service test). No assertion was weakened to make the expansion pass.
+
 ## Observed verification at freeze
 
 - `node scripts/baseline-freeze.mjs --write` produced the manifest from a green

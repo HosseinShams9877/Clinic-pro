@@ -60,7 +60,11 @@ export type IconName =
   | "i-band"
   | "i-money"
   | "i-alert"
-  | "i-hand";
+  | "i-hand"
+  | "i-award"
+  | "i-quote"
+  | "i-print"
+  | "i-mic";
 
 /** viewBox of each symbol, from the reference sprite. i-logo is 48×48, rest 24×24. */
 const VIEW_BOX: Readonly<Record<IconName, string>> = {
@@ -107,6 +111,10 @@ const VIEW_BOX: Readonly<Record<IconName, string>> = {
   "i-money": "0 0 24 24",
   "i-alert": "0 0 24 24",
   "i-hand": "0 0 24 24",
+  "i-award": "0 0 24 24",
+  "i-quote": "0 0 24 24",
+  "i-print": "0 0 24 24",
+  "i-mic": "0 0 24 24",
 };
 
 /**
@@ -347,6 +355,28 @@ const ICONS: Readonly<Record<IconName, JSX.Element>> = {
     <>
       <path d="M3 12h4l3 3h4a2 2 0 0 0 0-4h-3" />
       <path d="M7 12l4-4h3l5 5v5l-3 2H8" />
+    </>
+  ),
+  "i-award": (
+    <>
+      <circle cx="12" cy="9" r="6" />
+      <path d="m8.5 14-1.5 7.5 5-2.5 5 2.5-1.5-7.5" />
+    </>
+  ),
+  "i-quote": (
+    <path
+      d="M10 7H6a2 2 0 0 0-2 2v4h5v-1.5C9 9.5 9.8 8 10 7Zm10 0h-4a2 2 0 0 0-2 2v4h5v-1.5c0-2 .8-3.5 1-4.5ZM4 13c0 2.5 1 4 3.5 4.5M14 13c0 2.5 1 4 3.5 4.5"
+      fill="currentColor"
+      stroke="none"
+    />
+  ),
+  "i-print": (
+    <path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7Z" />
+  ),
+  "i-mic": (
+    <>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
     </>
   ),
 };

@@ -21,6 +21,8 @@ import { siteConfig, ROUTES } from "@/config/site.config";
 import { LOCALES } from "@/core/i18n/locales";
 import { getServiceCategories } from "@/modules/services/services";
 import { categoryPath } from "@/modules/services/lib";
+import profiles from "@/modules/publicSite/content/doctor-profiles.json";
+import guide from "@/modules/publicSite/content/guide.json";
 
 const CATEGORY_PRIORITY = 0.8;
 
@@ -31,6 +33,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: CATEGORY_PRIORITY,
     alternates: { languages: trilingual(categoryPath(category.id)) },
   }));
+
+  const publicLandings = [
+    ROUTES.about,
+    ROUTES.servicesSurgical,
+    ROUTES.servicesMedical,
+    ROUTES.doctors,
+    ROUTES.guide,
+    ROUTES.clinics,
+    ROUTES.visiting,
+    ROUTES.patientRights,
+    ROUTES.admission,
+  ].map((path) => entry(path, 0.9));
+  const doctorEntries = Object.keys(profiles).map((id) => entry(`${ROUTES.doctors}/${id}`, 0.8));
+  const guideEntries = guide.surgeries.map((item) => entry(`${ROUTES.guide}/${item.id}`, 0.8));
 
   return [
     {
@@ -45,14 +61,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       alternates: { languages: trilingual(ROUTES.services) },
     },
+    ...publicLandings,
+    ...categoryEntries,
+    ...doctorEntries,
+    ...guideEntries,
     {
-      url: `${siteConfig.url}${ROUTES.loan}`,
+      url: `${siteConfig.url}${ROUTES.internationalPatients}`,
       changeFrequency: "monthly",
       priority: 0.9,
-      alternates: { languages: trilingual(ROUTES.loan) },
+      alternates: { languages: { fa: `${siteConfig.url}${ROUTES.internationalPatients}` } },
     },
-    ...categoryEntries,
+    entry(ROUTES.loan, 0.9),
   ];
+}
+
+function entry(path: string, priority: number): MetadataRoute.Sitemap[number] {
+  return {
+    url: `${siteConfig.url}${path}`,
+    changeFrequency: "monthly",
+    priority,
+    alternates: { languages: trilingual(path) },
+  };
 }
 
 /** fa canonical, en and ar via the ?lang= switch the middleware mirrors. */

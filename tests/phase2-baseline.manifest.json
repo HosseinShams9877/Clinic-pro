@@ -1,10 +1,10 @@
 {
   "version": 1,
   "frozenAs": "Phase 3 regression baseline (Phase 2 item 14)",
-  "frozenAt": "2026-11-18",
+  "frozenAt": "2026-11-23",
   "suite": {
-    "files": 44,
-    "tests": 334
+    "files": 46,
+    "tests": 349
   },
   "environment": {
     "node": "v24.19.0",
@@ -56,8 +56,12 @@
       "tests": 4
     },
     "src/app/page.test.tsx": {
-      "sha256": "7afee0532e56352bee35b495c6e42042c1f4ca6aa4ae84abc2797202f329fa66",
+      "sha256": "b12409152a5d5dae09a9426b748034ed9934793f6d542c7f536930cefcb27e50",
       "tests": 9
+    },
+    "src/app/public-routes.test.tsx": {
+      "sha256": "3d6cc024384accd4aa85c621a7a4725e048f4ab7dbec92972ca1bfb6e46936ee",
+      "tests": 14
     },
     "src/app/services/[category]/page.test.tsx": {
       "sha256": "e07abfd89c3d81ffc73764c2db9d8de707722e90242b9cf7a4b8b52cbbd5957a",
@@ -68,7 +72,7 @@
       "tests": 7
     },
     "src/app/sitemap.test.ts": {
-      "sha256": "1d4639b5d15bc08bce1f202ed44729de625141d3133899b0b50a0e9f9eb86e86",
+      "sha256": "29cc6442b2f3add8ca6054eabbdc01ff32aaf1acdf91781879f7d64802327335",
       "tests": 7
     },
     "src/components/layout/LanguageSwitcher.test.tsx": {
@@ -76,11 +80,11 @@
       "tests": 3
     },
     "src/components/layout/SiteHeader.test.tsx": {
-      "sha256": "caba0e5182018d22c38674823c11c2824451b5bc16914e0b48afade371701206",
+      "sha256": "865a040ca056826bdc376ee1154918e59300f135d68c1663a14ff3f11b113280",
       "tests": 6
     },
     "src/components/layout/focus-ring-clip.test.tsx": {
-      "sha256": "8fb0d2b5105d7c6d1fa8ecb3cad2d6544b7ff1a5835c76a6a2aff1941db6dd95",
+      "sha256": "4787152e24b7db68bd80c21206ea9b474a2a66a703348fc162f790cc814acad0",
       "tests": 5
     },
     "src/components/shared/LiveStatus.test.tsx": {
@@ -143,6 +147,10 @@
       "sha256": "9bb0713bd5809ed65402e9b715821dc4ccc5835a7ccb0a587feaacbbcb3e11be",
       "tests": 17
     },
+    "src/modules/loan/services/loanIntegration.test.ts": {
+      "sha256": "fb5de8ab3f6ed83c18def1d0219233a52a73b4cad458a06ed116085c1714300e",
+      "tests": 1
+    },
     "src/modules/loan/services/loanService.test.ts": {
       "sha256": "23a136dba8b2ceb20cb707f26c45ab25f54576d33a485841245177b1a692418f",
       "tests": 14
@@ -156,7 +164,7 @@
       "tests": 16
     },
     "src/modules/services/components/image-pipeline.test.ts": {
-      "sha256": "a9c034b28cf5e8b514dbbc44b3aabfcd95d83c8b72866d5261fd384c1c295e26",
+      "sha256": "f41c274e7b283b7be13e841b168753cc70b6b5baa7e84dfdb342e67f717ec734",
       "tests": 8
     },
     "src/modules/services/content/categories.test.ts": {

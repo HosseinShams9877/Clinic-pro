@@ -37,10 +37,14 @@ import { Icon, type IconName } from "@/components/shared/Icon";
 import { FloatingActions } from "@/components/shared/FloatingActions";
 import { HeroParallax } from "@/components/shared/HeroParallax";
 import { HomeSvcBento } from "@/components/shared/HomeSvcBento";
+import { HomeSearch } from "@/components/shared/HomeSearch";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { LiveStatus } from "@/components/shared/LiveStatus";
 import { LoanHomeSection } from "@/modules/loan/components/LoanHomeSection";
 import { statusFor } from "@/core/openHours";
+import doctorsSource from "@/modules/publicSite/content/doctors.json";
+import profilesSource from "@/modules/publicSite/content/doctor-profiles.json";
+import type { PublicDoctor } from "@/modules/publicSite/types";
 
 export function generateMetadata(): Metadata {
   // Home is the canonical fa root (SEO_ACCESSIBILITY_SECURITY.md §1.2/§1.5):
@@ -98,6 +102,48 @@ const STATIC_SERVICES: ReadonlyArray<{
 /** The four care-banner steps (`.hc-steps`) — numerals localise per locale. */
 const CARE_STEPS: ReadonlyArray<"h.p1" | "h.p2" | "h.p3" | "h.p4"> = ["h.p1", "h.p2", "h.p3", "h.p4"];
 
+const HOME_PUBLIC_COPY = {
+  fa: {
+    findDoctor: "یافتن پزشک",
+    findDoctorSub: "جستجو بر اساس تخصص",
+    guide: "راهنمای بیماران",
+    guideSub: "مراقبت قبل و بعد از عمل",
+    doctorsKicker: "پزشکان ما",
+    doctorsTitle: "تیم متخصص و مجرب",
+    doctorsSub: "همراه شما در مسیر سلامت، با تجربه و دانش تخصصی",
+    allDoctors: "مشاهده همه پزشکان",
+    profile: "مشاهده پروفایل",
+  },
+  en: {
+    findDoctor: "Find a Doctor",
+    findDoctorSub: "Search by specialty",
+    guide: "Patient Guide",
+    guideSub: "Before & after surgery care",
+    doctorsKicker: "Our Doctors",
+    doctorsTitle: "An experienced specialist team",
+    doctorsSub: "With you on your path to health, with experience and expertise",
+    allDoctors: "View all doctors",
+    profile: "View profile",
+  },
+  ar: {
+    findDoctor: "ابحث عن طبيب",
+    findDoctorSub: "البحث حسب التخصص",
+    guide: "دليل المرضى",
+    guideSub: "الرعاية قبل العملية وبعدها",
+    doctorsKicker: "أطباؤنا",
+    doctorsTitle: "فريق اختصاصي ذو خبرة",
+    doctorsSub: "معكم في طريق الصحة بالخبرة والمعرفة التخصصية",
+    allDoctors: "عرض جميع الأطباء",
+    profile: "عرض الملف",
+  },
+} as const;
+
+const doctors = doctorsSource.doctors as PublicDoctor[];
+const profileIds = new Set(Object.keys(profilesSource));
+const FEATURED_DOCTORS = ["kheirkhah", "aghadoust", "mohammad-eidi", "abolhassani"]
+  .map((id) => doctors.find((doctor) => doctor.id === id))
+  .filter((doctor): doctor is PublicDoctor => Boolean(doctor));
+
 /**
  * The four patient-steps accordions (`.h-steps`), reference order. Step 4
  * (online booking) is restored: per Q1 its `patient-panel.html` link dials
@@ -111,10 +157,11 @@ const PATIENT_STEPS: ReadonlyArray<{
   bodyKey: "h.g1d" | "gd.1d";
   /** Steps 2 and 4 wrap the body in a span in the reference; step 4 adds a link. */
   bodySpanKey?: "h.g2d" | "h.g4d";
-  linkKey?: "h.g4a";
+  linkKey?: "h.g2l" | "h.g4a";
+  linkHref?: string;
 }> = [
   { icon: "i-clock", titleKey: "h.g1", subKey: "h.g1s", bodyKey: "h.g1d" },
-  { icon: "i-check", titleKey: "h.g2", subKey: "h.g2s", bodyKey: "gd.1d", bodySpanKey: "h.g2d" },
+  { icon: "i-check", titleKey: "h.g2", subKey: "h.g2s", bodyKey: "gd.1d", bodySpanKey: "h.g2d", linkKey: "h.g2l", linkHref: ROUTES.guide },
   { icon: "i-clipboard", titleKey: "h.g3", subKey: "h.g3s", bodyKey: "gd.1d" },
   { icon: "i-calendar", titleKey: "h.g4", subKey: "h.g4s", bodyKey: "gd.1d", bodySpanKey: "h.g4d", linkKey: "h.g4a" },
 ];
@@ -136,6 +183,7 @@ const WHY_US: ReadonlyArray<{
 
 export default async function HomePage() {
   const locale = await getLocale();
+  const publicCopy = HOME_PUBLIC_COPY[locale];
 
   return (
     // `.page-home` is the reference's body hook: `body:has(.page-home)`
@@ -223,18 +271,25 @@ export default async function HomePage() {
           <div className="hh-t">
             <h2>{t(locale, "help.title")}</h2>
             <p>{t(locale, "h.helpS")}</p>
-            {/* Q4: the reference's help-search form targets out-of-scope
-                pages (doctors.html / guide.html) — not rendered. */}
+            <HomeSearch locale={locale} />
           </div>
           <div className="hh-cards">
-            {/* Q4: of the reference's three cards only the services card
-                points into the built site; the others are not rendered. */}
+            <Link className="hh-c" href={ROUTES.doctors}>
+              <span><Icon name="i-doctor" /></span>
+              <b>{publicCopy.findDoctor}</b>
+              <small>{publicCopy.findDoctorSub}</small>
+            </Link>
             <Link className="hh-c" href={ROUTES.services}>
               <span>
                 <Icon name="i-scalpel" />
               </span>
               <b>{t(locale, "h.c2")}</b>
               <small>{t(locale, "h.c2s")}</small>
+            </Link>
+            <Link className="hh-c" href={ROUTES.guide}>
+              <span><Icon name="i-clipboard" /></span>
+              <b>{publicCopy.guide}</b>
+              <small>{publicCopy.guideSub}</small>
             </Link>
           </div>
         </div>
@@ -277,6 +332,50 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* ===================== DOCTORS ===================== */}
+      <section className="container h-sec" id="doctors">
+        <div className="h-head">
+          <div>
+            <span className="h-kick">{publicCopy.doctorsKicker}</span>
+            <h2>{publicCopy.doctorsTitle}</h2>
+            <p>{publicCopy.doctorsSub}</p>
+          </div>
+          <Link className="h-more" href={ROUTES.doctors}>
+            <span>{publicCopy.allDoctors}</span>
+            <Icon name="i-arrow" className="arr" />
+          </Link>
+        </div>
+        <div className="h-docs">
+          {FEATURED_DOCTORS.map((doctor) => {
+            const href = profileIds.has(doctor.id)
+              ? `${ROUTES.doctors}/${doctor.id}`
+              : `${ROUTES.doctors}?q=${encodeURIComponent(doctor.name[locale])}`;
+            return (
+              <Link className="hdoc" href={href} key={doctor.id}>
+                <div className="hd-ph">
+                  {doctor.photo ? (
+                    <Image
+                      src={doctor.photo}
+                      alt={doctor.name[locale]}
+                      fill
+                      sizes="(max-width: 640px) 45vw, (max-width: 1100px) 42vw, 260px"
+                    />
+                  ) : (
+                    <span className="hd-noph"><Icon name="i-user" /></span>
+                  )}
+                </div>
+                <b>{doctor.name[locale]}</b>
+                <small>{doctor.spec[locale]}</small>
+                <span className="hd-btn">
+                  <span>{publicCopy.profile}</span>
+                  <Icon name="i-arrow" className="arr" />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
       {/* ===================== CARE BANNER ===================== */}
       <section className="container h-sec">
         <div className="h-care">
@@ -295,6 +394,19 @@ export default async function HomePage() {
               ))}
             </ol>
           </div>
+        </div>
+      </section>
+
+      {/* Latest reference content is Persian-only on this section. */}
+      <section className="container h-sec" id="international" lang="fa" dir="rtl">
+        <div className="h-contact">
+          <div className="hct-t">
+            <h2>بیماران بین‌الملل؛ هماهنگی پیش از سفر</h2>
+            <p>مراحل بررسی اولیه، مدارک مورد نیاز، پذیرش و پیگیری درمان را پیش از برنامه‌ریزی سفر به کاشان ببینید.</p>
+          </div>
+          <Link className="btn btn-primary" href={ROUTES.internationalPatients}>
+            راهنمای بیماران بین‌الملل
+          </Link>
         </div>
       </section>
 
@@ -322,9 +434,7 @@ export default async function HomePage() {
                 {step.linkKey && (
                   <>
                     {" "}
-                    {/* Q1: the reference's patient-panel booking link dials
-                        admissions — same affordance, no out-of-scope page. */}
-                    <a href={`tel:${siteConfig.phone}`}>{t(locale, step.linkKey)}</a>
+                    <a href={step.linkHref ?? `tel:${siteConfig.phone}`}>{t(locale, step.linkKey)}</a>
                   </>
                 )}
               </p>

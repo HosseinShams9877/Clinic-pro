@@ -1,0 +1,657 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "n": {
+        "fa": "همه موارد",
+        "en": "All",
+        "ar": "الكل"
+      }
+    },
+    {
+      "id": "gen",
+      "n": {
+        "fa": "جراحی عمومی",
+        "en": "General surgery",
+        "ar": "الجراحة العامة"
+      }
+    },
+    {
+      "id": "gi",
+      "n": {
+        "fa": "گوارش و معده",
+        "en": "Digestive",
+        "ar": "الجهاز الهضمي"
+      }
+    },
+    {
+      "id": "uro",
+      "n": {
+        "fa": "ارولوژی",
+        "en": "Urology",
+        "ar": "المسالك البولية"
+      }
+    },
+    {
+      "id": "gyn",
+      "n": {
+        "fa": "زنان و زایمان",
+        "en": "Gynecology",
+        "ar": "النساء والولادة"
+      }
+    },
+    {
+      "id": "eye",
+      "n": {
+        "fa": "چشم",
+        "en": "Eye",
+        "ar": "العيون"
+      }
+    },
+    {
+      "id": "ent",
+      "n": {
+        "fa": "گوش، حلق و بینی",
+        "en": "ENT",
+        "ar": "الأنف والأذن والحنجرة"
+      }
+    },
+    {
+      "id": "aes",
+      "n": {
+        "fa": "زیبایی",
+        "en": "Aesthetic",
+        "ar": "التجميل"
+      }
+    }
+  ],
+  "common": {
+    "pre": [
+      {
+        "i": "i-calendar",
+        "n": {
+          "fa": "آمادگی روز عمل",
+          "en": "Day-of-surgery prep",
+          "ar": "التحضير ليوم العملية"
+        },
+        "d": {
+          "fa": "کارت ملی یا کارت شناسایی معتبر عکس‌دار، دستور بستری پزشک و مدارک پزشکی را همراه بیاورید.",
+          "en": "Bring your national ID or valid photo ID, your doctor's admission order and medical records.",
+          "ar": "أحضر بطاقتك الوطنية أو هوية سارية بصورة، وأمر الدخول من الطبيب، وملفاتك الطبية."
+        }
+      },
+      {
+        "i": "i-search",
+        "n": {
+          "fa": "آزمایش‌ها و بررسی‌ها",
+          "en": "Tests & check-ups",
+          "ar": "التحاليل والفحوصات"
+        },
+        "d": {
+          "fa": "جواب آزمایش‌ها، نوار قلب و تصویربرداری‌هایی که پزشک خواسته را همراه داشته باشید.",
+          "en": "Bring any lab results, ECG and imaging your doctor requested.",
+          "ar": "أحضر نتائج التحاليل وتخطيط القلب والأشعة التي طلبها الطبيب."
+        }
+      },
+      {
+        "i": "i-clipboard",
+        "n": {
+          "fa": "مصرف داروها",
+          "en": "Your medications",
+          "ar": "الأدوية"
+        },
+        "d": {
+          "fa": "فهرست کامل داروهایتان را بیاورید. قطع یا ادامه هر دارو، به‌ویژه رقیق‌کننده‌های خون، فقط با نظر پزشک.",
+          "en": "Bring a full list of your medicines. Stop or continue any drug — especially blood thinners — only on your doctor's advice.",
+          "ar": "أحضر قائمة كاملة بأدويتك. لا توقف أي دواء، خاصة مميعات الدم، إلا بتوجيه الطبيب."
+        }
+      },
+      {
+        "i": "i-clock",
+        "n": {
+          "fa": "ناشتا بودن",
+          "en": "Fasting",
+          "ar": "الصيام"
+        },
+        "d": {
+          "fa": "مدت دقیق ناشتایی را از پزشک یا متخصص بیهوشی بپرسید و دقیقاً رعایت کنید.",
+          "en": "Ask your surgeon or anesthesiologist for the exact fasting time and follow it precisely.",
+          "ar": "اسأل الجرّاح أو طبيب التخدير عن مدة الصيام بدقة والتزم بها."
+        }
+      }
+    ],
+    "post": [
+      {
+        "i": "i-bed",
+        "n": {
+          "fa": "استراحت و حرکت",
+          "en": "Rest & movement",
+          "ar": "الراحة والحركة"
+        },
+        "d": {
+          "fa": "حرکت سبک و راه رفتن زودهنگام، طبق اجازه تیم درمان، به بهبودی کمک می‌کند.",
+          "en": "Light, early walking — as your care team allows — helps recovery.",
+          "ar": "المشي الخفيف المبكر، بحسب إذن الفريق الطبي، يساعد على التعافي."
+        }
+      },
+      {
+        "i": "i-shield",
+        "n": {
+          "fa": "مراقبت از زخم",
+          "en": "Wound care",
+          "ar": "العناية بالجرح"
+        },
+        "d": {
+          "fa": "محل عمل را تمیز و خشک نگه دارید و پانسمان را طبق دستور تعویض کنید.",
+          "en": "Keep the wound clean and dry and change dressings as instructed.",
+          "ar": "حافظ على الجرح نظيفًا وجافًا وغيّر الضماد حسب التعليمات."
+        }
+      },
+      {
+        "i": "i-heart",
+        "n": {
+          "fa": "داروها و درد",
+          "en": "Medicines & pain",
+          "ar": "الأدوية والألم"
+        },
+        "d": {
+          "fa": "مسکن و داروها را فقط طبق نسخه مصرف کنید؛ دارویی را خودسرانه اضافه نکنید.",
+          "en": "Take pain relief and medicines only as prescribed; don't add drugs on your own.",
+          "ar": "تناول المسكنات والأدوية حسب الوصفة فقط، ولا تضف أدوية من تلقاء نفسك."
+        }
+      },
+      {
+        "i": "i-calendar",
+        "n": {
+          "fa": "ویزیت پیگیری",
+          "en": "Follow-up visit",
+          "ar": "زيارة المتابعة"
+        },
+        "d": {
+          "fa": "زمان ویزیت بعد از عمل را هنگام ترخیص بپرسید و در موعد مراجعه کنید.",
+          "en": "Ask for your follow-up date at discharge and attend on time.",
+          "ar": "اسأل عن موعد المتابعة عند الخروج واحضر في موعده."
+        }
+      }
+    ],
+    "warn": [
+      {
+        "fa": "تب یا لرز",
+        "en": "Fever or chills",
+        "ar": "حمى أو قشعريرة"
+      },
+      {
+        "fa": "خونریزی یا ترشح از محل زخم",
+        "en": "Bleeding or discharge from the wound",
+        "ar": "نزيف أو إفرازات من الجرح"
+      },
+      {
+        "fa": "درد شدید یا رو به افزایش",
+        "en": "Severe or worsening pain",
+        "ar": "ألم شديد أو متزايد"
+      },
+      {
+        "fa": "تنگی نفس یا درد قفسه سینه",
+        "en": "Shortness of breath or chest pain",
+        "ar": "ضيق تنفس أو ألم في الصدر"
+      },
+      {
+        "fa": "تهوع و استفراغ مداوم",
+        "en": "Persistent nausea or vomiting",
+        "ar": "غثيان أو قيء مستمر"
+      },
+      {
+        "fa": "قرمزی، تورم یا گرمی اطراف زخم",
+        "en": "Redness, swelling or heat around the wound",
+        "ar": "احمرار أو تورم أو سخونة حول الجرح"
+      }
+    ],
+    "checklist": [
+      {
+        "fa": "کارت شناسایی و دستور بستری",
+        "en": "ID card & admission order",
+        "ar": "الهوية وأمر الدخول"
+      },
+      {
+        "fa": "جواب آزمایش‌ها و تصویربرداری",
+        "en": "Lab & imaging results",
+        "ar": "نتائج التحاليل والأشعة"
+      },
+      {
+        "fa": "فهرست داروهای مصرفی",
+        "en": "List of current medicines",
+        "ar": "قائمة الأدوية الحالية"
+      },
+      {
+        "fa": "رعایت ناشتایی طبق دستور",
+        "en": "Fasting as instructed",
+        "ar": "الصيام حسب التعليمات"
+      },
+      {
+        "fa": "همراه داشتن یک همراه بزرگسال",
+        "en": "An adult companion",
+        "ar": "مرافق بالغ"
+      },
+      {
+        "fa": "عدم همراه داشتن طلا و وجه نقد",
+        "en": "No jewellery or cash",
+        "ar": "عدم إحضار مجوهرات أو نقود"
+      }
+    ],
+    "videos": {
+      "pre": [],
+      "post": []
+    },
+    "audio": []
+  },
+  "surgeries": [
+    {
+      "id": "gallbladder",
+      "cat": "gen",
+      "img": "/img/services/gallbladder.jpg",
+      "hero": "/img/guide/gallbladder-hero.jpg",
+      "n": {
+        "fa": "جراحی کیسه صفرا",
+        "en": "Gallbladder Surgery",
+        "ar": "جراحة المرارة"
+      },
+      "d": {
+        "fa": "لاپاراسکوپی کیسه صفرا",
+        "en": "Laparoscopic cholecystectomy",
+        "ar": "استئصال المرارة بالمنظار"
+      },
+      "pre": [
+        {
+          "fa": "در روزهای قبل از عمل غذاهای سبک و کم‌چرب بهتر تحمل می‌شوند.",
+          "en": "Light, low-fat meals are usually better tolerated in the days before surgery.",
+          "ar": "الوجبات الخفيفة قليلة الدهون أفضل تحملًا قبل العملية."
+        },
+        {
+          "fa": "در صورت درد شدید شکم، تب یا زردی پیش از عمل فوراً اطلاع دهید.",
+          "en": "Report severe abdominal pain, fever or jaundice before surgery right away.",
+          "ar": "أبلغ فورًا عن ألم بطني شديد أو حمى أو اصفرار قبل العملية."
+        }
+      ],
+      "post": [
+        {
+          "fa": "در هفته‌های اول غذای سبک و کم‌چرب و وعده‌های کوچک‌تر توصیه می‌شود.",
+          "en": "Light, low-fat, smaller meals are advised in the first weeks.",
+          "ar": "يُنصح بوجبات خفيفة قليلة الدهون وأصغر في الأسابيع الأولى."
+        },
+        {
+          "fa": "درد شانه پس از لاپاراسکوپی شایع است و معمولاً طی چند روز کم می‌شود.",
+          "en": "Shoulder-tip pain after laparoscopy is common and usually eases within days.",
+          "ar": "ألم الكتف بعد المنظار شائع ويخف عادة خلال أيام."
+        }
+      ]
+    },
+    {
+      "id": "stomach",
+      "cat": "gi",
+      "img": "/img/services/stomach.jpg",
+      "hero": "/img/services/stomach.jpg",
+      "n": {
+        "fa": "جراحی معده و چاقی",
+        "en": "Gastric & Bariatric Surgery",
+        "ar": "جراحة المعدة والسمنة"
+      },
+      "d": {
+        "fa": "اسلیو، بای‌پس و جراحی معده",
+        "en": "Sleeve, bypass & gastric surgery",
+        "ar": "التكميم والتحويل وجراحة المعدة"
+      },
+      "pre": [
+        {
+          "fa": "رژیم پیش از عمل را دقیقاً طبق برنامه تیم درمان اجرا کنید.",
+          "en": "Follow the pre-operative diet exactly as your care team plans it.",
+          "ar": "اتبع الحمية قبل العملية تمامًا حسب خطة الفريق الطبي."
+        },
+        {
+          "fa": "مشاوره تغذیه پیش از عمل بخشی از آمادگی شماست.",
+          "en": "A nutrition consultation is part of your preparation.",
+          "ar": "استشارة التغذية جزء من تحضيرك."
+        }
+      ],
+      "post": [
+        {
+          "fa": "رژیم مرحله‌ای (مایعات، سپس غذای نرم) را طبق برنامه پیش ببرید.",
+          "en": "Progress your staged diet (liquids, then soft food) as scheduled.",
+          "ar": "تدرّج في الحمية (سوائل ثم طعام لين) حسب البرنامج."
+        },
+        {
+          "fa": "جرعه‌جرعه و در طول روز آب کافی بنوشید.",
+          "en": "Sip water steadily throughout the day.",
+          "ar": "اشرب الماء رشفات طوال اليوم."
+        }
+      ]
+    },
+    {
+      "id": "colon",
+      "cat": "gi",
+      "img": "/img/services/colon.jpg",
+      "hero": "/img/services/colon.jpg",
+      "n": {
+        "fa": "جراحی روده بزرگ و کوچک",
+        "en": "Bowel Surgery",
+        "ar": "جراحة الأمعاء"
+      },
+      "d": {
+        "fa": "نکات قبل و بعد از عمل",
+        "en": "Before & after surgery",
+        "ar": "قبل العملية وبعدها"
+      },
+      "pre": [
+        {
+          "fa": "آماده‌سازی روده را فقط طبق دستور پزشک انجام دهید.",
+          "en": "Do bowel preparation only as your doctor instructs.",
+          "ar": "قم بتحضير الأمعاء حسب تعليمات الطبيب فقط."
+        }
+      ],
+      "post": [
+        {
+          "fa": "شروع غذا معمولاً تدریجی است؛ طبق دستور تیم درمان پیش بروید.",
+          "en": "Eating is usually restarted gradually — follow your care team.",
+          "ar": "يُستأنف الطعام عادة تدريجيًا حسب الفريق الطبي."
+        },
+        {
+          "fa": "نفخ یا عدم دفع گاز طولانی را اطلاع دهید.",
+          "en": "Report prolonged bloating or no passing of gas.",
+          "ar": "أبلغ عن انتفاخ مطوّل أو عدم خروج الغازات."
+        }
+      ]
+    },
+    {
+      "id": "appendix",
+      "cat": "gen",
+      "img": "/img/services/cat-gen.jpg",
+      "hero": "/img/services/cat-gen.jpg",
+      "n": {
+        "fa": "جراحی آپاندیس",
+        "en": "Appendix Surgery",
+        "ar": "جراحة الزائدة الدودية"
+      },
+      "d": {
+        "fa": "لاپاراسکوپی آپاندیس",
+        "en": "Laparoscopic appendectomy",
+        "ar": "استئصال الزائدة بالمنظار"
+      },
+      "pre": [
+        {
+          "fa": "درد شکم را با مسکن پنهان نکنید تا تشخیص دقیق باشد.",
+          "en": "Don't mask abdominal pain with painkillers before diagnosis.",
+          "ar": "لا تُخفِ ألم البطن بالمسكنات قبل التشخيص."
+        }
+      ],
+      "post": [
+        {
+          "fa": "تا زمان اجازه پزشک از بلند کردن اجسام سنگین خودداری کنید.",
+          "en": "Avoid heavy lifting until your doctor allows it.",
+          "ar": "تجنب رفع الأشياء الثقيلة حتى يسمح الطبيب."
+        }
+      ]
+    },
+    {
+      "id": "hernia",
+      "cat": "gen",
+      "img": "/img/services/hernia.jpg",
+      "hero": "/img/services/hernia.jpg",
+      "n": {
+        "fa": "جراحی فتق",
+        "en": "Hernia Repair",
+        "ar": "إصلاح الفتق"
+      },
+      "d": {
+        "fa": "فتق شکمی، ناف و اینگوینال",
+        "en": "Abdominal, umbilical & inguinal",
+        "ar": "فتق البطن والسرة والإربي"
+      },
+      "pre": [
+        {
+          "fa": "در صورت درد ناگهانی و سفت شدن برآمدگی فتق فوراً مراجعه کنید.",
+          "en": "Seek care immediately if the bulge becomes hard and suddenly painful.",
+          "ar": "راجع فورًا إذا تصلّب الفتق وأصبح مؤلمًا فجأة."
+        }
+      ],
+      "post": [
+        {
+          "fa": "از بلند کردن اجسام سنگین و زور زدن تا زمان اجازه پزشک خودداری کنید.",
+          "en": "Avoid heavy lifting and straining until your doctor allows.",
+          "ar": "تجنب رفع الأثقال والإجهاد حتى يسمح الطبيب."
+        },
+        {
+          "fa": "هنگام سرفه یا عطسه، با بالش آرام روی محل عمل فشار دهید.",
+          "en": "Support the wound with a pillow when coughing or sneezing.",
+          "ar": "اسند الجرح بوسادة عند السعال أو العطس."
+        }
+      ]
+    },
+    {
+      "id": "thyroid",
+      "cat": "gen",
+      "img": "/img/services/thyroid.jpg",
+      "hero": "/img/services/thyroid.jpg",
+      "n": {
+        "fa": "جراحی تیروئید",
+        "en": "Thyroid Surgery",
+        "ar": "جراحة الغدة الدرقية"
+      },
+      "d": {
+        "fa": "برداشت ندول و بیماری‌های تیروئید",
+        "en": "Nodules & thyroid disease",
+        "ar": "العقيدات وأمراض الدرقية"
+      },
+      "pre": [
+        {
+          "fa": "داروهای تیروئید را فقط طبق نظر پزشک ادامه یا قطع کنید.",
+          "en": "Continue or stop thyroid medicine only as your doctor advises.",
+          "ar": "تابع أو أوقف دواء الدرقية حسب توجيه الطبيب فقط."
+        }
+      ],
+      "post": [
+        {
+          "fa": "گزگز اطراف لب یا انگشتان و گرفتگی عضلات را فوراً اطلاع دهید.",
+          "en": "Report tingling around the lips or fingers or muscle cramps at once.",
+          "ar": "أبلغ فورًا عن تنميل حول الشفتين أو الأصابع أو تشنج العضلات."
+        },
+        {
+          "fa": "تغییر خفیف صدا ممکن است موقت باشد؛ آن را در ویزیت پیگیری مطرح کنید.",
+          "en": "Mild voice change can be temporary; mention it at follow-up.",
+          "ar": "قد يكون تغير الصوت الخفيف مؤقتًا؛ اذكره في المتابعة."
+        }
+      ]
+    },
+    {
+      "id": "urology",
+      "cat": "uro",
+      "img": "/img/services/cat-uro.jpg",
+      "hero": "/img/services/cat-uro.jpg",
+      "n": {
+        "fa": "جراحی کلیه و مجاری ادراری",
+        "en": "Kidney & Urinary Surgery",
+        "ar": "جراحة الكلى والمسالك"
+      },
+      "d": {
+        "fa": "سنگ‌شکن، یورتروسکوپی و سیستوسکوپی",
+        "en": "Lithotripsy, ureteroscopy & cystoscopy",
+        "ar": "تفتيت الحصى وتنظير الحالب والمثانة"
+      },
+      "pre": [
+        {
+          "fa": "جواب آزمایش ادرار و تصویربرداری را همراه داشته باشید.",
+          "en": "Bring your urine test and imaging results.",
+          "ar": "أحضر تحليل البول ونتائج الأشعة."
+        }
+      ],
+      "post": [
+        {
+          "fa": "مایعات کافی طبق توصیه پزشک بنوشید.",
+          "en": "Drink enough fluids as your doctor recommends.",
+          "ar": "اشرب سوائل كافية حسب توصية الطبيب."
+        },
+        {
+          "fa": "کمی خون در ادرار ممکن است دیده شود؛ خونریزی شدید یا لخته را گزارش دهید.",
+          "en": "A little blood in the urine may occur; report heavy bleeding or clots.",
+          "ar": "قد يظهر قليل من الدم في البول؛ أبلغ عن نزيف شديد أو جلطات."
+        }
+      ]
+    },
+    {
+      "id": "gyn",
+      "cat": "gyn",
+      "img": "/img/services/cat-gyn.jpg",
+      "hero": "/img/services/cat-gyn.jpg",
+      "n": {
+        "fa": "جراحی زنان و زایمان",
+        "en": "Gynecologic Surgery",
+        "ar": "الجراحات النسائية"
+      },
+      "d": {
+        "fa": "نکات قبل و بعد از عمل",
+        "en": "Before & after surgery",
+        "ar": "قبل العملية وبعدها"
+      },
+      "pre": [
+        {
+          "fa": "در صورت احتمال بارداری حتماً پیش از عمل اطلاع دهید.",
+          "en": "Tell the team before surgery if you could be pregnant.",
+          "ar": "أبلغي الفريق قبل العملية إن كان هناك احتمال حمل."
+        }
+      ],
+      "post": [
+        {
+          "fa": "خونریزی بیش از حد یا ترشح بدبو را گزارش دهید.",
+          "en": "Report heavy bleeding or foul-smelling discharge.",
+          "ar": "أبلغي عن نزيف غزير أو إفرازات كريهة الرائحة."
+        },
+        {
+          "fa": "بخش بستری زنان در طبقه اول مرکز است.",
+          "en": "The women's ward is on the center's 1st floor.",
+          "ar": "قسم تنويم النساء في الطابق الأول."
+        }
+      ]
+    },
+    {
+      "id": "aesthetic",
+      "cat": "aes",
+      "img": "/img/services/cat-aes.jpg",
+      "hero": "/img/services/cat-aes.jpg",
+      "n": {
+        "fa": "جراحی پلاستیک و زیبایی",
+        "en": "Plastic & Aesthetic Surgery",
+        "ar": "جراحة التجميل"
+      },
+      "d": {
+        "fa": "بینی، لیپوساکشن و زیبایی",
+        "en": "Rhinoplasty, liposuction & more",
+        "ar": "الأنف وشفط الدهون وغيرها"
+      },
+      "pre": [
+        {
+          "fa": "از چند روز قبل، مصرف سیگار را طبق توصیه پزشک کنار بگذارید.",
+          "en": "Stop smoking ahead of surgery as your doctor advises.",
+          "ar": "توقف عن التدخين قبل العملية حسب نصيحة الطبيب."
+        }
+      ],
+      "post": [
+        {
+          "fa": "گن یا لباس فشاری را طبق دستور و مدت تعیین‌شده بپوشید.",
+          "en": "Wear compression garments as and for as long as instructed.",
+          "ar": "ارتدِ المشد الضاغط حسب التعليمات والمدة المحددة."
+        },
+        {
+          "fa": "تورم و کبودی در روزهای اول طبیعی است و به‌تدریج کم می‌شود.",
+          "en": "Swelling and bruising are normal at first and fade gradually.",
+          "ar": "التورم والكدمات طبيعية في البداية وتخف تدريجيًا."
+        }
+      ]
+    },
+    {
+      "id": "eye",
+      "cat": "eye",
+      "img": "/img/services/eye.jpg",
+      "hero": "/img/services/eye.jpg",
+      "n": {
+        "fa": "جراحی چشم",
+        "en": "Eye Surgery",
+        "ar": "جراحة العيون"
+      },
+      "d": {
+        "fa": "آب‌مروارید، لیزیک و قرنیه",
+        "en": "Cataract, LASIK & cornea",
+        "ar": "المياه البيضاء والليزك والقرنية"
+      },
+      "pre": [
+        {
+          "fa": "در روز عمل از آرایش چشم و لنز تماسی استفاده نکنید.",
+          "en": "No eye make-up or contact lenses on the day of surgery.",
+          "ar": "لا مكياج للعين ولا عدسات لاصقة يوم العملية."
+        }
+      ],
+      "post": [
+        {
+          "fa": "از مالیدن چشم خودداری کنید و قطره‌ها را دقیقاً طبق برنامه بریزید.",
+          "en": "Don't rub your eye; use drops exactly on schedule.",
+          "ar": "لا تفرك عينك واستخدم القطرات حسب الجدول بدقة."
+        },
+        {
+          "fa": "کاهش ناگهانی دید یا درد شدید چشم را فوراً گزارش دهید.",
+          "en": "Report sudden vision loss or severe eye pain immediately.",
+          "ar": "أبلغ فورًا عن فقدان مفاجئ للرؤية أو ألم شديد بالعين."
+        }
+      ]
+    },
+    {
+      "id": "ent",
+      "cat": "ent",
+      "img": "/img/services/ent.jpg",
+      "hero": "/img/services/ent.jpg",
+      "n": {
+        "fa": "جراحی گوش، حلق و بینی",
+        "en": "ENT Surgery",
+        "ar": "جراحة الأنف والأذن والحنجرة"
+      },
+      "d": {
+        "fa": "لوزه، سینوس و تیغه بینی",
+        "en": "Tonsils, sinus & septum",
+        "ar": "اللوزتان والجيوب والحاجز"
+      },
+      "pre": [
+        {
+          "fa": "سرماخوردگی یا تب پیش از عمل را به پزشک اطلاع دهید.",
+          "en": "Tell your doctor about any cold or fever before surgery.",
+          "ar": "أبلغ الطبيب بأي زكام أو حمى قبل العملية."
+        }
+      ],
+      "post": [
+        {
+          "fa": "پس از جراحی لوزه، مایعات خنک و غذای نرم بهتر تحمل می‌شوند.",
+          "en": "After tonsil surgery, cool fluids and soft food are easier.",
+          "ar": "بعد جراحة اللوزتين، السوائل الباردة والطعام اللين أسهل."
+        },
+        {
+          "fa": "از فین کردن شدید و برخورد به بینی پرهیز کنید.",
+          "en": "Avoid forceful nose-blowing and knocks to the nose.",
+          "ar": "تجنب نفخ الأنف بقوة وأي صدمة له."
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "cat": "gen",
+      "img": "/img/services/cat-cardio.jpg",
+      "hero": "/img/services/cat-cardio.jpg",
+      "n": {
+        "fa": "سایر جراحی‌ها",
+        "en": "Other Procedures",
+        "ar": "عمليات أخرى"
+      },
+      "d": {
+        "fa": "نکات عمومی قبل و بعد از عمل",
+        "en": "General before & after tips",
+        "ar": "نصائح عامة قبل وبعد العملية"
+      },
+      "pre": [],
+      "post": []
+    }
+  ]
+}

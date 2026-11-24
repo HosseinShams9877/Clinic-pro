@@ -1,19 +1,11 @@
 /**
- * SiteHeader.test.tsx — the navigation boundary gate (P1-06 / Q4).
+ * SiteHeader.test.tsx — the public navigation boundary gate.
  *
  * The header is the one piece of chrome every page carries, so it is also the
  * most likely place for a link past the implementation boundary to creep in.
- * This test pins its anchors to exactly the in-scope set: the home and
- * services routes (plus the two group anchors and the #contact fragment) and
- * the language switcher's trilingual ?lang= toggles. Anything the reference
- * points at beyond the Services section (about, doctors, guide, loan, club,
- * panels, booking) must be absent, not merely unstyled.
- *
- * B-2 (UI fix pass): the reference's magnifier affordance is deliberately
- * absent. Its aria-label read as a search action while it pointed at /#help,
- * and no in-scope search surface exists — a fake button under CLAUDE.md §2
- * rule 4. The /#help section itself stays on the home page; only the
- * search-styled header affordance is gone.
+ * The owner-authorized public expansion restores the reference's real about,
+ * doctors, guide, patient-information, international-patient and loan links.
+ * Demo assistant/account/panel destinations remain forbidden.
  *
  * Visual fidelity pass (B-1): the reference's header CTA pill
  * (`.btn.btn-primary.btn-sm.hide-sm`, index.html line 122) is restored, with
@@ -49,47 +41,48 @@ describe("SiteHeader", () => {
     expect(nav?.getAttribute("aria-label")).toBe(t("fa", "a11y.menu"));
   });
 
-  it("exposes exactly the in-scope desktop anchors — nothing further", () => {
+  it("exposes the complete built public navigation and nothing forbidden", () => {
     const { container } = render(<SiteHeader locale="fa" pathname="/" />);
     const hrefs = new Set(
       [...container.querySelectorAll("a[href]")].map((node) => node.getAttribute("href")),
     );
     expect(hrefs).toContain("/");
+    expect(hrefs).toContain("/about");
     expect(hrefs).toContain("/services");
-    expect(hrefs).toContain("/services#surgical");
-    expect(hrefs).toContain("/services#medical");
+    expect(hrefs).toContain("/services/surgical");
+    expect(hrefs).toContain("/services/medical");
+    expect(hrefs).toContain("/doctors");
+    expect(hrefs).toContain("/guide");
+    expect(hrefs).toContain("/visiting");
+    expect(hrefs).toContain("/patient-rights");
+    expect(hrefs).toContain("/admission");
+    expect(hrefs).toContain("/international-patients");
+    expect(hrefs).toContain("/loan");
+    expect(hrefs).toContain("/#help");
     expect(hrefs).toContain("/#contact");
     for (const href of hrefs) {
       const inScope =
         href === "/" ||
+        /^\/(?:about(?:#(?:history|mission|goals|policies|why))?|services(?:\/(?:surgical|medical))?|doctors|guide|visiting|patient-rights|admission|international-patients|loan)$/.test(href ?? "") ||
+        href === "/#help" ||
         href === "/#contact" ||
-        href === "/services" ||
-        href === "/services#surgical" ||
-        href === "/services#medical" ||
         href === `tel:${siteConfig.phone}` || // B-1: substituted booking CTA (Q1)
         /^\/\?lang=(fa|en|ar)$/.test(href ?? "");
       expect(inScope, `out-of-scope header anchor: ${href}`).toBe(true);
     }
   });
 
-  it("carries no search affordance (B-2: no fake buttons)", () => {
-    // The magnifier is gone on purpose: nothing in-scope answers a search
-    // action, so an i-search glyph in the chrome would be a fake button. A
-    // header link labelled with an aria-label (only the reference's
-    // magnifier ever had one in the header) is itself the regression signal.
+  it("restores the reference search affordance now that public search exists", () => {
     const { container } = render(<SiteHeader locale="fa" pathname="/" />);
-    expect(container.querySelectorAll("header a[aria-label]")).toHaveLength(0);
-    expect(container.querySelectorAll("header a").length).toBeGreaterThan(0);
-    const hrefs = [...container.querySelectorAll("header a[href]")].map((node) => node.getAttribute("href"));
-    expect(hrefs).not.toContain("/#help");
-    // No glyph in the header may carry a search affordance's accessible name.
-    expect(screen.queryByRole("link", { name: t("fa", "help.title") })).toBeNull();
+    const search = screen.getByRole("link", { name: t("fa", "help.title") });
+    expect(search).toHaveAttribute("href", "/#help");
+    expect(container.querySelector('a.icon-btn[href="/#help"]')).toBe(search);
   });
 
-  it("carries no trace of the reference's out-of-scope destinations", () => {
+  it("carries no trace of demo assistant, account or panel destinations", () => {
     const { container } = render(<SiteHeader locale="fa" pathname="/" />);
-    const html = container.innerHTML;
-    expect(html).not.toMatch(/doctors|about|guide|assistant|intl|loan|club|panel|booking|reserve/i);
+    const hrefs = [...container.querySelectorAll("a[href]")].map((node) => node.getAttribute("href") ?? "");
+    expect(hrefs.join("\n")).not.toMatch(/assistant|club|panel|admin|account|staff|finance|insurance|quality/i);
   });
 
   it("labels its nav with the localized strings in all three locales", () => {
@@ -130,6 +123,17 @@ describe("SiteHeader", () => {
       // The active class rides the reference's own .menu a.active styling:
       // the contact (hash) link is never statically active on any route.
       expect(nav?.querySelector('a[href="/#contact"]')?.className ?? "").not.toContain("active");
+      unmount();
+    }
+
+    for (const [pathname, href] of [
+      ["/about", "/about"],
+      ["/doctors/aghadoust", "/doctors"],
+      ["/guide/gallbladder", "/guide"],
+      ["/international-patients", "/international-patients"],
+    ] as const) {
+      const { container, unmount } = render(<SiteHeader locale="fa" pathname={pathname} />);
+      expect(container.querySelector(`#menu a[href="${href}"]`)).toHaveAttribute("aria-current", "page");
       unmount();
     }
 

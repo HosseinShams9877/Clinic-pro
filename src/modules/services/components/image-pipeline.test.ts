@@ -28,9 +28,14 @@ const read = (file: string) =>
 const SITES = [
   "app/page.tsx",
   "app/services/page.tsx",
+  "app/guide/page.tsx",
+  "app/doctors/[id]/page.tsx",
   "modules/services/components/ServiceCategoryCard.tsx",
   "modules/services/components/ServiceVideoButton.tsx",
   "modules/services/components/SubServiceGrid.tsx",
+  "modules/publicSite/components/DoctorsDirectory.tsx",
+  "modules/publicSite/components/GuideDirectory.tsx",
+  "modules/publicSite/components/GuideItemContent.tsx",
 ] as const;
 
 describe("no raw <img> element ships", () => {

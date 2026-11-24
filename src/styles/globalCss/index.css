@@ -29,6 +29,22 @@
    beat these rules, and base (preflight, tokens, themes, focus ring) stays
    below — so the port composes with the app, not over it. */
 @import "./reference.css";
+/* Remaining public reference pages (2026-11-23). Each file is copied
+   verbatim from the owner-provided reference archive; route wrappers keep
+   these selectors dormant outside their original page vocabulary. */
+@import "../referencePublic/doctors.css" layer(components);
+@import "../referencePublic/doctor.css" layer(components);
+@import "../referencePublic/guide.css" layer(components);
+@import "../referencePublic/info.css" layer(components);
+@import "../referencePublic/about-page.css" layer(components);
+@import "../referencePublic/admission-refresh.css" layer(components);
+@import "../referencePublic/visiting-page.css" layer(components);
+@import "../referencePublic/patient-pages.css" layer(components);
+@import "../referencePublic/layout-refinement.css" layer(components);
+/* Scoped reconciliation rules must follow the older unlayered fidelity port;
+   keeping this final file unlayered lets its route-qualified fixes win without
+   exposing the generic reference selectors globally. */
+@import "../referencePublic/latest-adjustments.css";
 /* The loan wizard (2026-11-18): NEW component CSS on the reference's
    .ln-* vocabulary — not part of the port, so it follows project rules
    (semantic tokens only) and declares the components layer itself. */

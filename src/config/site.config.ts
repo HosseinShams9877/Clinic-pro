@@ -72,7 +72,17 @@ export const siteConfig = {
  */
 export const ROUTES = {
   home: "/",
+  about: "/about",
   services: "/services",
+  servicesSurgical: "/services/surgical",
+  servicesMedical: "/services/medical",
+  doctors: "/doctors",
+  guide: "/guide",
+  clinics: "/clinics",
+  visiting: "/visiting",
+  patientRights: "/patient-rights",
+  admission: "/admission",
+  internationalPatients: "/international-patients",
   /** The Tejarat Bank medical loan request flow (reference: loan.html). */
   loan: "/loan",
   /** /services/<id> for each of the ten reference category ids. */

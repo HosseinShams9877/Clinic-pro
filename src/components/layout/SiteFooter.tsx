@@ -49,12 +49,45 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <h2>{t(locale, "ft.h1")}</h2>
           <ul>
             <li>
-              <Link href={`${ROUTES.services}/anes`}>
+              <Link href={`${ROUTES.about}#history`}>{t(locale, "ft.l1")}</Link>
+            </li>
+            <li>
+              <Link href={`${ROUTES.clinics}#anesthesia`}>
                 {t(locale, "ft.l2")}
               </Link>
             </li>
             <li>
-              <Link href={ROUTES.services}>{t(locale, "ft.l3")}</Link>
+              <Link href={ROUTES.servicesSurgical}>{t(locale, "ft.l3")}</Link>
+            </li>
+            <li>
+              <Link href={`${ROUTES.clinics}#hair`}>{t(locale, "ft.l4")}</Link>
+            </li>
+            <li>
+              <Link href={`${ROUTES.clinics}#laser`}>{t(locale, "ft.l5")}</Link>
+            </li>
+            <li>
+              <Link href={`${ROUTES.clinics}#beauty`}>{t(locale, "ft.l6")}</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>{t(locale, "ft.h2")}</h2>
+          <ul>
+            <li>
+              <Link href={ROUTES.internationalPatients}>{t(locale, "ft.q1")}</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.admission}>{t(locale, "ft.q2")}</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.patientRights}>{t(locale, "ft.q4")}</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.visiting}>{t(locale, "ft.q5")}</Link>
+            </li>
+            <li>
+              <Link href={`${ROUTES.about}#history`}>{t(locale, "ft.q6")}</Link>
             </li>
           </ul>
         </div>

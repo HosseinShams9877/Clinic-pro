@@ -9,7 +9,7 @@
  * with the library source), so the scan runs against the real built pages with
  * no change to `src/` or `public/`.
  *
- * Coverage: every built route (12) × locale (fa RTL, en LTR, ar RTL) × color
+ * Coverage: every built public route × locale (fa RTL, en LTR, ar RTL) × color
  * theme (light, dark via emulated `prefers-color-scheme` — the theme the site
  * ships, `themes.css`'s `@media (prefers-color-scheme: dark)` block).
  *
@@ -36,20 +36,31 @@ const ORIGIN = process.argv[2] ?? "http://localhost:3137";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const AXE_PATH = join(__dirname, "..", "node_modules", "axe-core", "axe.min.js");
 const AXE_SOURCE = readFileSync(AXE_PATH, "utf8");
+const profiles = JSON.parse(
+  readFileSync(join(__dirname, "..", "src", "modules", "publicSite", "content", "doctor-profiles.json"), "utf8"),
+);
+const guide = JSON.parse(
+  readFileSync(join(__dirname, "..", "src", "modules", "publicSite", "content", "guide.json"), "utf8"),
+);
+const SERVICE_IDS = ["gen", "plastic", "ortho", "uro", "eye", "ent", "gyn", "aes", "anes", "endo"];
 
 const ROUTES = [
   "/",
   "/services",
-  "/services/gen",
-  "/services/plastic",
-  "/services/ortho",
-  "/services/uro",
-  "/services/eye",
-  "/services/ent",
-  "/services/gyn",
-  "/services/aes",
-  "/services/anes",
-  "/services/endo",
+  "/about",
+  "/services/surgical",
+  "/services/medical",
+  ...SERVICE_IDS.map((id) => `/services/${id}`),
+  "/doctors",
+  ...Object.keys(profiles).map((id) => `/doctors/${id}`),
+  "/guide",
+  ...guide.surgeries.map((item) => `/guide/${item.id}`),
+  "/clinics",
+  "/visiting",
+  "/patient-rights",
+  "/admission",
+  "/international-patients",
+  "/loan",
   // P2 item 4's 404 page — in the round-2 audit (item 10) too.
   "/nonexistent-page",
 ];

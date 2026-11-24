@@ -1,0 +1,1259 @@
+{
+  "categories": {
+    "all": {
+      "fa": "همه پزشکان",
+      "en": "All doctors",
+      "ar": "جميع الأطباء"
+    },
+    "gen": {
+      "fa": "جراحی عمومی و لاپاراسکوپی",
+      "en": "General & Laparoscopic",
+      "ar": "الجراحة العامة والمنظار"
+    },
+    "plastic": {
+      "fa": "پلاستیک و زیبایی",
+      "en": "Plastic & Cosmetic",
+      "ar": "التجميل والترميم"
+    },
+    "ortho": {
+      "fa": "ارتوپدی و جراحی دست",
+      "en": "Orthopedics & Hand",
+      "ar": "العظام وجراحة اليد"
+    },
+    "uro": {
+      "fa": "کلیه و مجاری ادراری",
+      "en": "Urology",
+      "ar": "المسالك البولية"
+    },
+    "eye": {
+      "fa": "چشم",
+      "en": "Ophthalmology",
+      "ar": "العيون"
+    },
+    "ent": {
+      "fa": "گوش، حلق و بینی",
+      "en": "ENT",
+      "ar": "الأنف والأذن والحنجرة"
+    },
+    "gyn": {
+      "fa": "زنان، زایمان و ناباروری",
+      "en": "Gynecology & IVF",
+      "ar": "النساء والولادة والعقم"
+    },
+    "maxfac": {
+      "fa": "دهان، فک و صورت",
+      "en": "Oral & Maxillofacial",
+      "ar": "الفم والوجه والفكين"
+    },
+    "anes": {
+      "fa": "بیهوشی",
+      "en": "Anesthesia",
+      "ar": "التخدير"
+    },
+    "gi": {
+      "fa": "گوارش و کبد",
+      "en": "Gastroenterology",
+      "ar": "الجهاز الهضمي والكبد"
+    },
+    "cardio": {
+      "fa": "قلب و عروق",
+      "en": "Cardiology",
+      "ar": "القلب والأوعية"
+    },
+    "int": {
+      "fa": "داخلی و سایر تخصص‌ها",
+      "en": "Internal & other",
+      "ar": "الباطنية وتخصصات أخرى"
+    }
+  },
+  "doctors": [
+    {
+      "id": "kheirkhah",
+      "slug": "پرویز-خیرخواه",
+      "cat": "anes",
+      "photo": "/img/doctors/kheirkhah.jpg",
+      "founder": true,
+      "name": {
+        "fa": "دکتر پرویز خیرخواه",
+        "en": "Dr. Parviz Kheirkhah",
+        "ar": "د. برويز خيرخواه"
+      },
+      "spec": {
+        "fa": "مؤسس مرکز · متخصص بیهوشی",
+        "en": "Founder · Anesthesiologist",
+        "ar": "مؤسس المركز · اختصاصي التخدير"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/پرویز-خیرخواه/"
+    },
+    {
+      "id": "abolhassani",
+      "slug": "دکتر-آزاده-ابوالحسني",
+      "cat": "gyn",
+      "photo": "/img/doctors/abolhassani.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر آزاده ابوالحسنی",
+        "en": "Dr. Azadeh Abolhassani",
+        "ar": "د. آزاده أبو الحسني"
+      },
+      "spec": {
+        "fa": "جراح و متخصص زنان و زایمان",
+        "en": "Gynecologic Surgeon & Specialist",
+        "ar": "جرّاحة واختصاصية النساء والولادة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-آزاده-ابوالحسني/"
+    },
+    {
+      "id": "chahichi",
+      "slug": "احمدرضا-چاهی-چی",
+      "cat": "anes",
+      "photo": "/img/doctors/chahichi.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر احمدرضا چاهی‌چی",
+        "en": "Dr. Ahmadreza Chahichi",
+        "ar": "د. أحمد رضا جاهي جي"
+      },
+      "spec": {
+        "fa": "متخصص بیهوشی",
+        "en": "Anesthesiologist",
+        "ar": "اختصاصي التخدير"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/احمدرضا-چاهی-چی/"
+    },
+    {
+      "id": "abdvand",
+      "slug": "اطهر-عبدوند",
+      "cat": "int",
+      "photo": "/img/doctors/abdvand.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر اطهره عبدوند",
+        "en": "Dr. Athareh Abdvand",
+        "ar": "د. أطهرة عبدوند"
+      },
+      "spec": {
+        "fa": "پزشک عمومی",
+        "en": "General Practitioner",
+        "ar": "طبيبة عامة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/اطهر-عبدوند/"
+    },
+    {
+      "id": "montazer",
+      "slug": "امیرحسین-منتظر",
+      "cat": "anes",
+      "photo": "/img/doctors/montazer.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر امیرحسین منتظر",
+        "en": "Dr. Amirhossein Montazer",
+        "ar": "د. أمير حسين منتظر"
+      },
+      "spec": {
+        "fa": "متخصص بیهوشی",
+        "en": "Anesthesiologist",
+        "ar": "اختصاصي التخدير"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/امیرحسین-منتظر/"
+    },
+    {
+      "id": "ahmadzadeh",
+      "slug": "دکتر-اویس-احمد-زاده",
+      "cat": "eye",
+      "photo": "/img/doctors/ahmadzadeh.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر اویس احمدزاده",
+        "en": "Dr. Oveis Ahmadzadeh",
+        "ar": "د. أويس أحمد زاده"
+      },
+      "spec": {
+        "fa": "بورد تخصصی چشم · بیمارستان فارابی تهران",
+        "en": "Ophthalmology Board · Farabi Hospital, Tehran",
+        "ar": "بورد طب العيون · مستشفى فارابي طهران"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-اویس-احمد-زاده/"
+    },
+    {
+      "id": "talebian",
+      "slug": "دکتر-پریسا-طالبیان",
+      "cat": "gyn",
+      "photo": "/img/doctors/talebian.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر پریسا طالبیان",
+        "en": "Dr. Parisa Talebian",
+        "ar": "د. باريسا طالبيان"
+      },
+      "spec": {
+        "fa": "جراح و متخصص زنان و زایمان",
+        "en": "Gynecologic Surgeon & Specialist",
+        "ar": "جرّاحة واختصاصية النساء والولادة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-پریسا-طالبیان/"
+    },
+    {
+      "id": "nezam-zavareh",
+      "slug": "دکتر-جمیله-نظام-زواره",
+      "cat": "gyn",
+      "photo": "/img/doctors/nezam-zavareh.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر جمیله نظام‌زواره",
+        "en": "Dr. Jamileh Nezam-Zavareh",
+        "ar": "د. جميلة نظام زواره"
+      },
+      "spec": {
+        "fa": "متخصص زنان، زایمان و نازایی",
+        "en": "OB-GYN & Infertility Specialist",
+        "ar": "اختصاصية النساء والولادة والعقم"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-جمیله-نظام-زواره/"
+    },
+    {
+      "id": "farajipour",
+      "slug": "دکتر-حسن-فرجی-پور",
+      "cat": "eye",
+      "photo": "/img/doctors/farajipour.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر حسن فرجی‌پور",
+        "en": "Dr. Hassan Farajipour",
+        "ar": "د. حسن فرجي بور"
+      },
+      "spec": {
+        "fa": "فوق تخصص قرنیه، لیزیک، لازک و اسمایل",
+        "en": "Cornea Sub-specialist · LASIK, LASEK & SMILE",
+        "ar": "فوق اختصاصي القرنية · الليزك واللازك والسمايل"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-حسن-فرجی-پور/"
+    },
+    {
+      "id": "taheri-nassaj",
+      "slug": "دکتر-حسین-طاهری-نساج",
+      "cat": "gen",
+      "photo": "/img/doctors/taheri-nassaj.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر حسین طاهری نساج",
+        "en": "Dr. Hossein Taheri Nassaj",
+        "ar": "د. حسين طاهري نساج"
+      },
+      "spec": {
+        "fa": "متخصص جراحی عمومی، فلوشیپ لاپاراسکوپی",
+        "en": "General Surgeon · Laparoscopy Fellowship",
+        "ar": "جرّاح عام · زمالة جراحة المنظار"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-حسین-طاهری-نساج/"
+    },
+    {
+      "id": "aghadoust",
+      "slug": "دکتر-داوود-اقادوست",
+      "cat": "eye",
+      "photo": "/img/doctors/aghadoust.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر داوود آقادوست",
+        "en": "Dr. Davoud Aghadoust",
+        "ar": "د. داود آقادوست"
+      },
+      "spec": {
+        "fa": "فلوشیپ تخصصی شبکیه (ویتره و رتین)",
+        "en": "Vitreoretinal Fellowship",
+        "ar": "زمالة الشبكية والجسم الزجاجي"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-داوود-اقادوست/"
+    },
+    {
+      "id": "abbasi-moghaddam",
+      "slug": "دکتر-زهرا-عباسی-مقدم",
+      "cat": "gyn",
+      "photo": "/img/doctors/abbasi-moghaddam.jpg",
+      "founder": false,
+      "name": {
+        "fa": "دکتر زهرا عباسی مقدم",
+        "en": "Dr. Zahra Abbasi Moghaddam",
+        "ar": "د. زهراء عباسي مقدم"
+      },
+      "spec": {
+        "fa": "متخصص زنان، زایمان و نازایی",
+        "en": "OB-GYN & Infertility Specialist",
+        "ar": "اختصاصية النساء والولادة والعقم"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-زهرا-عباسی-مقدم/"
+    },
+    {
+      "id": "amirhossein-ahsani",
+      "slug": "دکتر-امیرحسین-احسنی",
+      "cat": "ent",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر امیرحسین احسنی",
+        "en": "Dr. Amirhossein Ahsani",
+        "ar": "د. أمير حسين أحسني"
+      },
+      "spec": {
+        "fa": "جراح و متخصص گوش، حلق و بینی",
+        "en": "ENT Surgeon & Specialist",
+        "ar": "جرّاح واختصاصي الأنف والأذن والحنجرة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-امیرحسین-احسنی/"
+    },
+    {
+      "id": "zahra-navabi",
+      "slug": "دکتر-زهرا-نوابی",
+      "cat": "ent",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر زهرا نوابی",
+        "en": "Dr. Zahra Navabi",
+        "ar": "د. زهراء نوابي"
+      },
+      "spec": {
+        "fa": "متخصص گوش، حلق، بینی و سر و گردن",
+        "en": "ENT, Head & Neck Specialist",
+        "ar": "اختصاصي الأنف والأذن والحنجرة والرأس والعنق"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-زهرا-نوابی/"
+    },
+    {
+      "id": "zahra-vahedpour-fard",
+      "slug": "دکتر-زهرا-واحد-پور-فرد",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر زهرا واحدپور فرد",
+        "en": "Dr. Zahra Vahedpour Fard",
+        "ar": "د. زهراء واحد بور فرد"
+      },
+      "spec": {
+        "fa": "متخصص زنان و زایمان",
+        "en": "Obstetrician & Gynecologist",
+        "ar": "اختصاصية النساء والولادة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-زهرا-واحد-پور-فرد/"
+    },
+    {
+      "id": "sepideh-nourgostar",
+      "slug": "دکتر-سپیده-نورگستر",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر سپیده نورگستر",
+        "en": "Dr. Sepideh Nourgostar",
+        "ar": "د. سبيده نورگستر"
+      },
+      "spec": {
+        "fa": "متخصص زنان، زایمان و نازایی",
+        "en": "OB-GYN & Infertility Specialist",
+        "ar": "اختصاصية النساء والولادة والعقم"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-سپیده-نورگستر/"
+    },
+    {
+      "id": "seyed-hossein-masoud",
+      "slug": "دکتر-سیدحسین-مسعود",
+      "cat": "uro",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر سیدحسین مسعود",
+        "en": "Dr. Seyed Hossein Masoud",
+        "ar": "د. السيد حسين مسعود"
+      },
+      "spec": {
+        "fa": "متخصص جراحی کلیه و مجاری ادراری",
+        "en": "Urologic Surgeon",
+        "ar": "اختصاصي جراحة الكلى والمسالك البولية"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-سیدحسین-مسعود/"
+    },
+    {
+      "id": "seyedeh-homa-hemsi",
+      "slug": "دکتر-سیده-هما-حمصی",
+      "cat": "gen",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر سیده هما حمصی",
+        "en": "Dr. Seyedeh Homa Hemsi",
+        "ar": "د. السيدة هما حمصي"
+      },
+      "spec": {
+        "fa": "متخصص جراحی عمومی",
+        "en": "General Surgeon",
+        "ar": "اختصاصي الجراحة العامة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-سیده-هما-حمصی/"
+    },
+    {
+      "id": "ali-karimian",
+      "slug": "دکتر-علی-کریمیان",
+      "cat": "ent",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر علی کریمیان",
+        "en": "Dr. Ali Karimian",
+        "ar": "د. علي كريميان"
+      },
+      "spec": {
+        "fa": "فلوشیپ رینولوژی (جراحی بینی و سینوس)",
+        "en": "Rhinology Fellowship (Nose & Sinus Surgery)",
+        "ar": "زمالة جراحة الأنف والجيوب"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-علی-کریمیان/"
+    },
+    {
+      "id": "fatemeh-forouzanfar",
+      "slug": "فاطمه-فروزانفر",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر فاطمه فروزانفر",
+        "en": "Dr. Fatemeh Forouzanfar",
+        "ar": "د. فاطمة فروزانفر"
+      },
+      "spec": {
+        "fa": "جراح و متخصص زنان و زایمان",
+        "en": "Gynecologic Surgeon & Specialist",
+        "ar": "جرّاحة واختصاصية النساء والولادة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/فاطمه-فروزانفر/"
+    },
+    {
+      "id": "fatemeh-gheisari",
+      "slug": "دکتر-فاطمه-قیصری",
+      "cat": "gen",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر فاطمه قیصری",
+        "en": "Dr. Fatemeh Gheisari",
+        "ar": "د. فاطمة قيصري"
+      },
+      "spec": {
+        "fa": "متخصص جراحی عمومی",
+        "en": "General Surgeon",
+        "ar": "اختصاصي الجراحة العامة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-فاطمه-قیصری/"
+    },
+    {
+      "id": "farzaneh-amini",
+      "slug": "دکتر-فرزانه-امینی",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر فرزانه امینی",
+        "en": "Dr. Farzaneh Amini",
+        "ar": "د. فرزانة أميني"
+      },
+      "spec": {
+        "fa": "جراح و متخصص زنان و زایمان",
+        "en": "Gynecologic Surgeon & Specialist",
+        "ar": "جرّاحة واختصاصية النساء والولادة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-فرزانه-امینی/"
+    },
+    {
+      "id": "fariba-raygan",
+      "slug": "دکتر-فریبا-رایگان",
+      "cat": "cardio",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر فریبا رایگان",
+        "en": "Dr. Fariba Raygan",
+        "ar": "د. فريبا رايغان"
+      },
+      "spec": {
+        "fa": "متخصص بیماری‌های قلب و عروق",
+        "en": "Cardiologist",
+        "ar": "اختصاصية أمراض القلب والأوعية"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-فریبا-رایگان/"
+    },
+    {
+      "id": "fariba-minaei",
+      "slug": "دکتر-فریبا-مینایی",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر فریبا مینایی",
+        "en": "Dr. Fariba Minaei",
+        "ar": "د. فريبا مينائي"
+      },
+      "spec": {
+        "fa": "متخصص زنان و زایمان",
+        "en": "Obstetrician & Gynecologist",
+        "ar": "اختصاصية النساء والولادة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-فریبا-مینایی/"
+    },
+    {
+      "id": "fahimeh-abam",
+      "slug": "فهیمه-آبام",
+      "cat": "anes",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر فهیمه آبام",
+        "en": "Dr. Fahimeh Abam",
+        "ar": "د. فهيمة آبام"
+      },
+      "spec": {
+        "fa": "متخصص بیهوشی",
+        "en": "Anesthesiologist",
+        "ar": "اختصاصي التخدير"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/فهیمه-آبام/"
+    },
+    {
+      "id": "leila-ghafour",
+      "slug": "دکتر-لیلا-غفور",
+      "cat": "gen",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر لیلا غفور",
+        "en": "Dr. Leila Ghafour",
+        "ar": "د. ليلى غفور"
+      },
+      "spec": {
+        "fa": "متخصص جراحی عمومی",
+        "en": "General Surgeon",
+        "ar": "اختصاصي الجراحة العامة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-لیلا-غفور/"
+    },
+    {
+      "id": "mohammad-arami",
+      "slug": "دکتر-محمد-ارمی",
+      "cat": "ent",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر محمد ارمی",
+        "en": "Dr. Mohammad Arami",
+        "ar": "د. محمد أرمي"
+      },
+      "spec": {
+        "fa": "متخصص گوش، حلق، بینی و سر و گردن",
+        "en": "ENT, Head & Neck Specialist",
+        "ar": "اختصاصي الأنف والأذن والحنجرة والرأس والعنق"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-محمد-ارمی/"
+    },
+    {
+      "id": "mohammad-eidi",
+      "slug": "دکتر-محمد-عیدی",
+      "cat": "gen",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر محمد عیدی",
+        "en": "Dr. Mohammad Eidi",
+        "ar": "د. محمد عيدي"
+      },
+      "spec": {
+        "fa": "فلوشیپ لاپاراسکوپی، توراکوسکوپی و جراحی چاقی",
+        "en": "Laparoscopic, Thoracoscopic & Bariatric Surgery Fellowship",
+        "ar": "زمالة جراحة المنظار والصدر وجراحة السمنة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-محمد-عیدی/"
+    },
+    {
+      "id": "maryam-jahangir",
+      "slug": "دکتر-مریم-جهانگیر",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مریم جهانگیر",
+        "en": "Dr. Maryam Jahangir",
+        "ar": "د. مريم جهانغير"
+      },
+      "spec": {
+        "fa": "جراح و متخصص زنان و زایمان",
+        "en": "Gynecologic Surgeon & Specialist",
+        "ar": "جرّاحة واختصاصية النساء والولادة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-مریم-جهانگیر/"
+    },
+    {
+      "id": "maryam-hamidi-shad",
+      "slug": "مریم-حمیدی-شاد",
+      "cat": "anes",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مریم حمیدی‌شاد",
+        "en": "Dr. Maryam Hamidi-Shad",
+        "ar": "د. مريم حميدي شاد"
+      },
+      "spec": {
+        "fa": "متخصص بیهوشی",
+        "en": "Anesthesiologist",
+        "ar": "اختصاصي التخدير"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/مریم-حمیدی-شاد/"
+    },
+    {
+      "id": "mansoureh-samimi",
+      "slug": "دکتر-منصوره-صمیمی",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر منصوره صمیمی",
+        "en": "Dr. Mansoureh Samimi",
+        "ar": "د. منصورة صميمي"
+      },
+      "spec": {
+        "fa": "متخصص زنان و زایمان",
+        "en": "Obstetrician & Gynecologist",
+        "ar": "اختصاصية النساء والولادة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-منصوره-صمیمی/"
+    },
+    {
+      "id": "mehdi-rafiei",
+      "slug": "مهدی-رفیعی",
+      "cat": "anes",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مهدی رفیعی",
+        "en": "Dr. Mehdi Rafiei",
+        "ar": "د. مهدي رفيعي"
+      },
+      "spec": {
+        "fa": "متخصص بیهوشی",
+        "en": "Anesthesiologist",
+        "ar": "اختصاصي التخدير"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/مهدی-رفیعی/"
+    },
+    {
+      "id": "mehdi-shaeri",
+      "slug": "دکتر-مهدی-شاعری",
+      "cat": "eye",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مهدی شاعری",
+        "en": "Dr. Mehdi Shaeri",
+        "ar": "د. مهدي شاعري"
+      },
+      "spec": {
+        "fa": "جراح و متخصص چشم‌پزشکی",
+        "en": "Ophthalmic Surgeon & Specialist",
+        "ar": "جرّاح واختصاصي العيون"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-مهدی-شاعری/"
+    },
+    {
+      "id": "mehdi-saffari",
+      "slug": "دکتر-مهدی-صفاری",
+      "cat": "ent",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مهدی صفاری",
+        "en": "Dr. Mehdi Saffari",
+        "ar": "د. مهدي صفاري"
+      },
+      "spec": {
+        "fa": "جراحی پلاستیک بینی",
+        "en": "Rhinoplasty Surgeon",
+        "ar": "جرّاح تجميل الأنف"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-مهدی-صفاری/"
+    },
+    {
+      "id": "mahshid-mohseni",
+      "slug": "مهشید-محسنی",
+      "cat": "anes",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مهشید محسنی",
+        "en": "Dr. Mahshid Mohseni",
+        "ar": "د. مهشيد محسني"
+      },
+      "spec": {
+        "fa": "متخصص بیهوشی",
+        "en": "Anesthesiologist",
+        "ar": "اختصاصي التخدير"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/مهشید-محسنی/"
+    },
+    {
+      "id": "neda-sakhi",
+      "slug": "دکتر-ندا-سخی",
+      "cat": "ent",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر ندا سخی",
+        "en": "Dr. Neda Sakhi",
+        "ar": "د. ندى سخي"
+      },
+      "spec": {
+        "fa": "متخصص گوش، حلق و بینی",
+        "en": "ENT Specialist",
+        "ar": "اختصاصي الأنف والأذن والحنجرة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-ندا-سخی/"
+    },
+    {
+      "id": "nasrin-erfan",
+      "slug": "دکتر-نسرین-عرفان",
+      "cat": "gen",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر نسرین عرفان",
+        "en": "Dr. Nasrin Erfan",
+        "ar": "د. نسرين عرفان"
+      },
+      "spec": {
+        "fa": "متخصص جراحی عمومی",
+        "en": "General Surgeon",
+        "ar": "اختصاصي الجراحة العامة"
+      },
+      "url": "https://drkheirkhahhospital.ir/doctors/دکتر-نسرین-عرفان/"
+    },
+    {
+      "id": "babak-haghnia",
+      "slug": "",
+      "cat": "ortho",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر بابک حق‌نیا",
+        "en": "Dr. Babak Haghnia",
+        "ar": "د. بابك حق نيا"
+      },
+      "spec": {
+        "fa": "فوق تخصص ارتوپدی و تعویض مفاصل",
+        "en": "Orthopedic Sub-specialist · Joint Replacement",
+        "ar": "فوق اختصاصي العظام واستبدال المفاصل"
+      },
+      "url": ""
+    },
+    {
+      "id": "abolfazl-kianoush",
+      "slug": "",
+      "cat": "ortho",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر ابوالفضل کیانوش",
+        "en": "Dr. Abolfazl Kianoush",
+        "ar": "د. أبو الفضل كيانوش"
+      },
+      "spec": {
+        "fa": "جراح و متخصص استخوان و مفاصل",
+        "en": "Orthopedic Surgeon & Specialist",
+        "ar": "جرّاح واختصاصي العظام والمفاصل"
+      },
+      "url": ""
+    },
+    {
+      "id": "marzieh-taghavi-ravandi",
+      "slug": "",
+      "cat": "ortho",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مرضیه تقوی‌راوندی",
+        "en": "Dr. Marzieh Taghavi-Ravandi",
+        "ar": "د. مرضية تقوي راوندي"
+      },
+      "spec": {
+        "fa": "فلوشیپ جراحی دست و میکروسورجری",
+        "en": "Hand Surgery & Microsurgery Fellowship",
+        "ar": "زمالة جراحة اليد والجراحة المجهرية"
+      },
+      "url": ""
+    },
+    {
+      "id": "hossein-ghani",
+      "slug": "",
+      "cat": "plastic",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر حسین غنی",
+        "en": "Dr. Hossein Ghani",
+        "ar": "د. حسين غني"
+      },
+      "spec": {
+        "fa": "فوق تخصص جراحی پلاستیک و زیبایی",
+        "en": "Plastic & Cosmetic Surgery Sub-specialist",
+        "ar": "فوق اختصاصي الجراحة التجميلية والترميمية"
+      },
+      "url": ""
+    },
+    {
+      "id": "hesamoddin-karimi",
+      "slug": "",
+      "cat": "plastic",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر حسام‌الدین کریمی",
+        "en": "Dr. Hesamoddin Karimi",
+        "ar": "د. حسام الدين كريمي"
+      },
+      "spec": {
+        "fa": "فوق تخصص جراحی پلاستیک و زیبایی",
+        "en": "Plastic & Cosmetic Surgery Sub-specialist",
+        "ar": "فوق اختصاصي الجراحة التجميلية والترميمية"
+      },
+      "url": ""
+    },
+    {
+      "id": "amirsalar-seyedahsin",
+      "slug": "",
+      "cat": "maxfac",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر امیرسالار سیداحسین",
+        "en": "Dr. Amirsalar Seyedahsin",
+        "ar": "د. أمير سالار سيد أحسين"
+      },
+      "spec": {
+        "fa": "متخصص جراحی دهان، فک و صورت",
+        "en": "Oral & Maxillofacial Surgeon",
+        "ar": "اختصاصي جراحة الفم والوجه والفكين"
+      },
+      "url": ""
+    },
+    {
+      "id": "ali-taghipour",
+      "slug": "",
+      "cat": "maxfac",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر علی تقی‌پور",
+        "en": "Dr. Ali Taghipour",
+        "ar": "د. علي تقي بور"
+      },
+      "spec": {
+        "fa": "متخصص جراحی دهان، فک و صورت",
+        "en": "Oral & Maxillofacial Surgeon",
+        "ar": "اختصاصي جراحة الفم والوجه والفكين"
+      },
+      "url": ""
+    },
+    {
+      "id": "hesam-nikzad",
+      "slug": "",
+      "cat": "maxfac",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر حسام نیکزاد",
+        "en": "Dr. Hesam Nikzad",
+        "ar": "د. حسام نيكزاد"
+      },
+      "spec": {
+        "fa": "متخصص جراحی دهان، فک و صورت",
+        "en": "Oral & Maxillofacial Surgeon",
+        "ar": "اختصاصي جراحة الفم والوجه والفكين"
+      },
+      "url": ""
+    },
+    {
+      "id": "roya-hassanzadeh",
+      "slug": "",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر رویا حسن‌زاده",
+        "en": "Dr. Roya Hassanzadeh",
+        "ar": "د. رؤيا حسن زاده"
+      },
+      "spec": {
+        "fa": "متخصص زنان و زایمان",
+        "en": "Obstetrician & Gynecologist",
+        "ar": "اختصاصية النساء والولادة"
+      },
+      "url": ""
+    },
+    {
+      "id": "tayebeh-hashemi",
+      "slug": "",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر طیبه هاشمی",
+        "en": "Dr. Tayebeh Hashemi",
+        "ar": "د. طيبة هاشمي"
+      },
+      "spec": {
+        "fa": "متخصص زنان و زایمان",
+        "en": "Obstetrician & Gynecologist",
+        "ar": "اختصاصية النساء والولادة"
+      },
+      "url": ""
+    },
+    {
+      "id": "zohreh-tabasi",
+      "slug": "",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر زهره طبسی",
+        "en": "Dr. Zohreh Tabasi",
+        "ar": "د. زهرة طبسي"
+      },
+      "spec": {
+        "fa": "متخصص زنان و زایمان",
+        "en": "Obstetrician & Gynecologist",
+        "ar": "اختصاصية النساء والولادة"
+      },
+      "url": ""
+    },
+    {
+      "id": "zeinab-takabadi",
+      "slug": "",
+      "cat": "gyn",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر زینب تک‌آبادی",
+        "en": "Dr. Zeinab Takabadi",
+        "ar": "د. زينب تك آبادي"
+      },
+      "spec": {
+        "fa": "جراح و متخصص زنان و زایمان",
+        "en": "Gynecologic Surgeon & Specialist",
+        "ar": "جرّاحة واختصاصية النساء والولادة"
+      },
+      "url": ""
+    },
+    {
+      "id": "khodayar-golabchi",
+      "slug": "",
+      "cat": "eye",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر خدایار گلابچی",
+        "en": "Dr. Khodayar Golabchi",
+        "ar": "د. خدايار كلابجي"
+      },
+      "spec": {
+        "fa": "متخصص چشم‌پزشکی",
+        "en": "Ophthalmologist",
+        "ar": "اختصاصي العيون"
+      },
+      "url": ""
+    },
+    {
+      "id": "mahsa-sardarinia",
+      "slug": "",
+      "cat": "eye",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مهسا سرداری‌نیا",
+        "en": "Dr. Mahsa Sardarinia",
+        "ar": "د. مهسا سرداري نيا"
+      },
+      "spec": {
+        "fa": "جراح و متخصص چشم‌پزشکی",
+        "en": "Ophthalmic Surgeon & Specialist",
+        "ar": "جرّاح واختصاصي العيون"
+      },
+      "url": ""
+    },
+    {
+      "id": "alireza-salmani",
+      "slug": "",
+      "cat": "eye",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر علیرضا سلمانی",
+        "en": "Dr. Alireza Salmani",
+        "ar": "د. علي رضا سلماني"
+      },
+      "spec": {
+        "fa": "جراح و متخصص چشم‌پزشکی",
+        "en": "Ophthalmic Surgeon & Specialist",
+        "ar": "جرّاح واختصاصي العيون"
+      },
+      "url": ""
+    },
+    {
+      "id": "seyed-mohammad-alizadeh",
+      "slug": "",
+      "cat": "eye",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر سیدمحمد علیزاده",
+        "en": "Dr. Seyed Mohammad Alizadeh",
+        "ar": "د. السيد محمد علي زاده"
+      },
+      "spec": {
+        "fa": "جراح و متخصص چشم‌پزشکی",
+        "en": "Ophthalmic Surgeon & Specialist",
+        "ar": "جرّاح واختصاصي العيون"
+      },
+      "url": ""
+    },
+    {
+      "id": "mohsen-tofighi",
+      "slug": "",
+      "cat": "eye",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر محسن توفیقی",
+        "en": "Dr. Mohsen Tofighi",
+        "ar": "د. محسن توفيقي"
+      },
+      "spec": {
+        "fa": "فلوشیپ ویتره و رتین (شبکیه)",
+        "en": "Vitreoretinal Fellowship",
+        "ar": "زمالة الشبكية والجسم الزجاجي"
+      },
+      "url": ""
+    },
+    {
+      "id": "majid-goviri",
+      "slug": "",
+      "cat": "uro",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر مجید گویری",
+        "en": "Dr. Majid Goviri",
+        "ar": "د. مجيد كويري"
+      },
+      "spec": {
+        "fa": "جراح و متخصص کلیه و مجاری ادراری",
+        "en": "Urologic Surgeon & Specialist",
+        "ar": "جرّاح واختصاصي المسالك البولية"
+      },
+      "url": ""
+    },
+    {
+      "id": "ali-momenzadeh",
+      "slug": "",
+      "cat": "uro",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر علی مومن‌زاده",
+        "en": "Dr. Ali Momenzadeh",
+        "ar": "د. علي مؤمن زاده"
+      },
+      "spec": {
+        "fa": "جراح و متخصص کلیه و مجاری ادراری",
+        "en": "Urologic Surgeon & Specialist",
+        "ar": "جرّاح واختصاصي المسالك البولية"
+      },
+      "url": ""
+    },
+    {
+      "id": "hossein-sharifi",
+      "slug": "",
+      "cat": "gi",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر حسین شریفی",
+        "en": "Dr. Hossein Sharifi",
+        "ar": "د. حسين شريفي"
+      },
+      "spec": {
+        "fa": "متخصص داخلی و گوارش",
+        "en": "Internal Medicine & Gastroenterology",
+        "ar": "اختصاصي الباطنية والجهاز الهضمي"
+      },
+      "url": ""
+    },
+    {
+      "id": "seyed-mohsen-razavizadeh",
+      "slug": "",
+      "cat": "gi",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر سیدمحسن رضوی‌زاده",
+        "en": "Dr. Seyed Mohsen Razavizadeh",
+        "ar": "د. السيد محسن رضوي زاده"
+      },
+      "spec": {
+        "fa": "فوق تخصص گوارش و کبد",
+        "en": "Gastroenterology & Hepatology Sub-specialist",
+        "ar": "فوق اختصاصي الجهاز الهضمي والكبد"
+      },
+      "url": ""
+    },
+    {
+      "id": "ali-shahbazi",
+      "slug": "",
+      "cat": "gi",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر علی شهبازی",
+        "en": "Dr. Ali Shahbazi",
+        "ar": "د. علي شهبازي"
+      },
+      "spec": {
+        "fa": "فوق تخصص گوارش و کبد",
+        "en": "Gastroenterology & Hepatology Sub-specialist",
+        "ar": "فوق اختصاصي الجهاز الهضمي والكبد"
+      },
+      "url": ""
+    },
+    {
+      "id": "abbas-taghavi-ardakani",
+      "slug": "",
+      "cat": "gi",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر عباس تقوی‌اردکانی",
+        "en": "Dr. Abbas Taghavi-Ardakani",
+        "ar": "د. عباس تقوي أردكاني"
+      },
+      "spec": {
+        "fa": "فوق تخصص گوارش و کبد",
+        "en": "Gastroenterology & Hepatology Sub-specialist",
+        "ar": "فوق اختصاصي الجهاز الهضمي والكبد"
+      },
+      "url": ""
+    },
+    {
+      "id": "seyed-mehdi-rasoulimanesh",
+      "slug": "",
+      "cat": "gi",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر سیدمهدی رسولی‌منش",
+        "en": "Dr. Seyed Mehdi Rasoulimanesh",
+        "ar": "د. السيد مهدي رسولي منش"
+      },
+      "spec": {
+        "fa": "فوق تخصص گوارش و کبد",
+        "en": "Gastroenterology & Hepatology Sub-specialist",
+        "ar": "فوق اختصاصي الجهاز الهضمي والكبد"
+      },
+      "url": ""
+    },
+    {
+      "id": "sina-soleiman",
+      "slug": "",
+      "cat": "gi",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر سینا سلیمان",
+        "en": "Dr. Sina Soleiman",
+        "ar": "د. سينا سليمان"
+      },
+      "spec": {
+        "fa": "فوق تخصص گوارش و کبد",
+        "en": "Gastroenterology & Hepatology Sub-specialist",
+        "ar": "فوق اختصاصي الجهاز الهضمي والكبد"
+      },
+      "url": ""
+    },
+    {
+      "id": "mohammadreza-mollafari",
+      "slug": "",
+      "cat": "gi",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر محمدرضا ملافری",
+        "en": "Dr. Mohammadreza Mollafari",
+        "ar": "د. محمد رضا ملافري"
+      },
+      "spec": {
+        "fa": "فوق تخصص گوارش و کبد",
+        "en": "Gastroenterology & Hepatology Sub-specialist",
+        "ar": "فوق اختصاصي الجهاز الهضمي والكبد"
+      },
+      "url": ""
+    },
+    {
+      "id": "ebrahim-razi",
+      "slug": "",
+      "cat": "int",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر ابراهیم رضی",
+        "en": "Dr. Ebrahim Razi",
+        "ar": "د. إبراهيم رضي"
+      },
+      "spec": {
+        "fa": "فوق تخصص ریه",
+        "en": "Pulmonology Sub-specialist",
+        "ar": "فوق اختصاصي أمراض الرئة"
+      },
+      "url": ""
+    },
+    {
+      "id": "seyed-masoud-moeinitabar",
+      "slug": "",
+      "cat": "int",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر سیدمسعود معینی‌تبار",
+        "en": "Dr. Seyed Masoud Moeinitabar",
+        "ar": "د. السيد مسعود معيني تبار"
+      },
+      "spec": {
+        "fa": "فوق تخصص نفرولوژی (کلیه)",
+        "en": "Nephrology Sub-specialist",
+        "ar": "فوق اختصاصي أمراض الكلى"
+      },
+      "url": ""
+    },
+    {
+      "id": "fatemeh-nourian",
+      "slug": "",
+      "cat": "int",
+      "photo": "",
+      "founder": false,
+      "name": {
+        "fa": "دکتر فاطمه نوریان",
+        "en": "Dr. Fatemeh Nourian",
+        "ar": "د. فاطمة نوريان"
+      },
+      "spec": {
+        "fa": "متخصص پزشکی قانونی",
+        "en": "Forensic Medicine Specialist",
+        "ar": "اختصاصية الطب الشرعي"
+      },
+      "url": ""
+    }
+  ]
+}

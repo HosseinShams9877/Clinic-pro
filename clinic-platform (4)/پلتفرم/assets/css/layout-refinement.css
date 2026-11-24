@@ -1,0 +1,74 @@
+/* Layout correction: explicit groups, consistent gutters, no floating decorations. */
+/* The site keeps its established navy / teal / pale-blue palette and Vazirmatn. */
+.admission-refresh .admission-documents{gap:16px;align-items:stretch}
+.admission-refresh .admission-documents .ix-dc{background:#fff;border:1px solid #d5e5e8;border-radius:20px;padding:22px;box-shadow:none;min-width:0}
+.admission-refresh .admission-documents .ix-ic{background:#eaf6f5;width:46px;height:46px;flex:0 0 46px;border-radius:15px}
+.admission-refresh .operation-documents{margin-block:30px 36px;border:1px solid #d5e5e8;border-radius:24px;padding:30px;background:#fff}
+.admission-refresh .operation-intro{max-width:85ch}
+.admission-refresh .operation-options{gap:12px 18px;align-items:start}
+.admission-refresh .operation-options details{background:#f4f9fa;border:1px solid #d5e5e8;border-radius:15px;overflow:hidden}
+.admission-refresh .operation-options summary{padding:18px 20px}
+.admission-refresh .operation-options details[open]{background:#fff;border-color:#7dbfc3}
+.admission-refresh .operation-options details[open] summary{background:#edf7f6;padding-bottom:16px}
+.admission-refresh .operation-options details p{padding:16px 20px;margin:0;max-width:none}
+.admission-refresh .ix-two{gap:26px;align-items:stretch;margin-top:10px}
+.admission-refresh .ix-two>div{min-width:0}
+.admission-refresh .ix-steps li{padding-bottom:16px}
+.admission-refresh .ix-steps li>div{background:#fff;border:1px solid #d5e5e8;border-radius:18px;padding:18px 20px}
+.admission-refresh .ix-steps .ix-num{flex-shrink:0;margin-top:18px}
+.admission-refresh .ix-side{padding:0;border:0;gap:18px;justify-content:flex-start;margin-top:76px}
+.admission-refresh .ix-side .ix-card{background:#fff;border:1px solid #d5e5e8;border-radius:20px;padding:24px;gap:12px;box-shadow:none}
+.admission-refresh .ix-side .ix-card p{margin:0}
+.admission-refresh .admission-finance{padding:30px;border:1px solid #d5e5e8;border-radius:24px;background:#fff;margin-top:32px}
+.admission-refresh .finance-columns{gap:18px;align-items:stretch}
+.admission-refresh .finance-columns>div{background:#f4f9fa;border:1px solid #e0ebed;border-radius:17px;padding:22px;min-width:0}
+.admission-refresh .finance-columns p{margin-bottom:0}
+.admission-refresh .admission-leaving{border:1px solid #cee4e5;border-radius:17px}
+.guide-admission-refresh .guide-insurance-note{border:1px solid #d5e5e8;border-radius:24px;padding:30px;margin-top:32px;box-shadow:none}
+.guide-admission-refresh .guide-insurance-note h2{margin-top:0}
+/* Removing a fourth rule must not leave a vacant quarter of the grid. */
+.ix-visit+.ix-body .visit-rules{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.visit-rules .ix-card,.visit-notes .ix-card{position:relative;min-width:0;box-shadow:none}
+.visit-rules .ix-card p,.visit-notes .ix-card p{max-width:none}
+.visit-rules .ix-card:hover,.visit-notes .ix-card:hover{transform:none}
+/* Distinguish each editorial section without changing the existing floor diagram. */
+.ix-about+.ix-body .ix-sec{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-bottom:26px;min-width:0}
+.ix-about+.ix-body .ix-sec>.ix-h:first-child{margin-top:0;margin-bottom:22px}
+.ix-about+.ix-body .ix-card{position:relative;box-shadow:none}
+.ix-about+.ix-body .ix-card:not(.alt){background:#f6fafb}
+.ix-about+.ix-body .ix-card:hover{transform:none;box-shadow:none}
+.ix-about+.ix-body .ix-floors{margin-bottom:0}
+/* New service pages have explicit category, detail and item groups. */
+body[data-service-group] .scats-wrap{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-top:28px;margin-bottom:28px}
+body[data-service-group] .sgrp-h{margin-top:0}
+body[data-service-group] .sdetail{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-top:0;margin-bottom:28px;gap:30px}
+body[data-service-group] .sdetail>*{min-width:0}
+body[data-service-group] .sitems-wrap{padding:28px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;margin-bottom:30px}
+body[data-service-group] .sitems-wrap .sec-head{margin-top:0}
+body[data-service-group] .sitems{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+body[data-service-group] .si{min-width:0;box-shadow:none;border:1px solid #dce8ea}
+body[data-service-group] .si-b{min-width:0}
+/* International patient journey: independently readable grouped panels. */
+.patient-pages .pp-journey{margin-top:30px;padding:30px;gap:24px;background:#fff;border:1px solid #d5e5e8;border-radius:26px;align-items:start;grid-template-columns:1fr}
+.patient-pages .pp-journey header h2{margin-top:0;font-size:28px}
+.patient-pages .pp-journey header{min-width:0;background:#edf7f6;padding:25px;border-radius:20px}
+.patient-pages .pp-journey header h2 br{display:none}
+.patient-pages .pp-journey ol{min-width:0;border:0;display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.patient-pages .pp-journey li:last-child{grid-column:1/-1}
+.patient-pages .pp-journey li{padding:22px 64px 22px 22px;border:1px solid #dce8ea;border-radius:18px;background:#f8fbfc;min-width:0}
+.patient-pages .pp-journey li:before{inset-inline-start:18px;top:22px;border:0;width:30px;height:30px}
+.patient-pages .pp-journey li p{max-width:none}
+.patient-pages .pp-check{margin-top:26px;padding:0;border:0;gap:24px;align-items:start}
+.patient-pages .pp-check>div{background:#fff;border:1px solid #d5e5e8;padding:28px;border-radius:24px;min-width:0}
+.patient-pages .pp-check h2{margin-top:0}
+.patient-pages .pp-faq details{background:#f5fafb;border:1px solid #dce8ea;border-radius:14px;padding:16px 18px;margin-top:12px}
+.patient-pages .pp-faq details[open]{border-color:#7dbfc3;background:#fff}
+.patient-pages .pp-note{background:#fff;padding:30px;border:1px solid #d5e5e8;border-radius:24px;margin-top:26px}
+.patient-pages .pp-note h2{margin-top:0}
+.patient-pages .pp-paths{gap:24px;align-items:stretch}
+.patient-pages .pp-path{display:flex;flex-direction:column;box-shadow:none}
+.patient-pages .pp-path>div{flex:1;display:flex;flex-direction:column;align-items:flex-start}
+.patient-pages .pp-path strong{margin-top:auto}
+@media(max-width:1000px){body[data-service-group] .sitems{grid-template-columns:repeat(2,minmax(0,1fr))}.patient-pages .pp-journey{grid-template-columns:1fr}.patient-pages .pp-journey header h2 br{display:none}.patient-pages .pp-journey ol{margin-inline:0;grid-template-columns:1fr}}
+@media(max-width:860px){.admission-refresh .ix-side{margin-top:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.patient-pages .pp-check{grid-template-columns:1fr}.ix-visit+.ix-body .visit-rules{grid-template-columns:1fr}.visit-rules .ix-card{min-height:0}}
+@media(max-width:600px){.admission-refresh .operation-documents,.admission-refresh .admission-finance,.guide-admission-refresh .guide-insurance-note,.ix-about+.ix-body .ix-sec{padding:20px;border-radius:20px}.admission-refresh .ix-side{grid-template-columns:1fr}.admission-refresh .finance-columns{gap:14px}.admission-refresh .finance-columns>div{padding:18px}.admission-refresh .operation-options{grid-template-columns:1fr}.admission-refresh .ix-steps li{gap:10px}.admission-refresh .ix-steps li>div{padding:16px}.patient-pages .pp-journey{padding:18px;gap:20px}.patient-pages .pp-journey header{padding:20px}.patient-pages .pp-journey li{padding:18px 54px 18px 16px}.patient-pages .pp-journey li:before{inset-inline-start:14px;top:19px;width:27px;height:27px}.patient-pages .pp-check>div,.patient-pages .pp-note{padding:22px}.patient-pages .pp-intro+.pp-paths{margin-top:0}body[data-service-group] .scats-wrap,body[data-service-group] .sdetail,body[data-service-group] .sitems-wrap{padding:18px;border-radius:22px}body[data-service-group] .sitems{grid-template-columns:1fr}.ix-about+.ix-body .ix-fl-h{flex-wrap:wrap}}

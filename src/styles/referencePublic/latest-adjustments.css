@@ -1,0 +1,115 @@
+/* Latest-reference additions from assets/css/vivid.css (verbatim). */
+img[src$="/doctors/kheirkhah.jpg"] {
+  object-fit: contain;
+  object-position: center;
+  background: #e8f3f4;
+}
+.hdoc:hover .hd-ph img[src$="/doctors/kheirkhah.jpg"],
+.doc:hover .doc-ph img[src$="/doctors/kheirkhah.jpg"] {
+  transform: none;
+}
+
+/* Restored home doctors block from assets/css/home.css (verbatim rules). */
+.h-docs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.hdoc{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:1px solid #E3EEF0;border-radius:22px;padding:10px 10px 16px;transition:.3s var(--ease)}
+.hdoc:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(11,63,71,.12)}
+.hd-ph{position:relative;width:100%;aspect-ratio:1/1.05;border-radius:16px;overflow:hidden;background:#E7F1F2;margin-bottom:14px}
+.hd-ph img{width:100%;height:100%;object-fit:cover;object-position:center 15%;transition:transform .7s var(--ease)}
+.hdoc:hover .hd-ph img{transform:scale(1.05)}
+.hdoc b{font-size:16px;color:#0B3F47}
+.hdoc small{font-size:12.5px;color:var(--c-muted);margin-top:4px;min-height:38px}
+.hd-btn{margin-top:12px;width:100%;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--c-primary-50);color:var(--c-primary);font-weight:700;font-size:13.5px;transition:.25s}
+.hd-btn svg{width:16px;height:16px}
+.hdoc:hover .hd-btn{background:var(--c-primary);color:#fff}
+@media (max-width:1100px){.h-docs{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.h-docs{gap:10px}.hdoc b{font-size:14px}.hdoc small{font-size:11.5px}}
+
+/* App Router pages carry reference body classes on their route wrapper. */
+body:has(.page-doctors),
+body:has(.page-info),
+body:has(.page-guide) {
+  background: var(--c-bg, #f5f8f8);
+}
+
+.reference-static-page > svg[width="0"],
+.reference-sprite {
+  position: absolute;
+}
+
+/* next/image fill wrappers preserve the reference boxes exactly. */
+.gc-m {
+  position: relative;
+}
+
+/* The newly imported reference pages are authored as a light-only skin.
+   Keep their own white surfaces and inherited text coherent when the host OS
+   requests dark mode; shared header/footer chrome can still use the app theme. */
+@media (prefers-color-scheme: dark) {
+  .page-doctors,
+  .page-info,
+  .page-services {
+    color-scheme: light;
+    --bg: var(--c-bg);
+    --surface: var(--c-white);
+    --surface-alt: var(--c-primary-50);
+    --fg: var(--c-ink);
+    --fg-muted: var(--c-muted);
+    --fg-inverted: var(--c-white);
+    --border: var(--c-line);
+    --accent: var(--c-accent);
+    --accent-strong: var(--c-primary);
+    --accent-deep: var(--c-navy);
+    --accent-ink: var(--c-primary-600);
+    --btn-strong: var(--c-primary);
+    --kick-ink: #0b7a83;
+    --menu-active-ink: var(--c-primary);
+    --primary-50: var(--c-primary-50);
+    --open: #17855c;
+    --closed: #c24a63;
+    color: var(--fg);
+    background-color: var(--bg);
+  }
+
+  .page-services {
+    --ref-ink-strong: #0b3f47;
+    --ref-ink: #0a2230;
+    --ref-ink-2: #0e3340;
+    --ref-ink-3: #3b4f57;
+    --ref-ink-4: #3e535b;
+    --ref-ink-5: #4a5f66;
+    --ref-ink-6: #3d6870;
+    --ref-ink-7: #46595f;
+    --ref-ink-8: #23383f;
+  }
+}
+
+/* Accessibility-preserving cascade reconciliation. The first public-site
+   port contains older generic component rules; these scoped declarations
+   restore the later reference page rules without changing their geometry. */
+.page-info .ix-card.alt {
+  background-color: #0b4f5c;
+  background-image: linear-gradient(160deg, #0b4f5c, #0e6271);
+  border-color: transparent;
+}
+.page-info .ix-card.alt p { color: #d9eef0; }
+.page-info .btn-ghost {
+  background: #fff;
+  color: var(--c-primary);
+  border-color: #cfe3e6;
+}
+.page-info .btn-ghost:hover { background: var(--c-primary-50); }
+
+.page-info .ix-fl-b .k,
+.page-info .ix-kick { color: var(--c-primary); }
+.ab-goals-title .ix-h span { color: #fff; }
+
+.page-profile .ps-days li.off { opacity: 1; }
+.page-profile .ps-days li.off > span,
+.page-profile .ps-days li.off > b { color: var(--c-muted); }
+.page-profile .prel .kicker { color: #0b6468; }
+
+/* Heading-rank corrections retain the reference typography exactly. */
+.doc-b h2 { font-size: 16.5px; font-weight: 800; color: #0a2230; line-height: 1.5; }
+.gc-b h2 { font-size: 16px; color: #0a2230; }
+.ix-axis-h h2 { margin: 0; font-size: 17px; font-weight: 900; color: var(--c-navy); }
+.ix-complain h2 { margin: 0 0 4px; font-size: 16.5px; font-weight: 900; color: var(--c-navy); }

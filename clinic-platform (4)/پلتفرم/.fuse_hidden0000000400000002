@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-title-key="meta.visit">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>قوانین و ساعات ملاقات | مرکز جراحی فوق تخصصی دکتر خیرخواه</title>
+<meta name="description" content="ساعات ملاقات (همه‌روزه ۱۵ تا ۱۶:۳۰) و قوانین ملاقات بیماران در مرکز جراحی فوق تخصصی دکتر خیرخواه کاشان.">
+<meta name="theme-color" content="#0B4F5C">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/doctors.css">
+<link rel="stylesheet" href="assets/css/info.css">
+<link rel="stylesheet" href="assets/css/loan.css">
+<link rel="stylesheet" href="assets/css/vivid.css">
+</head>
+<body class="page-doctors page-info">
+<div class="scroll-progress" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-ear" viewBox="0 0 24 24"><path d="M6 8.5a6 6 0 1 1 12 0c0 3.5-3 4.5-3 7.5a3.5 3.5 0 0 1-6.5 1.8"/><path d="M9.5 9a2.5 2.5 0 1 1 4.2 1.8c-.9.8-1.2 1.4-1.2 2.7"/></symbol>
+    <symbol id="i-women" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="5.5"/><path d="M12 14v8M8.5 18.5h7"/></symbol>
+    <symbol id="i-kidney" viewBox="0 0 24 24"><path d="M9 3.5C5 3.5 3 7 3 11s2 9.5 6 9.5 4-3 3-5.5-.5-3 1-4.5-1-7-4-7Z"/><path d="M15 3.5c4 0 6 3.5 6 7.5s-2 9.5-6 9.5"/></symbol>
+    <symbol id="i-bone" viewBox="0 0 24 24"><path d="M8.5 15.5 15.5 8.5"/><path d="M15.5 8.5a2.5 2.5 0 1 1 3-3 2.5 2.5 0 1 1-3 3ZM8.5 15.5a2.5 2.5 0 1 1-3 3 2.5 2.5 0 1 1 3-3Z"/></symbol>
+    <symbol id="i-scalpel" viewBox="0 0 24 24"><path d="M3 21 14.5 9.5l3 3L9 21Z"/><path d="m14.5 9.5 5-5a2.1 2.1 0 0 1 3 3l-5 5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5S3 15 3 8.8A4.8 4.8 0 0 1 12 6.3a4.8 4.8 0 0 1 9 2.5C21 15 12 20.5 12 20.5Z"/><path d="M3.5 12h4.5l1.5-2.5 3 5 1.5-2.5h6.5"/></symbol>
+    <symbol id="i-laser" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-hair" viewBox="0 0 24 24"><path d="M5 21v-6a7 7 0 0 1 14 0v6"/><path d="M8 10c0-3 1.5-6 4-7M12 9c0-3 1-5 3-6M16 10.5c.3-2.5 1.3-4.5 3-5.5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h2M14 14h2M8 17.5h2"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.5-2.3 1.5a11 11 0 0 0 6.5 6.5l1.5-2.3 4.5 1.8V19a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3 5.5a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20.5 20.5-4.5-4.5"/></symbol>
+    <symbol id="i-doctor" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/><path d="M15.5 14.5v2.5a1.5 1.5 0 0 0 3 0"/><path d="M9 14.2v3.3"/><circle cx="9" cy="18.5" r="1"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17.5" rx="2.5"/><path d="M9 4V2.8h6V4M8.5 10h7M8.5 13.5h7M8.5 17h4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10v-6Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8Z"/><path d="M14 2.5V8h5.5M12 18v-6M9.5 14.5 12 12l2.5 2.5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5.5A2.5 2.5 0 0 1 6.5 3h7A2.5 2.5 0 0 1 16 5.5V21M16 9.5h2.5A1.5 1.5 0 0 1 20 11v10M2.5 21h19M8 7.5h4M8 11h4M8 14.5h4M9 21v-3h2v3"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 5v15M3 16h18v4M21 16v-4a3 3 0 0 0-3-3h-7v7"/><circle cx="7" cy="11.5" r="2"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5a4.5 4.5 0 0 1 4.5 4.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-air" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/></symbol>
+    <symbol id="i-steril" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M7 6V4h10v2M12 10v6M9 13h6"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 48 48"><path d="M24 3 41 12.5v19L24 45 7 31.5v-19Z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M17 15v18M17 24l8-9M19.6 21.2 25.5 33M30 15v18M37 15v18M30 24h7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3H5a1 1 0 0 0-1 1v5a5 5 0 0 0 10 0V4a1 1 0 0 0-1-1h-1"/><path d="M9 14v1a6 6 0 0 0 12 0v-2"/><circle cx="21" cy="11" r="2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7Z" fill="currentColor"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4Z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
+    <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7Z"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20Z"/><path d="M12 10v4M12 17h.01"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-nosmoke" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M4 14h9M17 14h3v3h-3M20 10c0-2-1.5-3-3-3s-2-1-2-2.5"/></symbol>
+    <symbol id="i-gem" viewBox="0 0 24 24"><path d="M6 4h12l3 5-9 11L3 9Z"/><path d="M3 9h18M9 4l3 16M15 4l-3 16"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 18.5h4"/><path d="M3 3l18 18"/></symbol>
+    <symbol id="i-band" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M8 12h5"/><circle cx="16.5" cy="12" r="1"/></symbol>
+    <symbol id="i-food" viewBox="0 0 24 24"><path d="M7 3v8a2 2 0 0 0 2 2v8M5 3v6M9 3v6M17 21V3c-2 0-4 3-4 7s2 4 4 4"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><path d="M5 21V4.5A1.5 1.5 0 0 1 6.5 3h8A1.5 1.5 0 0 1 16 4.5V21M3 21h18M12 12h.01"/><path d="M16 8l4 0M18 6l2 2-2 2"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 15.5 13.5 11V5a1.5 1.5 0 0 0-3 0v6L3 15.5v2l7.5-2.5v4L8 20.5V22l4-1 4 1v-1.5L13.5 19v-4l7.5 2.5Z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-money" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9.5v5M18 9.5v5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M3 12h4l3 3h4a2 2 0 0 0 0-4h-3"/><path d="M7 12l4-4h3l5 5v5l-3 2H8"/></symbol>
+    <symbol id="i-dome" viewBox="0 0 24 24"><path d="M4 21V12a8 8 0 0 1 16 0v9M2.5 21h19M12 4V2M9 21v-5a3 3 0 0 1 6 0v5"/></symbol>
+    <symbol id="i-rose" viewBox="0 0 24 24"><path d="M12 13c-3 0-5-2-5-5 2 0 3 1 3 1s0-4 2-6c2 2 2 6 2 6s1-1 3-1c0 3-2 5-5 5Z"/><path d="M12 13v8M12 17c-2 0-3.5-1-4-3M12 18c2 0 3.5-1 4-3"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M12 7l1.5 3.5L17 12l-3.5 1.5L12 17l-1.5-3.5L7 12l3.5-1.5Z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></symbol>
+    <symbol id="i-syringe" viewBox="0 0 24 24"><path d="m18 2 4 4M20 4l-3 3M17 7 8 16l-3-3 9-9ZM8 16l-2 2M5 13l-3 3 3 3 3-3M11 10l2 2M9 12l1 1"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 10H5Z"/><path d="M5 21h14"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/><path d="M2 17c2-4 4-4 6 0s4 4 6 0 4-4 6 0" opacity=".5"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="container">
+    <nav class="nav" aria-label="main">
+      <a href="index.html" class="brand">
+        <span class="brand-mark"><svg><use href="#i-logo"/></svg></span>
+        <span class="brand-text">
+          <small data-i18n="brand.small">مرکز جراحی فوق تخصصی</small>
+          <strong data-i18n="brand.name">دکتر خیرخواه</strong>
+        </span>
+      </a>
+
+      <ul class="menu" id="menu">
+        <li><a href="index.html" data-i18n="nav.home">خانه</a></li>
+        <li class="has-sub"><a href="about.html" data-i18n="nav.about">درباره ما</a><button class="sub-tg" type="button" aria-label="submenu" aria-expanded="false"><svg><use href="#i-chev"/></svg></button><ul class="sub"><li><a href="about.html#history" data-i18n="nav.aboutHist">تاریخچه</a></li><li><a href="about.html#mission" data-i18n="nav.aboutMission">رسالت و چشم‌انداز</a></li><li><a href="about.html#goals" data-i18n="nav.aboutGoals">اهداف سازمان</a></li><li><a href="about.html#policies" data-i18n="nav.aboutPolicy">سیاست‌های کلان</a></li><li><a href="about.html#why" data-i18n="nav.aboutWhy">چرا مرکز دکتر خیرخواه</a></li></ul></li>
+        <li class="has-sub"><a href="services.html" data-i18n="nav.services">خدمات</a><button class="sub-tg" type="button" aria-label="submenu" aria-expanded="false"><svg><use href="#i-chev"/></svg></button><ul class="sub"><li><a href="services.html#surgical" data-i18n="nav.svcSurg">خدمات جراحی</a></li><li><a href="services.html#medical" data-i18n="nav.svcMed">خدمات پزشکی</a></li></ul></li>
+        <li><a href="doctors.html" data-i18n="nav.doctors">پزشکان</a></li>
+        <li class="has-sub"><a href="guide.html" class="active" data-i18n="nav.guide">راهنمای بیماران</a><button class="sub-tg" type="button" aria-label="submenu" aria-expanded="false"><svg><use href="#i-chev"/></svg></button><ul class="sub"><li><a href="guide.html" data-i18n="ix.menuGuide">راهنمای قبل و بعد از عمل</a></li><li><a href="visiting.html" class="on" data-i18n="ix.menuVisit">قوانین و ساعات ملاقات</a></li><li><a href="patient-rights.html" data-i18n="ix.menuRights">منشور حقوق بیمار</a></li><li><a href="admission.html" data-i18n="ix.menuAdm">پذیرش و ترخیص بیماران</a></li><li><a href="loan.html" data-i18n="ix.menuLoan">وام درمانی بانک تجارت</a></li></ul></li>
+        <li><a href="assistant.html" data-i18n="nav.assistant">راهنمای هوشمند</a></li>
+        <li><a href="index.html#steps" data-i18n="nav.intl">بیماران بین‌الملل</a></li>
+        <li><a href="index.html#contact" data-i18n="nav.contact">تماس با ما</a></li>
+        <li class="m-staff"><a href="doctor-panel.html" data-i18n="nav.staff">پنل پزشکان</a></li>
+      </ul>
+
+      <div class="nav-tools">
+        <div class="lang" id="lang">
+          <button class="lang-btn" aria-haspopup="true" aria-expanded="false"><span id="langLabel">FA</span><svg><use href="#i-chev"/></svg></button>
+          <ul class="lang-list" role="menu">
+            <li><button data-lang="fa">فارسی <b>FA</b></button></li>
+            <li><button data-lang="en">English <b>EN</b></button></li>
+            <li><button data-lang="ar">العربية <b>AR</b></button></li>
+          </ul>
+        </div>
+        <a href="index.html#help" class="icon-btn" aria-label="search"><svg><use href="#i-search"/></svg></a>
+        <a href="patient-panel.html?go=new" class="btn btn-primary btn-sm hide-sm"><svg><use href="#i-calendar"/></svg><span data-i18n="cta.book">نوبت و مشاوره</span></a>
+        <button class="icon-btn burger" id="burger" aria-label="menu"><svg><use href="#i-menu"/></svg></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="phx ix ix-visit">
+    <div class="container"><div class="phx-in">
+      <div class="phx-t">
+        <nav class="crumbs"><a href="index.html" data-i18n="nav.home">خانه</a><span>/</span><a href="guide.html" data-i18n="nav.guide">راهنمای بیماران</a><span>/</span><b data-i18n="ix.menuVisit">قوانین و ساعات ملاقات</b></nav>
+        <h1 data-i18n="iv.t">قوانین و ساعات ملاقات</h1>
+        <p data-i18n="iv.p">ضمن عرض خیرمقدم و آرزوی سلامتی، به منظور حفظ امنیت و آرامش بیماران لطفاً به نکات زیر دقت فرمایید.</p>
+        <ul class="ix-facts"><li><svg><use href="#i-calendar"/></svg><span data-i18n="iv.f1">همه‌روزه</span></li><li><svg><use href="#i-pin"/></svg><span data-i18n="iv.f2">نمازخانه: طبقه منفی یک</span></li></ul>
+      </div>
+      <div class="phx-v ix-v" aria-hidden="true">
+        <img src="assets/img/corridor-wide.jpg" alt="">
+        <div class="ix-badge"><span class="k" data-i18n="iv.hk">ساعات ملاقات</span><b data-i18n="iv.hv">۱۵:۰۰ تا ۱۶:۳۰</b><small data-i18n="iv.f1">همه‌روزه</small></div>
+      </div>
+    </div></div>
+  </section>
+  <section class="container ix-body">
+    <nav class="ix-tabs" aria-label="sections"><a href="guide.html"><svg><use href="#i-clipboard"/></svg><span data-i18n="ix.menuGuide">راهنمای قبل و بعد از عمل</span></a><a href="visiting.html" class="on" aria-current="page"><svg><use href="#i-clock"/></svg><span data-i18n="ix.menuVisit">قوانین و ساعات ملاقات</span></a><a href="patient-rights.html"><svg><use href="#i-shield"/></svg><span data-i18n="ix.menuRights">منشور حقوق بیمار</span></a><a href="admission.html"><svg><use href="#i-bed"/></svg><span data-i18n="ix.menuAdm">پذیرش و ترخیص بیماران</span></a><a href="loan.html"><svg><use href="#i-money"/></svg><span data-i18n="ix.menuLoan">وام درمانی بانک تجارت</span></a></nav>
+    <h2 class="ix-h"><span data-i18n="iv.rT">قوانین ملاقات</span></h2>
+    <div class="ix-grid g4"><div class="ix-card"><span class="ix-ic"><svg><use href="#i-money"/></svg></span><p data-i18n="iv.r1">از همراه داشتن وجوه نقد و اشیای قیمتی مانند طلا و زیورآلات خودداری فرمایید.</p></div><div class="ix-card"><span class="ix-ic"><svg><use href="#i-nosmoke"/></svg></span><p data-i18n="iv.r2">سیگار کشیدن در تمام قسمت‌های مرکز ممنوع است.</p></div><div class="ix-card"><span class="ix-ic"><svg><use href="#i-mute"/></svg></span><p data-i18n="iv.r3">به احترام بیماران، تلفن همراه خود را در حالت بی‌صدا (Silent) نگه دارید.</p></div><div class="ix-card"><span class="ix-ic"><svg><use href="#i-building"/></svg></span><p data-i18n="iv.r4">نمازخانه در طبقه منفی یک (زیرزمین) پذیرای نمازگزاران محترم است.</p></div></div>
+    <h2 class="ix-h"><span data-i18n="iv.nT">نکات مهم برای بیماران و همراهان</span></h2>
+    <div class="ix-grid g3"><div class="ix-card warn"><span class="ix-ic"><svg><use href="#i-band"/></svg></span><h3 data-i18n="iv.n1t">دستبند شناسایی</h3><p data-i18n="iv.n1">در حفظ دستبند شناسایی که هنگام ورود در پذیرش به دست شما بسته شده دقت کنید. اگر به هر دلیلی گم شد، فوراً به پرستار بخش اطلاع دهید.</p></div><div class="ix-card warn"><span class="ix-ic"><svg><use href="#i-food"/></svg></span><h3 data-i18n="iv.n2t">خوراکی و دارو</h3><p data-i18n="iv.n2">بدون اطلاع کادر درمان هیچ نوع خوراکی یا دارویی به بیماران داده نشود.</p></div><div class="ix-card warn"><span class="ix-ic"><svg><use href="#i-door"/></svg></span><h3 data-i18n="iv.n3t">ترک بخش</h3><p data-i18n="iv.n3">بیماران محترم بدون اطلاع سرپرستار، بخش را ترک نکنند.</p></div></div>
+    <aside class="ix-cta">
+      <div class="ix-cta-i"><svg><use href="#i-chat"/></svg></div>
+      <div class="ix-cta-t"><h3 data-i18n="ix.ctaT">سؤالی دارید؟</h3><p data-i18n="ix.ctaP">پاسخ بیشتر پرسش‌های پرتکرار درباره بیمه، هزینه و زمان مراجعه در راهنمای هوشمند آماده است. برای موارد دیگر با پذیرش تماس بگیرید.</p></div>
+      <div class="ix-cta-b"><a class="btn btn-primary" href="assistant.html"><svg><use href="#i-chat"/></svg><span data-i18n="ix.ctaA">راهنمای هوشمند</span></a><a class="btn btn-ghost" href="tel:+983155154000"><svg><use href="#i-phone"/></svg><span data-i18n="ix.ctaC">تماس با پذیرش</span></a></div>
+    </aside>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <a href="index.html#top" class="brand light">
+        <span class="brand-mark"><svg><use href="#i-logo"/></svg></span>
+        <span class="brand-text"><small data-i18n="brand.small">مرکز جراحی فوق تخصصی</small><strong data-i18n="brand.name">دکتر خیرخواه</strong></span>
+      </a>
+      <p data-i18n="ft.p">ارائه خدمات درمانی ایمن و اثربخش با نیروی انسانی متخصص و تجهیزات نوین، مطابق با استانداردهای ملی و بین‌المللی و با پایبندی به منشور حقوق بیمار.</p>
+      <a class="social" href="https://instagram.com" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
+    </div>
+    <div>
+      <h4 data-i18n="ft.h1">بخش‌ها</h4>
+      <ul>
+        <li><a href="about.html#history" data-i18n="ft.l1">تالار جراحی</a></li>
+        <li><a href="clinics.html#anesthesia" data-i18n="ft.l2">کلینیک بیهوشی</a></li>
+        <li><a href="index.html#services" data-i18n="ft.l3">اتاق عمل جنرال</a></li>
+        <li><a href="clinics.html#hair" data-i18n="ft.l4">کلینیک کاشت مو و ابرو</a></li>
+        <li><a href="clinics.html#laser" data-i18n="ft.l5">کلینیک لیزر</a></li>
+        <li><a href="clinics.html#beauty" data-i18n="ft.l6">کلینیک خدمات زیبایی</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="ft.h2">دسترسی سریع</h4>
+      <ul>
+        <li><a href="index.html#steps" data-i18n="ft.q1">توریسم درمانی</a></li>
+        <li><a href="admission.html" data-i18n="ft.q2">پذیرش و ترخیص بیماران</a></li>
+        <li><a href="index.html#about" data-i18n="ft.q3">تور مجازی</a></li>
+        <li><a href="patient-rights.html" data-i18n="ft.q4">منشور حقوق بیمار</a></li>
+        <li><a href="visiting.html" data-i18n="ft.q5">قوانین و ساعات ملاقات</a></li>
+        <li><a href="about.html#history" data-i18n="ft.q6">تاریخچه</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="ft.h3">ساعات کاری</h4>
+      <ul class="hours">
+        <li><span data-i18n="ft.days">شنبه تا پنجشنبه</span><b data-i18n="ft.time">۷:۳۰ – ۲۰:۰۰</b></li>
+        <li><span data-i18n="ft.visit">ساعات ملاقات</span><b data-i18n="ft.vtime">۱۵:۰۰ – ۱۶:۳۰</b></li>
+      </ul>
+      <a href="tel:+983155154000" class="foot-phone" dir="ltr">031 - 5515 4000</a>
+    </div>
+  </div>
+  <div class="container foot-bottom">
+    <span data-i18n="ft.copy">© تمامی حقوق برای مرکز جراحی فوق تخصصی دکتر خیرخواه محفوظ است.</span>
+    <a class="staff-link" href="doctor-panel.html">ورود پزشکان</a><a class="staff-link" href="surgery-panel.html">ورود پذیرش</a><a class="staff-link" href="staff-panel.html">ورود پرسنل</a><a class="staff-link" href="finance-panel.html">ورود واحد مالی</a><a class="staff-link" href="insurance-panel.html">امور بیمه</a><a class="staff-link" href="quality-panel.html">گزارش رضایت</a><a class="staff-link" href="platform.html">نقشه پلتفرم</a><span data-i18n="ft.company">شرکت پزشکان مهراندیش خیرخواه</span>
+  </div>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n-extra.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

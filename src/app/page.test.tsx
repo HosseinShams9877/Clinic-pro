@@ -116,12 +116,14 @@ describe("home page (fa)", () => {
     expect(html).not.toMatch(/\bcb\./);
   });
 
-  it("renders no doctors section — doctor pages are past the boundary", async () => {
+  it("restores the reference doctors section with four links into the built directory", async () => {
     const { container } = await renderHome();
-    const html = container.innerHTML;
-    expect(html).not.toContain("پزشکان این بخش");
-    expect(html).not.toContain("doctors.html");
-    expect(html).not.toContain("تیم پزشکی");
+    const section = container.querySelector("#doctors");
+    expect(section).not.toBeNull();
+    expect(section?.querySelectorAll(".hdoc")).toHaveLength(4);
+    const hrefs = [...(section?.querySelectorAll<HTMLAnchorElement>(".hdoc") ?? [])].map((link) => link.getAttribute("href"));
+    for (const href of hrefs) expect(href).toMatch(/^\/doctors(?:\/[^?]+|\?q=)/);
+    expect(section?.innerHTML).not.toContain("doctor.html");
   });
 
   it("paints the live badge's server snapshot before any fetch resolves", async () => {

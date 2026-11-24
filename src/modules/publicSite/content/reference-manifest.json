@@ -1,0 +1,32 @@
+{
+  "importedAt": "2026-11-23",
+  "sourceFileCount": 125,
+  "inputs": {
+    "about.html": "2f0036fecb5b4736f78f8902f6831bcdfd57c5c3e72791202844201b4dd0a583",
+    "clinics.html": "f3fc59d002a566097ec77c135bcacae33ccc0c6e2316cb2ed4f54912442e43a9",
+    "visiting.html": "8cd2a59d877299e7127db6831de8ad5d4460e9be872f9d5bcf1163be67cefa55",
+    "patient-rights.html": "2917516cf77be5dc2356dc041fe4426a5ec8b1abfd6ca009372a0c861aada8d2",
+    "admission.html": "b411de01e28b8f1d6ef1992229c4948e6803623c93673b49f82f5363668a4ef6",
+    "international-patients.html": "86e02dbba382db109c0ad773bb035d8eb4d3622561c2fef06ae00bce7e4c5e61",
+    "assets/js/doctors-data.js": "74e320d563fe55a0bed6b9e4a39fb29c848b617b53f7fd3c34bd74073c5a7172",
+    "assets/js/doctor-profiles.js": "6786928d2100c5da0018320040fb053bf348fd1144f3c2906afa25008fb11ecf",
+    "assets/js/guide-data.js": "0bcf9295db8815bfc19d2d0bec15238c7c0cfaa1cc3172a12b414fa2fa63805f",
+    "assets/js/i18n.js": "d9c5de316cb1629f974712bf8636a8661cc7f54daa0408d8166d1c29def3281a",
+    "assets/js/i18n-extra.js": "f3b87ee52b0fc801ab493d5846853ec93fcb2fb7606c53dba502587645ad9777",
+    "assets/css/doctors.css": "c75237133710e7f57041756a7942cfdfc0831e294c52724e05f60d803d9434ad",
+    "assets/css/doctor.css": "9d4098e6f6003558f67c3a278f12a6c62867681ac5512dfea439c073b9ace2d1",
+    "assets/css/guide.css": "2e0d897baa4597b61af0435f7577051d37df1ed77331fada014f90979b0be75a",
+    "assets/css/info.css": "7d44526540a3f2ec8199f6715ccb44ee57fcd77ef4ef32f1892e93bb3185678d",
+    "assets/css/about-page.css": "119eae7dc3d0e6cf928b141a88d285716cc298a0b19e46e3ed3b0a48a84361bc",
+    "assets/css/admission-refresh.css": "55331c69f8549874b093623344d41e3fbc99139a7ca188cb8f6066b6179510dd",
+    "assets/css/visiting-page.css": "8770415e6383207580c237a7dfdd5116f469bf6531a11c4116be5273eb371f7d",
+    "assets/css/patient-pages.css": "0b64a2438fe5e2b77d4b78b1938b7223894fa5b20a4b0c479233702b7278bbdb",
+    "assets/css/layout-refinement.css": "abf508c30008cca994252135b6b3d7ef206543c5027f41188efc82157e333b91"
+  },
+  "counts": {
+    "doctors": 66,
+    "doctorProfiles": 4,
+    "guideItems": 12,
+    "staticPages": 6
+  }
+}

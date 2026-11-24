@@ -1,0 +1,59 @@
+/* Scoped admission refresh. Shared styles and translation dictionaries stay unchanged. */
+.admission-refresh { background:#F4F8F9; font-family:"Vazirmatn",Tahoma,sans-serif; }
+.admission-refresh .ix-body { padding-bottom:72px; }
+.admission-refresh .ix-h { margin-top:42px; }
+.admission-refresh .admission-documents { gap:0 28px; }
+.admission-refresh .admission-documents .ix-dc { border:0; border-bottom:1px solid #CDDFE2; border-radius:0; background:transparent; padding:20px 0; box-shadow:none; }
+.admission-refresh .admission-documents .ix-ic { background:transparent; color:#0B4F5C; width:30px; }
+.admission-refresh .admission-documents p { font-size:15px; }
+.admission-refresh .ix-two { gap:48px; margin-top:12px; }
+.admission-refresh .ix-steps li { padding-bottom:22px; }
+.admission-refresh .ix-steps li>div { background:transparent; border:0; border-radius:0; padding:10px 0 0; }
+.admission-refresh .ix-steps .ix-num { background:#0B4F5C; box-shadow:0 0 0 5px #F4F8F9; }
+.admission-refresh .ix-steps::before { background:#CDDFE2; }
+.admission-refresh .ix-side { gap:28px; padding-inline-start:28px; border-inline-start:1px solid #CDDFE2; }
+.admission-refresh .ix-side .ix-card { border:0; background:transparent; border-radius:0; padding:0; box-shadow:none; }
+.admission-refresh .ix-side .ix-ic { background:#E8F3F4; color:#0B4F5C; }
+.admission-refresh .ix-steps p, .admission-refresh .ix-side p { font-size:15px; }
+.operation-documents { margin-block:40px 20px; padding:30px 32px; background:#fff; border-inline-start:4px solid #1AA3A8; border-radius:8px 0 0 8px; }
+.operation-documents h2, .admission-finance h2, .guide-insurance-note h2 { font-size:clamp(20px,2vw,25px); color:#0B3F47; line-height:1.6; font-weight:800; }
+.operation-intro { max-width:78ch; margin-block:12px 24px; font-size:15px; line-height:2.1; color:#3B4F57; }
+.operation-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 32px; }
+.operation-options details { border-top:1px solid #CDDFE2; min-width:0; }
+.operation-options summary { cursor:pointer; padding:17px 4px; color:#0B4F5C; font-size:16px; font-weight:700; line-height:1.8; }
+.operation-options summary::marker { color:#0B4F5C; }
+.operation-options details[open] summary { padding-bottom:8px; }
+.operation-options details p { padding:0 4px 20px; color:#3B4F57; font-size:15px; line-height:2.1; max-width:65ch; }
+.operation-guide-link { display:inline-block; margin-top:22px; color:#0B4F5C; font-weight:700; text-decoration:underline; text-underline-offset:5px; line-height:2; }
+.operation-guide-link:hover { color:#0E6271; }
+.operation-options summary:focus-visible, .operation-guide-link:focus-visible { outline:3px solid #0E6271; outline-offset:4px; border-radius:4px; }
+.admission-finance { margin-top:42px; padding-top:32px; border-top:1px solid #CDDFE2; }
+.finance-columns { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:44px; margin-block:24px; }
+.admission-finance h3 { font-size:17px; line-height:1.8; color:#0B4F5C; margin-bottom:8px; }
+.admission-finance p, .guide-insurance-note p { color:#3B4F57; font-size:15px; line-height:2.15; max-width:75ch; }
+.admission-leaving { padding:20px 24px; background:#E8F3F4; border-radius:8px; }
+.admission-leaving { display:flex; align-items:baseline; gap:8px 14px; flex-wrap:wrap; }
+.admission-leaving h3, .admission-leaving p { margin:0; }
+.admission-leaving p { flex:1 1 32rem; max-width:none; }
+.admission-refresh .ix-cta { background:#fff; box-shadow:none; margin-top:44px; }
+.guide-admission-refresh { padding-bottom:64px; }
+.guide-insurance-note { padding:28px 32px; border-block:1px solid #CDDFE2; border-inline-start:4px solid #1AA3A8; background:#fff; }
+.guide-insurance-note p { margin-top:12px; }
+@media (max-width:860px) {
+  .admission-refresh .ix-two { grid-template-columns:minmax(0,1fr); gap:16px; }
+  .admission-refresh .ix-side { margin-top:0; padding-inline-start:20px; }
+  .finance-columns { grid-template-columns:minmax(0,1fr); gap:24px; }
+}
+@media (max-width:600px) {
+  .operation-documents { padding:22px 18px; margin-top:30px; }
+  .operation-options { grid-template-columns:minmax(0,1fr); }
+  .admission-refresh .admission-documents { grid-template-columns:minmax(0,1fr); }
+  .admission-refresh .ix-h { margin-top:30px; }
+  .admission-leaving, .guide-insurance-note { padding:20px 18px; }
+  .guide-admission-refresh { padding-bottom:40px; }
+}
+@media print {
+  .operation-options { display:block; }
+  .operation-options details { break-inside:avoid; }
+  .operation-documents, .guide-insurance-note { border:1px solid #CDDFE2; }
+}

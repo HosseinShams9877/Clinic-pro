@@ -37,7 +37,18 @@ import { MobileMenu } from "./MobileMenu";
 export function SiteHeader({ locale, pathname }: { locale: Locale; pathname: string }) {
   /** The current section's link is active in the reference's static markup. */
   const isHome = pathname === ROUTES.home;
-  const isServices = pathname === ROUTES.services || pathname.startsWith(`${ROUTES.services}/`);
+  const isAbout = pathname === ROUTES.about;
+  const isServices =
+    pathname === ROUTES.services || pathname.startsWith(`${ROUTES.services}/`) || pathname === ROUTES.clinics;
+  const isDoctors = pathname === ROUTES.doctors || pathname.startsWith(`${ROUTES.doctors}/`);
+  const isGuide =
+    pathname === ROUTES.guide ||
+    pathname.startsWith(`${ROUTES.guide}/`) ||
+    pathname === ROUTES.visiting ||
+    pathname === ROUTES.patientRights ||
+    pathname === ROUTES.admission ||
+    pathname === ROUTES.loan;
+  const isInternational = pathname === ROUTES.internationalPatients;
 
   return (
     <header className="site-header" id="top">
@@ -61,6 +72,25 @@ export function SiteHeader({ locale, pathname }: { locale: Locale; pathname: str
             </li>
             <li className="has-sub">
               <Link
+                href={ROUTES.about}
+                className={isAbout ? "active" : undefined}
+                aria-current={isAbout ? "page" : undefined}
+              >
+                {t(locale, "nav.about")}
+              </Link>
+              <button type="button" className="sub-tg" aria-label={t(locale, "nav.about")} aria-expanded="false">
+                <Icon name="i-chev" size={18} />
+              </button>
+              <ul className="sub">
+                <li><Link href={`${ROUTES.about}#history`}>{t(locale, "nav.aboutHist")}</Link></li>
+                <li><Link href={`${ROUTES.about}#mission`}>{t(locale, "nav.aboutMission")}</Link></li>
+                <li><Link href={`${ROUTES.about}#goals`}>{t(locale, "nav.aboutGoals")}</Link></li>
+                <li><Link href={`${ROUTES.about}#policies`}>{t(locale, "nav.aboutPolicy")}</Link></li>
+                <li><Link href={`${ROUTES.about}#why`}>{t(locale, "nav.aboutWhy")}</Link></li>
+              </ul>
+            </li>
+            <li className="has-sub">
+              <Link
                 href={ROUTES.services}
                 className={isServices ? "active" : undefined}
                 aria-current={isServices ? "page" : undefined}
@@ -77,16 +107,53 @@ export function SiteHeader({ locale, pathname }: { locale: Locale; pathname: str
               </button>
               <ul className="sub">
                 <li>
-                  <Link href={`${ROUTES.services}#surgical`}>
+                  <Link href={ROUTES.servicesSurgical}>
                     {t(locale, "nav.svcSurg")}
                   </Link>
                 </li>
                 <li>
-                  <Link href={`${ROUTES.services}#medical`}>
+                  <Link href={ROUTES.servicesMedical}>
                     {t(locale, "nav.svcMed")}
                   </Link>
                 </li>
               </ul>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.doctors}
+                className={isDoctors ? "active" : undefined}
+                aria-current={isDoctors ? "page" : undefined}
+              >
+                {t(locale, "nav.doctors")}
+              </Link>
+            </li>
+            <li className="has-sub">
+              <Link
+                href={ROUTES.guide}
+                className={isGuide ? "active" : undefined}
+                aria-current={isGuide ? "page" : undefined}
+              >
+                {t(locale, "nav.guide")}
+              </Link>
+              <button type="button" className="sub-tg" aria-label={t(locale, "nav.guide")} aria-expanded="false">
+                <Icon name="i-chev" size={18} />
+              </button>
+              <ul className="sub">
+                <li><Link href={ROUTES.guide}>{t(locale, "ix.menuGuide")}</Link></li>
+                <li><Link href={ROUTES.visiting}>{t(locale, "ix.menuVisit")}</Link></li>
+                <li><Link href={ROUTES.patientRights}>{t(locale, "ix.menuRights")}</Link></li>
+                <li><Link href={ROUTES.admission}>{t(locale, "ix.menuAdm")}</Link></li>
+                <li><Link href={ROUTES.loan}>{t(locale, "ix.menuLoan")}</Link></li>
+              </ul>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.internationalPatients}
+                className={isInternational ? "active" : undefined}
+                aria-current={isInternational ? "page" : undefined}
+              >
+                {t(locale, "nav.intl")}
+              </Link>
             </li>
             <li>
               <Link href="/#contact">{t(locale, "nav.contact")}</Link>
@@ -95,6 +162,9 @@ export function SiteHeader({ locale, pathname }: { locale: Locale; pathname: str
 
           <div className="nav-tools">
             <LanguageSwitcher locale={locale} />
+            <Link className="icon-btn" href="/#help" aria-label={t(locale, "help.title")}>
+              <Icon name="i-search" size={20} />
+            </Link>
             <Link
               className="btn btn-primary btn-sm hide-sm"
               href={`tel:${siteConfig.phone}`}
