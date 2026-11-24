@@ -25,6 +25,9 @@ export type IconName =
   | "i-bone"
   | "i-scalpel"
   | "i-heart"
+  | "i-star"
+  | "i-sparkle"
+  | "i-crown"
   | "i-laser"
   | "i-hair"
   | "i-calendar"
@@ -75,6 +78,9 @@ const VIEW_BOX: Readonly<Record<IconName, string>> = {
   "i-bone": "0 0 24 24",
   "i-scalpel": "0 0 24 24",
   "i-heart": "0 0 24 24",
+  "i-star": "0 0 24 24",
+  "i-sparkle": "0 0 24 24",
+  "i-crown": "0 0 24 24",
   "i-laser": "0 0 24 24",
   "i-hair": "0 0 24 24",
   "i-calendar": "0 0 24 24",
@@ -166,6 +172,14 @@ const ICONS: Readonly<Record<IconName, JSX.Element>> = {
     <>
       <path d="M12 20.5S3 15 3 8.8A4.8 4.8 0 0 1 12 6.3a4.8 4.8 0 0 1 9 2.5C21 15 12 20.5 12 20.5Z" />
       <path d="M3.5 12h4.5l1.5-2.5 3 5 1.5-2.5h6.5" />
+    </>
+  ),
+  "i-star": <path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z" />,
+  "i-sparkle": <path d="M12 3v4M12 17v4M3 12h4M17 12h4M12 7l1.5 3.5L17 12l-3.5 1.5L12 17l-1.5-3.5L7 12l3.5-1.5Z" />,
+  "i-crown": (
+    <>
+      <path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 10H5Z" />
+      <path d="M5 21h14" />
     </>
   ),
   "i-laser": (

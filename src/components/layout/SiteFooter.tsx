@@ -57,7 +57,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               </Link>
             </li>
             <li>
-              <Link href={ROUTES.servicesSurgical}>{t(locale, "ft.l3")}</Link>
+              <Link href={ROUTES.services}>{t(locale, "ft.l3")}</Link>
             </li>
             <li>
               <Link href={`${ROUTES.clinics}#hair`}>{t(locale, "ft.l4")}</Link>
@@ -79,6 +79,9 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </li>
             <li>
               <Link href={ROUTES.admission}>{t(locale, "ft.q2")}</Link>
+            </li>
+            <li>
+              <Link href="/#why">{t(locale, "ft.q3")}</Link>
             </li>
             <li>
               <Link href={ROUTES.patientRights}>{t(locale, "ft.q4")}</Link>

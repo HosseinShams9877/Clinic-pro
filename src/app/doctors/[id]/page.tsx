@@ -11,12 +11,28 @@ import { getLocale } from "@/core/i18n/getLocale";
 import type { Locale } from "@/core/i18n/locales";
 import doctorsSource from "@/modules/publicSite/content/doctors.json";
 import profilesSource from "@/modules/publicSite/content/doctor-profiles.json";
+import { DoctorReviews } from "@/modules/publicSite/components/DoctorReviews";
 import type { PublicDoctor, PublicDoctorProfile } from "@/modules/publicSite/types";
 import { routeMetadata } from "@/modules/seo/lib/metadata";
 
 const doctors = doctorsSource.doctors as PublicDoctor[];
 const categories = doctorsSource.categories as Record<string, Record<Locale, string>>;
 const profiles = profilesSource as Record<string, PublicDoctorProfile>;
+const homeDoctorIds = new Set(["kheirkhah", "aghadoust", "mohammad-eidi", "abolhassani"]);
+
+function profileFor(doctor: PublicDoctor): PublicDoctorProfile | undefined {
+  if (profiles[doctor.id]) return profiles[doctor.id];
+  if (!homeDoctorIds.has(doctor.id)) return undefined;
+  return {
+    hero: doctor.photo || "",
+    floor: { fa: "", en: "", ar: "" },
+    tag: doctor.spec,
+    lead: doctor.spec,
+    about: { fa: "", en: "", ar: "" },
+    services: [],
+    creds: [],
+  };
+}
 
 const UI = {
   fa: {
@@ -124,13 +140,13 @@ const FAQ: Record<Locale, readonly [string, string][]> = {
 };
 
 export function generateStaticParams() {
-  return Object.keys(profiles).map((id) => ({ id }));
+  return [...new Set([...Object.keys(profiles), ...homeDoctorIds])].map((id) => ({ id }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const doctor = doctors.find((item) => item.id === id);
-  const profile = profiles[id];
+  const profile = doctor ? profileFor(doctor) : undefined;
   if (!doctor || !profile) return {};
   return routeMetadata({
     title: doctor.name.fa,
@@ -142,7 +158,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function DoctorProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const doctor = doctors.find((item) => item.id === id);
-  const profile = profiles[id];
+  const profile = doctor ? profileFor(doctor) : undefined;
   if (!doctor || !profile) notFound();
 
   const locale = await getLocale();
@@ -154,7 +170,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
     name: doctor.name.fa,
     alternateName: [doctor.name.en, doctor.name.ar],
     description: profile.lead.fa,
-    image: new URL(profile.hero, siteConfig.url).toString(),
+    ...(profile.hero ? { image: new URL(profile.hero, siteConfig.url).toString() } : {}),
     url: new URL(`/doctors/${id}`, siteConfig.url).toString(),
     medicalSpecialty: categories[doctor.cat]?.en || doctor.spec.en,
     affiliation: { "@id": `${siteConfig.url}/#organization` },
@@ -167,10 +183,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
           className="phero-img"
           role="img"
           aria-label={doctor.name[locale]}
-          style={{
-            backgroundImage: `url("${profile.hero}")`,
-            backgroundPosition: profile.heroPos,
-          }}
+          style={profile.hero ? { backgroundImage: `url("${profile.hero}")`, backgroundPosition: profile.heroPos } : undefined}
         />
         <div className="phero-fx" aria-hidden="true">
           <i />
@@ -220,18 +233,21 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
           <nav className="ptabs">
             <a href="#about" className="on">{ui.about}</a>
             {profile.services.length ? <a href="#services">{ui.services}</a> : null}
+            <a href="#reviews">{locale === "fa" ? "نظرات بیماران" : locale === "en" ? "Patient reviews" : "آراء المرضى"}</a>
             <a href="#faq">{ui.faq}</a>
           </nav>
 
           <section className="pcard pabout" id="about">
             <div className="pa-ph">
-              <Image
-                src={doctor.photo || profile.hero}
-                alt={doctor.name[locale]}
-                width={800}
-                height={896}
-                sizes="(max-width: 760px) 260px, 280px"
-              />
+              {doctor.photo || profile.hero ? (
+                <Image
+                  src={doctor.photo || profile.hero}
+                  alt={doctor.name[locale]}
+                  width={800}
+                  height={896}
+                  sizes="(max-width: 760px) 260px, 280px"
+                />
+              ) : <span className="hd-noph"><Icon name="i-user" /></span>}
               <span className="pa-frame" aria-hidden="true" />
             </div>
             <div className="pa-txt">
@@ -269,6 +285,8 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
               </div>
             </section>
           ) : null}
+
+          <DoctorReviews locale={locale} />
 
           <section className="pcard" id="faq">
             <h2 className="ph2">

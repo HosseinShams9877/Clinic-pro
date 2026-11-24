@@ -25,6 +25,7 @@ import profiles from "@/modules/publicSite/content/doctor-profiles.json";
 import guide from "@/modules/publicSite/content/guide.json";
 
 const CATEGORY_PRIORITY = 0.8;
+const HOME_DOCTOR_IDS = ["kheirkhah", "aghadoust", "mohammad-eidi", "abolhassani"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const categoryEntries: MetadataRoute.Sitemap = getServiceCategories().map((category) => ({
@@ -40,12 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ROUTES.servicesMedical,
     ROUTES.doctors,
     ROUTES.guide,
+    ROUTES.assistant,
     ROUTES.clinics,
     ROUTES.visiting,
     ROUTES.patientRights,
     ROUTES.admission,
   ].map((path) => entry(path, 0.9));
-  const doctorEntries = Object.keys(profiles).map((id) => entry(`${ROUTES.doctors}/${id}`, 0.8));
+  const doctorEntries = [...new Set([...Object.keys(profiles), ...HOME_DOCTOR_IDS])].map((id) => entry(`${ROUTES.doctors}/${id}`, 0.8));
   const guideEntries = guide.surgeries.map((item) => entry(`${ROUTES.guide}/${item.id}`, 0.8));
 
   return [

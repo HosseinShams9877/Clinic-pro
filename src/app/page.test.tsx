@@ -8,7 +8,7 @@
  *     so does every services link the mounted bento island adds,
  *   - the loan (ln.*) section of the reference is present (the owner's
  *     2026-11-18 loan-feature extension of scope, LOAN_FEATURE_REPORT.md)
- *     while the loyalty club (cb.*) section stays out,
+ *     together with the new-reference loyalty club (cb.*) section,
  *   - the live badge paints its server snapshot before any fetch resolves
  *     (this is the "HTML without JS is complete" gate),
  *   - stats and contact text are present as final text, not client-ified.
@@ -99,7 +99,7 @@ describe("home page (fa)", () => {
     }
   });
 
-  it("ships the loan section (2026-11-18 scope extension) but no loyalty club (cb.*) content", async () => {
+  it("ships the loan and new-reference loyalty-club sections", async () => {
     const { container } = await renderHome();
     const html = container.innerHTML;
     // The loan section is now built: the reference's own Persian heading,
@@ -107,13 +107,9 @@ describe("home page (fa)", () => {
     expect(html).toContain("وام درمانی");
     expect(html).toContain("/loan");
     expect(html).not.toContain("loan.html");
-    // The loyalty club section of the reference stays out of scope (Q3).
-    expect(html).not.toContain("باشگاه");
-    expect(html).not.toContain("کارت عضویت");
-    expect(html).not.toContain("عضویت");
-    expect(html).not.toContain("club");
-    // No cb.* i18n key leaks anywhere.
-    expect(html).not.toMatch(/\bcb\./);
+    expect(container.querySelector("#club .cb-form")).not.toBeNull();
+    expect(html).toContain("باشگاه تاج خیرخواه");
+    expect(html).toContain("کارت عضویت");
   });
 
   it("restores the reference doctors section with four links into the built directory", async () => {
@@ -122,7 +118,7 @@ describe("home page (fa)", () => {
     expect(section).not.toBeNull();
     expect(section?.querySelectorAll(".hdoc")).toHaveLength(4);
     const hrefs = [...(section?.querySelectorAll<HTMLAnchorElement>(".hdoc") ?? [])].map((link) => link.getAttribute("href"));
-    for (const href of hrefs) expect(href).toMatch(/^\/doctors(?:\/[^?]+|\?q=)/);
+    expect(hrefs).toEqual(["/doctors/kheirkhah", "/doctors/aghadoust", "/doctors/mohammad-eidi", "/doctors/abolhassani"]);
     expect(section?.innerHTML).not.toContain("doctor.html");
   });
 

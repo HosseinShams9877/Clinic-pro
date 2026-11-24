@@ -478,3 +478,18 @@ service test). No assertion was weakened to make the expansion pass.
   with the "CHANGED since the freeze" message; the file was then restored
   byte-exact and verify returned intact — the gate demonstrably catches drift,
   not just passes.
+
+## Refreeze — 2026-11-24, new-demo parity sync
+
+**Manifest:** rewritten from a green Vitest JSON run excluding only the
+self-referential freeze gate: **49 files / 355 tests**. The complete suite is
+**50 files / 359 tests** including the four freeze-gate assertions.
+
+The owner explicitly authorized synchronization to `clinic-platform (4)`.
+Affected frozen assertions were updated only where the new demo changes the
+public contract: `/assistant` is now an allowed public route; the home Crown
+Club section is present; featured home doctors link directly to their profile
+routes; the profile review form is present; and the sitemap includes those
+new public destinations. Three focused test files were added for Smart Guide
+delivery, Crown Club storage/validation, and review rating/submission behavior.
+No unrelated assertion was removed or weakened.

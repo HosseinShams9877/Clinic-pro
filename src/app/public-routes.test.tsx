@@ -67,16 +67,17 @@ describe("remaining public route render gates", () => {
     const { container } = await renderPage(Page);
     expect(container.querySelector("h1")).not.toBeNull();
     const hrefs = [...container.querySelectorAll("a[href]")].map((link) => link.getAttribute("href") ?? "");
-    expect(hrefs.join("\n")).not.toMatch(/\.html|assistant|panel|admin|account/i);
+    expect(hrefs.join("\n")).not.toMatch(/\.html|panel|admin|account/i);
   });
 
-  it("renders every publishable doctor profile and omits unconfirmed sections", async () => {
-    expect(doctorParams()).toEqual(Object.keys(profiles).map((id) => ({ id })));
-    for (const id of Object.keys(profiles)) {
+  it("renders every publishable and home-linked doctor profile with the demo reviews section", async () => {
+    const ids = [...new Set([...Object.keys(profiles), "kheirkhah", "aghadoust", "mohammad-eidi", "abolhassani"])];
+    expect(doctorParams()).toEqual(ids.map((id) => ({ id })));
+    for (const id of ids) {
       const { container } = await renderPage(DoctorProfilePage, { params: Promise.resolve({ id }) });
       expect(container.querySelector("h1")).not.toBeNull();
       expect(container.querySelector("#creds")).toBeNull();
-      expect(container.querySelector("#reviews")).toBeNull();
+      expect(container.querySelector("#reviews .prev-form")).not.toBeNull();
       expect(container.querySelector(".ps-video")).toBeNull();
       expect(container.querySelectorAll("#faq details")).toHaveLength(3);
       const serviceCount = id === "farajipour" ? 3 : 0;

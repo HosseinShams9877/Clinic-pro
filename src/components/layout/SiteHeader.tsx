@@ -41,6 +41,7 @@ export function SiteHeader({ locale, pathname }: { locale: Locale; pathname: str
   const isServices =
     pathname === ROUTES.services || pathname.startsWith(`${ROUTES.services}/`) || pathname === ROUTES.clinics;
   const isDoctors = pathname === ROUTES.doctors || pathname.startsWith(`${ROUTES.doctors}/`);
+  const isAssistant = pathname === ROUTES.assistant;
   const isGuide =
     pathname === ROUTES.guide ||
     pathname.startsWith(`${ROUTES.guide}/`) ||
@@ -145,6 +146,15 @@ export function SiteHeader({ locale, pathname }: { locale: Locale; pathname: str
                 <li><Link href={ROUTES.admission}>{t(locale, "ix.menuAdm")}</Link></li>
                 <li><Link href={ROUTES.loan}>{t(locale, "ix.menuLoan")}</Link></li>
               </ul>
+            </li>
+            <li>
+              <a
+                href={ROUTES.assistant}
+                className={isAssistant ? "active" : undefined}
+                aria-current={isAssistant ? "page" : undefined}
+              >
+                {t(locale, "nav.assistant")}
+              </a>
             </li>
             <li>
               <Link

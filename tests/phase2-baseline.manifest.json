@@ -1,10 +1,10 @@
 {
   "version": 1,
   "frozenAs": "Phase 3 regression baseline (Phase 2 item 14)",
-  "frozenAt": "2026-11-23",
+  "frozenAt": "2026-11-24",
   "suite": {
-    "files": 46,
-    "tests": 349
+    "files": 49,
+    "tests": 355
   },
   "environment": {
     "node": "v24.19.0",
@@ -43,6 +43,10 @@
       "sha256": "3d4c0e801c0ce83700609e6eb51d819c9ac953a0da47f7e4cab8bb741aad049e",
       "tests": 6
     },
+    "src/app/assistant/route.test.ts": {
+      "sha256": "28fba90edc651b7ea4922e14eec53b86ce96dd96ee2849fa8948ae981c99bf89",
+      "tests": 2
+    },
     "src/app/error.test.tsx": {
       "sha256": "e7365e3179d2ed66c27998ba5b876549a68e35d893f3e2e50164dced428d10d5",
       "tests": 4
@@ -56,11 +60,11 @@
       "tests": 4
     },
     "src/app/page.test.tsx": {
-      "sha256": "b12409152a5d5dae09a9426b748034ed9934793f6d542c7f536930cefcb27e50",
+      "sha256": "7ef5aaaff0c99904b45122c6fc49005d168b955cbc134aaa61f112eb543c679f",
       "tests": 9
     },
     "src/app/public-routes.test.tsx": {
-      "sha256": "3d6cc024384accd4aa85c621a7a4725e048f4ab7dbec92972ca1bfb6e46936ee",
+      "sha256": "09037ccdfe67b96ff137fa9f8fee9b0d00c6ecc31c4c529465b3db65463c8706",
       "tests": 14
     },
     "src/app/services/[category]/page.test.tsx": {
@@ -72,7 +76,7 @@
       "tests": 7
     },
     "src/app/sitemap.test.ts": {
-      "sha256": "29cc6442b2f3add8ca6054eabbdc01ff32aaf1acdf91781879f7d64802327335",
+      "sha256": "b761eed460139dfad330c338a20c9926421eba821ce87dc45646064a6ea9bd57",
       "tests": 7
     },
     "src/components/layout/LanguageSwitcher.test.tsx": {
@@ -80,12 +84,16 @@
       "tests": 3
     },
     "src/components/layout/SiteHeader.test.tsx": {
-      "sha256": "865a040ca056826bdc376ee1154918e59300f135d68c1663a14ff3f11b113280",
+      "sha256": "b4b08065857c64b6dd7a49453b706e5fe5f5fd498af93eb5d5a1160fcb287ce7",
       "tests": 6
     },
     "src/components/layout/focus-ring-clip.test.tsx": {
       "sha256": "4787152e24b7db68bd80c21206ea9b474a2a66a703348fc162f790cc814acad0",
       "tests": 5
+    },
+    "src/components/shared/HomeClubSection.test.tsx": {
+      "sha256": "6358cc6d23645d7d8ee73a7be765c34ede5fc49d803821a289d7e4db8ba18dd5",
+      "tests": 2
     },
     "src/components/shared/LiveStatus.test.tsx": {
       "sha256": "1b884a95e00db7b01586692b00022397aee1a06385fd05c0c480f51bb1bc684f",
@@ -154,6 +162,10 @@
     "src/modules/loan/services/loanService.test.ts": {
       "sha256": "23a136dba8b2ceb20cb707f26c45ab25f54576d33a485841245177b1a692418f",
       "tests": 14
+    },
+    "src/modules/publicSite/components/DoctorReviews.test.tsx": {
+      "sha256": "f3ae1961ea784d36297371c1444d17aa3c85b4c575869880dd9a42b10302474f",
+      "tests": 2
     },
     "src/modules/seo/lib/metadata.test.ts": {
       "sha256": "89c7df3c743e0a7c112e9834437b80f458a89959614f7a6cf0813c7ed1c1d190",

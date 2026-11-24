@@ -21,6 +21,7 @@ const sourceRoot = path.resolve(projectRoot, process.argv[2] || "پلتفرم");
 const outputRoot = path.join(projectRoot, "src", "modules", "publicSite", "content");
 const cssOutputRoot = path.join(projectRoot, "src", "styles", "referencePublic");
 const imageOutputRoot = path.join(projectRoot, "public", "img");
+const standaloneOutputRoot = path.join(projectRoot, "public", "reference", "assistant");
 
 const publicStaticPages = {
   about: "about.html",
@@ -69,6 +70,7 @@ const routeRewrites = [
   [/^patient-rights\.html(?=$|#)/, "/patient-rights"],
   [/^admission\.html(?=$|#)/, "/admission"],
   [/^international-patients\.html(?=$|#)/, "/international-patients"],
+  [/^assistant\.html(?=$|[?#])/, "/assistant"],
   [/^loan\.html(?=$|#)/, "/loan"],
 ];
 
@@ -111,7 +113,6 @@ function localized(value, locale) {
 function rewriteHref(href, profileIds) {
   if (!href || href.startsWith("#") || /^(?:https?:|mailto:|tel:)/.test(href)) return href;
 
-  if (href.startsWith("assistant.html")) return null;
   if (blockedHrefPrefixes.some((prefix) => href.startsWith(prefix))) return null;
 
   const doctorMatch = href.match(/^doctor\.html\?id=([^&#]+)/);
@@ -129,16 +130,6 @@ function rewriteHref(href, profileIds) {
 }
 
 function sanitizeDocument(document, profileIds) {
-  document.querySelectorAll(".ix-cta").forEach((cta) => {
-    const assistantLink = cta.querySelector('a[href^="assistant.html"]');
-    if (!assistantLink) return;
-    assistantLink.remove();
-    // The paragraph promises answers from the explicitly blocked demo
-    // assistant. Keep the reference's real call-to-admissions action, but do
-    // not publish that unavailable promise or rewrite it with new copy.
-    cta.querySelector(".ix-cta-t p")?.remove();
-  });
-
   document.querySelectorAll("img[src]").forEach((image) => {
     const source = image.getAttribute("src");
     if (source?.startsWith("assets/img/")) image.setAttribute("src", `/${source.replace(/^assets\//, "")}`);
@@ -255,6 +246,54 @@ function copyAssets() {
   for (const file of publicCssFiles) {
     fs.copyFileSync(path.join(sourceRoot, "assets", "css", file), path.join(cssOutputRoot, file));
   }
+
+}
+
+function copyStandaloneAssistant() {
+  const dom = new JSDOM(read("assistant.html"));
+  const { document } = dom.window;
+  sanitizeDocument(document, new Set(Object.keys(doctorProfiles)));
+  document.querySelectorAll(".m-staff,.staff-link").forEach((element) => element.remove());
+  document.querySelectorAll('link[rel="stylesheet"]').forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    link.setAttribute("href", `/reference/assistant/${href}`);
+  });
+  document.querySelectorAll("script[src]").forEach((script) => {
+    const src = script.getAttribute("src") || "";
+    script.setAttribute("src", `/reference/assistant/${src}`);
+  });
+  fs.mkdirSync(standaloneOutputRoot, { recursive: true });
+  fs.writeFileSync(
+    path.join(standaloneOutputRoot, "index.html"),
+    `<!doctype html>\n${document.documentElement.outerHTML}\n`,
+    "utf8",
+  );
+
+  const cssRoot = path.join(standaloneOutputRoot, "assets", "css");
+  const jsRoot = path.join(standaloneOutputRoot, "assets", "js");
+  const fontRoot = path.join(standaloneOutputRoot, "assets", "fonts");
+  fs.mkdirSync(cssRoot, { recursive: true });
+  fs.mkdirSync(jsRoot, { recursive: true });
+  fs.mkdirSync(fontRoot, { recursive: true });
+  for (const file of ["style.css", "doctors.css", "guide.css", "assistant.css", "vivid.css"]) {
+    const source = read(`assets/css/${file}`).replaceAll('url("../img/', 'url("/img/');
+    fs.writeFileSync(path.join(cssRoot, file), source, "utf8");
+  }
+  for (const file of ["i18n.js", "i18n-extra.js", "assistant-data.js", "assistant.js", "main.js"]) {
+    let source = read(`assets/js/${file}`)
+      .replaceAll('assets/img/', '/img/')
+      .replaceAll('guide-item.html?id=', '/guide/')
+      .replaceAll('guide.html', '/guide');
+    if (file === "assistant.js") {
+      source += `\n/* App boundary: remove account-only destinations that are not built. */\n` +
+        `(function(){function prune(root){root.querySelectorAll('a[href^="patient-panel.html"]').forEach(function(a){a.remove();});}` +
+        `prune(document);new MutationObserver(function(){prune(document);}).observe(document.body,{childList:true,subtree:true});})();\n`;
+    }
+    fs.writeFileSync(path.join(jsRoot, file), source, "utf8");
+  }
+  for (const file of ["Vazirmatn-Variable.woff2", "NotoNastaliqUrdu-Bold.woff2"]) {
+    fs.copyFileSync(path.join(sourceRoot, "assets", "fonts", file), path.join(fontRoot, file));
+  }
 }
 
 assertSource();
@@ -303,7 +342,7 @@ for (const [key, file] of Object.entries(publicStaticPages)) {
     title: sourceDom.window.document.querySelector("title")?.textContent || "",
     description:
       sourceDom.window.document.querySelector('meta[name="description"]')?.getAttribute("content") || "",
-    faOnly: key === "internationalPatients",
+    faOnly: key === "internationalPatients" || key === "assistant",
     sprite: sprite?.outerHTML || "",
     fa: serializeStaticPage(key, file, "fa", translations, doctors, doctorProfiles),
     en: serializeStaticPage(key, file, "en", translations, doctors, doctorProfiles),
@@ -341,6 +380,7 @@ writeJson("reference-manifest.json", {
   },
 });
 copyAssets();
+copyStandaloneAssistant();
 
 console.log(
   JSON.stringify({

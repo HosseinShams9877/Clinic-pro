@@ -78,6 +78,7 @@ export const ROUTES = {
   servicesMedical: "/services/medical",
   doctors: "/doctors",
   guide: "/guide",
+  assistant: "/assistant",
   clinics: "/clinics",
   visiting: "/visiting",
   patientRights: "/patient-rights",

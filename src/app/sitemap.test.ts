@@ -24,12 +24,13 @@ const EXPECTED_PATHS = [
   "/services/medical",
   "/doctors",
   "/guide",
+  "/assistant",
   "/clinics",
   "/visiting",
   "/patient-rights",
   "/admission",
   ...SERVICE_CATEGORY_ORDER.map((id) => `/services/${id}`),
-  ...Object.keys(profiles).map((id) => `/doctors/${id}`),
+  ...[...new Set([...Object.keys(profiles), "kheirkhah", "aghadoust", "mohammad-eidi", "abolhassani"])].map((id) => `/doctors/${id}`),
   ...guide.surgeries.map((item) => `/guide/${item.id}`),
   "/international-patients",
   "/loan",
@@ -46,7 +47,7 @@ describe("sitemap()", () => {
   });
 
   it("includes all ten category routes in the catalog's display order", () => {
-    const categoryUrls = entries.slice(11, 21).map((entry) => entry.url);
+    const categoryUrls = entries.slice(12, 22).map((entry) => entry.url);
     expect(categoryUrls).toEqual(
       SERVICE_CATEGORY_ORDER.map((id) => `${siteConfig.url}/services/${id}`),
     );
@@ -77,7 +78,7 @@ describe("sitemap()", () => {
     expect(entries[1]!.priority).toBe(0.9);
     expect(entries[2]!.priority).toBe(0.9);
     expect(entries.at(-1)!.priority).toBe(0.9);
-    expect(entries.filter((entry) => entry.priority === 0.8)).toHaveLength(26);
+    expect(entries.filter((entry) => entry.priority === 0.8)).toHaveLength(29);
   });
 });
 

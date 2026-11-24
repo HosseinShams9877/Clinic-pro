@@ -5,7 +5,7 @@
  * most likely place for a link past the implementation boundary to creep in.
  * The owner-authorized public expansion restores the reference's real about,
  * doctors, guide, patient-information, international-patient and loan links.
- * Demo assistant/account/panel destinations remain forbidden.
+ * The new-reference Smart Guide is public; account/panel destinations remain forbidden.
  *
  * Visual fidelity pass (B-1): the reference's header CTA pill
  * (`.btn.btn-primary.btn-sm.hide-sm`, index.html line 122) is restored, with
@@ -53,6 +53,7 @@ describe("SiteHeader", () => {
     expect(hrefs).toContain("/services/medical");
     expect(hrefs).toContain("/doctors");
     expect(hrefs).toContain("/guide");
+    expect(hrefs).toContain("/assistant");
     expect(hrefs).toContain("/visiting");
     expect(hrefs).toContain("/patient-rights");
     expect(hrefs).toContain("/admission");
@@ -63,7 +64,7 @@ describe("SiteHeader", () => {
     for (const href of hrefs) {
       const inScope =
         href === "/" ||
-        /^\/(?:about(?:#(?:history|mission|goals|policies|why))?|services(?:\/(?:surgical|medical))?|doctors|guide|visiting|patient-rights|admission|international-patients|loan)$/.test(href ?? "") ||
+        /^\/(?:about(?:#(?:history|mission|goals|policies|why))?|services(?:\/(?:surgical|medical))?|doctors|guide|assistant|visiting|patient-rights|admission|international-patients|loan)$/.test(href ?? "") ||
         href === "/#help" ||
         href === "/#contact" ||
         href === `tel:${siteConfig.phone}` || // B-1: substituted booking CTA (Q1)
@@ -79,10 +80,10 @@ describe("SiteHeader", () => {
     expect(container.querySelector('a.icon-btn[href="/#help"]')).toBe(search);
   });
 
-  it("carries no trace of demo assistant, account or panel destinations", () => {
+  it("carries no trace of account or panel destinations", () => {
     const { container } = render(<SiteHeader locale="fa" pathname="/" />);
     const hrefs = [...container.querySelectorAll("a[href]")].map((node) => node.getAttribute("href") ?? "");
-    expect(hrefs.join("\n")).not.toMatch(/assistant|club|panel|admin|account|staff|finance|insurance|quality/i);
+    expect(hrefs.join("\n")).not.toMatch(/club|panel|admin|account|staff|finance|insurance|quality/i);
   });
 
   it("labels its nav with the localized strings in all three locales", () => {

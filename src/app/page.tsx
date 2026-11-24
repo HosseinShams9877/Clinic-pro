@@ -38,12 +38,12 @@ import { FloatingActions } from "@/components/shared/FloatingActions";
 import { HeroParallax } from "@/components/shared/HeroParallax";
 import { HomeSvcBento } from "@/components/shared/HomeSvcBento";
 import { HomeSearch } from "@/components/shared/HomeSearch";
+import { HomeClubSection } from "@/components/shared/HomeClubSection";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { LiveStatus } from "@/components/shared/LiveStatus";
 import { LoanHomeSection } from "@/modules/loan/components/LoanHomeSection";
 import { statusFor } from "@/core/openHours";
 import doctorsSource from "@/modules/publicSite/content/doctors.json";
-import profilesSource from "@/modules/publicSite/content/doctor-profiles.json";
 import type { PublicDoctor } from "@/modules/publicSite/types";
 
 export function generateMetadata(): Metadata {
@@ -139,7 +139,6 @@ const HOME_PUBLIC_COPY = {
 } as const;
 
 const doctors = doctorsSource.doctors as PublicDoctor[];
-const profileIds = new Set(Object.keys(profilesSource));
 const FEATURED_DOCTORS = ["kheirkhah", "aghadoust", "mohammad-eidi", "abolhassani"]
   .map((id) => doctors.find((doctor) => doctor.id === id))
   .filter((doctor): doctor is PublicDoctor => Boolean(doctor));
@@ -310,10 +309,10 @@ export default async function HomePage() {
             <h2>{t(locale, "h.svT")}</h2>
             <p>{t(locale, "h.svS")}</p>
           </div>
-          <Link className="h-more" href={ROUTES.services}>
+          <a className="h-more" href={ROUTES.services}>
             <span>{t(locale, "sv.all")}</span>
             <Icon name="i-arrow" className="arr" />
-          </Link>
+          </a>
         </div>
         {/* home-svc.js: after mount the tabs + bento grid replace the static
             grid below; without JS the eight cards are the shipped content. */}
@@ -340,18 +339,16 @@ export default async function HomePage() {
             <h2>{publicCopy.doctorsTitle}</h2>
             <p>{publicCopy.doctorsSub}</p>
           </div>
-          <Link className="h-more" href={ROUTES.doctors}>
+          <a className="h-more" href={ROUTES.doctors}>
             <span>{publicCopy.allDoctors}</span>
             <Icon name="i-arrow" className="arr" />
-          </Link>
+          </a>
         </div>
         <div className="h-docs">
           {FEATURED_DOCTORS.map((doctor) => {
-            const href = profileIds.has(doctor.id)
-              ? `${ROUTES.doctors}/${doctor.id}`
-              : `${ROUTES.doctors}?q=${encodeURIComponent(doctor.name[locale])}`;
+            const href = `${ROUTES.doctors}/${doctor.id}`;
             return (
-              <Link className="hdoc" href={href} key={doctor.id}>
+              <a className="hdoc" href={href} key={doctor.id}>
                 <div className="hd-ph">
                   {doctor.photo ? (
                     <Image
@@ -370,7 +367,7 @@ export default async function HomePage() {
                   <span>{publicCopy.profile}</span>
                   <Icon name="i-arrow" className="arr" />
                 </span>
-              </Link>
+              </a>
             );
           })}
         </div>
@@ -468,6 +465,8 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      <HomeClubSection locale={locale} />
 
       {/* ===================== CONTACT STRIP ===================== */}
       <section className="container h-sec" id="contact">
